@@ -2,12 +2,18 @@ var cleanDist = require('./tasks/clean_dist');
 var copyGovUkTemplateAssets = require('./tasks/govuk_template_assets')
 var sass = require('./tasks/sass');
 
-cleanDist()
-  .then(copyGovUkTemplateAssets)
-  .then(sass)
-  .then(function() {
-    console.log('CSS built');
-  })
-  .catch(function(e) {
-    console.log(e);
+module.exports = function() {
+  return new Promise(function(resolve, reject) {
+
+    cleanDist()
+      .then(copyGovUkTemplateAssets)
+      .then(sass)
+      .then(function() {
+        resolve('dist/assets');
+      })
+      .catch(function(e) {
+        reject(e);
+      });
+
   });
+}
