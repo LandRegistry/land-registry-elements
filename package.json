@@ -2,9 +2,11 @@
   "name": "land-registry-elements",
   "version": "0.0.1",
   "description": "Land registry frontend pattern library - building on top of http://govuk-elements.herokuapp.com",
-  "main": "index.js",
+  "main": "build/build.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build/app.js",
+    "start": "node build/server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,18 @@
   "bugs": {
     "url": "https://github.com/LandRegistry/land-registry-elements/issues"
   },
-  "homepage": "https://github.com/LandRegistry/land-registry-elements#readme"
+  "homepage": "https://github.com/LandRegistry/land-registry-elements#readme",
+  "devDependencies": {
+    "dependency-graph": "^0.4.1",
+    "express": "^4.13.4",
+    "extend": "^3.0.0",
+    "glob": "^6.0.4",
+    "govuk-elements-sass": "^1.1.1",
+    "handlebars": "^4.0.5",
+    "js-yaml": "^3.5.2",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^3.4.2",
+    "promise-helpers": "^0.2.0",
+    "yfm": "^0.2.0"
+  }
 }
