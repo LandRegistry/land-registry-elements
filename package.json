@@ -1,0 +1,19 @@
+{
+  "name": "land-registry-elements",
+  "version": "0.0.1",
+  "description": "Land registry frontend pattern library - building on top of http://govuk-elements.herokuapp.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LandRegistry/land-registry-elements.git"
+  },
+  "author": "Andy Mantell <andy.mantell@digital.landregistry.gov.uk>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LandRegistry/land-registry-elements/issues"
+  },
+  "homepage": "https://github.com/LandRegistry/land-registry-elements#readme"
+}
