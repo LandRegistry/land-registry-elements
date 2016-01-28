@@ -1,6 +1,8 @@
+require('./build');
+
 require('promise-helpers');
 var fs = require('fs');
-// var path = require('path';)
+
 var extend = require('extend');
 var express = require('express');
 var app = express();
@@ -11,7 +13,9 @@ var handlebars = require('./modules/handlebars');
 /**
  * Serve static files such as css, js, images
  */
-app.use('/ui', express.static('dist/ui'));
+app.use('/images', express.static('dist/assets/images'));
+app.use('/javascripts', express.static('dist/assets/javascripts'));
+app.use('/stylesheets', express.static('dist/assets/stylesheets'));
 
 /**
  * Main index page route
@@ -29,11 +33,11 @@ app.get('/', function(req, res) {
       // Sort the components by category
       var sortedComponents = {};
       unsortedComponents.forEach(function(component) {
-// console.log(compo)
-        // If the component doesn't define a template, don't bother rendering it
-        // if(!component.template) {
-        //   return;
-        // }
+
+        // If the component doesn't define any demos, don't bother rendering it
+        if(!component.variants) {
+          return;
+        }
 
         if(!component.categories) {
           component.categories = {
@@ -53,9 +57,13 @@ app.get('/', function(req, res) {
         sortedComponents[component.categories.primary][component.categories.secondary].push(component);
       });
 
-      res.send(hbs.compile(hbs.partials['layout/index'])({
-        components: sortedComponents,
-        pages: demoPages
+      res.send(hbs.compile(hbs.partials['layout/govuk_template'])({
+        head: '<link rel="stylesheet" href="/stylesheets/elements.css" />',
+        assetPath: '/',
+        content: hbs.compile(hbs.partials['layout/index'])({
+          components: sortedComponents,
+          pages: demoPages
+        })
       }));
     })
     .catch(function(er) {
@@ -77,8 +85,10 @@ app.get('/components/:component/:variant', function(req, res){
       var variant = component.variants[req.params.variant];
       var context = extend(variant.context, {component: component });
 
-      res.send(hbs.compile(hbs.partials['layout/main'])({
-        body: hbs.compile(variant.content)(variant.context)
+      res.send(hbs.compile(hbs.partials['layout/govuk_template'])({
+        head: '<link rel="stylesheet" href="/stylesheets/elements.css" />',
+        assetPath: '/',
+        content: hbs.compile(variant.content)(variant.context)
       }));
 
     })
@@ -100,8 +110,10 @@ app.get('/page/:page', function(req, res){
 
       var page = demoPages[req.params.page];
 
-      res.send(hbs.compile(hbs.partials['layout/main'])({
-        body: hbs.compile(page.content)(page.context)
+      res.send(hbs.compile(hbs.partials['layout/govuk_template'])({
+        head: '<link rel="stylesheet" href="/stylesheets/elements.css" />',
+        assetPath: '/',
+        content: hbs.compile(page.content)(page.context)
       }));
     })
     .catch(function(er) {

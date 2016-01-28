@@ -1,48 +1,40 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="/ui/css/style.css" />
-  </head>
-  <body>
+<main id="content" role="main">
+  <h2>Components</h2>
+  {{#with components}}
+    {{#each this}}
+      <div style="width:33%;float:left">
+      <h3>{{@key}}</h3>
 
-    <h2>Components</h2>
-    {{#with components}}
       {{#each this}}
-        <div style="width:33%;float:left">
-        <h3>{{@key}}</h3>
-
-        {{#each this}}
-          <h4>{{@key}}</h4>
-          <ul>
-            {{#each this}}
-              <li>
-                <strong>{{name}}:</strong>
-                <ul>
-                  {{#each variants}}
-                    <li><a href="{{href}}">{{name}}</a></li>
-                  {{/each}}
-                </ul>
-              </li>
-            {{/each}}
-          </ul>
-        {{/each}}
-
-        </div>
+        <h4>{{@key}}</h4>
+        <ul>
+          {{#each this}}
+            <li>
+              <strong>{{name}}:</strong>
+              <ul>
+                {{#each variants}}
+                  <li><a href="{{href}}">{{name}}</a></li>
+                {{/each}}
+              </ul>
+            </li>
+          {{/each}}
+        </ul>
       {{/each}}
 
-      <div style="clear:both"></div>
-    {{/with}}
+      </div>
+    {{/each}}
 
-    <h2>Pages</h2>
-    {{#with pages}}
-      <ul>
-        {{#each this}}
-          <li>
-            <a href="{{href}}">{{name}}</a>
-          </li>
-        {{/each}}
-      </ul>
-    {{/with}}
+    <div style="clear:both"></div>
+  {{/with}}
 
-  </body>
-</html>
+  <h2>Pages</h2>
+  {{#with pages}}
+    <ul>
+      {{#each this}}
+        <li>
+          <a href="{{href}}">{{name}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  {{/with}}
+</main>

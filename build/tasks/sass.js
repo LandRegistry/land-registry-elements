@@ -1,4 +1,4 @@
-var components = require('./components');
+var components = require('../modules/components');
 var sass = require('node-sass');
 var fs = require('fs');
 var path = require('path');
@@ -82,14 +82,14 @@ function compileSass() {
           }
 
           // Write out the sass
-          mkdirp('dist/ui/css', function() {
-            fs.writeFile('dist/ui/css/style.css', result.css, function(err) {
+          mkdirp('dist/assets/stylesheets', function() {
+            fs.writeFile('dist/assets/stylesheets/elements.css', result.css, function(err) {
               if(err) {
                 reject(err);
                 return;
               }
 
-              resolve('dist/ui/css/style.css');
+              resolve('dist/assets/stylesheets/style.css');
             });
           });
         });
