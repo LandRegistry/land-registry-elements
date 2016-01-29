@@ -7,19 +7,24 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 ## Roadmap:
 
+### MVP
 - Add in the rest of the base gov uk elements and ensure parity with the govuk version
-- Browserify setup for element JS
-- JSHint in the test suite
 - Build out any new elements from the DRV prototype
+- Browserify setup for element JS if any is required (I think it will be)
 - Assemble example pages for the pages in the DRV prototype
 - Manual cross browser testing
-- Automated visual regression testing
-- Automated accessibility testing
+
+### Documentation
 - Write usage guidelines
   - Add example of how to run the build from an external project without grunt
 - Write contribution guidelines
-- Write up results of user testing against any components where this has been carried out
+
+### Nice to haves
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
+- JSHint in the test suite
+- Automated visual regression testing
+- Automated accessibility testing
+- Write up results of user testing against any components where this has been carried out
 
 ### Possibles?
 - Expose grunt plugin and write example for people wishing to pull the assets in via a Gruntfile?
