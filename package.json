@@ -4,7 +4,7 @@
   "description": "Land registry frontend pattern library - building on top of http://govuk-elements.herokuapp.com",
   "main": "build/build.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "build": "node build/doBuild.js",
     "start": "node build/server.js"
   },
@@ -19,12 +19,15 @@
   },
   "homepage": "https://github.com/LandRegistry/land-registry-elements#readme",
   "engines": {
-    "npm": "2.x"
+    "npm": "2.x",
+    "node": "4.x"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-watch": "^0.6.1",
     "jit-grunt": "^0.9.1",
+    "should": "^8.2.1",
+    "supertest": "^1.1.0",
     "time-grunt": "^1.3.0"
   },
   "dependencies": {
