@@ -15,7 +15,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Manual cross browser testing
 - Automated visual regression testing
 - Automated accessibility testing
-- Automated HTML validation
 - Write usage guidelines
   - Add example of how to run the build from an external project without grunt
 - Write contribution guidelines

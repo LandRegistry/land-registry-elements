@@ -7,6 +7,11 @@ var app = require('../../build/server');
 
 var ignores = [];
 
+var pathBlacklist = [
+  '/stylesheets/',
+  '/javascripts/'
+];
+
 /**
  * HTML validation checks
  */
@@ -26,16 +31,25 @@ describe('The pattern library', function() {
 
         if(page.contentType.indexOf('text/html') !== '-1') {
 
+          // TravisCI completely fails to return the correct content types making it impossible to filter out
+          // non-html pages from our validation routine. Therefore, we simply filter out any URLs which we know
+          // are not html pages
+          var isBlacklisted = false;
+          pathBlacklist.forEach(function(path) {
+            if(page.url.indexOf(path) !== -1) {
+              isBlacklisted = true;
+            }
+          });
+
+          if(isBlacklisted) {
+            return;
+          }
+
           validationQueue.push(new Promise(function(resolve, reject) {
 
             request
               .get(page.url)
               .end(function(err, res){
-                console.log(page.url, res.header['content-type']);
-                if(res.header['content-type'].indexOf('text/html') !== 0) {
-                  resolve();
-                  return;
-                }
 
                 w3cjs.validate({
                   input: res.text,
