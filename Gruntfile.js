@@ -23,17 +23,29 @@ module.exports = function(grunt) {
 
   grunt.registerTask('clean_dist', function() {
     var done = this.async();
-    clean_dist().then(done);
+    clean_dist()
+      .then(done)
+      .catch(function(err) {
+        console.log(err)
+      });
   });
 
   grunt.registerTask('copy_govuk_template_assets', function() {
     var done = this.async();
-    copy_govuk_template_assets().then(done);
+    copy_govuk_template_assets()
+      .then(done)
+      .catch(function(err) {
+        console.log(err)
+      });
   });
 
   grunt.registerTask('sass', function() {
     var done = this.async();
-    sass().then(done);
+    sass()
+      .then(done)
+      .catch(function(err) {
+        console.log(err)
+      });
   });
 
   grunt.registerTask('server', function() {

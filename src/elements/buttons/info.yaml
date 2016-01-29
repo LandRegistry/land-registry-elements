@@ -1,0 +1,7 @@
+name: Buttons
+categories:
+  primary: Govuk
+  secondary: Core
+
+dependencies:
+  - core
