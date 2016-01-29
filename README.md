@@ -8,8 +8,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ## Roadmap:
 
 - TravisCI setup
-- Add example of how to run the build from an external project without grunt
-- Get heroku to generate a tarball of the assets for people who don't want to run any kind of build
 - Check build with different versions of node using Travis (Potential for breakage with versions of node that come with npm3 - need to check this)
 - Add in the rest of the base gov uk elements and ensure parity with the govuk version
 - Browserify setup for element JS
@@ -21,6 +19,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Automated accessibility testing
 - Automated HTML validation
 - Write usage guidelines
+  - Add example of how to run the build from an external project without grunt
 - Write contribution guidelines
 - Write up results of user testing against any components where this has been carried out
 
@@ -30,6 +29,9 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ## Usage
 
 Usage notes to follow
+
+A tarball of built out assets can be downloaded from [[http://land-registry-elements.herokuapp.com/build](http://land-registry-elements.herokuapp.com/build)]
+
 
 ## Contributing to this repository
 

@@ -7,6 +7,7 @@ var app = express();
 var components = require('./modules/components');
 var pages = require('./modules/pages');
 var handlebars = require('./modules/handlebars');
+var tgz = require('express-tgz');
 
 /**
  * Serve static files such as css, js, images
@@ -117,6 +118,13 @@ app.get('/page/:page', function(req, res){
     .catch(function(er) {
       console.log(er);
     });
+});
+
+/**
+ * Download a tarball of the built out assets
+ */
+app.get('/build', function(req, res){
+  res.tgz('dist/assets', 'land-registry-elements.tar.gz', false);
 });
 
 // Go go go
