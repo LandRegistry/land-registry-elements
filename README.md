@@ -5,9 +5,9 @@ Initially this repo will comprise production ready HTML, CSS and JavaScript for 
 A demo is available at: [link to heroku]
 
 ## Roadmap:
-- Expose grunt plugin and write example for people wishing to pull the assets in via a Gruntfile
-- Add example of how to run the build from an external project without grunt
+
 - Heroku demo
+- Add example of how to run the build from an external project without grunt
 - Get heroku to generate a tarball of the assets for people who don't want to run any kind of build
 - Get a basic test suite going
 - TravisCI setup
@@ -24,6 +24,9 @@ A demo is available at: [link to heroku]
 - Write usage guidelines
 - Write contribution guidelines
 - Write up results of user testing against any components where this has been carried out
+
+### Possibles?
+- Expose grunt plugin and write example for people wishing to pull the assets in via a Gruntfile?
 
 ## Usage
 

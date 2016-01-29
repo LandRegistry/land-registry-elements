@@ -120,9 +120,9 @@ app.get('/page/:page', function(req, res){
 });
 
 // Go go go
-app.listen(3000);
+app.listen(80);
 
-console.log('Server listening on http://localhost:3000');
+console.log('Server listening on http://localhost:80');
 
 // Export our server for testing purposes
 module.exports = app;
