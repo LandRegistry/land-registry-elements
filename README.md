@@ -30,7 +30,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 Usage notes to follow
 
-A tarball of built out assets can be downloaded from [[http://land-registry-elements.herokuapp.com/build](http://land-registry-elements.herokuapp.com/build)]
+A tarball of built out assets can be downloaded from [http://land-registry-elements.herokuapp.com/build](http://land-registry-elements.herokuapp.com/build)
 
 
 ## Contributing to this repository
