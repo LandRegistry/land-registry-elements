@@ -1,5 +1,3 @@
-require('./doBuild');
-
 require('promise-helpers');
 var fs = require('fs');
 

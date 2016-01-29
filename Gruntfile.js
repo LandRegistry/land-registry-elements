@@ -36,7 +36,15 @@ module.exports = function(grunt) {
     sass().then(done);
   });
 
-  // Default task(s).
-  grunt.registerTask('default', ['clean_dist', 'copy_govuk_template_assets', 'sass']);
+  grunt.registerTask('server', function() {
+    require('./build/server');
+  });
+
+
+  grunt.registerTask('build', ['clean_dist', 'copy_govuk_template_assets', 'sass']);
+
+  grunt.registerTask('serve', ['build', 'server', 'watch']);
+
+  grunt.registerTask('default', ['build']);
 
 };
