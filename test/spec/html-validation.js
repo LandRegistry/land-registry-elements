@@ -31,10 +31,8 @@ describe('The pattern library', function() {
             request
               .get(page.url)
               .end(function(err, res){
-
-                console.log(page.url, res.type);
-
-                if(res.type !== 'text/html') {
+                console.log(page.url, res.header['content-type']);
+                if(res.header['content-type'].indexOf('text/html') !== 0) {
                   resolve();
                   return;
                 }
