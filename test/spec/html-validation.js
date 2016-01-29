@@ -5,6 +5,7 @@ var w3cjs = require('w3cjs');
 
 var app = require('../../build/server');
 
+var ignores = [];
 
 /**
  * HTML validation checks
@@ -26,25 +27,38 @@ describe('The pattern library', function() {
         if(page.contentType.indexOf('text/html') !== '-1') {
 
           validationQueue.push(new Promise(function(resolve, reject) {
+
             request
               .get(page.url)
               .end(function(err, res){
+
+                if(res.type !== 'text/html') {
+                  resolve();
+                  return;
+                }
 
                 w3cjs.validate({
                   input: res.text,
                   callback: function (res) {
 
-                    var output = '';
+                    var output = page.url;
 
                     res.messages.forEach(function(message) {
+
+                      // Don't need to fail the test for info messages
                       if(message.type === 'info') {
+                        return;
+                      }
+
+                      // Exclude any warnings that we are ignoring
+                      if(ignores.indexOf(message.message) !== -1) {
                         return;
                       }
 
                       output += '\nLine: ' + message.lastLine + ' Col: ' + message.firstColumn + ' => ' + message.message;
                     });
 
-                    output.should.be.equal('');
+                    output.should.be.equal(page.url);
 
                     resolve();
                   }
