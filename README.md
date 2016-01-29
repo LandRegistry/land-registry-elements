@@ -31,6 +31,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 Usage notes to follow
 
 A tarball of built out assets can be downloaded from [http://land-registry-elements.herokuapp.com/build](http://land-registry-elements.herokuapp.com/build)
+(Note: This may take a moment to spin up if the heroku instance has gone to sleep)
 
 
 ## Contributing to this repository
