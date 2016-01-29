@@ -9,7 +9,8 @@ var ignores = [];
 
 var pathBlacklist = [
   '/stylesheets/',
-  '/javascripts/'
+  '/javascripts/',
+  '/images/'
 ];
 
 /**
