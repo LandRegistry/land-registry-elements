@@ -58,6 +58,7 @@ app.get('/', function(req, res) {
 
       res.send(hbs.compile(hbs.partials['layout/govuk_template'])({
         head: '<link rel="stylesheet" href="/stylesheets/elements.css" />',
+        pageTitle: 'Land Registry pattern library',
         assetPath: '/',
         content: hbs.compile(hbs.partials['layout/index'])({
           components: sortedComponents,
@@ -86,6 +87,7 @@ app.get('/components/:component/:variant', function(req, res){
 
       res.send(hbs.compile(hbs.partials['layout/govuk_template'])({
         head: '<link rel="stylesheet" href="/stylesheets/elements.css" />',
+        pageTitle: 'Land Registry pattern library',
         assetPath: '/',
         content: hbs.compile(variant.content)(variant.context)
       }));
@@ -111,6 +113,7 @@ app.get('/page/:page', function(req, res){
 
       res.send(hbs.compile(hbs.partials['layout/govuk_template'])({
         head: '<link rel="stylesheet" href="/stylesheets/elements.css" />',
+        pageTitle: 'Land Registry pattern library',
         assetPath: '/',
         content: hbs.compile(page.content)(page.context)
       }));
