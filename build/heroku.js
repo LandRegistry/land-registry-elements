@@ -1,0 +1,2 @@
+require('./doBuild');
+require('./server');

@@ -1,1 +1,1 @@
-web: node build/doBuild.js && node build/server.js
+web: node build/heroku.js
