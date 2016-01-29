@@ -7,8 +7,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 ## Roadmap:
 
-- TravisCI setup
-- Check build with different versions of node using Travis (Potential for breakage with versions of node that come with npm3 - need to check this)
 - Add in the rest of the base gov uk elements and ensure parity with the govuk version
 - Browserify setup for element JS
 - JSHint in the test suite
@@ -22,6 +20,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
   - Add example of how to run the build from an external project without grunt
 - Write contribution guidelines
 - Write up results of user testing against any components where this has been carried out
+- Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
 
 ### Possibles?
 - Expose grunt plugin and write example for people wishing to pull the assets in via a Gruntfile?
