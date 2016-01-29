@@ -120,9 +120,9 @@ app.get('/page/:page', function(req, res){
 });
 
 // Go go go
-app.listen(80);
+app.listen(process.env.PORT || 3000);
 
-console.log('Server listening on http://localhost:80');
+console.log('listening on localhost:' + (process.env.PORT || 3000));
 
 // Export our server for testing purposes
 module.exports = app;
