@@ -5,7 +5,6 @@ Initially this repo will comprise production ready HTML, CSS and JavaScript for 
 A demo is available at: [link to heroku]
 
 ## Roadmap:
-- Local grunt setup for people developing new elements
 - Expose grunt plugin and write example for people wishing to pull the assets in via a Gruntfile
 - Add example of how to run the build from an external project without grunt
 - Heroku demo

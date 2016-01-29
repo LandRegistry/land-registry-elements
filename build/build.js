@@ -1,5 +1,5 @@
 var cleanDist = require('./tasks/clean_dist');
-var copyGovUkTemplateAssets = require('./tasks/govuk_template_assets')
+var copyGovUkTemplateAssets = require('./tasks/copy_govuk_template_assets')
 var sass = require('./tasks/sass');
 
 module.exports = function() {
