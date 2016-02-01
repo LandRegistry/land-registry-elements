@@ -64,32 +64,56 @@ function compileSass() {
         // Turn the lines into a string suitable for passing to node-sass
         sassContents = sassContents.join('\n');
 
-        // Compile
-        sass.render({
-          data: sassContents,
-          importer: [
-            govukFrontendToolkitImporter,
-            govukElementsImporter
-          ],
-          includePaths: [
-            'src/elements'
-          ],
-          outputStyle: 'compressed'
-        }, function(err, result) {
-          if(err) {
-            reject(err);
-            return;
+        // Write out separate versions of the stylesheet for the various IEs
+        // @TODO: Does this really live here? Could we have it in files on disk in a more "traditional" way? Is there too much magic here?
+        var stylesheets = [
+          {
+            'filename': 'elements-ie6.css',
+            'base': '$is-ie: true; $ie-version: 6; $mobile-ie6: false;',
+          },
+          {
+            'filename': 'elements-ie7.css',
+            'base': '$is-ie: true; $ie-version: 7;',
+          },
+          {
+            'filename': 'elements-ie8.css',
+            'base': '$is-ie: true; $ie-version: 8;',
+          },
+          {
+            'filename': 'elements.css',
+            'base': '',
           }
+        ];
 
-          // Write out the sass
-          mkdirp('dist/assets/stylesheets', function() {
-            fs.writeFile('dist/assets/stylesheets/elements.css', result.css, function(err) {
-              if(err) {
-                reject(err);
-                return;
-              }
+        stylesheets.forEach(function(stylesheet) {
 
-              resolve('dist/assets/stylesheets/style.css');
+          // Compile
+          sass.render({
+            data: stylesheet.base + sassContents,
+            importer: [
+              govukFrontendToolkitImporter,
+              govukElementsImporter
+            ],
+            includePaths: [
+              'src/elements'
+            ],
+            outputStyle: 'expanded'
+          }, function(err, result) {
+            if(err) {
+              reject(err);
+              return;
+            }
+
+            // Write out the sass
+            mkdirp('dist/assets/stylesheets', function() {
+              fs.writeFile('dist/assets/stylesheets/' + stylesheet.filename, result.css, function(err) {
+                if(err) {
+                  reject(err);
+                  return;
+                }
+
+                resolve('dist/assets/stylesheets/style.css');
+              });
             });
           });
         });
