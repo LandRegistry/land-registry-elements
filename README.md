@@ -13,6 +13,12 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Browserify setup for element JS if any is required (I think it will be)
 - Assemble example pages for the pages in the DRV prototype
 - Manual cross browser testing
+- Concatenate stylesheet output?
+
+### Technical debt
+- Refactor server.js to reduce code duplication
+  - Abstract out the template rendering (Most of the duplication lives here)
+  - Split the server routes out into separeate files? (File has got too long...)
 
 ### Documentation
 - Write usage guidelines
