@@ -16,8 +16,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Concatenate stylesheet output?
 
 ### Technical debt
-- Refactor server.js to reduce code duplication
-  - Abstract out the template rendering (Most of the duplication lives here)
 
 ### Documentation
 - Write usage guidelines

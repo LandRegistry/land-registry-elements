@@ -1,6 +1,7 @@
 var components = require('../modules/components');
 var pages = require('../modules/pages');
 var handlebars = require('../modules/handlebars');
+var renderPage = require('../modules/renderPage');
 
 module.exports = function(app){
 
@@ -44,10 +45,8 @@ module.exports = function(app){
           sortedComponents[component.categories.primary][component.categories.secondary].push(component);
         });
 
-        res.send(hbs.compile(hbs.partials['layout/govuk_template'])({
-          head: '<link rel="stylesheet" href="/stylesheets/elements.css" />',
-          pageTitle: 'Land Registry pattern library',
-          assetPath: '/',
+        res.send(renderPage(hbs, {
+          title: 'Index',
           content: hbs.compile(hbs.partials['layout/index'])({
             components: sortedComponents,
             pages: demoPages

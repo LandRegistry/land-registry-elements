@@ -2,6 +2,7 @@ var extend = require('extend');
 
 var components = require('../modules/components');
 var handlebars = require('../modules/handlebars');
+var renderPage = require('../modules/renderPage');
 
 module.exports = function(app){
 
@@ -19,10 +20,8 @@ module.exports = function(app){
         var variant = component.variants[req.params.variant];
         var context = extend(variant.context, {component: component });
 
-        res.send(hbs.compile(hbs.partials['layout/govuk_template'])({
-          head: '<link rel="stylesheet" href="/stylesheets/elements.css" />',
-          pageTitle: 'Land Registry pattern library',
-          assetPath: '/',
+        res.send(renderPage(hbs, {
+          title: variant.name,
           content: hbs.compile(variant.content)(variant.context)
         }));
 
