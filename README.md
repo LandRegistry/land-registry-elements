@@ -18,7 +18,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ### Technical debt
 - Refactor server.js to reduce code duplication
   - Abstract out the template rendering (Most of the duplication lives here)
-  - Split the server routes out into separeate files? (File has got too long...)
 
 ### Documentation
 - Write usage guidelines
