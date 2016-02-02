@@ -10,7 +10,7 @@ title: Form elements
     </p>
   </div>
   <div class="breadcrumbs">
-    <ol role="breadcrumbs">
+    <ol>
       <li><a href="/">GOV.UK elements</a></li>
       <li>Form elements</li>
     </ol>
@@ -22,7 +22,7 @@ title: Form elements
   </h1>
 
   <p class="lede text">
-    Keep forms as simple as possible – only ask what's needed to run your service.
+    Keep forms as simple as possible &ndash; only ask what's needed to run your service.
   </p>
 
   <h2 class="heading-small heading-contents">Contents:</h2>
@@ -67,9 +67,12 @@ title: Form elements
     <input class="form-control" id="full-name-f1" type="text">
   </div>
 
-<pre class=" language-markup"><code class=" language-markup">
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>full-name-f1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Full name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-control<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>full-name-f1<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<pre>
+<code class="language-markup">
+{{#htmlencode}}
+  <label class="form-label" for="full-name-f1">Full name</label>
+  <input class="form-control" id="full-name-f1" type="text">
+{{/htmlencode}}
 </code>
 </pre>
 
@@ -105,7 +108,7 @@ title: Form elements
   <div class="example">
     <div class="grid-row">
       <div class="column-two-thirds">
-        <form lpformnum="1">
+        <form>
           <div class="form-group">
             <label class="form-label" for="full-name-f2">Full name</label>
             <input class="form-control" type="text" id="full-name-f2">
@@ -125,7 +128,7 @@ title: Form elements
     </div>
   </div>
 
-  <h3 class="heading-medium" id="form-hint-text">Hint text</h3>
+  <h3 class="heading-medium"  id="form-hint-text">Hint text</h3>
   <ul class="list list-bullet text">
     <li>don't use placeholder text in form fields, as this will disappear once content is entered into the form field</li>
     <li>use hint text for supporting contextual help, this will always be shown</li>
@@ -141,12 +144,15 @@ title: Form elements
     <input class="form-control" id="ni-number" type="text">
   </div>
 
-<pre class=" language-markup"><code class=" language-markup">
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ni-number<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<pre>
+<code class="language-markup">
+{{#htmlencode}}
+  <label class="form-label" for="ni-number">
     National Insurance number
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-hint<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>It'll be on your last payslip. For example, JH 21 90 0A.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-control<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ni-number<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="form-hint">It'll be on your last payslip. For example, JH 21 90 0A.</span>
+  </label>
+  <input class="form-control" id="ni-number" type="text">
+{{/htmlencode}}
 </code>
 </pre>
 
@@ -167,16 +173,19 @@ title: Form elements
     </div>
   </div>
 
-<pre class=" language-markup"><code class=" language-markup">
-  <span class="token comment" spellcheck="true">&lt;!-- Use .form-group to create spacing when wrapping label and input pairs --&gt;</span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-group<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>first-name-2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>First name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-control<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>first-name-2<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>first-name-2<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-group<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>last-name-2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Last name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-control<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>last-name-2<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>last-name-2<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<pre>
+<code class="language-markup">
+{{#htmlencode}}
+  <!-- Use .form-group to create spacing when wrapping label and input pairs -->
+  <div class="form-group">
+    <label class="form-label" for="first-name-2">First name</label>
+    <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="last-name-2">Last name</label>
+    <input class="form-control" id="last-name-2" name="last-name-2" type="text">
+  </div>
+{{/htmlencode}}
 </code>
 </pre>
 
@@ -205,107 +214,109 @@ title: Form elements
 
   <h4 class="heading-small">Inline radio buttons</h4>
   <div class="example">
-    <form lpformnum="2">
+    <form>
       <h1 class="heading-medium">
         Do you already have a personal user account?
       </h1>
 
+      <fieldset class="inline">
 
-        <fieldset class="inline">
+        <legend class="visuallyhidden">Do you already have a personal user account?</legend>
 
-          <legend class="visuallyhidden">Do you already have a personal user account?</legend>
+        <label class="block-label" for="radio-inline-1">
+          <input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes">
+          Yes
+        </label>
+        <label class="block-label" for="radio-inline-2">
+          <input id="radio-inline-2" type="radio" name="radio-inline-group" value="No">
+          No
+        </label>
 
-          <label class="block-label" for="radio-inline-1">
-            <input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes">
-            Yes
-          </label>
-          <label class="block-label" for="radio-inline-2">
-            <input id="radio-inline-2" type="radio" name="radio-inline-group" value="No">
-            No
-          </label>
-
-        </fieldset>
-      </form>
-
+      </fieldset>
+    </form>
   </div>
 
-<pre class=" language-markup"><code class=" language-markup">
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>heading-medium<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<pre>
+<code class="language-markup">
+{{#htmlencode}}
+  <h1 class="heading-medium">
     Do you already have a personal user account?
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+  </h1>
 
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fieldset</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>inline<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <form>
+    <fieldset class="inline">
 
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>legend</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>visuallyhidden<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Do you already have a personal user account?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>legend</span><span class="token punctuation">&gt;</span></span>
+      <legend class="visuallyhidden">Do you already have a personal user account?</legend>
 
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-inline-1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-inline-1<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-inline-group<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Yes<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <label class="block-label" for="radio-inline-1">
+        <input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes">
         Yes
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-inline-2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-inline-2<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-inline-group<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>No<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      </label>
+      <label class="block-label" for="radio-inline-2">
+        <input id="radio-inline-2" type="radio" name="radio-inline-group" value="No">
         No
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+      </label>
 
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fieldset</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+    </fieldset>
+  </form>
+{{/htmlencode}}
 </code>
 </pre>
 
   <h4 class="heading-small">Stacked radio buttons</h4>
   <div class="example">
-    <form lpformnum="3">
+    <form>
       <h1 class="heading-medium">Where do you live?</h1>
 
+      <fieldset>
 
-        <fieldset>
+        <legend class="visuallyhidden">Where do you live?</legend>
 
-          <legend class="visuallyhidden">Where do you live?</legend>
+        <label class="block-label" for="radio-1">
+          <input id="radio-1" type="radio" name="radio-group" value="Northern Ireland">
+          Northern Ireland
+        </label>
+        <label class="block-label" for="radio-2">
+          <input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
+          Isle of Man or the Channel Islands
+        </label>
+        <p class="form-block">or</p>
+        <label class="block-label" for="radio-3">
+          <input id="radio-3" type="radio" name="radio-group" value="I am a British citizen living abroad">
+          I am a British citizen living abroad
+        </label>
 
-          <label class="block-label" for="radio-1">
-            <input id="radio-1" type="radio" name="radio-group" value="Northern Ireland">
-            Northern Ireland
-          </label>
-          <label class="block-label" for="radio-2">
-            <input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
-            Isle of Man or the Channel Islands
-          </label>
-          <p class="form-block">or</p>
-          <label class="block-label" for="radio-3">
-            <input id="radio-3" type="radio" name="radio-group" value="I am a British citizen living abroad">
-            I am a British citizen living abroad
-          </label>
-
-        </fieldset>
-      </form>
-
+      </fieldset>
+    </form>
   </div>
 
-<pre class=" language-markup"><code class=" language-markup">
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>heading-medium<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Where do you live?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<pre>
+<code class="language-markup">
+{{#htmlencode}}
+  <h1 class="heading-medium">Where do you live?</h1>
 
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fieldset</span><span class="token punctuation">&gt;</span></span>
+  <form>
+    <fieldset>
 
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>legend</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>visuallyhidden<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Where do you live?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>legend</span><span class="token punctuation">&gt;</span></span>
+      <legend class="visuallyhidden">Where do you live?</legend>
 
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-1<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-group<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Northern Ireland<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <label class="block-label" for="radio-1">
+        <input id="radio-1" type="radio" name="radio-group" value="Northern Ireland">
         Northern Ireland
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-2<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-group<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Isle of Man or the Channel Islands<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      </label>
+      <label class="block-label" for="radio-2">
+        <input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
         Isle of Man or the Channel Islands
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-block<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>or<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-3<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-group<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>I am a British citizen living abroad<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      </label>
+      <p class="form-block">or</p>
+      <label class="block-label" for="radio-3">
+        <input id="radio-3" type="radio" name="radio-group" value="I am a British citizen living abroad">
         I am a British citizen living abroad
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+      </label>
 
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fieldset</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+    </fieldset>
+  </form>
+{{/htmlencode}}
 </code>
 </pre>
 
@@ -317,57 +328,58 @@ title: Form elements
 
   <h4 class="heading-small">Stacked checkboxes</h4>
   <div class="example">
-    <form lpformnum="4">
+    <form>
       <h3 class="heading-medium">Which types of waste do you transport regularly?</h3>
       <p>Select all that apply</p>
 
+      4<fieldset>
 
-        <fieldset>
+        <legend class="visuallyhidden">Which types of waste do you transport regularly?</legend>
 
-          <legend class="visuallyhidden">Which types of waste do you transport regularly?</legend>
+        <label class="block-label" for="waste-type-1">
+          <input id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
+          Waste from animal carcasses
+        </label>
+        <label class="block-label" for="waste-type-2">
+          <input id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
+          Waste from mines or quarries
+        </label>
+        <label class="block-label" for="waste-type-3">
+          <input id="waste-type-3" name="waste-types" type="checkbox" value="waste-farm-agricultural">
+          Farm or agricultural waste
+        </label>
 
-          <label class="block-label" for="waste-type-1">
-            <input id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
-            Waste from animal carcasses
-          </label>
-          <label class="block-label" for="waste-type-2">
-            <input id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
-            Waste from mines or quarries
-          </label>
-          <label class="block-label" for="waste-type-3">
-            <input id="waste-type-3" name="waste-types" type="checkbox" value="waste-farm-agricultural">
-            Farm or agricultural waste
-          </label>
-
-        </fieldset>
-      </form>
-
+      </fieldset>
+    </form>
   </div>
 
-<pre class=" language-markup"><code class=" language-markup">
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>heading-medium<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Which types of waste do you transport regularly?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Select all that apply<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<pre>
+<code class="language-markup">
+{{#htmlencode}}
+  <h3 class="heading-medium">Which types of waste do you transport regularly?</h3>
+  <p>Select all that apply</p>
 
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fieldset</span><span class="token punctuation">&gt;</span></span>
+  <form>
+    <fieldset>
 
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>legend</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>visuallyhidden<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Which types of waste do you transport regularly?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>legend</span><span class="token punctuation">&gt;</span></span>
+      <legend class="visuallyhidden">Which types of waste do you transport regularly?</legend>
 
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>waste-type-1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>waste-type-1<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>waste-types<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>waste-animal<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <label class="block-label" for="waste-type-1">
+        <input id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
         Waste from animal carcasses
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>waste-type-2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>waste-type-2<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>waste-types<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>waste-mines<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      </label>
+      <label class="block-label" for="waste-type-2">
+        <input id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
         Waste from mines or quarries
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>waste-type-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>waste-type-3<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>waste-types<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>waste-farm-agricultural<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      </label>
+      <label class="block-label" for="waste-type-3">
+        <input id="waste-type-3" name="waste-types" type="checkbox" value="waste-farm-agricultural">
         Farm or agricultural waste
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+      </label>
 
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fieldset</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+    </fieldset>
+  </form>
+{{/htmlencode}}
 </code>
 </pre>
 
@@ -378,7 +390,7 @@ title: Form elements
   </ul>
 
   <div class="example">
-    <form lpformnum="5">
+    <form>
       <label class="form-label" for="telephone-number">Enter your telephone number</label>
       <input class="form-control" id="telephone-number" name="telephone-number" type="text">
       <label class="form-checkbox" for="checkbox-telephone-number">
@@ -388,13 +400,16 @@ title: Form elements
     </form>
   </div>
 
-<pre class=" language-markup"><code class=" language-markup">
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>telephone-number<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Enter your telephone number<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-control<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>telephone-number<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>telephone-number<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>checkbox-telephone-number<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>checkbox-telephone-number<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>contact-by-text-phone<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<pre>
+<code class="language-markup">
+{{#htmlencode}}
+  <label class="form-label" for="telephone-number">Enter your telephone number</label>
+  <input class="form-control" id="telephone-number" name="telephone-number" type="text">
+  <label class="form-checkbox" for="checkbox-telephone-number">
+    <input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
     I need to be contacted using a text phone
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+  </label>
+{{/htmlencode}}
 </code>
 </pre>
 
@@ -425,71 +440,72 @@ title: Form elements
     Click on "Yes" to see how this works.
   </p>
   <div class="example">
-    <form lpformnum="6">
+    <form>
       <h1 class="heading-medium">
         Do you know their National Insurance number?
       </h1>
 
+      <fieldset class="inline">
 
-        <fieldset class="inline">
+        <legend class="visuallyhidden">Do you know their National Insurance number?</legend>
 
-          <legend class="visuallyhidden">Do you know their National Insurance number?</legend>
+        <div class="form-group">
 
-          <div class="form-group">
+          <label class="block-label" data-target="example-ni-no" for="radio-indent-1">
+            <input id="radio-indent-1" type="radio" name="radio-indent-group" value="Yes">
+            Yes
+          </label>
 
-            <label class="block-label" data-target="example-ni-no" for="radio-indent-1">
-              <input id="radio-indent-1" type="radio" name="radio-indent-group" value="Yes" aria-controls="example-ni-no">
-              Yes
-            </label>
+          <label class="block-label" for="radio-indent-2">
+            <input id="radio-indent-2" type="radio" name="radio-indent-group" value="No">
+            No
+          </label>
 
-            <label class="block-label" for="radio-indent-2">
-              <input id="radio-indent-2" type="radio" name="radio-indent-group" value="No">
-              No
-            </label>
-
-            <div class="panel panel-border-narrow js-hidden" id="example-ni-no">
-              <label class="form-label" for="national-insurance">National Insurance number</label>
-              <input class="form-control" name="national-insurance" type="text" id="national-insurance">
-            </div>
-
+          <div class="panel panel-border-narrow js-hidden" id="example-ni-no">
+            <label class="form-label" for="national-insurance">National Insurance number</label>
+            <input class="form-control" name="national-insurance" type="text" id="national-insurance">
           </div>
 
-        </fieldset>
-      </form>
+        </div>
 
+      </fieldset>
+    </form>
   </div>
 
-<pre class=" language-markup"><code class=" language-markup">
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>heading-medium<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<pre>
+<code class="language-markup">
+{{#htmlencode}}
+  <h1 class="heading-medium">
     Do you know their National Insurance number?
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+  </h1>
 
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fieldset</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>inline<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <form>
+    <fieldset class="inline">
 
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>legend</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>visuallyhidden<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Do you know their National Insurance number?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>legend</span><span class="token punctuation">&gt;</span></span>
+      <legend class="visuallyhidden">Do you know their National Insurance number?</legend>
 
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-group<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <div class="form-group">
 
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">data-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>example-ni-no<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-indent-1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-indent-1<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-indent-group<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Yes<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <label class="block-label" data-target="example-ni-no" for="radio-indent-1">
+          <input id="radio-indent-1" type="radio" name="radio-indent-group" value="Yes">
           Yes
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+        </label>
 
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-indent-2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-indent-2<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radio-indent-group<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>No<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <label class="block-label" for="radio-indent-2">
+          <input id="radio-indent-2" type="radio" name="radio-indent-group" value="No">
           No
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+        </label>
 
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>panel panel-border-narrow js-hidden<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>example-ni-no<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>national-insurance<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>National Insurance number<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-control<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>national-insurance<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>national-insurance<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <div class="panel panel-border-narrow js-hidden" id="example-ni-no">
+          <label class="form-label" for="national-insurance">National Insurance number</label>
+          <input class="form-control" name="national-insurance" type="text" id="national-insurance">
+        </div>
 
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      </div>
 
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fieldset</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+    </fieldset>
+  </form>
+{{/htmlencode}}
 </code>
 </pre>
 
@@ -500,7 +516,7 @@ title: Form elements
     Click on "Citizen of a different country" to see how this works.
   </p>
   <div class="example">
-    <form lpformnum="7">
+    <form>
       <h1 class="heading-medium">
         What is your nationality?
       </h1>
@@ -508,77 +524,78 @@ title: Form elements
         Select all options that are relevant to you.
       </p>
 
+      <fieldset>
 
-        <fieldset>
+        <legend class="visuallyhidden">What is your nationality?</legend>
 
-          <legend class="visuallyhidden">What is your nationality?</legend>
-
-          <div class="form-group">
-            <label class="block-label" for="nationalities-british">
-              <input id="nationalities-british" name="nationalities" type="checkbox" value="British">
-              British (including English, Scottish, Welsh and Northern Irish)
-            </label>
-            <label class="block-label" for="nationalities-irish">
-              <input id="nationalities-irish" name="nationalities" type="checkbox" value="Irish">
-              Irish
-            </label>
-            <label class="block-label" for="nationalities-other" data-target="example-different-country">
-              <input id="nationalities-other" name="nationalities" type="checkbox" value="Citizen of a different country" aria-controls="example-different-country" aria-expanded="false">
-              Citizen of a different country
-            </label>
-            <div class="panel panel-border-narrow js-hidden" id="example-different-country" aria-hidden="true">
-              <label class="form-label" for="nationalities-other-country">Country name</label>
-              <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
-            </div>
+        <div class="form-group">
+          <label class="block-label" for="nationalities-british">
+            <input id="nationalities-british" name="nationalities" type="checkbox" value="British">
+            British (including English, Scottish, Welsh and Northern Irish)
+          </label>
+          <label class="block-label" for="nationalities-irish">
+            <input id="nationalities-irish" name="nationalities" type="checkbox" value="Irish">
+            Irish
+          </label>
+          <label class="block-label" for="nationalities-other" data-target="example-different-country">
+            <input id="nationalities-other" name="nationalities" type="checkbox" value="Citizen of a different country">
+            Citizen of a different country
+          </label>
+          <div class="panel panel-border-narrow js-hidden" id="example-different-country">
+            <label class="form-label" for="nationalities-other-country">Country name</label>
+            <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
           </div>
+        </div>
 
-        </fieldset>
-      </form>
-
+      </fieldset>
+    </form>
   </div>
 
-<pre class=" language-markup"><code class=" language-markup">
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>heading-medium<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<pre>
+<code class="language-markup">
+{{#htmlencode}}
+  <h1 class="heading-medium">
     What is your nationality?
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+  </h1>
+  <p>
     Select all options that are relevant to you.
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  </p>
 
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fieldset</span><span class="token punctuation">&gt;</span></span>
+  <form>
+    <fieldset>
 
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>legend</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>visuallyhidden<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>What is your nationality?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>legend</span><span class="token punctuation">&gt;</span></span>
+      <legend class="visuallyhidden">What is your nationality?</legend>
 
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-group<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nationalities-british<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nationalities-british<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nationalities<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>British<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <div class="form-group">
+        <label class="block-label" for="nationalities-british">
+          <input id="nationalities-british" name="nationalities" type="checkbox" value="British">
           British (including English, Scottish, Welsh and Northern Irish)
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nationalities-irish<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nationalities-irish<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nationalities<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Irish<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        </label>
+        <label class="block-label" for="nationalities-irish">
+          <input id="nationalities-irish" name="nationalities" type="checkbox" value="Irish">
           Irish
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nationalities-other<span class="token punctuation">"</span></span> <span class="token attr-name">data-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>example-different-country<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nationalities-other<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nationalities<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Citizen of a different country<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        </label>
+        <label class="block-label" for="nationalities-other" data-target="example-different-country">
+          <input id="nationalities-other" name="nationalities" type="checkbox" value="Citizen of a different country">
           Citizen of a different country
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>panel panel-border-narrow js-hidden<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>example-different-country<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nationalities-other-country<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Country name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-control<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nationalities-other-country<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nationalities-other-country<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        </label>
+        <div class="panel panel-border-narrow js-hidden" id="example-different-country">
+          <label class="form-label" for="nationalities-other-country">Country name</label>
+          <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+        </div>
+      </div>
 
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fieldset</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+    </fieldset>
+  </form>
+{{/htmlencode}}
 </code>
 </pre>
 
   <h3 class="heading-medium" id="examples">Examples</h3>
   <ul class="list list-bullet">
-    <li><a href="/form-elements/example-form-elements/">form elements</a></li>
+    <!-- <li><a href="/form-elements/example-form-elements/">form elements</a></li>
     <li><a href="/form-elements/example-date/">date pattern</a></li>
-    <li><a href="/form-elements/example-radios-checkboxes/">radio buttons and checkboxes</a></li>
+    <li><a href="/form-elements/example-radios-checkboxes/">radio buttons and checkboxes</a></li> -->
   </ul>
 
 </main>
