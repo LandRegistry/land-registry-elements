@@ -1,0 +1,9 @@
+name: Details
+categories:
+  primary: Govuk
+  secondary: Demo
+
+dependencies:
+  - layout
+
+build: false

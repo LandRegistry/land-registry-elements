@@ -9,11 +9,18 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 ### MVP
 - Add in the rest of the base gov uk elements and ensure parity with the govuk version
+- Configurable build
+  - Exclude examples css from the relevant builds
 - Build out any new elements from the DRV prototype
 - Browserify setup for element JS if any is required (I think it will be)
 - Assemble example pages for the pages in the DRV prototype
 - Manual cross browser testing
 - Concatenate stylesheet output?
+
+### Issues
+  - Icons not showing
+  - Grid demos not showing
+  - Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
 
 ### Technical debt
 - HTML validation of "page" components doesnt currently exist (No actual pages exist yet either, so...)
@@ -29,6 +36,9 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Automated visual regression testing
 - Automated accessibility testing
 - Write up results of user testing against any components where this has been carried out
+- Move to Nunjucks?
+- Find the sticky sidebar pattern and include it?
+- Any other gov uk patterns we'd like to include?
 
 ### Possibles?
 - Expose grunt plugin and write example for people wishing to pull the assets in via a Gruntfile?

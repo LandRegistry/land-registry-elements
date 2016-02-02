@@ -9,7 +9,7 @@
 
       {{#each this}}
         <h4 class="heading-small">{{@key}}</h4>
-        <ul>
+        <ul style="overflow:hidden">
           {{#each this}}
             {{#each variants}}
               <li style="float:left;width:33%">
@@ -19,6 +19,9 @@
           {{/each}}
         </ul>
       {{/each}}
+
+      <hr>
+
     {{/each}}
   {{/with}}
 
