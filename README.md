@@ -8,9 +8,9 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ## Roadmap:
 
 ### MVP
-- Add in the rest of the base gov uk elements and ensure parity with the govuk version
 - Configurable build
   - Exclude examples css from the relevant builds
+- Add in the rest of the base gov uk elements and ensure parity with the govuk version
 - Build out any new elements from the DRV prototype
 - Browserify setup for element JS if any is required (I think it will be)
 - Assemble example pages for the pages in the DRV prototype
@@ -18,9 +18,14 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Concatenate stylesheet output?
 
 ### Issues
-  - Icons not showing
-  - Grid demos not showing
-  - Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
+- Icons not showing
+- Grid demos not showing
+- Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
+
+### Considerations
+- Do we really need to replicate the gov uk pattern demos? Maybe they should just be simplified versions of them, and link to the original for the advice - thereby avoiding maintenance for us
+- Note to self - make sure map gets printed in right column of summary page (As it does on the proto by virtue of a hack)
+- Make sure build can cope if you specify a build with a component excluded but another component then depends upon it
 
 ### Technical debt
 - HTML validation of "page" components doesnt currently exist (No actual pages exist yet either, so...)

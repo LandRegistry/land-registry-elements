@@ -55,6 +55,11 @@ module.exports = function(app){
       })
       .catch(function(er) {
         console.log(er);
+
+        res.send(renderPage(hbs, {
+          title: 'Index',
+          content: 'Error'
+        }));
       });
   });
 

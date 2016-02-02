@@ -47,8 +47,8 @@ var govukElementsImporter = function(url, prev, done) {
  * @return {Promise} Promise which resolves with the path to the CSS output
  *                   when the SASS has been built
  */
-function compileSass() {
-  return components.getComponentsTree()
+function compileSass(config) {
+  return components.getComponentsTree(config)
     .then(function(componentsTree) {
 
       return new Promise(function(resolve, reject) {
@@ -56,6 +56,7 @@ function compileSass() {
         // Build up our sass imports based on the dependency tree
         var sassContents = [];
         componentsTree.forEach(function(componentId) {
+          // Check to see if the component exposes a stylesheet
           if(fs.existsSync(path.join('src/elements', componentId, 'style.scss'))) {
             sassContents.push('@import "' + componentId + '/style.scss";');
           }

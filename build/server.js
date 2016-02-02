@@ -4,7 +4,6 @@ var path = require('path');
 var express = require('express');
 var app = express();
 
-
 /**
  * Serve static files such as css, js, images
  */

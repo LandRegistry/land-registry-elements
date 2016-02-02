@@ -58,9 +58,18 @@ function getComponent(name) {
 
 /**
  * Function to return config and data for all enabled components
+ * @param config Config object indicating which components to include in the build
  * @return {Promise} Promise which resolves with all the component data
  */
-function getComponents() {
+function getComponents(config) {
+
+
+  if(typeof config === 'undefined') {
+    config = {
+      components: true
+    };
+  }
+
   return new Promise(function(resolve, reject) {
     glob('src/elements/**/info.yaml', function (er, files) {
 
@@ -72,9 +81,16 @@ function getComponents() {
       });
 
       if(er) {
-        reject(er)
+        reject(er);
       } else {
-        Promise.all(queue).then(resolve);
+        Promise.all(queue)
+          .then(function(components) {
+            return filterComponents(components, config);
+          })
+          .then(resolve)
+          .catch(function(err) {
+            reject(err);
+          });
       }
 
     });
@@ -82,14 +98,58 @@ function getComponents() {
 }
 
 /**
- * Function to return component config in dependency tree order
- * Useful for things like sass compilation
+ * Function to filter components as requested in the config
+ * @param config Config object indicating which components to include in the build
  * @return {Promise} Promise which resolves with all the component data
  */
-function getComponentsTree() {
+function filterComponents(components, config) {
   return new Promise(function(resolve, reject) {
 
-    getComponents()
+    // Loop backwards because we're splicing items out of the array
+    var filteredComponents = components.filter(function(component) {
+
+      // If the config says to blindly let every component through, then do so
+      if(config.components === true) {
+        return true;
+      }
+
+      // If a component's category isn't specified, exclude the entire thing
+      if(typeof config.components[component.categories.primary] === 'undefined') {
+        return false;
+      }
+
+      // If the component's entire primary category is included, let it through
+      if(config.components[component.categories.primary] === true) {
+        return true;
+      }
+
+      // Else if more detailed config is given, check the secondary category
+      if(config.components[component.categories.primary][component.categories.secondary] === true) {
+        return true;
+      }
+
+      // If we've fallen through to here, the component has not been specified in the build, so we nuke it
+      return false;
+    });
+
+    if(filterComponents.length > 0) {
+      resolve(filteredComponents);
+    } else {
+      reject(new Error('No components specified'));
+    }
+  });
+}
+
+/**
+ * Function to return component config in dependency tree order
+ * Useful for things like sass compilation
+ * @param config Config object indicating which components to include in the build
+ * @return {Promise} Promise which resolves with all the component data
+ */
+function getComponentsTree(config) {
+  return new Promise(function(resolve, reject) {
+
+    getComponents(config)
       .then(function(components) {
         var graph = new DepGraph();
 
@@ -111,8 +171,8 @@ function getComponentsTree() {
 
         resolve(graph.overallOrder());
       })
-      .catch(function(e) {
-        reject(e);
+      .catch(function(err) {
+        reject(err);
       });
   });
 }
