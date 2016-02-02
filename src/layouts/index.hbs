@@ -1,33 +1,28 @@
 <main id="content" role="main">
-  <h2>Components</h2>
+
+
+
+  <h2 class="heading-large">Components</h2>
   {{#with components}}
     {{#each this}}
-      <div style="width:33%;float:left">
-      <h3>{{@key}}</h3>
+      <h3 class="heading-medium">{{@key}}</h3>
 
       {{#each this}}
-        <h4>{{@key}}</h4>
+        <h4 class="heading-small">{{@key}}</h4>
         <ul>
           {{#each this}}
-            <li>
-              <strong>{{name}}:</strong>
-              <ul>
-                {{#each variants}}
-                  <li><a href="{{href}}">{{name}}</a></li>
-                {{/each}}
-              </ul>
-            </li>
+            {{#each variants}}
+              <li style="float:left;width:33%">
+                <a href="{{href}}"><strong>{{../name}}:</strong> {{name}}</a>
+              </li>
+            {{/each}}
           {{/each}}
         </ul>
       {{/each}}
-
-      </div>
     {{/each}}
-
-    <div style="clear:both"></div>
   {{/with}}
 
-  <h2>Pages</h2>
+  {{!-- <h2 class="heading-medium">Pages</h2>
   {{#with pages}}
     <ul>
       {{#each this}}
@@ -36,5 +31,5 @@
         </li>
       {{/each}}
     </ul>
-  {{/with}}
+  {{/with}} --}}
 </main>

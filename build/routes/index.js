@@ -23,7 +23,7 @@ module.exports = function(app){
         unsortedComponents.forEach(function(component) {
 
           // If the component doesn't define any demos, don't bother rendering it
-          if(!component.variants) {
+          if(Object.keys(component.variants).length === 0) {
             return;
           }
 

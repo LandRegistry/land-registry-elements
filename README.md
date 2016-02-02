@@ -16,6 +16,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Concatenate stylesheet output?
 
 ### Technical debt
+- HTML validation of "page" components doesnt currently exist (No actual pages exist yet either, so...)
 
 ### Documentation
 - Write usage guidelines
