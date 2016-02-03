@@ -8,9 +8,11 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ## Roadmap:
 
 ### MVP
+- Add in the rest of the base gov uk elements and ensure parity with the govuk version
 - Configurable build
   - Exclude examples css from the relevant builds
-- Add in the rest of the base gov uk elements and ensure parity with the govuk version
+  - Download configurable build via GET parameters
+  - Form to select components and pipe into above build?
 - Build out any new elements from the DRV prototype
 - Browserify setup for element JS if any is required (I think it will be)
 - Assemble example pages for the pages in the DRV prototype
