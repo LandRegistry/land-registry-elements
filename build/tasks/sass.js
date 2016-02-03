@@ -56,9 +56,10 @@ function compileSass(config) {
         // Build up our sass imports based on the dependency tree
         var sassContents = [];
         componentsTree.forEach(function(componentId) {
+
           // Check to see if the component exposes a stylesheet
-          if(fs.existsSync(path.join('src/elements', componentId, 'style.scss'))) {
-            sassContents.push('@import "' + componentId + '/style.scss";');
+          if(fs.existsSync(path.join('src', componentId, 'style.scss'))) {
+            sassContents.push('@import "src/' + componentId + '/style.scss";');
           }
         });
 

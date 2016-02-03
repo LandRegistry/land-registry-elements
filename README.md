@@ -31,7 +31,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Make sure build can cope if you specify a build with a component excluded but another component then depends upon it
 
 ### Technical debt
-
+- The gov uk base template doesn't include the <main id="content" role="main"> element - would be nice to include this at our end so that we don't need to repeat it in every demo
 
 ### Documentation
 - Write usage guidelines

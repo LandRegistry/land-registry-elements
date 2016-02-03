@@ -4,4 +4,4 @@ categories:
   secondary: Core
 
 dependencies:
-  - core
+  - elements/govuk/core

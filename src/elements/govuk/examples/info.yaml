@@ -4,4 +4,4 @@ categories:
   secondary: Examples
 
 dependencies:
-  - layout
+  - elements/govuk/layout

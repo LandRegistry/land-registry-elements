@@ -1,0 +1,7 @@
+name: Definition tabular
+categories:
+  primary: Land Registry
+  secondary: Data
+
+dependencies:
+  - elements/govuk/layout
