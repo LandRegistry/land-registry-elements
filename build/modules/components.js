@@ -10,14 +10,12 @@ var DepGraph = require('dependency-graph').DepGraph;
  * @param {String} component The component ID to fetch
  * @return {Promise} Promise which resolves with the component data
  */
-function getComponent(name) {
+function getComponent(componentPath) {
   return new Promise(function(resolve, reject) {
-
-    var componentPath = path.join('src/elements', name);
 
     var component = yaml.safeLoad(fs.readFileSync(path.join(componentPath, 'info.yaml'), 'utf8'));
 
-    component.id = name;
+    component.id = path.relative('src', componentPath);
 
     if(fs.existsSync(path.join(componentPath, 'template.hbs'))) {
       component.template = fs.readFileSync(path.join(componentPath, 'template.hbs'), 'utf8');
@@ -38,10 +36,11 @@ function getComponent(name) {
         var variantData = yfm(variantHTML);
 
         var variantName = path.basename(demoFilename, path.extname(demoFilename));
+        // variantName = variantName.replace('/', '-');
 
         component.variants[variantName] = {
           name: variantData.context.title ? variantData.context.title : variantName,
-          href: '/components/' + name + '/' + variantName,
+          href: '/components/' + component.id + '/' + variantName,
           content: variantData.content,
           context: variantData.context
         };
@@ -71,13 +70,12 @@ function getComponents(config) {
   }
 
   return new Promise(function(resolve, reject) {
-    glob('src/elements/**/info.yaml', function (er, files) {
+    glob('src/**/info.yaml', function (er, files) {
 
       var queue = [];
 
       files.forEach(function(filename) {
-        var name = path.dirname(path.relative('src/elements', filename));
-        queue.push(getComponent(name));
+        queue.push(getComponent(path.dirname(filename)));
       });
 
       if(er) {
