@@ -31,7 +31,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Make sure build can cope if you specify a build with a component excluded but another component then depends upon it
 
 ### Technical debt
-- HTML validation of "page" components doesnt currently exist (No actual pages exist yet either, so...)
+
 
 ### Documentation
 - Write usage guidelines
