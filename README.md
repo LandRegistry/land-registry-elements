@@ -19,7 +19,11 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Manual cross browser testing
 - Concatenate stylesheet output?
 
+### Potential patterns
+- Addresses?
+
 ### Issues
+- Sort out what each build contains (config-wise)
 - Icons not showing
 - Grid demos not showing
 - Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)

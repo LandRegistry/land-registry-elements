@@ -12,11 +12,11 @@ module.exports = function(options) {
    * build. This defaults to only Govuk core stuff. The local build scripts also include
    * the "Build" category which contains styles for example pages
    */
-  var config = extend(options, {
+  var config = extend({
     components: {
       'Govuk': true
     }
-  });
+  }, options);
 
   return new Promise(function(resolve, reject) {
 
