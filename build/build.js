@@ -1,5 +1,5 @@
 var cleanDist = require('./tasks/clean_dist');
-var copyGovUkTemplateAssets = require('./tasks/copy_govuk_template_assets')
+var copy = require('./tasks/copy');
 var sass = require('./tasks/sass');
 var extend = require('extend');
 
@@ -21,7 +21,8 @@ module.exports = function(options) {
   return new Promise(function(resolve, reject) {
 
     cleanDist()
-      .then(copyGovUkTemplateAssets)
+      .then(copy.govUkTemplateAssets)
+      .then(copy.govUkToolkitAssets)
       .then(function() {
         sass(config);
       })

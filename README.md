@@ -24,7 +24,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 ### Issues
 - Sort out what each build contains (config-wise)
-- Icons not showing
 - Grid demos not showing
 - Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
 - Now that pages are first class components, we need a way of separating them out on the index page

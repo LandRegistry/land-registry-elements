@@ -1,5 +1,5 @@
 var clean_dist = require('./build/tasks/clean_dist');
-var copy_govuk_template_assets = require('./build/tasks/copy_govuk_template_assets');
+var copy = require('./build/tasks/copy');
 var sass = require('./build/tasks/sass');
 
 module.exports = function(grunt) {
@@ -30,9 +30,11 @@ module.exports = function(grunt) {
       });
   });
 
-  grunt.registerTask('copy_govuk_template_assets', function() {
+  grunt.registerTask('copy_govuk_assets', function() {
     var done = this.async();
-    copy_govuk_template_assets()
+
+    copy.govUkTemplateAssets()
+      .then(copy.govUkToolkitAssets)
       .then(done)
       .catch(function(err) {
         console.log(err)
@@ -53,7 +55,7 @@ module.exports = function(grunt) {
   });
 
 
-  grunt.registerTask('build', ['clean_dist', 'copy_govuk_template_assets', 'sass']);
+  grunt.registerTask('build', ['clean_dist', 'copy_govuk_assets', 'sass']);
 
   grunt.registerTask('serve', ['build', 'server', 'watch']);
 
