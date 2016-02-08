@@ -29,7 +29,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Now that pages are first class components, we need a way of separating them out on the index page
 
 ### Considerations
-- Do we really need to replicate the gov uk pattern demos? Maybe they should just be simplified versions of them, and link to the original for the advice - thereby avoiding maintenance for us
 - Note to self - make sure map gets printed in right column of summary page (As it does on the proto by virtue of a hack)
 - Make sure build can cope if you specify a build with a component excluded but another component then depends upon it
 
