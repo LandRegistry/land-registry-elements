@@ -1,4 +1,6 @@
+var path = require('path');
 var ncp = require('ncp').ncp;
+var components = require('../modules/components');
 
 function copy(from, to) {
   return new Promise(function(resolve, reject) {
@@ -13,6 +15,35 @@ function copy(from, to) {
   });
 }
 
+/**
+ * Copy assets from individual components folders as specified by the `from` and
+ * `to` properties of the info.yaml files
+ */
+var landregistryComponentAssets = function() {
+  var componentCopyOperations = [];
+
+  return components.getComponents()
+    .then(function(components) {
+      components.forEach(function(component) {
+
+        if(component.copy) {
+          componentCopyOperations.push(copy(path.join(component.path, component.copy.from), component.copy.to));
+        }
+      });
+
+    })
+    .then(function() {
+      return new Promise(function(resolve, reject) {
+        Promise
+          .all(componentCopyOperations)
+          .then(resolve)
+          .catch(reject);
+      });
+    });
+
+  // return copy('node_modules/govuk_template_mustache/assets', 'dist/assets');
+}
+
 var govUkTemplateAssets = function() {
   return copy('node_modules/govuk_template_mustache/assets', 'dist/assets');
 }
@@ -22,6 +53,7 @@ var govUkToolkitAssets = function() {
 }
 
 module.exports = {
+  'landregistryComponentAssets': landregistryComponentAssets,
   'govUkTemplateAssets': govUkTemplateAssets,
   'govUkToolkitAssets': govUkToolkitAssets,
 };

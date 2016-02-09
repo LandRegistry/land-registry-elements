@@ -23,6 +23,7 @@ module.exports = function(options) {
     cleanDist()
       .then(copy.govUkTemplateAssets)
       .then(copy.govUkToolkitAssets)
+      .then(copy.landregistryComponentAssets)
       .then(function() {
         sass(config);
       })

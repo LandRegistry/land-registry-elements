@@ -1,1 +1,5 @@
 @import "govuk_elements/icons";
+
+.icon-print {
+  @include icon(icon-print, 24, 24, 'land-registry');
+}

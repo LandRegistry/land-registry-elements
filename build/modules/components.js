@@ -15,6 +15,8 @@ function getComponent(componentPath) {
 
     var component = yaml.safeLoad(fs.readFileSync(path.join(componentPath, 'info.yaml'), 'utf8'));
 
+    component.path = componentPath;
+
     component.id = componentPath.replace('src/', '');
 
     if(fs.existsSync(path.join(componentPath, 'template.hbs'))) {

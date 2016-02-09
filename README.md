@@ -21,9 +21,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Get http://pa11y.org/ into the travis build
 
 ### Patterns to build
-- Small viewport grid (Building upon the govuk grid)
 - Print signposting
-  - Printer icon
   - print page behaviour (i.e. without inline JS)
 - Tabular definition lists
 - Addresses
@@ -43,6 +41,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Grid demos not showing
 - Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
 - Now that pages are first class components, we need a way of separating them out on the index page
+- Get the heroku transferred to land registry
 
 ### Considerations
 - Do we really need to replicate the gov uk pattern demos? Maybe they should just be simplified versions of them, and link to the original for the advice - thereby avoiding maintenance for us
