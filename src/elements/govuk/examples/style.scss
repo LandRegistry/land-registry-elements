@@ -84,16 +84,12 @@
 // 1. Layout
 // ==========================================================================
 
-.example-grid p {
-  width: 100%;
-  background: file-url("examples/grid.png") 0 0 repeat;
-  margin-bottom: 0;
-  height: 30px;
-  @include media(tablet) {
-    height: 60px;
-  }
-  overflow: hidden;
-  text-indent: -999em;
+.example-grid .grid-row {
+
+}
+
+.example-grid .grid-row > div {
+  outline: 1px dotted blue;
 }
 
 
