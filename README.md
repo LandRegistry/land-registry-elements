@@ -18,6 +18,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Assemble example pages for the pages in the DRV prototype
 - Manual cross browser testing
 - Concatenate stylesheet output?
+- Get http://pa11y.org/ into the travis build
 
 ### Potential patterns
 - Addresses?
@@ -29,6 +30,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Now that pages are first class components, we need a way of separating them out on the index page
 
 ### Considerations
+- Do we really need to replicate the gov uk pattern demos? Maybe they should just be simplified versions of them, and link to the original for the advice - thereby avoiding maintenance for us
 - Note to self - make sure map gets printed in right column of summary page (As it does on the proto by virtue of a hack)
 - Make sure build can cope if you specify a build with a component excluded but another component then depends upon it
 
@@ -41,6 +43,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Write contribution guidelines
 
 ### Nice to haves
+- Exclude image assets that are not referenced in the css to keep the build output clean
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
 - JSHint in the test suite
 - Automated visual regression testing
