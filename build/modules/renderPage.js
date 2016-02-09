@@ -13,7 +13,8 @@ var renderPage = function(hbs, data) {
     ].join('\n'),
     pageTitle: data.title + ' - Land Registry pattern library',
     assetPath: '/',
-    content: data.content
+    content: data.content,
+    bodyEnd: '<script src="/javascripts/landregistry.js"></script>'
   });
 }
 

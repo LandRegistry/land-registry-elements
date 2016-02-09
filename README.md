@@ -44,6 +44,8 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Get the heroku transferred to land registry
 
 ### Considerations
+- Browser support?
+- Use of jQuery?
 - Do we really need to replicate the gov uk pattern demos? Maybe they should just be simplified versions of them, and link to the original for the advice - thereby avoiding maintenance for us
 - Note to self - make sure map gets printed in right column of summary page (As it does on the proto by virtue of a hack)
 - Make sure build can cope if you specify a build with a component excluded but another component then depends upon it
@@ -77,7 +79,7 @@ Usage notes to follow
 A tarball of built out assets can be downloaded from [http://land-registry-elements.herokuapp.com/build](http://land-registry-elements.herokuapp.com/build)
 (Note: This may take a moment to spin up if the heroku instance has gone to sleep)
 
-
 ## Contributing to this repository
+
 
 Guidelines to follow

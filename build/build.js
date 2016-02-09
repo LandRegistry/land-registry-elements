@@ -1,6 +1,7 @@
 var cleanDist = require('./tasks/clean_dist');
 var copy = require('./tasks/copy');
 var sass = require('./tasks/sass');
+var javascript = require('./tasks/javascript');
 var extend = require('extend');
 
 module.exports = function(options) {
@@ -25,7 +26,10 @@ module.exports = function(options) {
       .then(copy.govUkToolkitAssets)
       .then(copy.landregistryComponentAssets)
       .then(function() {
-        sass(config);
+        return sass(config);
+      })
+      .then(function() {
+        return javascript(config);
       })
       .then(function() {
         resolve('dist/assets');
