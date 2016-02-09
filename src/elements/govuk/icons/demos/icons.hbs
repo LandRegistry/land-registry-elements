@@ -1,7 +1,15 @@
 ---
 title: Demo
-icons:
+govuk-icons:
+  - calendar
+  - file-download
   - important
+  - information
+  - locator
+  - pointer
+  - pointer-black
+  - search
+landregistry-icons:
   - print
 ---
 <main id="content" role="main">
@@ -15,11 +23,17 @@ icons:
 
   <hr>
 
-  {{#each icons}}
-    <div class="example">
-      <span class="icon icon-{{this}}"></span><br>
+  <h2 class="heading-medium">Govuk icons</h2>
+  <div class="example" style="background-color:#eee">
+    {{#each govuk-icons}}
+      <span class="icon icon-{{this}}"></span>&nbsp;&nbsp;&nbsp;<code class="font-xsmall">{{#htmlencode}}<span class="icon icon-{{this}}"></span>{{/htmlencode}}</code><br><br>
+    {{/each}}
+  </div>
 
-      <pre class="language-markup"><code>{{#htmlencode}}<span class="icon icon-{{this}}"></span>{{/htmlencode}}</code></pre>
-    </div>
-  {{/each}}
+  <h2 class="heading-medium">Landregistry icons</h2>
+  <div class="example" style="background-color:#eee">
+    {{#each landregistry-icons}}
+      <span class="icon icon-{{this}}"></span>&nbsp;&nbsp;&nbsp;<code class="font-xsmall">{{#htmlencode}}<span class="icon icon-{{this}}"></span>{{/htmlencode}}</code><br><br>
+    {{/each}}
+  </div>
 </main>
