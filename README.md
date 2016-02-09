@@ -20,8 +20,21 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Concatenate stylesheet output?
 - Get http://pa11y.org/ into the travis build
 
-### Potential patterns
-- Addresses?
+### Patterns to build
+- Small viewport grid (Building upon the govuk grid)
+- Print signposting
+  - Printer icon
+  - print page behaviour (i.e. without inline JS)
+- Tabular definition lists
+- Addresses
+- Language switcher
+- VAT receipts
+- LeafletJS map?
+
+### Govuk patterns to document
+- .panel-indent
+- Crumbtrail
+- Populated footer
 
 ### Issues
 - Sort out what each build contains (config-wise)
