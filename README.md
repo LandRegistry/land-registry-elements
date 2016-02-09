@@ -66,6 +66,10 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Find the sticky sidebar pattern and include it?
 - Any other gov uk patterns we'd like to include?
 
+### Patterns that we need
+- Addresses
+- 404, 403 etc error pages
+
 ### Possibles?
 - Expose grunt plugin and write example for people wishing to pull the assets in via a Gruntfile?
 
