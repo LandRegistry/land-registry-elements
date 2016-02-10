@@ -25,7 +25,9 @@ module.exports = function(options) {
     cleanDist()
       .then(copy.govUkTemplateAssets)
       .then(copy.govUkToolkitAssets)
-      .then(copy.landregistryComponentAssets)
+      .then(function() {
+        return copy.landregistryComponentAssets(config);
+      })
       .then(function() {
         return sass(config);
       })

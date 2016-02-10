@@ -1,12 +1,11 @@
-// A tabular definition list mixin - name:value pairs for example
-@mixin dl-tabular($col1: $one-quarter, $col2: $three-quarters) {
+.definition-tabular {
   @extend %contain-floats;
 
   dt {
-    @include media(false, false, 400px) {
+    @include media(tablet) {
       float: left;
       clear: left;
-      width: $col1;
+      width: $one-quarter;
       margin-bottom: $gutter-one-third;
       padding-right: $gutter-half;
     }
@@ -19,9 +18,9 @@
   dd {
     margin-bottom: $gutter-one-third;
 
-    @include media(false, false, 400px) {
+    @include media(tablet) {
       float: left;
-      width: $col2;
+      width: $three-quarters;
     }
   }
 
@@ -31,6 +30,16 @@
   }
 }
 
-.definition-tabular {
-  @include dl-tabular;
+.definition-tabular-1-2 {
+  dt {
+    @include media(tablet) {
+      width: $one-third;
+    }
+  }
+
+  dd {
+    @include media(tablet) {
+      width: $two-thirds;
+    }
+  }
 }

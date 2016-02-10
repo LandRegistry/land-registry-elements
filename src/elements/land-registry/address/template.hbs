@@ -10,20 +10,20 @@
 
 {{#if person}}
   <div itemscope itemtype="http://schema.org/Person">
-    <span itemprop="name" class="bold-small">{{person}}</span>
+    <span itemprop="name" class="bold">{{person}}</span>
 {{/if}}
 
 {{#if organization}}
   <div itemscope itemtype="http://schema.org/Organization">
-    <span itemprop="name" class="bold-small">{{organization}}</span>
+    <span itemprop="name" class="bold">{{organization}}</span>
 {{/if}}
 
-    <div class="address"{{#if name}} itemprop="address"{{/if}} itemscope itemtype="http://schema.org/PostalAddress">
-      {{#with streetAddress}}<span itemprop="streetAddress">{{this}}</span>{{/with}}
-      {{#with addressLocality}}<span itemprop="addressLocality">{{this}}</span>{{/with}}
-      {{#with addressRegion}}<span itemprop="addressRegion">{{this}}</span>{{/with}}
-      {{#with postalCode}}<span itemprop="postalCode">{{this}}</span>{{/with}}
-    </div>
+      <div class="address"{{#if name}} itemprop="address"{{/if}} itemscope itemtype="http://schema.org/PostalAddress">
+        {{#with streetAddress}}<span itemprop="streetAddress">{{#each this}}{{this}}{{#if @last}}{{else}}<br>{{/if}}{{/each}}</span>{{/with}}
+        {{#with addressLocality}}<span itemprop="addressLocality">{{this}}</span>{{/with}}
+        {{#with addressRegion}}<span itemprop="addressRegion">{{this}}</span>{{/with}}
+        {{#with postalCode}}<span itemprop="postalCode">{{this}}</span>{{/with}}
+      </div>
 
 {{#if person}}
   </div>

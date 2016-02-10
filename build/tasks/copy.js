@@ -19,10 +19,10 @@ function copy(from, to) {
  * Copy assets from individual components folders as specified by the `from` and
  * `to` properties of the info.yaml files
  */
-var landregistryComponentAssets = function() {
+var landregistryComponentAssets = function(config) {
   var componentCopyOperations = [];
 
-  return components.getComponents()
+  return components.getComponentsTree(config)
     .then(function(components) {
       components.forEach(function(component) {
 

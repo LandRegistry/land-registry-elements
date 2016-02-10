@@ -18,6 +18,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Manual cross browser testing
 - Concatenate stylesheet output?
 - Get http://pa11y.org/ into the travis build
+- Migrate to nunjucks
 
 ### Patterns to build
 - VAT receipts
@@ -34,8 +35,10 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Sort out what each build contains (config-wise)
 - Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
 - Now that pages are first class components, we need a way of separating them out on the index page
+- Sort out indentation of code snippets (See )
 
 ### Considerations
+- There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
 - Browser support?
 - Use of jQuery?
 - Do we really need to replicate the gov uk pattern demos? Maybe they should just be simplified versions of them, and link to the original for the advice - thereby avoiding maintenance for us
@@ -58,7 +61,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Automated visual regression testing
 - Automated accessibility testing
 - Write up results of user testing against any components where this has been carried out
-- Move to Nunjucks?
 - Find the sticky sidebar pattern and include it?
 - Any other gov uk patterns we'd like to include?
 

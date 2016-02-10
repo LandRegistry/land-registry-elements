@@ -1,0 +1,27 @@
+.spacing-top-one {
+  margin-top: $gutter;
+}
+
+.spacing-top-half,
+.spacing-top-one-half {
+  margin-top: $gutter-half;
+}
+
+.spacing-top-third,
+.spacing-top-one-third {
+  margin-top: $gutter-one-third;
+}
+
+.spacing-bottom-one {
+  margin-bottom: $gutter;
+}
+
+.spacing-bottom-half,
+.spacing-bottom-one-half {
+  margin-bottom: $gutter-half;
+}
+
+.spacing-bottom-third,
+.spacing-bottom-one-third {
+  margin-bottom: $gutter-one-third;
+}
