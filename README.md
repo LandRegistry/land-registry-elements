@@ -14,7 +14,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
   - Download configurable build via GET parameters
   - Form to select components and pipe into above build?
 - Build out any new elements from the DRV prototype
-- Browserify setup for element JS if any is required (I think it will be)
 - Assemble example pages for the pages in the DRV prototype
 - Manual cross browser testing
 - Concatenate stylesheet output?
@@ -22,7 +21,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 ### Patterns to build
 - Print signposting
-  - print page behaviour (i.e. without inline JS)
 - Tabular definition lists
 - Addresses
 - Language switcher
@@ -38,10 +36,8 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ### Issues
 - Investigate why grunt serve's sass task doesnt work properly
 - Sort out what each build contains (config-wise)
-- Grid demos not showing
 - Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
 - Now that pages are first class components, we need a way of separating them out on the index page
-- Get the heroku transferred to land registry
 
 ### Considerations
 - Browser support?
