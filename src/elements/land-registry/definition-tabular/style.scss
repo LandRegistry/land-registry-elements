@@ -3,11 +3,12 @@
   @extend %contain-floats;
 
   dt {
-    @include media(tablet) {
+    @include media(false, false, 400px) {
       float: left;
       clear: left;
       width: $col1;
       margin-bottom: $gutter-one-third;
+      padding-right: $gutter-half;
     }
 
     &:after {
@@ -18,7 +19,7 @@
   dd {
     margin-bottom: $gutter-one-third;
 
-    @include media(tablet) {
+    @include media(false, false, 400px) {
       float: left;
       width: $col2;
     }
@@ -33,23 +34,3 @@
 .definition-tabular {
   @include dl-tabular;
 }
-
-// .definition-tabular-bold {
-//   @extend .definition-tabular;
-
-//   dd {
-//     font-weight: bold;
-//   }
-// }
-
-// .definition-tabular-1-3 {
-//   @include dl-tabular($col1: $one-third, $col2: $two-thirds);
-// }
-
-// .definition-tabular-1-3-bold {
-//   @extend .definition-tabular-1-3;
-
-//   dd {
-//     font-weight: bold;
-//   }
-// }

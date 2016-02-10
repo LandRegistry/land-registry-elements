@@ -21,3 +21,14 @@
 // These are predefined by govuk_template
 // If you're not using govuk_template, uncomment the line below.
 // @import "govuk_elements/base";                       // HTML elements, set by the GOV.UK template
+
+// Box sizing
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
