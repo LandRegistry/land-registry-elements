@@ -22,8 +22,9 @@ function copy(from, to) {
 var landregistryComponentAssets = function(config) {
   var componentCopyOperations = [];
 
-  return components.getComponentsTree(config)
+  return components.getComponents(config)
     .then(function(components) {
+
       components.forEach(function(component) {
 
         if(component.copy) {

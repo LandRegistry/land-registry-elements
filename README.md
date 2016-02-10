@@ -21,7 +21,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Migrate to nunjucks
 
 ### Patterns to build
-- VAT receipts
 - LeafletJS map?
 - 404, 403 etc error pages
 

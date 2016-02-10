@@ -5,6 +5,25 @@ var path = require('path');
 var mkdirp = require('mkdirp');
 
 /**
+ * Custom node-sass importer to fetch css files from leafletjs
+ * node_modules folder
+ *
+ * @param  {String}   url     the path in import as-is, which LibSass encountered
+ * @param  {String}   prev    the previously resolved path
+ * @param  {Function} done    a callback function to invoke on async completion.
+ *                            @see https://github.com/sass/node-sass#importer--v200---experimental
+ */
+var leafletCssImporter = function(url, prev, done) {
+  if (url.indexOf('leafletjs') === 0) {
+    return done({
+      contents: fs.readFileSync('./node_modules/leaflet/dist/leaflet.css', 'utf8')
+    });
+  }
+
+  done();
+};
+
+/**
  * Custom node-sass importer to fetch sass files from the govuk_frontend_toolkit
  * node_modules folder
  *
@@ -93,6 +112,7 @@ function compileSass(config) {
           sass.render({
             data: stylesheet.base + sassContents,
             importer: [
+              leafletCssImporter,
               govukFrontendToolkitImporter,
               govukElementsImporter
             ],
