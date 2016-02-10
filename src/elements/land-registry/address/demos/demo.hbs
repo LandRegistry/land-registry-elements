@@ -1,0 +1,74 @@
+---
+title: Address
+simple-addresses:
+  -
+    simple:
+      - 1 Pretend Street
+      - Trumpton
+      - TR15 5RZ
+  -
+    simple:
+      - 1 Pretend Street
+      - Trumpton
+      - Devon
+      - TR15 5RZ
+
+addresses:
+  -
+    streetAddress: 1 Pretend Street
+    addressLocality: Trumpton
+    postalCode: TR15 5RZ
+  -
+    streetAddress: 1 Pretend Street
+    addressLocality: Trumpton
+    addressRegion: Devon
+    postalCode: TR15 5RZ
+
+peopleAtAddresses:
+  -
+    person: Bob Smith
+    streetAddress: 1 Pretend Street
+    addressLocality: Trumpton
+    addressRegion: Devon
+    postalCode: TR15 5RZ
+
+organizationsAtAddresses:
+  -
+    organization: Land Registry
+    streetAddress: 1 Pretend Street
+    addressLocality: Trumpton
+    addressRegion: Devon
+    postalCode: TR15 5RZ
+---
+<main id="content" role="main">
+    <h1 class="heading-xlarge">
+      <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+      {{component.name}}
+    </h1>
+
+    <h2 class="heading-medium">Simple addresses</h2>
+    {{#each simple-addresses}}
+      {{> elements/land-registry/address }}
+      <hr>
+    {{/each}}
+
+    <h2 class="heading-medium">Simple addresses <span class="font-small">(with schema.org metadata)</span></h2>
+    {{#each addresses}}
+      {{> elements/land-registry/address }}
+      <hr>
+    {{/each}}
+
+    <h2 class="heading-medium">People at addresses <span class="font-small">(with schema.org metadata)</span></h2>
+    {{#each peopleAtAddresses}}
+      {{> elements/land-registry/address }}
+      <hr>
+    {{/each}}
+
+    <h2 class="heading-medium">Organizations at addresses <span class="font-small">(with schema.org metadata)</span></h2>
+    {{#each organizationsAtAddresses}}
+      {{> elements/land-registry/address }}
+      <hr>
+    {{/each}}
+
+
+</main>

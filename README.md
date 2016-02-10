@@ -20,8 +20,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Get http://pa11y.org/ into the travis build
 
 ### Patterns to build
-- Tabular definition lists
-- Addresses
 - Language switcher
 - VAT receipts
 - LeafletJS map?

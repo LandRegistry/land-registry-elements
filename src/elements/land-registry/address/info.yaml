@@ -1,0 +1,7 @@
+name: Address
+categories:
+  primary: Land Registry
+  secondary: Core
+
+dependencies:
+  - elements/govuk/core
