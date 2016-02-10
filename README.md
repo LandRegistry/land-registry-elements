@@ -52,6 +52,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 ### Technical debt
 - The gov uk base template doesn't include the <main id="content" role="main"> element - would be nice to include this at our end so that we don't need to repeat it in every demo
+- Abstract out the renderPage.js code into a template file
 
 ### Documentation
 - Write usage guidelines
@@ -61,7 +62,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ### Nice to haves
 - Exclude image assets that are not referenced in the css to keep the build output clean
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
-- JSHint in the test suite
+- http://eslint.org/ and https://www.npmjs.com/package/eslint-plugin-cross-browser-compatibility-check
 - Automated visual regression testing
 - Automated accessibility testing
 - Write up results of user testing against any components where this has been carried out
