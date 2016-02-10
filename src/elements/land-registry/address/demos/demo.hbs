@@ -48,25 +48,54 @@ organizationsAtAddresses:
 
     <h2 class="heading-medium">Simple addresses</h2>
     {{#each simple-addresses}}
-      {{> elements/land-registry/address }}
+      <div class="grid-row">
+        <div class="column-quarter">
+          {{> elements/land-registry/address }}
+        </div>
+        <div class="column-three-quarters">
+          <pre class="language-markup"><code>{{#htmlencode}}{{> elements/land-registry/address }}{{/htmlencode}}</code></pre>
+        </div>
+      </div>
+
       <hr>
     {{/each}}
 
     <h2 class="heading-medium">Simple addresses <span class="font-small">(with schema.org metadata)</span></h2>
     {{#each addresses}}
-      {{> elements/land-registry/address }}
+      <div class="grid-row">
+        <div class="column-quarter">
+          {{> elements/land-registry/address }}
+        </div>
+        <div class="column-three-quarters">
+          <pre class="language-markup"><code>{{#htmlencode}}{{> elements/land-registry/address }}{{/htmlencode}}</code></pre>
+        </div>
+      </div>
       <hr>
     {{/each}}
 
     <h2 class="heading-medium">People at addresses <span class="font-small">(with schema.org metadata)</span></h2>
     {{#each peopleAtAddresses}}
-      {{> elements/land-registry/address }}
+      <div class="grid-row">
+        <div class="column-quarter">
+          {{> elements/land-registry/address }}
+        </div>
+        <div class="column-three-quarters">
+          <pre class="language-markup"><code>{{#htmlencode}}{{> elements/land-registry/address }}{{/htmlencode}}</code></pre>
+        </div>
+      </div>
       <hr>
     {{/each}}
 
     <h2 class="heading-medium">Organizations at addresses <span class="font-small">(with schema.org metadata)</span></h2>
     {{#each organizationsAtAddresses}}
-      {{> elements/land-registry/address }}
+      <div class="grid-row">
+        <div class="column-quarter">
+          {{> elements/land-registry/address }}
+        </div>
+        <div class="column-three-quarters">
+          <pre class="language-markup"><code>{{#htmlencode}}{{> elements/land-registry/address }}{{/htmlencode}}</code></pre>
+        </div>
+      </div>
       <hr>
     {{/each}}
 
