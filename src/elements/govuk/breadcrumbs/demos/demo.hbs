@@ -2,11 +2,6 @@
 title: Breadcrumbs
 ---
 <main id="content" role="main">
-  <h1 class="heading-xlarge">
-    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
-    {{component.name}}
-  </h1>
-
   <div class="breadcrumbs">
     <ol>
       <li><a href="/">Linked crumbtrail item</a></li>
@@ -14,6 +9,13 @@ title: Breadcrumbs
       <li>Title of this page, unlinked</li>
     </ol>
   </div>
+
+  <h1 class="heading-xlarge">
+    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+    {{component.name}}
+  </h1>
+
+  <p>See above!</p>
 
   <pre class="language-markup"><code>{{#htmlencode}}<div class="breadcrumbs">
   <ol>
