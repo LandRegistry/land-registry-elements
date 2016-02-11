@@ -1,0 +1,46 @@
+---
+title: Panels
+---
+<main id="content" role="main">
+
+  <h1 class="heading-xlarge">
+    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+    {{component.name}}
+  </h1>
+
+  {{#markdown}}{{component.readme}}{{/markdown}}
+
+  <div class="grid-row">
+    <div class="column-half">
+      <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+    </div>
+    <div class="column-half">
+      <pre class="language-markup"><code>{{#htmlencode}}<div class="panel"></div>{{/htmlencode}}</code></pre>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <div class="panel panel-border-narrow">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+    </div>
+    <div class="column-half">
+      <pre class="language-markup"><code>{{#htmlencode}}<div class="panel panel-border-narrow"></div>{{/htmlencode}}</code></pre>
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-half">
+      <div class="panel panel-border-wide">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+    </div>
+    <div class="column-half">
+      <pre class="language-markup"><code>{{#htmlencode}}<div class="panel panel-border-wide"></div>{{/htmlencode}}</code></pre>
+    </div>
+  </div>
+
+</main>

@@ -16,7 +16,7 @@ var renderPage = function(hbs, data) {
     skipLinkMessage: 'Skip to main content',
     crownCopyrightMessage: 'Copyright message here',
     homepageUrl: '/',
-    globalHeaderText: 'Land Registry pattern library',
+    globalHeaderText: 'Land Registry',
     htmlLang: 'en',
     content: data.content,
     bodyEnd: [
