@@ -3,20 +3,17 @@ var request = require('superagent');
 var fs = require('fs');
 var w3cjs = require('w3cjs');
 
-var components = require('../../build/modules/components');
-var app = require('../../build/server');
-
 /**
  * HTML validation checks
  */
-describe('The pattern library', function() {
-  var validationQueue = [];
-
+describe('The pattern library page at', function() {
   var urls = JSON.parse(fs.readFileSync('.tmp/testURLs.json', 'utf8'));
+
+  this.timeout(5000);
 
   urls.forEach(function(url) {
 
-    it('page at ' + url + ' should be valid HTML', function(done) {
+    it(url + ' should be valid HTML', function(done) {
 
       request
         .get(url)

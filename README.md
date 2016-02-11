@@ -19,8 +19,12 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Concatenate stylesheet output?
 - Get http://pa11y.org/ into the travis build
 - Migrate to nunjucks
-Cache component generation
-Pre compile list of testing urls
+- Cache component generation
+- Pre compile list of testing urls
+- Cookie message
+
+### Misc todos
+- Make sure any pattern documentation is in README.md files and not in the demos
 
 ### Patterns to build
 - LeafletJS map?

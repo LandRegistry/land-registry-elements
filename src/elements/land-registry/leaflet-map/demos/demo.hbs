@@ -116,7 +116,9 @@ title: LeafletJS map
       var bounds = indexGeoJson.getBounds();
 
       if(!document.getElementById('map').classList.contains('polygon')) {
-        L.marker(bounds.getCenter()).addTo(map);
+        L.marker(bounds.getCenter(), {
+            title: 'Hover Text'
+        }).addTo(map);
       }
 
       map.fitBounds(bounds, {maxZoom: 18, animate: false});

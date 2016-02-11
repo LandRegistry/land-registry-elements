@@ -13,6 +13,11 @@ var renderPage = function(hbs, data) {
     ].join('\n'),
     pageTitle: data.title + ' - Land Registry pattern library',
     assetPath: '/',
+    skipLinkMessage: 'Skip to main content',
+    crownCopyrightMessage: 'Copyright message here',
+    homepageUrl: '/',
+    globalHeaderText: 'Land Registry pattern library',
+    htmlLang: 'en',
     content: data.content,
     bodyEnd: [
       '<!--[if lte IE 9]><script src="/javascripts/ie8-9-polyfills.js"></script><![endif]-->',
