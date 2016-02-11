@@ -27,7 +27,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - 404, 403 etc error pages
 
 ### Govuk patterns to document
-- Crumbtrail
 - Populated footer
 - Cookie message
 
