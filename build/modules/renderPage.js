@@ -16,7 +16,8 @@ var renderPage = function(hbs, data) {
     skipLinkMessage: 'Skip to main content',
     crownCopyrightMessage: 'Copyright message here',
     homepageUrl: '/',
-    globalHeaderText: 'Land Registry',
+    globalHeaderText: ' Land Registry',
+    cookieMessage: '<p>Land Registry uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>',
     htmlLang: 'en',
     content: data.content,
     bodyEnd: [

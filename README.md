@@ -28,7 +28,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 ### Govuk patterns to document
 - Populated footer
-- Cookie message
 
 ### Issues
 - Investigate why grunt serve's sass task doesnt work properly
