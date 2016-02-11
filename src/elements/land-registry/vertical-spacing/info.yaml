@@ -1,0 +1,7 @@
+name: Vertical spacing
+categories:
+  primary: Land Registry
+  secondary: Core
+
+dependencies:
+  - elements/govuk/core

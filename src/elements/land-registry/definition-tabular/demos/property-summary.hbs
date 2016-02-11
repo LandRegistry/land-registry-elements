@@ -1,0 +1,42 @@
+---
+title: Property summary
+propertyAddress:
+  streetAddress: 1 Pretend Street
+  addressLocality: Trumpton
+  postalCode: TR15 5RZ
+ownerAddress:
+  person: Bob Smith
+  streetAddress: 1 Pretend Street
+  addressLocality: Trumpton
+  postalCode: TR15 5RZ
+tenureType: Freehold
+---
+<main id="content" role="main">
+  <h1 class="heading-xlarge">
+    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+    {{component.name}}
+  </h1>
+
+  <dl class="definition-tabular">
+
+    {{#with propertyAddress}}
+      <dt>Address</dt>
+      <dd class="bold-medium">
+        {{> elements/land-registry/address }}
+      </dd>
+    {{/with}}
+
+    {{#with ownerAddress}}
+      <dt>Owner</dt>
+      <dd>
+        {{> elements/land-registry/address }}
+      </dd>
+    {{/with}}
+
+    {{#with tenureType}}
+      <dt>Tenure type</dt>
+      <dd class="bold-small">{{this}}</dd>
+    {{/with}}
+
+  </dl>
+</main>

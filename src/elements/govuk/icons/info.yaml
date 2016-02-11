@@ -1,0 +1,7 @@
+name: Icons
+categories:
+  primary: Govuk
+  secondary: Core
+copy:
+  from: 'icons'
+  to: 'dist/assets/images/icons/land-registry'

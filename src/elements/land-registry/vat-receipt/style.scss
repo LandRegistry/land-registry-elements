@@ -1,0 +1,9 @@
+.vat-receipt {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include media(tablet) {
+    max-width: none;
+  }
+}

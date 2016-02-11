@@ -1,86 +1,53 @@
 var should = require('should');
 var request = require('superagent');
-var components = require('../../build/modules/components');
-
+var fs = require('fs');
 var w3cjs = require('w3cjs');
-
-var app = require('../../build/server');
-
-var ignores = [];
-
-var pathBlacklist = [
-  '/stylesheets/',
-  '/javascripts/',
-  '/images/'
-];
 
 /**
  * HTML validation checks
  */
-describe('The pattern library', function() {
-  var validationQueue = [];
+describe('The pattern library page at', function() {
+  var urls = JSON.parse(fs.readFileSync('.tmp/testURLs.json', 'utf8'));
 
-  this.timeout(10000);
+  this.timeout(5000);
 
-  it('should be valid HTML', function(done) {
+  urls.forEach(function(url) {
 
-    components.getComponents()
-      .then(function(components) {
+    it(url + ' should be valid HTML', function(done) {
 
-        components.forEach(function(component) {
+      request
+        .get(url)
+        .end(function(err, res){
 
-          for(variant in component.variants) {
-            if(component.variants.hasOwnProperty(variant)) {
+          w3cjs.validate({
+            input: res.text,
+            callback: function (res) {
 
-              var url = 'http://localhost:3000/components/' + component.id + '/' + variant;
+              var output = url;
 
-              validationQueue.push(new Promise(function(resolve, reject) {
-                request
-                  .get(url)
-                  .end(function(err, res){
+              res.messages.forEach(function(message) {
 
-                    w3cjs.validate({
-                      input: res.text,
-                      callback: function (res) {
+                // Don't need to fail the test for info messages
+                if(message.type === 'info') {
+                  return;
+                }
 
-                        var output = url;
+                // Exclude any warnings that we are ignoring
+                if(ignores.indexOf(message.message) !== -1) {
+                  return;
+                }
 
-                        res.messages.forEach(function(message) {
+                output += '\nLine: ' + message.lastLine + ' Col: ' + message.firstColumn + ' => ' + message.message;
+              });
 
-                          // Don't need to fail the test for info messages
-                          if(message.type === 'info') {
-                            return;
-                          }
+              output.should.be.equal(url);
 
-                          // Exclude any warnings that we are ignoring
-                          if(ignores.indexOf(message.message) !== -1) {
-                            return;
-                          }
-
-                          output += '\nLine: ' + message.lastLine + ' Col: ' + message.firstColumn + ' => ' + message.message;
-                        });
-
-                        output.should.be.equal(url);
-
-                        resolve();
-                      }
-                    });
-                  });
-              }));
-
+              done();
             }
-          }
-
+          });
         });
 
+    });
 
-
-        Promise
-          .all(validationQueue)
-          .then(function() {
-            done();
-          });
-      });
-
-  })
+  });
 });

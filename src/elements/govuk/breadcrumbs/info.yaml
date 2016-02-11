@@ -1,0 +1,7 @@
+name: Breadcrumbs
+categories:
+  primary: Govuk
+  secondary: Core
+
+dependencies:
+  - elements/govuk/core

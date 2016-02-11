@@ -1,7 +1,0 @@
-name: Details
-categories:
-  primary: Build
-  secondary: Examples
-
-dependencies:
-  - layout

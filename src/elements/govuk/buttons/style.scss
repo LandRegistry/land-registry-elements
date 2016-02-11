@@ -1,0 +1,25 @@
+@import "govuk_frontend_toolkit/design-patterns/buttons";
+@import "govuk_elements/buttons";
+
+.button {
+  .icon {
+    vertical-align: middle;
+    margin-right: $gutter-one-third;
+  }
+}
+
+.button-light {
+  background-color: $highlight-colour;
+  color: $text-colour;
+
+  &:hover {
+    background-color: $grey-3;
+    color: $text-colour;
+  }
+
+  &:focus,
+  &:active {
+    background-color: $focus-colour;
+    color: $text-colour;
+  }
+}

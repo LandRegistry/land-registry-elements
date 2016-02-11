@@ -1,0 +1,25 @@
+<div class="language-switcher {{#if english }}{{else}}language-switcher-invert{{/if}}">
+  <form method="get">
+    {{#if english }}
+
+      <span class="language-switcher-current">
+        <span class="visuallyhidden">Current language:</span> English
+      </span>
+
+      <button type="submit" class="language-switcher-button" name="language" value="cy">
+        <span class="visuallyhidden">Switch to</span> Welsh
+      </button>
+
+    {{else}}
+
+      <span class="language-switcher-current">
+        <span class="visuallyhidden">Current language:</span> Welsh
+      </span>
+
+      <button type="submit" class="language-switcher-button" name="language" value="en">
+        <span class="visuallyhidden">Switch to</span> English
+      </button>
+
+    {{/if}}
+  </form>
+</div>

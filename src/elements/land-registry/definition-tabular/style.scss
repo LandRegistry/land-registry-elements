@@ -1,0 +1,45 @@
+.definition-tabular {
+  @extend %contain-floats;
+
+  dt {
+    @include media(tablet) {
+      float: left;
+      clear: left;
+      width: $one-quarter;
+      margin-bottom: $gutter-one-third;
+      padding-right: $gutter-half;
+    }
+
+    &:after {
+      content: ':';
+    }
+  }
+
+  dd {
+    margin-bottom: $gutter-one-third;
+
+    @include media(tablet) {
+      float: left;
+      width: $three-quarters;
+    }
+  }
+
+  ol, ul {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.definition-tabular-1-2 {
+  dt {
+    @include media(tablet) {
+      width: $one-third;
+    }
+  }
+
+  dd {
+    @include media(tablet) {
+      width: $two-thirds;
+    }
+  }
+}

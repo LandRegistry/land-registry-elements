@@ -1,0 +1,8 @@
+name: LeafletJS map
+categories:
+  primary: Land Registry
+  secondary: Utilities
+
+copy:
+  from: '../../../../node_modules/leaflet/dist/images'
+  to: 'dist/assets/images/leaflet'

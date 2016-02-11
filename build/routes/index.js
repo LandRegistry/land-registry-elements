@@ -1,7 +1,41 @@
 var components = require('../modules/components');
-var pages = require('../modules/pages');
 var handlebars = require('../modules/handlebars');
 var renderPage = require('../modules/renderPage');
+
+/**
+ * Helper method to organise components by their categories
+ */
+function sortComponents(components) {
+  // console.log(components);
+  // Sort the components by category
+  var sortedComponents = {};
+  components.forEach(function(component) {
+
+    // If the component doesn't define any demos, don't bother rendering it
+    if(Object.keys(component.variants).length === 0) {
+      return;
+    }
+
+    if(!component.categories) {
+      component.categories = {
+        primary: 'Unsorted',
+        secondary: 'Unsorted'
+      };
+    }
+
+    if(!sortedComponents[component.categories.primary]) {
+      sortedComponents[component.categories.primary] = {};
+    }
+
+    if(!sortedComponents[component.categories.primary][component.categories.secondary]) {
+      sortedComponents[component.categories.primary][component.categories.secondary] = [];
+    }
+
+    sortedComponents[component.categories.primary][component.categories.secondary].push(component);
+  });
+
+  return sortedComponents;
+}
 
 module.exports = function(app){
 
@@ -13,45 +47,17 @@ module.exports = function(app){
     Promise
       .all([
         handlebars(),
-        components.getComponents(),
-        pages.getPages()
+        components.getComponents()
       ])
-      .spread(function(hbs, unsortedComponents, demoPages) {
-
-        // Sort the components by category
-        var sortedComponents = {};
-        unsortedComponents.forEach(function(component) {
-
-          // If the component doesn't define any demos, don't bother rendering it
-          if(Object.keys(component.variants).length === 0) {
-            return;
-          }
-
-          if(!component.categories) {
-            component.categories = {
-              primary: 'Unsorted',
-              secondary: 'Unsorted'
-            };
-          }
-
-          if(!sortedComponents[component.categories.primary]) {
-            sortedComponents[component.categories.primary] = {};
-          }
-
-          if(!sortedComponents[component.categories.primary][component.categories.secondary]) {
-            sortedComponents[component.categories.primary][component.categories.secondary] = [];
-          }
-
-          sortedComponents[component.categories.primary][component.categories.secondary].push(component);
-        });
+      .spread(function(hbs, components) {
 
         res.send(renderPage(hbs, {
           title: 'Index',
           content: hbs.compile(hbs.partials['layout/index'])({
-            components: sortedComponents,
-            pages: demoPages
+            components: sortComponents(components)
           })
         }));
+
       })
       .catch(function(er) {
         console.log(er);

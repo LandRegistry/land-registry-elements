@@ -1,0 +1,7 @@
+name: Details
+categories:
+  primary: Build
+  secondary: Examples
+
+dependencies:
+  - elements/govuk/layout

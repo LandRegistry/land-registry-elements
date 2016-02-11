@@ -1,6 +1,8 @@
 var cleanDist = require('./tasks/clean_dist');
-var copyGovUkTemplateAssets = require('./tasks/copy_govuk_template_assets')
+var copy = require('./tasks/copy');
 var sass = require('./tasks/sass');
+var javascript = require('./tasks/javascript');
+var polyfillJS = require('./tasks/polyfillJS');
 var extend = require('extend');
 
 module.exports = function(options) {
@@ -12,19 +14,27 @@ module.exports = function(options) {
    * build. This defaults to only Govuk core stuff. The local build scripts also include
    * the "Build" category which contains styles for example pages
    */
-  var config = extend(options, {
+  var config = extend({
     components: {
       'Govuk': true
     }
-  });
+  }, options);
 
   return new Promise(function(resolve, reject) {
 
     cleanDist()
-      .then(copyGovUkTemplateAssets)
+      .then(copy.govUkTemplateAssets)
+      .then(copy.govUkToolkitAssets)
       .then(function() {
-        sass(config);
+        return copy.landregistryComponentAssets(config);
       })
+      .then(function() {
+        return sass(config);
+      })
+      .then(function() {
+        return javascript(config);
+      })
+      .then(polyfillJS)
       .then(function() {
         resolve('dist/assets');
       })

@@ -1,0 +1,129 @@
+---
+title: Layout
+---
+<main id="content" role="main">
+
+  <h1 class="heading-xlarge">
+    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+    {{component.name}}
+  </h1>
+
+  {{#markdown}}{{component.readme}}{{/markdown}}
+
+  <hr>
+
+  <div class="example example-grid">
+    <h2 class="heading-medium">Basic "tablet and up" grid</h2>
+
+    <div class="grid-row">
+      <div class="column-one-half">
+        <code class="font-xsmall">.column-one-half</code>
+      </div>
+
+      <div class="column-one-half">
+        <code class="font-xsmall">.column-one-half</code>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="grid-row">
+      <div class="column-one-third">
+        <code class="font-xsmall">.column-one-third</code>
+      </div>
+
+      <div class="column-one-third">
+        <code class="font-xsmall">.column-one-third</code>
+      </div>
+
+      <div class="column-one-third">
+        <code class="font-xsmall">.column-one-third</code>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <code class="font-xsmall">.column-two-thirds</code>
+      </div>
+
+      <div class="column-one-third">
+        <code class="font-xsmall">.column-one-third</code>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="grid-row">
+      <div class="column-one-third">
+        <code class="font-xsmall">.column-one-third</code>
+      </div>
+
+      <div class="column-two-thirds">
+        <code class="font-xsmall">.column-two-thirds</code>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="grid-row">
+      <div class="column-one-quarter">
+        <code class="font-xsmall">.column-one-quarter</code>
+      </div>
+
+      <div class="column-one-quarter">
+        <code class="font-xsmall">.column-one-quarter</code>
+      </div>
+
+      <div class="column-one-quarter">
+        <code class="font-xsmall">.column-one-quarter</code>
+      </div>
+
+      <div class="column-one-quarter">
+        <code class="font-xsmall">.column-one-quarter</code>
+      </div>
+    </div>
+
+    <h2 class="heading-medium">Retaining the grid on small screens</h2>
+
+    <div class="grid-row">
+      <div class="column-one-quarter mobile-column-one-quarter">
+        <code class="font-xsmall">.column-one-quarter.mobile-column-one-quarter</code>
+      </div>
+
+      <div class="column-one-quarter mobile-column-one-quarter">
+        <code class="font-xsmall">.column-one-quarter.mobile-column-one-quarter</code>
+      </div>
+
+      <div class="column-one-quarter mobile-column-one-quarter">
+        <code class="font-xsmall">.column-one-quarter.mobile-column-one-quarter</code>
+      </div>
+
+      <div class="column-one-quarter mobile-column-one-quarter">
+        <code class="font-xsmall">.column-one-quarter.mobile-column-one-quarter</code>
+      </div>
+    </div>
+
+    <h2 class="heading-medium">Different proportions on small vs large screens</h2>
+
+    <div class="grid-row">
+      <div class="column-one-quarter mobile-column-half">
+        <code class="font-xsmall">.column-one-quarter.mobile-column-half</code>
+      </div>
+
+      <div class="column-one-quarter mobile-column-half">
+        <code class="font-xsmall">.column-one-quarter.mobile-column-half</code>
+      </div>
+
+      <div class="column-one-quarter mobile-column-half">
+        <code class="font-xsmall">.column-one-quarter.mobile-column-half</code>
+      </div>
+
+      <div class="column-one-quarter mobile-column-half">
+        <code class="font-xsmall">.column-one-quarter.mobile-column-half</code>
+      </div>
+    </div>
+
+  </div>
+</main>

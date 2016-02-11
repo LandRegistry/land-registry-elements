@@ -1,4 +1,5 @@
 var extend = require('extend');
+var path = require('path');
 
 var components = require('../modules/components');
 var handlebars = require('../modules/handlebars');
@@ -9,14 +10,15 @@ module.exports = function(app){
   /**
    * Component route
    */
-  app.get('/components/:component/:variant', function(req, res){
+  app.get('/components/*/:variant', function(req, res){
 
     Promise
       .all([
         handlebars(),
-        components.getComponent(req.params.component)
+        components.getComponent(path.join('src', req.params[0]))
       ])
       .spread(function(hbs, component) {
+
         var variant = component.variants[req.params.variant];
         var context = extend(variant.context, {component: component });
 
