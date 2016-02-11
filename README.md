@@ -19,6 +19,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Concatenate stylesheet output?
 - Migrate to nunjucks
 - Cache component generation
+- Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
 
 ### Misc todos
 - Make sure any pattern documentation is in README.md files and not in the demos
@@ -27,7 +28,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - 404, 403 etc error pages
 
 ### Govuk patterns to document
-- Populated footer
+
 
 ### Issues
 - Investigate why grunt serve's sass task doesnt work properly
