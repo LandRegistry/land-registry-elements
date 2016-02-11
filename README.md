@@ -17,11 +17,8 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Assemble example pages for the pages in the DRV prototype
 - Manual cross browser testing
 - Concatenate stylesheet output?
-- Get http://pa11y.org/ into the travis build
 - Migrate to nunjucks
 - Cache component generation
-- Pre compile list of testing urls
-- Cookie message
 
 ### Misc todos
 - Make sure any pattern documentation is in README.md files and not in the demos
@@ -34,13 +31,14 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - .panel-indent
 - Crumbtrail
 - Populated footer
+- Cookie message
 
 ### Issues
 - Investigate why grunt serve's sass task doesnt work properly
 - Sort out what each build contains (config-wise)
 - Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
 - Now that pages are first class components, we need a way of separating them out on the index page
-- Sort out indentation of code snippets (See )
+- Sort out indentation of code snippets
 
 ### Considerations
 - There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
@@ -65,7 +63,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
 - http://eslint.org/ and https://www.npmjs.com/package/eslint-plugin-cross-browser-compatibility-check
 - Automated visual regression testing
-- Automated accessibility testing
 - Write up results of user testing against any components where this has been carried out
 - Find the sticky sidebar pattern and include it?
 - Any other gov uk patterns we'd like to include?
