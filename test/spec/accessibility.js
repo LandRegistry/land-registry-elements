@@ -15,11 +15,13 @@ describe('The pattern library page at', function() {
 
   this.timeout(30000);
 
+  // Notices and warnings are not *failures*, so we ignore them
   var levelsIgnore = [
     'notice',
     'warning'
   ];
 
+  // Specific URLs to ignore
   var urlIgnore = [
     '/components/elements/land-registry/leaflet-map/demo' // Ignore leafletJS page as the map is not accessible
   ];

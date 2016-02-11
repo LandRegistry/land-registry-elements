@@ -49,6 +49,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Do we really need to replicate the gov uk pattern demos? Maybe they should just be simplified versions of them, and link to the original for the advice - thereby avoiding maintenance for us
 - Note to self - make sure map gets printed in right column of summary page (As it does on the proto by virtue of a hack)
 - Make sure build can cope if you specify a build with a component excluded but another component then depends upon it
+- Colour contrast tests are failing on gov uk elements (Phase banner and highlight box). What do we do about this, if anything?
 
 ### Technical debt
 - The gov uk base template doesn't include the <main id="content" role="main"> element - would be nice to include this at our end so that we don't need to repeat it in every demo
