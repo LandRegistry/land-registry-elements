@@ -24,7 +24,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Make sure any pattern documentation is in README.md files and not in the demos
 
 ### Patterns to build
-- LeafletJS map?
 - 404, 403 etc error pages
 
 ### Govuk patterns to document
