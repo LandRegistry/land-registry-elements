@@ -1,5 +1,5 @@
 var components = require('../modules/components');
-var browserify = require('browserify');
+var browserify = require('browserify-incremental');
 var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
@@ -21,6 +21,8 @@ function compileJavaScript(config) {
           transform: [
             require('hoganify')
           ]
+        }, {
+          cacheFile: '.tmp/browserify-incremental.json'
         });
 
         // Build up our JS based on the dependency tree

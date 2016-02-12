@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "browserify": "^13.0.0",
+    "browserify-incremental": "^3.0.1",
     "browsernizr": "^2.0.1",
     "closest": "0.0.1",
     "copy": "^0.1.3",
