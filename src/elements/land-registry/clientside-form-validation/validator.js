@@ -2,6 +2,8 @@
 
 require('validate-js');
 var extend = require('extend');
+var domify = require('domify');
+var closest = require('closest');
 
 /**
  * Form validation
@@ -90,8 +92,7 @@ function Validator(element, config) {
     if (errors.length > 0) {
 
       // Create an error summary
-      errorSummary = document.createElement('div');
-      errorSummary.innerHTML = options.summaryTemplate.render(data);
+      errorSummary = domify(options.summaryTemplate.render(data));
       element.insertBefore(errorSummary, element.firstChild);
 
     }
@@ -103,6 +104,9 @@ function Validator(element, config) {
   function showIndividualFormErrors(errors) {
     // Remove any previous form element errors
     [].forEach.call(element.querySelectorAll('.error-message'), function(el) {
+      var formGroup = closest(el, '.form-group');
+      formGroup.classList.remove('error');
+
       el.parentNode.removeChild(el);
     });
 
@@ -110,7 +114,13 @@ function Validator(element, config) {
 
       // Flag each element that has an error
       errors.forEach(function(error) {
-        var target = element.querySelector(error.id);
+        var target = document.getElementById(error.id);
+
+        var message = domify(options.individualErrorTemplate.render(error));
+        target.parentNode.insertBefore(message, target.nextSibling);
+
+        var formGroup = closest(target, '.form-group');
+        formGroup.classList.add('error');
       })
 
     }
