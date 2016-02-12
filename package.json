@@ -24,6 +24,7 @@
     "node": "4.x"
   },
   "devDependencies": {
+    "errorhandler": "^1.4.3",
     "grunt": "^0.4.5",
     "grunt-contrib-watch": "^0.6.1",
     "jit-grunt": "^0.9.1",
@@ -46,6 +47,8 @@
     "govuk-elements-sass": "^1.1.1",
     "govuk_template_mustache": "^0.16.2",
     "handlebars": "^4.0.5",
+    "hogan.js": "^3.0.2",
+    "hoganify": "^0.2.0",
     "js-htmlencode": "^0.1.0",
     "js-yaml": "^3.5.2",
     "leaflet": "^0.7.7",
@@ -58,6 +61,7 @@
     "proj4leaflet": "^0.7.2",
     "promise-helpers": "^0.2.0",
     "rimraf": "^2.5.1",
+    "validate-js": "^2.0.1",
     "yfm": "^0.2.0"
   }
 }

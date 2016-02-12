@@ -1,0 +1,35 @@
+---
+title: Clientside form validation
+---
+<main id="content" role="main">
+    <h1 class="heading-xlarge">
+      <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+      {{component.name}}
+    </h1>
+
+    {{#markdown}}{{{component.readme}}}{{/markdown}}
+
+    {{#capture 'form'}}
+      <form method="GET" id="example_form" data-clientside-validation="example_form_validation">
+        <div class="form-group">
+          <label class="form-label" for="full-name">Full name</label>
+          <input class="form-control" type="text" id="full-name" name="full-name">
+        </div>
+
+        <input type="submit" class="button" value="Submit">
+      </form>
+
+      <script type="application/json" id="example_form_validation">
+        [{
+          "name": "full-name",
+          "display": "Full name",
+          "rules": "required"
+        }]
+      </script>
+    {{/capture}}
+
+    {{{form}}}
+
+    <pre class="language-markup"><code>{{#htmlencode}}{{{form}}}{{/htmlencode}}</code></pre>
+
+</main>

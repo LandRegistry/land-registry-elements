@@ -12,6 +12,9 @@ module.exports = function(app){
     })
       .then(function(directory) {
         res.tgz(directory, 'land-registry-elements.tar.gz', false);
+      })
+      .catch(function(er) {
+        console.error(er);
       });
   });
 }

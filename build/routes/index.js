@@ -60,7 +60,7 @@ module.exports = function(app){
 
       })
       .catch(function(er) {
-        console.log(er);
+        console.error(er);
 
         res.send(renderPage(hbs, {
           title: 'Index',

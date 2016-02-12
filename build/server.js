@@ -3,6 +3,10 @@ var fs = require('fs');
 var path = require('path');
 var express = require('express');
 var app = express();
+var errorhandler = require('errorhandler')
+
+// Error handler
+app.use(errorhandler());
 
 /**
  * Serve static files such as css, js, images

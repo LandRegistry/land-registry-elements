@@ -1,0 +1,15 @@
+<div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
+  {{#message}}
+    <h2 class="heading-medium error-summary-heading" id="error-summary-heading">{{message}}</h2>
+  {{/message}}
+
+  {{#description}}
+    <p>{{description}}</p>
+  {{/description}}
+
+  <ul class="error-summary-list">
+    {{#errors}}
+      <li><a href="#{{id}}">{{message}}</a></li>
+    {{/errors}}
+  </ul>
+</div>

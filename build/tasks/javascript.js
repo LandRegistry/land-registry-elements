@@ -16,7 +16,11 @@ function compileJavaScript(config) {
 
       return new Promise(function(resolve, reject) {
 
-        var b = browserify();
+        var b = browserify({
+          transform: [
+            require('hoganify')
+          ]
+        });
 
         // Build up our JS based on the dependency tree
         componentsTree.forEach(function(componentId) {
