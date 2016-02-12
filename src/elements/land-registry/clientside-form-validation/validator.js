@@ -60,6 +60,9 @@ function Validator(element, config) {
     // Set up form field keyup handlers
     delegate(element, '.form-control', 'keyup', keyup);
 
+    // Summary click handlers
+    delegate(element, '.error-summary-list a', 'click', summaryClick);
+
   }
 
   /**
@@ -67,7 +70,7 @@ function Validator(element, config) {
    */
   function validateForm() {
     var errors = validate(element, options.rules, {
-      fullMessages: true
+      fullMessages: false
     });
 
     var errorData = [];
@@ -77,7 +80,7 @@ function Validator(element, config) {
       if(errors.hasOwnProperty(key)) {
         errors[key].forEach(function(error) {
           errorData.push({
-            'id': key,
+            'name': key,
             'message': error
           });
         });
@@ -94,7 +97,7 @@ function Validator(element, config) {
 
     var errorData = validateForm();
 
-    if(errorData) {
+    if(errorData.length > 0) {
       e.preventDefault();
     }
 
@@ -158,36 +161,50 @@ function Validator(element, config) {
   function showIndividualFormErrors(errors, restrictTo) {
 
     // Remove any previous form element errors
-    [].forEach.call(element.querySelectorAll('.error-message'), function(el) {
+    [].forEach.call(element.querySelectorAll('.form-group'), function(formGroup) {
 
-      if(restrictTo && el.previousSibling !== restrictTo) {
+      if(restrictTo && formGroup.querySelector('input') !== restrictTo) {
         return;
       }
 
-      var formGroup = closest(el, '.form-group');
+      // var formGroup = closest(el, '.form-group');
       formGroup.classList.remove('error');
 
-      el.parentNode.removeChild(el);
+      var errorMessage = formGroup.querySelector('.error-message');
+      console.log(errorMessage);
+      if(errorMessage) {
+        errorMessage.parentNode.removeChild();
+      }
     });
 
     if (errors.length > 0) {
 
       // Flag each element that has an error
       errors.forEach(function(error) {
-        var target = document.getElementById(error.id);
+        var target = document.querySelectorAll('[name="' + error.name + '"]')[0];
 
         if(restrictTo && target !== restrictTo) {
           return;
         }
 
         var message = domify(options.individualErrorTemplate.render(error));
-        target.parentNode.insertBefore(message, target.nextSibling);
+        closest(target, '.form-group').appendChild(message);
 
         var formGroup = closest(target, '.form-group');
         formGroup.classList.add('error');
       })
 
     }
+  }
+
+  /**
+   * Click handler for summary items
+   */
+  function summaryClick(e) {
+    e.preventDefault();
+
+    var target = document.querySelectorAll('[name="' + e.delegateTarget.getAttribute('data-target') + '"]')[0];
+    target.focus();
   }
 
   /**

@@ -39,6 +39,8 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Sort out indentation of code snippets
 
 ### Considerations
+- Should the clientside validation summary be rendered always, even on individual field errors and just visually hidden?
+- Clientside form errors should be above
 - There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
 - Browser support?
 - Use of jQuery?
