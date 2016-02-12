@@ -27,7 +27,7 @@ describe('The pattern library page at', function() {
   ];
 
   var codeIgnore = [
-    'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail'  // Ignore colour contrast fails
+    // 'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail'  // Ignore colour contrast fails
   ];
 
   urls.forEach(function(url) {
