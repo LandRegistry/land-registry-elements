@@ -32,7 +32,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Summary/detail
 - .notice panel
 
-
 ### Issues
 - Investigate why grunt serve's sass task doesnt work properly
 - Sort out what each build contains (config-wise)
@@ -78,6 +77,5 @@ A tarball of built out assets can be downloaded from [http://land-registry-eleme
 (Note: This may take a moment to spin up if the heroku instance has gone to sleep)
 
 ## Contributing to this repository
-
 
 Guidelines to follow
