@@ -3,6 +3,7 @@ var ncp = require('ncp').ncp;
 var components = require('../modules/components');
 
 function copy(from, to) {
+  console.time('Copy from ' + from + ' to ' + to);
   return new Promise(function(resolve, reject) {
     ncp(from, to, function(err, files) {
       if(err) {
@@ -11,6 +12,7 @@ function copy(from, to) {
       }
 
       resolve(files);
+      console.timeEnd('Copy from ' + from + ' to ' + to);
     });
   });
 }

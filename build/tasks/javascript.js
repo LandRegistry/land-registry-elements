@@ -10,6 +10,7 @@ var mkdirp = require('mkdirp');
  *                   when the JS has been built
  */
 function compileJavaScript(config) {
+  console.time('Compile JavaScript');
 
   return components.getComponentsTree(config)
     .then(function(componentsTree) {
@@ -36,6 +37,7 @@ function compileJavaScript(config) {
 
         stream.on('close', function () {
           resolve('dist/assets/javascripts/landregistry.js');
+          console.timeEnd('Compile JavaScript');
         });
 
         stream.on('error', function (e) {

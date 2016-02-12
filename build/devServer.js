@@ -1,12 +1,2 @@
-var build = require('./build');
+var build = require('./doBuild');
 require('./server');
-
-build({
-    components: true
-  })
-  .then(function(directory) {
-    console.log('Assets built to:', directory);
-  })
-  .catch(function(err) {
-    console.log(err);
-  });

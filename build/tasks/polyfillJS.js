@@ -4,6 +4,8 @@ var polyfillService = require('polyfill-service');
 var fs = require('fs');
 
 function polyfillJS() {
+  console.time('Polyfill JavaScript');
+
   return new Promise(function(resolve, reject) {
     polyfillService
       .getPolyfillString({
@@ -24,6 +26,7 @@ function polyfillJS() {
           }
 
           resolve();
+          console.timeEnd('Polyfill JavaScript');
         });
 
       });

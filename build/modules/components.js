@@ -64,7 +64,6 @@ function getComponent(componentPath) {
  */
 function getComponents(config) {
 
-
   if(typeof config === 'undefined') {
     config = {
       components: true
