@@ -33,7 +33,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - .notice panel
 
 ### Issues
-- Investigate why grunt serve's sass task doesnt work properly
 - Sort out what each build contains (config-wise)
 - Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
 - Now that pages are first class components, we need a way of separating them out on the index page
@@ -79,3 +78,4 @@ A tarball of built out assets can be downloaded from [http://land-registry-eleme
 ## Contributing to this repository
 
 Guidelines to follow
+Document use of nodemon for development

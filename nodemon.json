@@ -1,0 +1,10 @@
+{
+  "verbose": true,
+  "ignore": [
+    "test",
+    "dist",
+    ".tmp",
+    "node_modules"
+  ],
+  "ext": "js scss hbs hogan"
+}
