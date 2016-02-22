@@ -20,7 +20,30 @@
   <div class="grid-row">
     <div class="column-two-thirds tablet-column-two-thirds">
       <hr class="spacing-top-flush">
-      asd
+
+      <dl class="definition-tabular">
+
+        {{#with propertyAddress}}
+          <dt>Address</dt>
+          <dd class="bold-medium">
+            {{> elements/land-registry/address }}
+          </dd>
+        {{/with}}
+
+        {{#with ownerAddress}}
+          <dt>Owner</dt>
+          <dd>
+            {{> elements/land-registry/address }}
+          </dd>
+        {{/with}}
+
+        {{#with tenureType}}
+          <dt>Tenure type</dt>
+          <dd class="bold-small">{{this}}</dd>
+        {{/with}}
+
+      </dl>
+
     </div>
 
     <div class="column-one-third tablet-column-one-third">
