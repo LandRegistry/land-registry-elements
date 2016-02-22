@@ -31,7 +31,6 @@ describe('The pattern library page at', function() {
 
   // Specific URLs to ignore
   var urlIgnore = [
-    '/components/elements/land-registry/leaflet-map/demo' // Ignore leafletJS page as the map is not accessible
   ];
 
   urls.forEach(function(url) {
@@ -53,6 +52,12 @@ describe('The pattern library page at', function() {
         var output = '';
 
         results.forEach(function(result) {
+
+          // Manually suppress leafletjs related errors
+          if(result.context.indexOf('leaflet') !== -1) {
+            return;
+          }
+
           output += os.EOL + os.EOL + result.code + os.EOL + result.message + os.EOL + (result.context ? result.context + os.EOL : '')  + result.selector
         });
 
