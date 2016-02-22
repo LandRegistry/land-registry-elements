@@ -28,12 +28,12 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Make sure any pattern documentation is in README.md files and not in the demos
 - Split out gov uk JS and include it into the core component with browserify?
 - Test suite for the clientside validation checking that it matches the spec set out by gov uk
+- Convert to BEM?
 
 ### Patterns to build
 - 404, 403 etc error pages
 
 ### Govuk patterns to document
-- .notice panel
 
 ### Issues
 - Sort out what each build contains (config-wise)

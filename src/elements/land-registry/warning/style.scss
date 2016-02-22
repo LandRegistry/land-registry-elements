@@ -1,0 +1,14 @@
+.warning {
+  background-color:#fff2d3;
+  padding: $gutter-two-thirds;
+
+  .media-body {
+    > :first-child {
+      margin-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,8 +1,8 @@
-name: Vertical spacing
+name: Warning panels
 categories:
   primary: Land Registry
   secondary: Core
 
 dependencies:
-  - elements/govuk/core
   - elements/govuk/typography
+  - elements/land-registry/media
