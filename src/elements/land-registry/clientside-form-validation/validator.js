@@ -12,7 +12,6 @@ var delegate = require('delegate');
  * add a 5px red left border to the field with the error
  * show an error summary at the top of the page
  * move keyboard focus to the start of the summary
- * to move keyboard focus, put tabindex="-1" on the containing div and use obj.focus()
  * indicate to screenreaders that the summary represents a collection of information
  * add the ARIA role="group" to the containing div
  * use a heading at the top of the summary
@@ -31,7 +30,7 @@ function Validator(element, config) {
     message: 'The following errors were found:',
     description: false,
 
-      // Note: Pre-compiled with hoganify browserify transform: @see https://www.npmjs.com/package/hoganify
+    // Note: Pre-compiled with hoganify browserify transform: @see https://www.npmjs.com/package/hoganify
     summaryTemplate: require('./clientside-templates/summary.hogan'),
     individualErrorTemplate: require('./clientside-templates/individualError.hogan'),
 
@@ -153,6 +152,9 @@ function Validator(element, config) {
       errorSummary = domify(options.summaryTemplate.render(data));
       element.insertBefore(errorSummary, element.firstChild);
 
+      // Place focus on the summary
+      errorSummary.focus();
+
     }
   }
 
@@ -164,12 +166,15 @@ function Validator(element, config) {
     // Remove any previous form element errors
     [].forEach.call(element.querySelectorAll('.form-group'), function(formGroup) {
 
-      if(restrictTo && formGroup.querySelector('input') !== restrictTo) {
+      var target = formGroup.querySelector('input');
+
+      if(restrictTo && target !== restrictTo) {
         return;
       }
 
-      // var formGroup = closest(el, '.form-group');
       formGroup.classList.remove('error');
+
+      target.removeAttribute('aria-describedby');
 
       var errorMessage = formGroup.querySelector('.error-message');
 
@@ -193,6 +198,9 @@ function Validator(element, config) {
 
         var formGroup = closest(target, '.form-group');
         formGroup.classList.add('error');
+
+        // Link the form field to the error message with an aria attribute
+        target.setAttribute('aria-describedby', 'error-message-' + error.name);
       })
 
     }
