@@ -18,13 +18,14 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Manual cross browser testing
 - Concatenate stylesheet output?
 - Migrate to nunjucks
-- Cache component generation
 - Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
 - per component tests in each component's folder
 - Browsersync
 
 ### Misc todos
 - Make sure any pattern documentation is in README.md files and not in the demos
+- Split out gov uk JS and include it into the core component with browserify?
+- Test suite for the clientside validation checking that it matches the spec set out by gov uk
 
 ### Patterns to build
 - 404, 403 etc error pages

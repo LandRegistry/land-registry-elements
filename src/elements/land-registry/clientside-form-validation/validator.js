@@ -8,6 +8,7 @@ var delegate = require('delegate');
 
 /**
  * Form validation
+ * Outline spec from govuk
  * add a 5px red left border to the field with the error
  * show an error summary at the top of the page
  * move keyboard focus to the start of the summary
@@ -171,9 +172,9 @@ function Validator(element, config) {
       formGroup.classList.remove('error');
 
       var errorMessage = formGroup.querySelector('.error-message');
-      console.log(errorMessage);
+
       if(errorMessage) {
-        errorMessage.parentNode.removeChild();
+        errorMessage.parentNode.removeChild(errorMessage);
       }
     });
 

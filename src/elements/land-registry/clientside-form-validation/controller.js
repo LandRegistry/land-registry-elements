@@ -23,7 +23,9 @@ for (var i = 0; i < forms.length; i++) {
   rules = JSON.parse(configElement.innerText);
 
   instance = new Validator(element, {
-    'rules': rules
+    'rules': rules,
+    'showSummary': !element.hasAttribute('data-clientside-validation-no-summary')
   });
+
   instance.create();
 }
