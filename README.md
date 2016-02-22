@@ -16,6 +16,8 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Build out any new elements from the DRV prototype
 - Assemble example pages for the pages in the DRV prototype
 - Manual cross browser testing
+- Minify JS output
+  - browserify-incremental necessitates the use of full paths in the built output - really we need to suppress this for all but the local build
 - Concatenate stylesheet output?
 - Migrate to nunjucks
 - Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
