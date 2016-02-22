@@ -1,0 +1,48 @@
+---
+title: Consumer rights act agreement
+---
+<main id="content" role="main">
+  <h1 class="heading-xlarge">
+    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+    {{component.name}}
+  </h1>
+
+  {{#capture 'form'}}
+    <form method="GET" id="cra_form" data-clientside-validation="cra_form_validation" data-clientside-validation-no-summary>
+
+      <div class="form-group">
+        <label class="block-label" for="terms">
+          <input id="terms" name="terms" type="checkbox" value="agree">
+          I agree that you will provide the summary as soon as I've paid.<br>
+          I accept that I will lose my right to cancel the contract as soon as the summary is displayed.
+        </label>
+      </div>
+
+      <input type="submit" class="button" value="Buy title summary">
+
+      <p class="font-xsmall spacing-top-third">for £3 inc VAT</p>
+    </form>
+
+    <script type="application/json" id="cra_form_validation">
+      {
+        "terms": {
+          "presence": {
+            "message": "You need to agree to receive the summary right away and that you’ll lose your right to cancel"
+          }
+        }
+      }
+    </script>
+  {{/capture}}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      {{{form}}}
+    </div>
+  </div>
+
+  <hr>
+
+  <pre class="language-markup"><code>{{#htmlencode}}{{{form}}}{{/htmlencode}}</code></pre>
+
+
+</main>

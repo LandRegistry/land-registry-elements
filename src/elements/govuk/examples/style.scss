@@ -323,3 +323,11 @@ pre.language-markup code {
   overflow: auto;
   font-size: 14px;
 }
+
+p {
+  code {
+    font-size: 80%;
+    background-color: #eee;
+    padding: 2px;
+  }
+}

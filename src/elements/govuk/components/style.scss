@@ -1,1 +1,7 @@
 @import "govuk_elements/components";
+
+// The gov uk definition of this fails colour contrast at AA, so it has been
+// darkened here
+.govuk-box-highlight {
+  background: darken($turquoise, 7%);
+}

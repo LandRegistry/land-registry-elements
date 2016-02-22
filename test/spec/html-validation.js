@@ -32,11 +32,6 @@ describe('The pattern library page at', function() {
                   return;
                 }
 
-                // Exclude any warnings that we are ignoring
-                if(ignores.indexOf(message.message) !== -1) {
-                  return;
-                }
-
                 output += '\nLine: ' + message.lastLine + ' Col: ' + message.firstColumn + ' => ' + message.message;
               });
 

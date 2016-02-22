@@ -67,46 +67,49 @@ var govukElementsImporter = function(url, prev, done) {
  *                   when the SASS has been built
  */
 function compileSass(config) {
+  console.time('Compile SASS');
+
   return components.getComponentsTree(config)
     .then(function(componentsTree) {
 
-      return new Promise(function(resolve, reject) {
+      var promises = [];
 
-        // Build up our sass imports based on the dependency tree
-        var sassContents = [];
-        componentsTree.forEach(function(componentId) {
+      // Build up our sass imports based on the dependency tree
+      var sassContents = [];
+      componentsTree.forEach(function(componentId) {
 
-          // Check to see if the component exposes a stylesheet
-          if(fs.existsSync(path.join('src', componentId, 'style.scss'))) {
-            sassContents.push('@import "src/' + componentId + '/style.scss";');
-          }
-        });
+        // Check to see if the component exposes a stylesheet
+        if(fs.existsSync(path.join('src', componentId, 'style.scss'))) {
+          sassContents.push('@import "src/' + componentId + '/style.scss";');
+        }
+      });
 
-        // Turn the lines into a string suitable for passing to node-sass
-        sassContents = sassContents.join('\n');
+      // Turn the lines into a string suitable for passing to node-sass
+      sassContents = sassContents.join('\n');
 
-        // Write out separate versions of the stylesheet for the various IEs
-        // @TODO: Does this really live here? Could we have it in files on disk in a more "traditional" way? Is there too much magic here?
-        var stylesheets = [
-          {
-            'filename': 'elements-ie6.css',
-            'base': '$is-ie: true; $ie-version: 6; $mobile-ie6: false;',
-          },
-          {
-            'filename': 'elements-ie7.css',
-            'base': '$is-ie: true; $ie-version: 7;',
-          },
-          {
-            'filename': 'elements-ie8.css',
-            'base': '$is-ie: true; $ie-version: 8;',
-          },
-          {
-            'filename': 'elements.css',
-            'base': '',
-          }
-        ];
+      // Write out separate versions of the stylesheet for the various IEs
+      // @TODO: Does this really live here? Could we have it in files on disk in a more "traditional" way? Is there too much magic here?
+      var stylesheets = [
+        {
+          'filename': 'elements-ie6.css',
+          'base': '$is-ie: true; $ie-version: 6; $mobile-ie6: false;',
+        },
+        {
+          'filename': 'elements-ie7.css',
+          'base': '$is-ie: true; $ie-version: 7;',
+        },
+        {
+          'filename': 'elements-ie8.css',
+          'base': '$is-ie: true; $ie-version: 8;',
+        },
+        {
+          'filename': 'elements.css',
+          'base': '',
+        }
+      ];
 
-        stylesheets.forEach(function(stylesheet) {
+      stylesheets.forEach(function(stylesheet) {
+        promises.push(new Promise(function(resolve, reject) {
 
           // Compile
           sass.render({
@@ -138,7 +141,11 @@ function compileSass(config) {
               });
             });
           });
-        });
+        }));
+      });
+
+      return Promise.all(promises).then(function() {
+        console.timeEnd('Compile SASS');
       });
     });
 }

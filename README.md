@@ -16,28 +16,34 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Build out any new elements from the DRV prototype
 - Assemble example pages for the pages in the DRV prototype
 - Manual cross browser testing
+- Minify JS output
+  - browserify-incremental necessitates the use of full paths in the built output - really we need to suppress this for all but the local build
 - Concatenate stylesheet output?
 - Migrate to nunjucks
-- Cache component generation
 - Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
+- per component tests in each component's folder
+- Browsersync
 
 ### Misc todos
 - Make sure any pattern documentation is in README.md files and not in the demos
+- Split out gov uk JS and include it into the core component with browserify?
+- Test suite for the clientside validation checking that it matches the spec set out by gov uk
+- Convert to BEM?
 
 ### Patterns to build
 - 404, 403 etc error pages
 
 ### Govuk patterns to document
 
-
 ### Issues
-- Investigate why grunt serve's sass task doesnt work properly
 - Sort out what each build contains (config-wise)
 - Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
 - Now that pages are first class components, we need a way of separating them out on the index page
 - Sort out indentation of code snippets
 
 ### Considerations
+- Should the clientside validation summary be rendered always, even on individual field errors and just visually hidden?
+- Clientside form errors should be above
 - There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
 - Browser support?
 - Use of jQuery?
@@ -76,5 +82,5 @@ A tarball of built out assets can be downloaded from [http://land-registry-eleme
 
 ## Contributing to this repository
 
-
 Guidelines to follow
+Document use of nodemon for development

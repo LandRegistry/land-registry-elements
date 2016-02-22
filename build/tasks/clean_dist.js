@@ -2,6 +2,8 @@ var rimraf = require('rimraf');
 var mkdirp = require('mkdirp');
 
 var clean = function() {
+  console.time('Clean dist');
+
   return new Promise(function(resolve, reject) {
     rimraf('dist', function(err) {
       if(err) {
@@ -16,6 +18,7 @@ var clean = function() {
         }
 
         resolve();
+        console.timeEnd('Clean dist');
       });
 
     });

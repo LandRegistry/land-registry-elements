@@ -10,24 +10,28 @@ var os = require('os')
 describe('The pattern library page at', function() {
   var urls = JSON.parse(fs.readFileSync('.tmp/testURLs.json', 'utf8'));
   var test = pa11y({
-    allowedStandards: ['WCAG2AA', 'Section508']
+    // Notices are not *failures*, so we ignore them
+    ignore: [
+      'notice',
+      // 'warning'
+      // Rather than ignoring all warnings, ignore specific ones as some of them are still useful
+      'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.BgImage',
+      'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage',
+      'WCAG2AA.Principle1.Guideline1_1.1_1_1.H67.2',
+      'WCAG2AA.Principle1.Guideline1_4.1_4_3_F24.F24.BGColour',
+      'WCAG2AA.Principle1.Guideline1_3.1_3_1.H49.I',
+      'WCAG2AA.Principle1.Guideline1_3.1_3_1.H39.3.NoCaption',
+      'WCAG2AA.Principle1.Guideline1_3.1_3_1.H73.3.NoSummary',
+      'WCAG2AA.Principle1.Guideline1_3.1_3_1.H42',
+      'WCAG2AA.Principle1.Guideline1_3.1_3_1.H49.B'
+    ]
   });
 
   this.timeout(30000);
 
-  // Notices and warnings are not *failures*, so we ignore them
-  var levelsIgnore = [
-    'notice',
-    'warning'
-  ];
-
   // Specific URLs to ignore
   var urlIgnore = [
     '/components/elements/land-registry/leaflet-map/demo' // Ignore leafletJS page as the map is not accessible
-  ];
-
-  var codeIgnore = [
-    'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail'  // Ignore colour contrast fails
   ];
 
   urls.forEach(function(url) {
@@ -49,16 +53,7 @@ describe('The pattern library page at', function() {
         var output = '';
 
         results.forEach(function(result) {
-
-          if(levelsIgnore.indexOf(result.type) !== -1) {
-            return;
-          }
-
-          if(codeIgnore.indexOf(result.code) !== -1) {
-            return;
-          }
-
-          output += os.EOL + os.EOL + result.code + os.EOL + result.message + os.EOL + result.context + os.EOL + result.selector
+          output += os.EOL + os.EOL + result.code + os.EOL + result.message + os.EOL + (result.context ? result.context + os.EOL : '')  + result.selector
         });
 
         output.should.equal('', 'Accessibility errors found');
