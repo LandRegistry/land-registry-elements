@@ -1,8 +1,11 @@
 .language-switcher {
   @include core-16;
+  text-align: right;
+  margin-top: $gutter-half;
 
   form {
     display: flex;
+    justify-content: flex-end;
   }
 }
 

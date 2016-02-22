@@ -1,3 +1,139 @@
 <main id="content" role="main">
-  <p>{{title}}</p>
+  {{> elements/govuk/phase-banner }}
+
+  <div class="grid-row printhidden">
+    <div class="column-two-thirds">
+      {{#with breadcrumbs }}
+        {{> elements/govuk/breadcrumbs }}
+      {{/with}}
+    </div>
+
+    <div class="column-third">
+      {{> elements/land-registry/language-switcher }}
+    </div>
+  </div>
+
+  <h1 class="heading-large spacing-top-single">Summary of title {{title_number}}</h1>
+
+  <p class="font-xsmall">This title was last changed on <time>{{date}}</time></p>
+
+  <div class="grid-row">
+    <div class="column-two-thirds tablet-column-two-thirds">
+      <hr class="spacing-top-flush">
+      asd
+    </div>
+
+    <div class="column-one-third tablet-column-one-third">
+      <div class="map polygon" id="map"></div>
+    </div>
+  </div>
+
 </main>
+
+<script>
+  window.onload = function() {
+
+    var indexData = {
+      "crs": {
+        "properties": {
+          "name": "urn:ogc:def:crs:EPSG::27700"
+        },
+        "type": "name"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [441187.5, 112344.0],
+            [441186.0, 112354.0],
+            [441193.0, 112356.5],
+            [441194.5, 112346.5]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "colour": 25,
+        "feature_id": 4019,
+        "graphic_type": "Bordered Polygon",
+        "render_attributes": {
+          "border_colour": 25,
+          "border_width": 0,
+          "exterior_edge_colour": 1,
+          "exterior_edge_thickness": 2,
+          "exterior_edge_thickness_units": "Pixels",
+          "fill_colour": 25,
+          "fill_style": 9,
+          "render_level": "0"
+        },
+        "width": 0
+      },
+      "type": "Feature"
+    };
+
+      // Define coordinate system using PROJ4 standards
+    var projection_name = 'EPSG:27700'
+    // from: http://epsg.io/27700-5622 - TODO: research which transformation we should use
+    var projection_def = '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=370.396,-108.938,435.682,0,0,0,0 +units=m +no_defs'
+
+    new L.Proj.CRS(projection_name, projection_def,
+      {
+        resolutions: [2500, 1000, 500, 200, 100, 50, 25, 10, 5, 2.5, 1],
+        bounds: L.bounds([1300000,0],[700000,0])
+      }
+    );
+
+    // set up control and options
+    var options = {
+      continuousWorld: true,
+      worldCopyJump: false,
+      minZoom: 15,
+      maxZoom: 19,
+      // controls
+      dragging: false,
+      touchZoom: false,
+      doubleClickZoom: false,
+      scrollWheelZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      tap: false,
+      zoomControl: true,
+      attributionControl: false
+    };
+
+    // set up the map
+    var map = new L.Map('map', options);
+
+    // create the tile layer with correct attribution
+    var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osm = new L.TileLayer(osmUrl);
+    map.addLayer(osm);
+
+    //Add a scale control to the map
+    L.control.scale().addTo(map);
+
+    //Index stlye
+    var indexStyle = {
+      fillcolor: 'blue',
+      fillOpacity: document.getElementById('map').classList.contains('polygon') ? 0.5 : 0,
+      opacity: 0
+    };
+
+    //Create the index layer
+    var indexGeoJson = L.Proj.geoJson(indexData, {
+      style: indexStyle
+    });
+
+    indexGeoJson.addTo(map);
+
+    //Center map view on geojson polygon
+    var bounds = indexGeoJson.getBounds();
+
+    if(!document.getElementById('map').classList.contains('polygon')) {
+      L.marker(bounds.getCenter()).addTo(map);
+    }
+
+    map.fitBounds(bounds, {maxZoom: 18, animate: false});
+
+  }
+
+</script>

@@ -20,6 +20,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
   - browserify-incremental necessitates the use of full paths in the built output - really we need to suppress this for all but the local build
 - Concatenate stylesheet output?
 - Migrate to nunjucks
+- Get basics like breadcrumbs into the parent template
 - Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
 - per component tests in each component's folder
 - Browsersync
@@ -40,6 +41,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
 - Now that pages are first class components, we need a way of separating them out on the index page
 - Sort out indentation of code snippets
+- When using form validation with no error summaries such as the consumer rights act tickbox - where does the keyboard focus go to?
 
 ### Considerations
 - Should the clientside validation summary be rendered always, even on individual field errors and just visually hidden?
