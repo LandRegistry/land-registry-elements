@@ -11,7 +11,7 @@ var client = webdriverio.remote({
   }
 });
 
-describe.only('Clientside validation', function() {
+describe('Clientside validation', function() {
 
   this.timeout(30000);
 
