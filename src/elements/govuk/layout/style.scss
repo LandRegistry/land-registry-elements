@@ -40,3 +40,10 @@
 .tablet-column-two-thirds {
   @include grid-column(2/3, 500px);
 }
+
+// Inverted column direction
+.column-flip {
+  > [class*="column-"] {
+    float: right;
+  }
+}

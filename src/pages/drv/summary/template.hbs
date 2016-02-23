@@ -17,7 +17,12 @@
 
   <p class="font-xsmall">This title was last changed on <time datetime="{{datetime}}">{{date}}</time></p>
 
-  <div class="grid-row">
+  <div class="grid-row column-flip">
+    <div class="column-one-third tablet-column-one-third">
+      <div class="map polygon" id="map"></div>
+      <p class="font-xsmall">This map shows the property’s rough extent and location, <strong class="bold">not legal boundaries</strong>.</p>
+    </div>
+
     <div class="column-two-thirds tablet-column-two-thirds">
       <hr class="spacing-top-flush">
 
@@ -80,10 +85,6 @@
 
     </div>
 
-    <div class="column-one-third tablet-column-one-third">
-      <div class="map polygon" id="map"></div>
-      <p class="font-xsmall">This map shows the property’s rough extent and location, <strong class="bold">not legal boundaries</strong>.</p>
-    </div>
   </div>
 
 </main>
