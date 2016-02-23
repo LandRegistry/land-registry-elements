@@ -2,8 +2,13 @@
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
+  page-break-before: always;
 
   @include media(tablet) {
+    max-width: none;
+  }
+
+  @media print {
     max-width: none;
   }
 }
