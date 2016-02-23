@@ -15,16 +15,15 @@
 
   <h1 class="heading-large spacing-top-single">Summary of title {{title_number}}</h1>
 
-  <p class="font-xsmall">This title was last changed on <time datetime="{{datetime}}">{{date}}</time></p>
+  <p>This title was last changed on <time datetime="{{datetime}}">{{date}}</time></p>
 
-  <div class="grid-row column-flip">
+  <div class="grid-row column-flip spacing-top-single">
     <div class="column-one-third tablet-column-one-third">
       <div class="map polygon" id="map"></div>
       <p class="font-xsmall">This map shows the property’s rough extent and location, <strong class="bold">not legal boundaries</strong>.</p>
     </div>
 
     <div class="column-two-thirds tablet-column-two-thirds">
-      <hr class="spacing-top-flush">
 
       <dl class="definition-tabular">
 
@@ -35,8 +34,9 @@
           </dd>
         {{/with}}
 
-        {{#with ownerAddress}}
-          <dt>Owner</dt>
+        <dt>{{#tenure_freehold}}Owner{{/tenure_freehold}}{{#tenure_leasehold}}Leaseholder{{/tenure_leasehold}}</dt>
+
+        {{#with address}}
           <dd>
             {{> elements/land-registry/address }}
           </dd>
@@ -46,6 +46,11 @@
           <dt>Tenure type</dt>
           <dd class="bold-small">{{this}}</dd>
         {{/with}}
+
+        {{#lease_term}}
+          <dt>Lease length</dt>
+          <dd class="bold-small">{{this}}</dd>
+        {{/lease_term}}
 
       </dl>
 
