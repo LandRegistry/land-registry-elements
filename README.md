@@ -8,7 +8,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ## Roadmap:
 
 ### MVP
-- Add in the rest of the base gov uk elements and ensure parity with the govuk version
+- Automated visual regression testing
 - Configurable build
   - Exclude examples css from the relevant builds
   - Download configurable build via GET parameters
@@ -24,8 +24,8 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
 - per component tests in each component's folder
 - Browsersync
-- Automated visual regression testing
 - Split out LeafletJS in the JS build?
+- Favicons / apple touch icons etc
 
 ### Misc todos
 - Make sure any pattern documentation is in README.md files and not in the demos
