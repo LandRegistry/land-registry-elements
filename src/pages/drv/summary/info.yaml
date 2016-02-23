@@ -2,3 +2,18 @@ name: Details
 categories:
   primary: Land Registry
   secondary: DRV beta pages
+
+dependencies:
+  - elements/govuk/breadcrumbs
+  - elements/govuk/details
+  - elements/govuk/layout
+  - elements/govuk/phase-banner
+  - elements/land-registry/address
+  - elements/land-registry/clientside-form-validation
+  - elements/land-registry/definition-tabular
+  - elements/land-registry/language-switcher
+  - elements/land-registry/leaflet-map
+  - elements/land-registry/print-button
+  - elements/land-registry/vat-receipt
+  - elements/land-registry/vertical-spacing
+  - elements/land-registry/warning
