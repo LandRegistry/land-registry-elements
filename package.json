@@ -29,6 +29,7 @@
     "mocha": "^2.4.5",
     "pa11y": "^3.5.1",
     "sanitize-filename": "^1.5.3",
+    "selenium-standalone": "^4.9.1",
     "should": "^8.2.1",
     "superagent": "^1.7.2",
     "supertest": "^1.1.0",
