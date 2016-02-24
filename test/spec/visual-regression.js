@@ -50,9 +50,7 @@ describe('The pattern library page at', function() {
       });
 
       var gmOptions = {
-        file: 'test/fixtures/visual-regression/diff-renderings/' + fileName + '.png',
-        highlightColor: 'yellow',
-        tolerance: 0
+        file: 'test/fixtures/visual-regression/diff-renderings/' + fileName + '.png'
       };
 
       file.on('finish', function() {
