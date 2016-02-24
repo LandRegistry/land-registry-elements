@@ -1,0 +1,27 @@
+---
+title: Search form
+variants:
+  -
+    label: Enter a postcode
+  -
+    label: Search results for
+    value: TR12 4PQ
+---
+<main id="content" role="main">
+  <h1 class="heading-xlarge">
+    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+    {{component.name}}
+  </h1>
+
+  {{#each variants}}
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        {{> elements/land-registry/search-form }}
+      </div>
+    </div>
+
+    <pre class="language-markup"><code>{{#htmlencode}}{{> elements/land-registry/search-form }}{{/htmlencode}}</code></pre>
+
+    <br><hr><br>
+  {{/each}}
+</main>
