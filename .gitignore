@@ -37,5 +37,5 @@ node_modules
 /.tmp
 
 # Visual regression test images
-visual-regression/diff-renderings
-visual-regression/test-renderings
+test/fixtures/visual-regression/diff-renderings
+test/fixtures/visual-regression/test-renderings

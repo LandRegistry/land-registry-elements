@@ -7,7 +7,7 @@ var url = require('url');
 
 require('../server');
 
-mkdirp.sync('visual-regression/reference-renderings');
+mkdirp.sync('test/fixtures/visual-regression/reference-renderings');
 
 var options = {
   renderDelay: 1000,
@@ -33,7 +33,7 @@ require('./testURLs')
       promises.push(new Promise(function(resolve, reject) {
 
         var renderStream = webshot(componentUrl, options);
-        var file = fs.createWriteStream('visual-regression/reference-renderings/' + fileName + '.png', {encoding: 'binary'});
+        var file = fs.createWriteStream('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png', {encoding: 'binary'});
 
         renderStream.on('data', function(data) {
           file.write(data.toString('binary'), 'binary');

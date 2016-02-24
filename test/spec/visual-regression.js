@@ -18,8 +18,8 @@ var options = {
   }
 };
 
-mkdirp.sync('visual-regression/test-renderings');
-mkdirp.sync('visual-regression/diff-renderings');
+mkdirp.sync('test/fixtures/visual-regression/test-renderings');
+mkdirp.sync('test/fixtures/visual-regression/diff-renderings');
 
 /**
  * Visual regression checks
@@ -27,7 +27,7 @@ mkdirp.sync('visual-regression/diff-renderings');
 describe('The pattern library page at', function() {
   var urls = JSON.parse(fs.readFileSync('.tmp/testURLs.json', 'utf8'));
 
-  this.timeout(5000);
+  this.timeout(30000);
 
   urls.forEach(function(componentUrl) {
 
@@ -38,8 +38,8 @@ describe('The pattern library page at', function() {
       fileName = sanitize(fileName);
 
       var renderStream = webshot(componentUrl, options);
-      var file = fs.createWriteStream('visual-regression/test-renderings/' + fileName + '.png', {encoding: 'binary'});
-      var referenceRendering = fs.readFileSync('visual-regression/reference-renderings/' + fileName + '.png');
+      var file = fs.createWriteStream('test/fixtures/visual-regression/test-renderings/' + fileName + '.png', {encoding: 'binary'});
+      var referenceRendering = fs.readFileSync('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png');
 
       renderStream.on('data', function(data) {
         file.write(data.toString('binary'), 'binary');
@@ -51,9 +51,9 @@ describe('The pattern library page at', function() {
 
       file.on('finish', function() {
         imageDiff({
-          actualImage: path.resolve(__dirname, '../../visual-regression/test-renderings/' + fileName + '.png'),
-          expectedImage: path.resolve(__dirname, '../../visual-regression/reference-renderings/' + fileName + '.png'),
-          diffImage: path.resolve(__dirname, '../../visual-regression/diff-renderings/' + fileName + '.png')
+          actualImage: path.resolve(__dirname, '../../test/fixtures/visual-regression/test-renderings/' + fileName + '.png'),
+          expectedImage: path.resolve(__dirname, '../../test/fixtures/visual-regression/reference-renderings/' + fileName + '.png'),
+          diffImage: path.resolve(__dirname, '../../test/fixtures/visual-regression/diff-renderings/' + fileName + '.png')
         }, function (err, imagesAreSame) {
           if(err) console.error(err);
           imagesAreSame.should.be.true();
