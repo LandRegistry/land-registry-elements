@@ -43,13 +43,6 @@ describe('Clientside validation', function() {
       .click('#submit')
       .element('.error-summary')
       .call(done);
-
-      // .screenshot()
-      // .then(function(data) {
-      //   var binaryData = new Buffer(data.value, 'base64').toString('binary');
-      //   fs.writeFileSync(path.join(process.cwd(), '/.tmp/screenshot.png'), binaryData, 'binary');
-      // })
-
   });
 
   after(function(done) {

@@ -5,7 +5,7 @@ var webshot = require('webshot');
 var sanitize = require('sanitize-filename');
 var url = require('url');
 var mkdirp = require('mkdirp');
-var imageDiff = require('image-diff');
+var gm = require('gm');
 var path = require('path');
 
 var options = {
@@ -33,8 +33,6 @@ describe('The pattern library page at', function() {
 
     it(componentUrl + ' should not have regressed visually', function(done) {
 
-      console.log('testing', componentUrl);
-
       var fileName = url.parse(componentUrl).pathname;
       fileName = fileName.replace(new RegExp('/', 'g'), '-');
       fileName = sanitize(fileName);
@@ -44,28 +42,25 @@ describe('The pattern library page at', function() {
       var referenceRendering = fs.readFileSync('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png');
 
       renderStream.on('data', function(data) {
-        console.log("renderStream.on('data')");
         file.write(data.toString('binary'), 'binary');
       });
 
       renderStream.on('end', function() {
-        console.log("renderStream.on('end')");
         file.end();
       });
 
+      var gmOptions = {
+        file: 'test/fixtures/visual-regression/diff-renderings/' + fileName + '.png',
+        highlightColor: 'yellow',
+        tolerance: 0
+      };
+
       file.on('finish', function() {
-        console.log("file.on('finish')");
 
-        imageDiff({
-          actualImage: path.resolve(__dirname, '../../test/fixtures/visual-regression/test-renderings/' + fileName + '.png'),
-          expectedImage: path.resolve(__dirname, '../../test/fixtures/visual-regression/reference-renderings/' + fileName + '.png'),
-          diffImage: path.resolve(__dirname, '../../test/fixtures/visual-regression/diff-renderings/' + fileName + '.png')
-        }, function (err, imagesAreSame) {
-          if(err) console.error(err);
+        gm.compare('test/fixtures/visual-regression/test-renderings/' + fileName + '.png', 'test/fixtures/visual-regression/reference-renderings/' + fileName + '.png', gmOptions, function (err, isEqual, equality, raw, path1, path2) {
+          if (err) throw err;
 
-          console.log('imageDiff results', imagesAreSame);
-
-          imagesAreSame.should.be.true();
+          isEqual.should.be.true();
 
           done();
         });

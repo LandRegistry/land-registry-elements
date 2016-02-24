@@ -25,7 +25,7 @@
     "node": "4.x"
   },
   "devDependencies": {
-    "image-diff": "^1.3.0",
+    "gm": "^1.21.1",
     "mocha": "^2.4.5",
     "pa11y": "^3.5.1",
     "sanitize-filename": "^1.5.3",
