@@ -13,11 +13,17 @@
         <h4 class="heading-small">{{@key}}</h4>
         <ul style="overflow:hidden">
           {{#each this}}
-            {{#each variants}}
-              <li style="float:left;width:33%;padding-right: 30px">
-                <a href="{{href}}"><strong>{{../name}}:</strong> {{name}}</a>
-              </li>
-            {{/each}}
+            <li style="float:left;width:33%;padding-right: 30px;margin-bottom: 15px">
+              <h5 class="font-xsmall" style="color:#666">{{name}}</h5>
+
+              <ul>
+                {{#each variants}}
+                  <li>
+                    <a href="{{href}}">{{name}}</a>
+                  </li>
+                {{/each}}
+              </ul>
+            </li>
           {{/each}}
         </ul>
       {{/each}}

@@ -8,7 +8,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ## Roadmap:
 
 ### MVP
-- Add in the rest of the base gov uk elements and ensure parity with the govuk version
 - Configurable build
   - Exclude examples css from the relevant builds
   - Download configurable build via GET parameters
@@ -20,15 +19,21 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
   - browserify-incremental necessitates the use of full paths in the built output - really we need to suppress this for all but the local build
 - Concatenate stylesheet output?
 - Migrate to nunjucks
+- Get basics like breadcrumbs into the parent template
 - Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
 - per component tests in each component's folder
 - Browsersync
+- Split out LeafletJS in the JS build?
+- Favicons / apple touch icons etc
 
 ### Misc todos
 - Make sure any pattern documentation is in README.md files and not in the demos
 - Split out gov uk JS and include it into the core component with browserify?
 - Test suite for the clientside validation checking that it matches the spec set out by gov uk
 - Convert to BEM?
+- Thumbnail renderings on the index page?
+- Visual regression testing at mobile breakpoints
+
 
 ### Patterns to build
 - 404, 403 etc error pages
@@ -40,6 +45,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
 - Now that pages are first class components, we need a way of separating them out on the index page
 - Sort out indentation of code snippets
+- When using form validation with no error summaries such as the consumer rights act tickbox - where does the keyboard focus go to?
 
 ### Considerations
 - Should the clientside validation summary be rendered always, even on individual field errors and just visually hidden?
@@ -65,7 +71,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Exclude image assets that are not referenced in the css to keep the build output clean
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
 - http://eslint.org/ and https://www.npmjs.com/package/eslint-plugin-cross-browser-compatibility-check
-- Automated visual regression testing
 - Write up results of user testing against any components where this has been carried out
 - Find the sticky sidebar pattern and include it?
 - Any other gov uk patterns we'd like to include?

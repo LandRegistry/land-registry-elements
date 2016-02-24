@@ -1,14 +1,20 @@
 ---
 title: Breadcrumbs
+breadcrumb-demo:
+  -
+    text: Linked crumbtrail item
+    href: '#'
+  -
+    text: Another linked crumbtrail item
+    href: '#'
+  -
+    text: 'Title of this page, unlinked'
 ---
 <main id="content" role="main">
-  <div class="breadcrumbs">
-    <ol>
-      <li><a href="/">Linked crumbtrail item</a></li>
-      <li><a href="/">Another linked crumbtrail item</a></li>
-      <li>Title of this page, unlinked</li>
-    </ol>
-  </div>
+
+  {{#with breadcrumb-demo }}
+    {{> elements/govuk/breadcrumbs }}
+  {{/with}}
 
   <h1 class="heading-xlarge">
     <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
@@ -17,12 +23,8 @@ title: Breadcrumbs
 
   <p>See above!</p>
 
-  <pre class="language-markup"><code>{{#htmlencode}}<div class="breadcrumbs">
-  <ol>
-    <li><a href="/">Linked crumbtrail item</a></li>
-    <li><a href="/">Another linked crumbtrail item</a></li>
-    <li>Title of this page, unlinked</li>
-  </ol>
-</div>{{/htmlencode}}</code></pre>
+  {{#with breadcrumb-demo }}
+    <pre class="language-markup"><code>{{#htmlencode}}{{> elements/govuk/breadcrumbs }}{{/htmlencode}}</code></pre>
+  {{/with}}
 
 </main>

@@ -1,31 +1,33 @@
-<div class="vat-receipt font-xsmall">
+<div class="vat-receipt page-break-before font-xsmall">
+  <h2 class="heading-medium">VAT receipt</h2>
+
   <div class="grid-row">
     <div class="column-two-thirds mobile-column-one-half">
       <dl class="definition-tabular definition-tabular-1-2">
 
         <dt class="bold">Date</dt>
-        <dd>25 Jan 2016</dd>
+        <dd>{{date}}</dd>
 
         <dt class="bold">Invoice number</dt>
-        <dd>ABC1234578</dd>
+        <dd>{{invoice-number}}</dd>
 
         <dt class="bold">Items</dt>
-        <dd>Summary of title FAKE177634</dd>
+        <dd>{{items}}</dd>
 
         <dt class="bold">Net value</dt>
-        <dd>&pound;1.67</dd>
+        <dd>{{net-value}}</dd>
 
         <dt class="bold">VAT @ 20%</dt>
-        <dd>&pound;0.33</dd>
+        <dd>{{vat}}</dd>
 
         <dt class="bold">Total inc VAT</dt>
-        <dd>&pound;2.00</dd>
+        <dd>{{total}}</dd>
       </dl>
     </div>
 
     <div class="column-one-third mobile-column-one-half">
       {{#with address}}{{> elements/land-registry/address }}{{/with}}
-      <p class="spacing-top-single-third"><strong class="bold">VAT registration number:</strong><br> GB 8888 181 53</p>
+      <p class="spacing-top-single-third"><strong class="bold">VAT registration number:</strong><br> {{vat-registration-number}}</p>
     </div>
   </div>
 </div>

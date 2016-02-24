@@ -7,4 +7,4 @@ dependencies:
   - elements/govuk/core
   - elements/govuk/icons
   - elements/govuk/buttons
-  - elements/govuk/components
+  - elements/govuk/highlight-box

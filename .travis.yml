@@ -1,8 +1,18 @@
 language: node_js
 node_js:
   - "4"
-before_install: npm install -g mocha
+before_install:
+  - npm install -g mocha
 
 cache:
   directories:
     - node_modules
+
+addons:
+  artifacts:
+    s3_region: "eu-west-1"
+    paths:
+      - test/fixtures/visual-regression
+  apt:
+    packages:
+    - graphicsmagick

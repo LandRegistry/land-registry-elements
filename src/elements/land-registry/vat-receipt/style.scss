@@ -6,4 +6,8 @@
   @include media(tablet) {
     max-width: none;
   }
+
+  @media print {
+    max-width: none;
+  }
 }

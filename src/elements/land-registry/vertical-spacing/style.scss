@@ -2,6 +2,10 @@
   margin-top: 0;
 }
 
+.spacing-top-double {
+  margin-top: 2 * $gutter;
+}
+
 .spacing-top-single {
   margin-top: $gutter;
 }
@@ -20,7 +24,11 @@
   margin-bottom: 0;
 }
 
-.spacing-bottom-one {
+.spacing-bottom-double {
+  margin-bottom: 2 * $gutter;
+}
+
+.spacing-bottom-single {
   margin-bottom: $gutter;
 }
 
