@@ -8,7 +8,7 @@ cache:
     - node_modules
 
 addons:
-  artifacts: true
-  s3_region: "eu-west-1"
-  paths:
-    - ./test/fixtures/visual-regression
+  artifacts:
+    s3_region: "eu-west-1"
+    paths:
+      - test/fixtures/visual-regression
