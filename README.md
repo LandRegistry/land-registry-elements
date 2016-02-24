@@ -37,6 +37,10 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 ### Patterns to build
 - 404, 403 etc error pages
+- Search form
+- Sidebar help block
+- List items
+- Pagination
 
 ### Govuk patterns to document
 
