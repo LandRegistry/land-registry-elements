@@ -14,3 +14,13 @@
     background-color: darken($beta-colour, 17%);
   }
 }
+
+.phase-tag-alpha {
+  @include phase-tag($state: beta);
+  background-color: darken($alpha-colour, 1%);
+}
+
+.phase-tag-beta {
+  @include phase-tag($state: beta);
+  background-color: darken($beta-colour, 17%);
+}
