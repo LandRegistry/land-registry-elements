@@ -50,9 +50,6 @@ describe('The pattern library page at', function() {
       });
 
       file.on('finish', function() {
-        console.log('Screenshot taken for', componentUrl);
-
-
         imageDiff({
           actualImage: path.resolve(__dirname, '../../visual-regression/test-renderings/' + fileName + '.png'),
           expectedImage: path.resolve(__dirname, '../../visual-regression/reference-renderings/' + fileName + '.png'),
