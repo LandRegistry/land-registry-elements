@@ -8,7 +8,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ## Roadmap:
 
 ### MVP
-- Automated visual regression testing
 - Configurable build
   - Exclude examples css from the relevant builds
   - Download configurable build via GET parameters
@@ -33,6 +32,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Test suite for the clientside validation checking that it matches the spec set out by gov uk
 - Convert to BEM?
 - Thumbnail renderings on the index page?
+- Visual regression testing at mobile breakpoints
 
 
 ### Patterns to build
