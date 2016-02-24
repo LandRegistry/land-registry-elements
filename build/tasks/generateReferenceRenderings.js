@@ -2,12 +2,12 @@ var components = require('../../build/modules/components');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
 var webshot = require('webshot');
-var sanitize = require("sanitize-filename");
+var sanitize = require('sanitize-filename');
 var url = require('url');
 
 require('../server');
 
-mkdirp.sync('reference-renderings');
+mkdirp.sync('visual-regression/reference-renderings');
 
 var options = {
   renderDelay: 1000,
@@ -33,7 +33,7 @@ require('./testURLs')
       promises.push(new Promise(function(resolve, reject) {
 
         var renderStream = webshot(componentUrl, options);
-        var file = fs.createWriteStream('reference-renderings/' + fileName + '.png', {encoding: 'binary'});
+        var file = fs.createWriteStream('visual-regression/reference-renderings/' + fileName + '.png', {encoding: 'binary'});
 
         renderStream.on('data', function(data) {
           file.write(data.toString('binary'), 'binary');
@@ -54,4 +54,3 @@ require('./testURLs')
     // For some reason the process doesn't exit on it's own (PhantomJS related somehow?)
     process.exit();
   });
-
