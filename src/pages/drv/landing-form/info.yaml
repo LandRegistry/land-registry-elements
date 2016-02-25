@@ -1,0 +1,12 @@
+name: Landing form
+categories:
+  primary: Land Registry
+  secondary: DRV beta pages
+
+dependencies:
+  - elements/govuk/details
+  - elements/govuk/layout
+  - elements/govuk/phase-banner
+  - elements/govuk/forms
+  - elements/land-registry/clientside-form-validation
+  - elements/land-registry/vertical-spacing
