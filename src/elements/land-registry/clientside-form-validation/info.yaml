@@ -1,7 +1,7 @@
 name: Clientside form validation
 categories:
   primary: Land Registry
-  secondary: Data
+  secondary: Forms
 
 dependencies:
   - elements/govuk/forms

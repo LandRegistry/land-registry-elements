@@ -2,3 +2,6 @@ name: Register teaser
 categories:
   primary: Land Registry
   secondary: Teasers
+
+dependencies:
+  - elements/govuk/details

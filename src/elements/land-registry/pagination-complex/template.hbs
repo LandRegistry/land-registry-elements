@@ -7,11 +7,11 @@
   {{/if}}
 
     <ul class="pager-items">
-      {{#each items}}
-        <li>
-          {{#unless current}}<a href="#">{{/unless}}{{page}}{{#unless current}}</a>{{/unless}}
-        </li>
-      {{/each}}
+    {{#each items}}
+      <li>
+        {{#unless current}}<a href="#">{{/unless}}{{page}}{{#unless current}}</a>{{/unless}}
+      </li>
+    {{/each}}
     </ul>
 
   {{#if next}}
@@ -22,4 +22,4 @@
 
   <div class="pager-summary">Showing {{start}} &ndash; {{end}} of {{total}} items</div>
 
-</div>
+</nav>
