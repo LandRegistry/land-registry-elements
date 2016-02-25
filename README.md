@@ -8,7 +8,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ## Roadmap:
 
 ### Doing
-- Initial routing form (https://drv-ux-prototype.herokuapp.com/drv-17/eligibility_2a)
 
 ### MVP
 - 404, 403 etc error pages
