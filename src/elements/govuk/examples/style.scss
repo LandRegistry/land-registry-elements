@@ -331,3 +331,42 @@ p {
     padding: 2px;
   }
 }
+
+/**
+ * Readme
+ */
+.readme {
+  h1 {
+    display: none;
+  }
+
+  h2, h3, h4 {
+    font-weight: bold;
+    margin-bottom: $gutter-half;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+
+  ul {
+    padding-left: 2em;
+    margin: 2em 0;
+
+    ul {
+      margin: 0 0 0.25em 0;
+    }
+  }
+
+  li {
+    list-style-type: disc;
+  }
+}

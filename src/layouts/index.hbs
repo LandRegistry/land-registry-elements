@@ -6,6 +6,12 @@
   <p>These <s>are</s> <em>will be</em> of production quality and the intention is that the build output from this repository be used as the base for production frontends.</p>
   <a href="/build" class="button">Download assets</a>
 
+
+  <details class="readme spacing-top-single spacing-bottom-single">
+    <summary>Readme</summary>
+    {{#markdown}}{{readme}}{{/markdown}}
+  </details>
+
   {{#with components}}
     {{#each this}}
       <h3 class="heading-medium">{{@key}}</h3>

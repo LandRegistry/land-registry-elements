@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 var components = require('../modules/components');
 var handlebars = require('../modules/handlebars');
 var renderPage = require('../modules/renderPage');
@@ -54,7 +56,8 @@ module.exports = function(app){
         res.send(renderPage(hbs, {
           title: 'Index',
           content: hbs.compile(hbs.partials['layout/index'])({
-            components: sortComponents(components)
+            components: sortComponents(components),
+            readme: fs.readFileSync('README.md')
           })
         }));
 
