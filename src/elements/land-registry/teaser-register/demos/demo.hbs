@@ -1,0 +1,56 @@
+---
+title: Register teasers
+variants:
+  -
+    title_number: FAKE177634
+    propertyAddress:
+      streetAddress:
+        - 1 Pretend Street
+      addressLocality: Trumpton
+      postalCode: TR15 5RZ
+    tenureType: Freehold
+  -
+    propertyAddress:
+      streetAddress:
+        - 1 Pretend Street
+      addressLocality: Trumpton
+      postalCode: TR15 5RZ
+    tenureType: Leasehold
+  -
+    title_number: FAKE177634
+    propertyAddress:
+      streetAddress:
+        - 1 Pretend Street
+      addressLocality: Trumpton
+      postalCode: TR15 5RZ
+    tenureType: Leasehold
+  -
+    title_number: FAKE177634
+    propertyAddress:
+      streetAddress:
+        - 1 Pretend Street
+      addressLocality: Trumpton
+      postalCode: TR15 5RZ
+    tenureType: Freehold
+    is_caution_title: true
+
+---
+<main id="content" role="main">
+  <h1 class="heading-xlarge">
+    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+    {{component.name}}
+  </h1>
+
+  {{#each variants}}
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        {{> elements/land-registry/teaser-register }}
+      </div>
+    </div>
+
+    <pre class="language-markup"><code>{{#htmlencode}}{{> elements/land-registry/teaser-register }}{{/htmlencode}}</code></pre>
+
+    <br><hr><br>
+  {{/each}}
+
+</main>

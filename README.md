@@ -7,76 +7,59 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 ## Roadmap:
 
+### Doing
+- Search form (https://drv-ux-prototype.herokuapp.com/drv-17/search)
+
 ### MVP
+- Initial routing form (https://drv-ux-prototype.herokuapp.com/drv-17/eligibility_2a)
+- 404, 403 etc error pages
+- Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
+- Manual cross browser testing (Browserstack)
+- Fixing anything from the above ^
+- Minify JS output
+  - browserify-incremental necessitates the use of full paths in the built output - really we need to suppress this for all but the local build
+- Concat and minify stylesheet output
+- Favicons / apple touch icons etc
+- Split out LeafletJS into a different bundle as it's huge and we don't need it on every page.
+- Review ARIA roles
+
+### Documentation
+- Write usage guidelines
+  - Add example of how to include the assets in an application
+- Write contribution guidelines
+
+### Questions and issues
+- When using form validation with no error summaries such as the consumer rights act tickbox - where does the keyboard focus go to? Gov uk slack suggests having a visually hidden error summary that screenreaders will read?
+- What is our browser support?
+- Colour contrast tests are failing on gov uk elements (Phase banner and highlight box). I have modified the colours so that they no longer fail - check this with a designer and see what they think? Andy Porter?
+- There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
+
+--------------------------------------------------------------------------------
+
+### Non MVP todos
 - Configurable build
   - Exclude examples css from the relevant builds
   - Download configurable build via GET parameters
   - Form to select components and pipe into above build?
-- Build out any new elements from the DRV prototype
-- Assemble example pages for the pages in the DRV prototype
-- Manual cross browser testing
-- Minify JS output
-  - browserify-incremental necessitates the use of full paths in the built output - really we need to suppress this for all but the local build
-- Concatenate stylesheet output?
-- Migrate to nunjucks
-- Get basics like breadcrumbs into the parent template
-- Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
-- per component tests in each component's folder
-- Browsersync
-- Split out LeafletJS in the JS build?
-- Favicons / apple touch icons etc
-
-### Misc todos
-- Make sure any pattern documentation is in README.md files and not in the demos
-- Split out gov uk JS and include it into the core component with browserify?
-- Test suite for the clientside validation checking that it matches the spec set out by gov uk
-- Convert to BEM?
-- Thumbnail renderings on the index page?
+- Make the visual regression testing less punishing to contributors - need to ensure we strike the right balance and don't put up barriers to contributing
 - Visual regression testing at mobile breakpoints
-
-
-### Patterns to build
-- 404, 403 etc error pages
-
-### Govuk patterns to document
-
-### Issues
-- Sort out what each build contains (config-wise)
-- Additional gov.uk examples need building out (Assuming we want to replicate the whole thing - or do we just link through to the real one?)
-- Now that pages are first class components, we need a way of separating them out on the index page
-- Sort out indentation of code snippets
-- When using form validation with no error summaries such as the consumer rights act tickbox - where does the keyboard focus go to?
-
-### Considerations
-- Should the clientside validation summary be rendered always, even on individual field errors and just visually hidden?
-- Clientside form errors should be above
-- There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
-- Browser support?
-- Use of jQuery?
-- Do we really need to replicate the gov uk pattern demos? Maybe they should just be simplified versions of them, and link to the original for the advice - thereby avoiding maintenance for us
-- Note to self - make sure map gets printed in right column of summary page (As it does on the proto by virtue of a hack)
-- Make sure build can cope if you specify a build with a component excluded but another component then depends upon it
-- Colour contrast tests are failing on gov uk elements (Phase banner and highlight box). What do we do about this, if anything?
-
-### Technical debt
-- The gov uk base template doesn't include the <main id="content" role="main"> element - would be nice to include this at our end so that we don't need to repeat it in every demo
-- Abstract out the renderPage.js code into a template file
-
-### Documentation
-- Write usage guidelines
-  - Add example of how to run the build from an external project without grunt
-- Write contribution guidelines
-
-### Nice to haves
-- Exclude image assets that are not referenced in the css to keep the build output clean
+- HTML beautfication for those that might view source
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
+- per component tests in each component's folder
+- Get basics like breadcrumbs and main element into a parent template
+- Make sure any pattern documentation is in README.md files and not in the demos
+- Test suite for the clientside validation checking that it matches the spec set out by gov uk
+- Thumbnail renderings on the index page?
+- Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
+- Browsersync
+- Exclude image assets that are not referenced in the css to keep the build output clean
 - http://eslint.org/ and https://www.npmjs.com/package/eslint-plugin-cross-browser-compatibility-check
 - Write up results of user testing against any components where this has been carried out
-- Find the sticky sidebar pattern and include it?
-- Any other gov uk patterns we'd like to include?
+- Convert CSS to BEM?
+- Split out gov uk JS and include it into the core component with browserify?
+- Migrate to nunjucks (Super low importance)
 
-### Possibles?
-- Expose grunt plugin and write example for people wishing to pull the assets in via a Gruntfile?
+--------------------------------------------------------------------------------
 
 ## Usage
 
