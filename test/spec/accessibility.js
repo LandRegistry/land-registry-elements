@@ -23,7 +23,8 @@ describe('The pattern library page at', function() {
       'WCAG2AA.Principle1.Guideline1_3.1_3_1.H39.3.NoCaption',
       'WCAG2AA.Principle1.Guideline1_3.1_3_1.H73.3.NoSummary',
       'WCAG2AA.Principle1.Guideline1_3.1_3_1.H42',
-      'WCAG2AA.Principle1.Guideline1_3.1_3_1.H49.B'
+      'WCAG2AA.Principle1.Guideline1_3.1_3_1.H49.B',
+      'WCAG2AA.Principle1.Guideline1_3.1_3_1.H48'
     ]
   });
 
