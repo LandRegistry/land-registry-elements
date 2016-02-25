@@ -1,7 +1,7 @@
 <div class="teaser teaser-register">
   <h2 class="heading-small">
     {{#if title_number }}<a href="#">{{/if}}
-      {{#each propertyAddress}}{{this}}{{#if @last}}{{else}}, {{/if}}{{/each}}
+      {{#each propertyAddress}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
     {{#if title_number }}</a>{{/if}}
   </h2>
 
