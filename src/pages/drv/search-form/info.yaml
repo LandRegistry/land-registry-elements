@@ -1,0 +1,12 @@
+name: Search form
+categories:
+  primary: Land Registry
+  secondary: DRV beta pages
+
+dependencies:
+  - elements/govuk/breadcrumbs
+  - elements/govuk/layout
+  - elements/govuk/phase-banner
+  - elements/govuk/details
+  - elements/land-registry/search-form
+  - elements/land-registry/vertical-spacing
