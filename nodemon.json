@@ -6,5 +6,5 @@
     ".tmp",
     "node_modules"
   ],
-  "ext": "js scss hbs hogan"
+  "ext": "js scss hogan"
 }
