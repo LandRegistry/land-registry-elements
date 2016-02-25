@@ -1,0 +1,32 @@
+---
+title: Simple pagination
+variants:
+  -
+    previous: 1
+    next: 3
+    total_pages: 3
+  -
+    next: 2
+    total_pages: 3
+  -
+    previous: 2
+    total_pages: 3
+
+---
+<main id="content" role="main">
+  <h1 class="heading-xlarge">
+    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+    {{component.name}}
+  </h1>
+
+  {{#markdown}}{{component.readme}}{{/markdown}}
+
+  {{#each variants}}
+    {{> elements/land-registry/pagination-simple }}
+
+    <pre class="language-markup"><code>{{#htmlencode}}{{> elements/land-registry/pagination-simple }}{{/htmlencode}}</code></pre>
+
+    <br><hr><br>
+  {{/each}}
+
+</main>

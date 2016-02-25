@@ -50,6 +50,8 @@ variants:
     {{component.name}}
   </h1>
 
+  {{#markdown}}{{component.readme}}{{/markdown}}
+
   {{#each variants}}
     {{> elements/land-registry/pagination-complex }}
 

@@ -1,0 +1,21 @@
+<nav class="pager-simple" role="navigation" aria-label="Pagination">
+  <ul>
+  {{#with previous}}
+    <li class="previous-page">
+      <a href="#" rel="prev">
+        <span class="pagination-part-title">Previous page</span>
+        <span class="pagination-label">{{this}} of {{../total_pages}}</span>
+      </a>
+    </li>
+  {{/with}}
+
+  {{#with next}}
+    <li class="next-page">
+      <a href="#" rel="next">
+        <span class="pagination-part-title">Next page</span>
+        <span class="pagination-label">{{this}} of {{../total_pages}}</span>
+      </a>
+    </li>
+  {{/with}}
+  </ul>
+</nav>
