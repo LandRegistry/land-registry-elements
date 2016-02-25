@@ -8,10 +8,9 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ## Roadmap:
 
 ### Doing
-- Search listing page (https://drv-ux-prototype.herokuapp.com/drv-17/search/1)
+- Search form (https://drv-ux-prototype.herokuapp.com/drv-17/search)
 
 ### MVP
-- Search form (https://drv-ux-prototype.herokuapp.com/drv-17/search)
 - Initial routing form (https://drv-ux-prototype.herokuapp.com/drv-17/eligibility_2a)
 - 404, 403 etc error pages
 - Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
