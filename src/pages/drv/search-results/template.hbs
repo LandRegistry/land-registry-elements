@@ -1,0 +1,44 @@
+<main id="content" role="main">
+  {{> elements/govuk/phase-banner }}
+
+  <div class="grid-row printhidden">
+    <div class="column-two-thirds">
+      {{#with breadcrumbs }}
+        {{> elements/govuk/breadcrumbs }}
+      {{/with}}
+    </div>
+  </div>
+
+  <div class="grid-row spacing-top-single">
+
+    <div class="column-two-thirds tablet-column-two-thirds">
+      {{#with search-form}}
+        {{> elements/land-registry/search-form }}
+      {{/with}}
+
+      <p class="font-xsmall">35 results found</p>
+
+      <ul>
+      {{#each results}}
+        <li>
+          {{> elements/land-registry/teaser-register }}
+        </li>
+      {{/each}}
+      </ul>
+
+      {{#with pagination}}
+        {{> elements/land-registry/pagination-simple }}
+      {{/with}}
+    </div>
+
+    <div class="column-one-third tablet-column-one-third">
+      <aside class="supplementary-panel">
+        <h2 class="heading-medium">Help finding the right property</h2>
+        <strong class="phase-tag-beta spacing-bottom-half">BETA</strong>
+        <p>This is a beta service. If you're not seeing the search results you expect please <a rel="external" href="#">let us know</a></p>
+        <p>If you're having trouble finding the property or land you're looking for, try the <a href="https://eservices.landregistry.gov.uk/wps/portal/Property_Search">existing Land Registry service</a> instead</p>
+      </aside>
+    </div>
+  </div>
+
+</main>

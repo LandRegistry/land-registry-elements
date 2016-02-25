@@ -1,6 +1,8 @@
 <form method="post" class="search-form" data-clientside-validation="search_form_validation{{id}}" data-clientside-validation-no-summary>
-  <div class="form-group">
-    <label class="form-label bold-medium spacing-bottom-half" for="search{{id}}">{{label}}</label>
+  <div class="form-group spacing-bottom-half">
+    {{#if h1}}<h1>{{/if}}
+      <label class="form-label bold-medium spacing-bottom-half" for="search{{id}}">{{label}}</label>
+    {{#if h1}}</h1>{{/if}}
     <input class="form-control" id="search{{id}}" name="search" type="text" value="{{value}}">
 
     <input class="button" type="submit" name="search-button" value="Search">
