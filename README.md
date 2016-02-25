@@ -10,7 +10,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ### Doing
 
 ### MVP
-- 404, 403 etc error pages
 - Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
 - Manual cross browser testing (Browserstack)
 - Fixing anything from the above ^
