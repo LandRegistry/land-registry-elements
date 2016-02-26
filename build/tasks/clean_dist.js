@@ -1,17 +1,18 @@
 var rimraf = require('rimraf');
 var mkdirp = require('mkdirp');
+var path = require('path');
 
-var clean = function() {
+var clean = function(config) {
   console.time('Clean dist');
 
   return new Promise(function(resolve, reject) {
-    rimraf('dist', function(err) {
+    rimraf(config.destination, function(err) {
       if(err) {
         reject(err);
         return;
       }
 
-      mkdirp('dist/assets', function(err) {
+      mkdirp(path.join(config.destination, 'assets'), function(err) {
         if(err) {
           reject(err);
           return;

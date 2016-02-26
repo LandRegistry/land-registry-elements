@@ -8,7 +8,7 @@ var renderPage = require('../modules/renderPage');
  * Helper method to organise components by their categories
  */
 function sortComponents(components) {
-  // console.log(components);
+
   // Sort the components by category
   var sortedComponents = {};
   components.forEach(function(component) {
@@ -62,8 +62,8 @@ module.exports = function(app){
         }));
 
       })
-      .catch(function(er) {
-        console.error(er);
+      .catch(function(err) {
+        throw err;
 
         res.send(renderPage(hbs, {
           title: 'Index',

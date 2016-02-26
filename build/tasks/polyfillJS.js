@@ -2,8 +2,9 @@
 
 var polyfillService = require('polyfill-service');
 var fs = require('fs');
+var path = require('path');
 
-function polyfillJS() {
+function polyfillJS(config) {
   console.time('Polyfill JavaScript');
 
   return new Promise(function(resolve, reject) {
@@ -20,7 +21,7 @@ function polyfillJS() {
       })
       .then(function(bundleString) {
 
-        fs.writeFile('dist/assets/javascripts/ie8-9-polyfills.js', bundleString, function(err) {
+        fs.writeFile(path.join(config.destination, 'assets/javascripts/ie8-9-polyfills.js'), bundleString, function(err) {
           if (err) {
             reject(err);
           }

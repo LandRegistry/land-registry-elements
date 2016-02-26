@@ -28,8 +28,8 @@ module.exports = function(app){
         }));
 
       })
-      .catch(function(er) {
-        console.error(er);
+      .catch(function(err) {
+        throw err;
       });
   });
 

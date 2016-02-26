@@ -4,4 +4,4 @@ categories:
   secondary: Core
 copy:
   from: 'icons'
-  to: 'dist/assets/images/icons/land-registry'
+  to: 'assets/images/icons/land-registry'

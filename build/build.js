@@ -1,9 +1,10 @@
+var extend = require('extend');
+var path = require('path');
 var cleanDist = require('./tasks/clean_dist');
 var copy = require('./tasks/copy');
 var sass = require('./tasks/sass');
 var javascript = require('./tasks/javascript');
 var polyfillJS = require('./tasks/polyfillJS');
-var extend = require('extend');
 
 module.exports = function(options) {
 
@@ -16,14 +17,19 @@ module.exports = function(options) {
    */
   var config = extend({
     cache: true,
-    components: true
+    components: true,
+    destination: 'dist'
   }, options);
 
   return new Promise(function(resolve, reject) {
 
-    cleanDist()
-      .then(copy.govUkTemplateAssets)
-      .then(copy.govUkToolkitAssets)
+    cleanDist(config)
+      .then(function() {
+        return copy.govUkTemplateAssets(config);
+      })
+      .then(function() {
+        return copy.govUkToolkitAssets(config);
+      })
       .then(function() {
         return copy.landregistryComponentAssets(config);
       })
@@ -33,9 +39,11 @@ module.exports = function(options) {
       .then(function() {
         return javascript(config);
       })
-      .then(polyfillJS)
       .then(function() {
-        resolve('dist/assets');
+        return polyfillJS(config)
+      })
+      .then(function() {
+        resolve(path.join(config.destination, 'assets'));
       })
       .catch(function(e) {
         reject(e);

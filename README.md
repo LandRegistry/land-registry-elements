@@ -8,7 +8,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ## Roadmap:
 
 ### Doing
-- Build download button should build to a different folder!
 
 ### MVP
 - Minify JS output

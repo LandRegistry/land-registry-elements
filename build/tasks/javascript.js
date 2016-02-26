@@ -34,11 +34,11 @@ function compileJavaScript(config) {
           }
         });
 
-        var stream = fs.createWriteStream('dist/assets/javascripts/landregistry.js', { flags : 'w' });
+        var stream = fs.createWriteStream(path.join(config.destination, 'assets/javascripts/landregistry.js'), { flags : 'w' });
         b.bundle().pipe(stream);
 
         stream.on('close', function () {
-          resolve('dist/assets/javascripts/landregistry.js');
+          resolve(path.join(config.destination, 'assets/javascripts/landregistry.js'));
           console.timeEnd('Compile JavaScript');
         });
 

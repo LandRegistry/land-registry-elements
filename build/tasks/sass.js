@@ -130,14 +130,14 @@ function compileSass(config) {
             }
 
             // Write out the sass
-            mkdirp('dist/assets/stylesheets', function() {
-              fs.writeFile('dist/assets/stylesheets/' + stylesheet.filename, result.css, function(err) {
+            mkdirp(path.join(config.destination, 'assets/stylesheets'), function() {
+              fs.writeFile(path.join(config.destination, 'assets/stylesheets/', stylesheet.filename), result.css, function(err) {
                 if(err) {
                   reject(err);
                   return;
                 }
 
-                resolve('dist/assets/stylesheets/style.css');
+                resolve(path.join(config.destination, 'assets/stylesheets'));
               });
             });
           });

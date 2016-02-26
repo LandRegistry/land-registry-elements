@@ -10,14 +10,15 @@ module.exports = function(app){
     build({
       cache: false,
       components: {
-        'Land Registry': true
-      }
+        'Govuk': true
+      },
+      destination: '.tmp/dist'
     })
       .then(function(directory) {
         res.tgz(directory, 'land-registry-elements.tar.gz', false);
       })
-      .catch(function(er) {
-        console.error(er);
+      .catch(function(err) {
+        throw err;
       });
   });
 }

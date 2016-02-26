@@ -8,5 +8,5 @@ build()
     console.log('Assets built to:', directory);
   })
   .catch(function(err) {
-    console.log(err);
+    throw err;
   });
