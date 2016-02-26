@@ -22,10 +22,13 @@ module.exports = function(app){
         var variant = component.variants[req.params.variant];
         var context = extend(variant.context, {component: component });
 
-        res.send(renderPage(hbs, {
+        renderPage(hbs, {
           title: variant.name,
           content: hbs.compile(variant.content)(variant.context)
-        }));
+        })
+        .then(function(html) {
+          res.send(html);
+        });
 
       })
       .catch(function(err) {

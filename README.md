@@ -12,7 +12,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ### MVP
 - Concat and minify stylesheet output
 - Favicons / apple touch icons etc
-- Split out LeafletJS into a different bundle as it's huge and we don't need it on every page.
 - Review ARIA roles
 
 ### Questions and issues

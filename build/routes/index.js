@@ -67,10 +67,13 @@ module.exports = function(app){
         require('clarify');
         console.trace(err);
 
-        res.send(renderPage(hbs, {
+        renderPage(hbs, {
           title: 'Index',
           content: 'Error'
-        }));
+        })
+        .then(function(html) {
+          res.send(html);
+        });;
       });
   });
 
