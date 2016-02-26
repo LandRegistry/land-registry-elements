@@ -1,0 +1,8 @@
+name: Favicons
+categories:
+  primary: Land Registry
+  secondary: Core
+
+copy:
+  from: 'images'
+  to: 'assets/images'

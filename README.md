@@ -11,7 +11,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 ### MVP
 - Concat and minify stylesheet output
-- Favicons / apple touch icons etc
 - Review ARIA roles
 
 ### Questions and issues
