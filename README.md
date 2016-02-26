@@ -40,7 +40,6 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
   - Form to select components and pipe into above build?
 - Make the visual regression testing less punishing to contributors - need to ensure we strike the right balance and don't put up barriers to contributing
 - Visual regression testing at mobile breakpoints
-- HTML beautfication for those that might view source
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
 - per component tests in each component's folder
 - Get basics like breadcrumbs and main element into a parent template

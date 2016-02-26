@@ -13,6 +13,8 @@ app.use('/images', express.static('dist/assets/images'));
 app.use('/javascripts', express.static('dist/assets/javascripts'));
 app.use('/stylesheets', express.static('dist/assets/stylesheets'));
 
+
+
 // Individual routes pulled from the routes directory
 fs.readdir(path.join(__dirname, '/routes'), function(err, files) {
   if(err) {

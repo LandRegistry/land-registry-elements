@@ -1,5 +1,6 @@
 var extend = require('extend');
 var path = require('path');
+var pretty = require('pretty');
 
 var components = require('../modules/components');
 var handlebars = require('../modules/handlebars');
@@ -27,7 +28,7 @@ module.exports = function(app){
           content: hbs.compile(variant.content)(variant.context)
         })
         .then(function(html) {
-          res.send(html);
+          res.send(pretty(html));
         });
 
       })

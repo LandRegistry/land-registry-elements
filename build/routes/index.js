@@ -1,4 +1,5 @@
 var fs = require('fs');
+var pretty = require('pretty');
 
 var components = require('../modules/components');
 var handlebars = require('../modules/handlebars');
@@ -61,7 +62,7 @@ module.exports = function(app){
           })
         })
         .then(function(html) {
-          res.send(html);
+          res.send(pretty(html));
         });
 
       })
@@ -69,14 +70,6 @@ module.exports = function(app){
         require('trace');
         require('clarify');
         console.trace(err);
-
-        renderPage(hbs, {
-          title: 'Index',
-          content: 'Error'
-        })
-        .then(function(html) {
-          res.send(html);
-        });
       });
   });
 
