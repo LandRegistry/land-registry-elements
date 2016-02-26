@@ -8,7 +8,7 @@
     "generateTestURLs": "node build/tasks/testURLs.js",
     "build": "node build/doBuild.js",
     "start": "node build/doBuild.js && node build/server.js",
-    "generateReferenceRenderings": "node build/tasks/generateReferenceRenderings.js"
+    "generateReferenceRenderings": "npm run build && node build/tasks/generateReferenceRenderings.js"
   },
   "repository": {
     "type": "git",
