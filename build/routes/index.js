@@ -53,13 +53,16 @@ module.exports = function(app){
       ])
       .spread(function(hbs, components) {
 
-        res.send(renderPage(hbs, {
+        renderPage(hbs, {
           title: 'Index',
           content: hbs.compile(hbs.partials['layout/index'])({
             components: sortComponents(components),
             readme: fs.readFileSync('README.md')
           })
-        }));
+        })
+        .then(function(html) {
+          res.send(html);
+        });
 
       })
       .catch(function(err) {
@@ -73,7 +76,7 @@ module.exports = function(app){
         })
         .then(function(html) {
           res.send(html);
-        });;
+        });
       });
   });
 
