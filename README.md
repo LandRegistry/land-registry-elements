@@ -8,10 +8,9 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ## Roadmap:
 
 ### Doing
-- Fix build when dependent components not specified
+- Build download button should build to a different folder!
 
 ### MVP
-- Build download button should build to a different folder!
 - Minify JS output
   - browserify-incremental necessitates the use of full paths in the built output - really we need to suppress this for all but the local build
 - Concat and minify stylesheet output
