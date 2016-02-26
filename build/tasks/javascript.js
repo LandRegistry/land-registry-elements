@@ -1,8 +1,9 @@
 var components = require('../modules/components');
-var browserify = require('browserify-incremental');
 var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
+var browserify = require('browserify');
+var browserify_incremental = require('browserify-incremental');
 
 /**
  * Function to build out the JavaScript
@@ -17,13 +18,24 @@ function compileJavaScript(config) {
 
       return new Promise(function(resolve, reject) {
 
-        var b = browserify({
+        var b;
+        var browserfyConfig = {
+          debug: true,
           transform: [
             require('hoganify')
           ]
-        }, {
-          cacheFile: '.tmp/browserify-incremental.json'
-        });
+        };
+
+        if(config.mode === 'production') {
+          b = browserify(browserfyConfig);
+          b.plugin('minifyify', {
+            map: 'landregistry.js.map'
+          });
+        } else {
+          b = browserify_incremental(browserfyConfig, {
+            cacheFile: '.tmp/browserify-incremental.json'
+          });
+        }
 
         // Build up our JS based on the dependency tree
         componentsTree.forEach(function(componentId) {
@@ -35,10 +47,14 @@ function compileJavaScript(config) {
         });
 
         var stream = fs.createWriteStream(path.join(config.destination, 'assets/javascripts/landregistry.js'), { flags : 'w' });
-        b.bundle().pipe(stream);
+        b
+          .bundle(function(err, src, map) {
+            fs.writeFileSync(path.join(config.destination, 'assets/javascripts/landregistry.js.map'), map);
+          })
+          .pipe(stream);
 
         stream.on('close', function () {
-          resolve(path.join(config.destination, 'assets/javascripts/landregistry.js'));
+          resolve(path.join(config.destination, 'assets/javascripts/landregistry.js.map'));
           console.timeEnd('Compile JavaScript');
         });
 

@@ -8,9 +8,11 @@ module.exports = function(app){
    */
   app.get('/build', function(req, res){
     build({
+      mode: 'production',
       cache: false,
       components: {
-        'Govuk': true
+        'Govuk': true,
+        'Land Registry': true
       },
       destination: '.tmp/dist'
     })
@@ -18,7 +20,7 @@ module.exports = function(app){
         res.tgz(directory, 'land-registry-elements.tar.gz', false);
       })
       .catch(function(err) {
-        throw err;
+        console.error(err);
       });
   });
 }

@@ -29,7 +29,7 @@ module.exports = function(app){
 
       })
       .catch(function(err) {
-        throw err;
+        console.error(err);
       });
   });
 

@@ -63,7 +63,7 @@ module.exports = function(app){
 
       })
       .catch(function(err) {
-        throw err;
+        console.error(err);
 
         res.send(renderPage(hbs, {
           title: 'Index',
