@@ -4,6 +4,7 @@ var glob = require('glob');
 var path = require('path');
 var fs = require('fs');
 var DepGraph = require('dependency-graph').DepGraph;
+var _ = require('lodash');
 
 var cache = {
   getComponents: {
@@ -134,7 +135,6 @@ function getComponents(config) {
 function filterComponents(components, config) {
   return new Promise(function(resolve, reject) {
 
-    // Loop backwards because we're splicing items out of the array
     var filteredComponents = components.filter(function(component) {
 
       // If the config says to blindly let every component through, then do so
@@ -142,23 +142,7 @@ function filterComponents(components, config) {
         return true;
       }
 
-      // If a component's category isn't specified, exclude the entire thing
-      if(typeof config.components[component.categories.primary] === 'undefined') {
-        return false;
-      }
-
-      // If the component's entire primary category is included, let it through
-      if(config.components[component.categories.primary] === true) {
-        return true;
-      }
-
-      // Else if more detailed config is given, check the secondary category
-      if(config.components[component.categories.primary][component.categories.secondary] === true) {
-        return true;
-      }
-
-      // If we've fallen through to here, the component has not been specified in the build, so we nuke it
-      return false;
+      return (config.components.indexOf(component.id) !== -1);
     });
 
     if(filteredComponents.length > 0) {
@@ -233,6 +217,11 @@ function getComponentsTree(config) {
                 });
               })
               .then(function() {
+                // console.log(components);
+                console.log('Running build with', _.map(components, function(component) {
+                  return _.pick(component, ['id']);
+                }));
+
                 resolve(components);
               })
               .catch(function(err) {

@@ -4,7 +4,7 @@
   <a href="https://travis-ci.org/LandRegistry/land-registry-elements"><img src="https://travis-ci.org/LandRegistry/land-registry-elements.svg" alt="" /></a>
   <p>This pattern library builds upon the foundations set out in <a href="http://govuk-elements.herokuapp.com/">http://govuk-elements.herokuapp.com/</a> to provide a set of Land Registry specific patterns.</p>
   <p>These <s>are</s> <em>will be</em> of production quality and the intention is that the build output from this repository be used as the base for production frontends.</p>
-  <a href="/build" class="button">Download assets</a>
+  {{!-- <a href="/build" class="button">Download assets</a> --}}
 
   <br><br>
 
@@ -13,32 +13,44 @@
     {{#markdown}}{{readme}}{{/markdown}}
   </details>
 
-  {{#with components}}
-    {{#each this}}
-      <h3 class="heading-medium">{{@key}}</h3>
+  <hr>
 
-      {{#each this}}
-        <h4 class="heading-small">{{@key}}</h4>
-        <ul style="overflow:hidden">
+  <form action="/build" method="GET">
+    <input type="submit" class="button" value="Generate build" />
+    <p class="form-hint">Download a build containing the assets selected below.</p>
+    <p class="form-hint">Note that ticking a component will automatically include dependencies of that component in the build even if it is not explicitly ticked here.</p>
+
+    <div class="form-group">
+      {{#with components}}
+        {{#each this}}
+          <h3 class="heading-medium">{{@key}}</h3>
+
           {{#each this}}
-            <li style="float:left;width:33%;padding-right: 30px;margin-bottom: 15px">
-              <h5 class="font-xsmall" style="color:#666">{{name}}</h5>
+            <h4 class="heading-small">{{@key}}</h4>
+            <ul style="overflow:hidden">
+              {{#each this}}
+                <li style="float:left;width:33%;padding-right: 30px;margin-bottom: 15px">
+                  <label class="font-small" style="color:#666" for="{{id}}"><input id="{{id}}" type="checkbox" name="components[{{id}}]" />{{name}}</label>
 
-              <ul class="list-bullet">
-                {{#each variants}}
-                  <li>
-                    <a href="{{href}}">{{name}}</a>
-                  </li>
-                {{/each}}
-              </ul>
-            </li>
+                  <ul class="list-bullet">
+                    {{#each variants}}
+                      <li>
+                        <a href="{{href}}">{{name}}</a>
+                      </li>
+                    {{/each}}
+                  </ul>
+                </li>
+              {{/each}}
+            </ul>
           {{/each}}
-        </ul>
-      {{/each}}
 
-      <hr>
+          <hr>
 
-    {{/each}}
-  {{/with}}
+        {{/each}}
+      {{/with}}
+    </div>
+
+    <input type="submit" class="button" value="Generate build" />
+  </form>
 
 </main>
