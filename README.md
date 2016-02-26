@@ -37,6 +37,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 ### Non MVP todos
 - Configurable build
+  - Switch configurable builds to use component IDs not categories
   - Exclude examples css from the relevant builds
   - Download configurable build via GET parameters
   - Form to select components and pipe into above build?
