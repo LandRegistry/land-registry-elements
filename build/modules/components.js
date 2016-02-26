@@ -19,14 +19,16 @@ var cache = {
  * @param {String} component The component ID to fetch
  * @return {Promise} Promise which resolves with the component data
  */
-function getComponent(componentPath) {
+function getComponent(componentId) {
   return new Promise(function(resolve, reject) {
+
+    var componentPath = path.join('src', componentId);
 
     var component = yaml.safeLoad(fs.readFileSync(path.join(componentPath, 'info.yaml'), 'utf8'));
 
     component.path = componentPath;
 
-    component.id = componentPath.replace('src/', '');
+    component.id = componentId;
 
     if(fs.existsSync(path.join(componentPath, 'template.hbs'))) {
       component.template = fs.readFileSync(path.join(componentPath, 'template.hbs'), 'utf8');
@@ -73,13 +75,14 @@ function getComponent(componentPath) {
  */
 function getComponents(config) {
 
-  if(cache.getComponents.expiry < Date.now()) {
+  if(typeof config === 'undefined') {
+    config = {
+      cache: true,
+      components: true
+    };
+  }
 
-    if(typeof config === 'undefined') {
-      config = {
-        components: true
-      };
-    }
+  if(!config.cache || cache.getComponents.expiry < Date.now()) {
 
     return new Promise(function(resolve, reject) {
       glob('src/**/info.yaml', function (er, files) {
@@ -87,7 +90,7 @@ function getComponents(config) {
         var queue = [];
 
         files.forEach(function(filename) {
-          queue.push(getComponent(path.dirname(filename)));
+          queue.push(getComponent(path.dirname(filename).replace('src/', '')));
         });
 
         if(er) {
@@ -98,7 +101,6 @@ function getComponents(config) {
               return filterComponents(components, config);
             })
             .then(function(components) {
-              // console.log(components);
               cache.getComponents.components = components;
               cache.getComponents.expiry = Date.now() + 5000;
               return components;
@@ -156,7 +158,7 @@ function filterComponents(components, config) {
       return false;
     });
 
-    if(filterComponents.length > 0) {
+    if(filteredComponents.length > 0) {
       resolve(filteredComponents);
     } else {
       reject(new Error('No components specified'));
@@ -171,13 +173,14 @@ function filterComponents(components, config) {
  * @return {Promise} Promise which resolves with all the component data
  */
 function getComponentsTree(config) {
-  if(cache.getComponentsTree.expiry < Date.now()) {
+  if(!config.cache || cache.getComponentsTree.expiry < Date.now()) {
 
     return new Promise(function(resolve, reject) {
 
+      var graph = new DepGraph();
+
       getComponents(config)
         .then(function(components) {
-          var graph = new DepGraph();
 
           // Initial pass adding the components to the graph
           // Has to be done first as you can't add dependencies to components that
@@ -186,15 +189,56 @@ function getComponentsTree(config) {
             graph.addNode(component.id);
           });
 
-          // Add dependencies
-          components.forEach(function(component) {
-            if(component.dependencies) {
-              component.dependencies.forEach(function(dependency) {
-                graph.addDependency(component.id, dependency);
+          return components;
+        })
+        .then(function(components) {
+
+          return new Promise(function(resolve, reject) {
+
+            var promises = [];
+
+            // Add dependencies
+            components.forEach(function(component) {
+              if(component.dependencies) {
+                component.dependencies.forEach(function(dependency) {
+
+                  // If the component depends on something that isn't yet in the
+                  // build then we need to add it
+                  if(!graph.hasNode(dependency)) {
+                    graph.addNode(dependency);
+
+                    promises.push(new Promise(function(resolve, reject) {
+                      getComponent(dependency)
+                        .then(function(component) {
+                          resolve(component);
+                        })
+                        .catch(function(err) {
+                          reject(err);
+                        });
+                    }));
+                  }
+
+                  graph.addDependency(component.id, dependency);
+                })
+              }
+            });
+
+            Promise.all(promises)
+              .then(function(deps) {
+                deps.forEach(function(dep) {
+                  components.push(dep);
+                });
               })
-            }
+              .then(function() {
+                resolve(components);
+              })
+              .catch(function(err) {
+                reject(err);
+              });
           });
 
+        })
+        .then(function(components) {
           cache.getComponentsTree.components = graph.overallOrder();
           cache.getComponentsTree.expiry = Date.now() + 5000;
 

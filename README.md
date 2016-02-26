@@ -8,11 +8,10 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ## Roadmap:
 
 ### Doing
+- Fix build when dependent components not specified
 
 ### MVP
-- Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
-- Manual cross browser testing (Browserstack)
-- Fixing anything from the above ^
+- Build download button should build to a different folder!
 - Minify JS output
   - browserify-incremental necessitates the use of full paths in the built output - really we need to suppress this for all but the local build
 - Concat and minify stylesheet output
@@ -20,16 +19,21 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Split out LeafletJS into a different bundle as it's huge and we don't need it on every page.
 - Review ARIA roles
 
-### Documentation
-- Write usage guidelines
-  - Add example of how to include the assets in an application
-- Write contribution guidelines
-
 ### Questions and issues
 - When using form validation with no error summaries such as the consumer rights act tickbox - where does the keyboard focus go to? Gov uk slack suggests having a visually hidden error summary that screenreaders will read?
 - What is our browser support?
 - Colour contrast tests are failing on gov uk elements (Phase banner and highlight box). I have modified the colours so that they no longer fail - check this with a designer and see what they think? Andy Porter?
 - There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
+
+### Test phase
+- Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
+- Manual cross browser testing (Browserstack)
+- Fixing anything from the above ^
+
+### Documentation
+- Write usage guidelines
+  - Add example of how to include the assets in an application
+- Write contribution guidelines
 
 --------------------------------------------------------------------------------
 

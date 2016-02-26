@@ -15,9 +15,8 @@ module.exports = function(options) {
    * the "Build" category which contains styles for example pages
    */
   var config = extend({
-    components: {
-      'Govuk': true
-    }
+    cache: true,
+    components: true
   }, options);
 
   return new Promise(function(resolve, reject) {

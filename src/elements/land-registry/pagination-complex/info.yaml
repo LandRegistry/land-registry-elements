@@ -2,3 +2,6 @@ name: Complex pagination
 categories:
   primary: Land Registry
   secondary: Utilities
+
+dependencies:
+  - elements/govuk/core

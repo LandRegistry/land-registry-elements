@@ -8,7 +8,10 @@ module.exports = function(app){
    */
   app.get('/build', function(req, res){
     build({
-      components: true
+      cache: false,
+      components: {
+        'Land Registry': true
+      }
     })
       .then(function(directory) {
         res.tgz(directory, 'land-registry-elements.tar.gz', false);

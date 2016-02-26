@@ -2,3 +2,6 @@ name: Forms
 categories:
   primary: Govuk
   secondary: Core
+
+dependencies:
+  - elements/govuk/panels

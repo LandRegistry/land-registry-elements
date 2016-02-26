@@ -15,7 +15,7 @@ module.exports = function(app){
     Promise
       .all([
         handlebars(),
-        components.getComponent(path.join('src', req.params[0]))
+        components.getComponent(req.params[0])
       ])
       .spread(function(hbs, component) {
 
