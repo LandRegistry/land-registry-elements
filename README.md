@@ -10,6 +10,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ### Doing
 
 ### MVP
+- Recursive dependency resolution - For example, tick the search form page only. Then click build. It will fail because even tho the search form page depends on the breadcrumbs component, the breadcrumb component has a dependency on the govuk core component and we aren't resolving this dependency. We need to recurse through the dependency tree until there is nothing left to find!
 - Concat and minify stylesheet output
 - Review ARIA roles
 

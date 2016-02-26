@@ -189,6 +189,8 @@ function getComponentsTree(config) {
               if(component.dependencies) {
                 component.dependencies.forEach(function(dependency) {
 
+                  // console.log(component.id, 'depends on', dependency);
+
                   // If the component depends on something that isn't yet in the
                   // build then we need to add it
                   if(!graph.hasNode(dependency)) {
@@ -217,11 +219,6 @@ function getComponentsTree(config) {
                 });
               })
               .then(function() {
-                // console.log(components);
-                console.log('Running build with', _.map(components, function(component) {
-                  return _.pick(component, ['id']);
-                }));
-
                 resolve(components);
               })
               .catch(function(err) {
@@ -232,6 +229,8 @@ function getComponentsTree(config) {
         })
         .then(function(components) {
           var componentGraph = graph.overallOrder();
+
+          console.log('Running build with', componentGraph);
 
           if(config.cache) {
             cache.getComponentsTree.components = componentGraph;
