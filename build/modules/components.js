@@ -101,8 +101,11 @@ function getComponents(config) {
               return filterComponents(components, config);
             })
             .then(function(components) {
-              cache.getComponents.components = components;
-              cache.getComponents.expiry = Date.now() + 5000;
+              if(config.cache) {
+                cache.getComponents.components = components;
+                cache.getComponents.expiry = Date.now() + 5000;
+              }
+
               return components;
             })
             .then(resolve)
@@ -239,10 +242,14 @@ function getComponentsTree(config) {
 
         })
         .then(function(components) {
-          cache.getComponentsTree.components = graph.overallOrder();
-          cache.getComponentsTree.expiry = Date.now() + 5000;
+          var componentGraph = graph.overallOrder();
 
-          resolve(cache.getComponentsTree.components);
+          if(config.cache) {
+            cache.getComponentsTree.components = componentGraph;
+            cache.getComponentsTree.expiry = Date.now() + 5000;
+          }
+
+          resolve(componentGraph);
         })
         .catch(function(err) {
           reject(err);
