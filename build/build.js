@@ -37,7 +37,7 @@ module.exports = function(options) {
         return sass(config);
       })
       .then(function() {
-        return javascript(config);
+        return javascript.compile(config);
       })
       .then(function() {
         return polyfillJS(config)

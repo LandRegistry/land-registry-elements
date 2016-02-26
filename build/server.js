@@ -16,7 +16,9 @@ app.use('/stylesheets', express.static('dist/assets/stylesheets'));
 // Individual routes pulled from the routes directory
 fs.readdir(path.join(__dirname, '/routes'), function(err, files) {
   if(err) {
-    console.error(err);
+    require('trace');
+    require('clarify');
+    console.trace(err);
   }
 
   files.forEach(function(file) {

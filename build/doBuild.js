@@ -8,5 +8,7 @@ build()
     console.log('Assets built to:', directory);
   })
   .catch(function(err) {
-    console.error(err);
+    require('trace');
+    require('clarify');
+    console.trace(err);
   });

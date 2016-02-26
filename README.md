@@ -30,6 +30,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Write usage guidelines
   - Add example of how to include the assets in an application
 - Write contribution guidelines
+- Fully document the structure of a component folder and info.yaml
 
 --------------------------------------------------------------------------------
 

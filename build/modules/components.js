@@ -60,7 +60,7 @@ function getComponent(componentId) {
       });
 
       if(er) {
-        reject(er)
+        reject(er);
       } else {
         resolve(component);
       }

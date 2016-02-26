@@ -29,7 +29,9 @@ module.exports = function(app){
 
       })
       .catch(function(err) {
-        console.error(err);
+        require('trace');
+        require('clarify');
+        console.trace(err);
       });
   });
 

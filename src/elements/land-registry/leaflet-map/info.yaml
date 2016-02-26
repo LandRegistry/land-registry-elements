@@ -6,3 +6,5 @@ categories:
 copy:
   from: '../../../../node_modules/leaflet/dist/images'
   to: 'assets/images/leaflet'
+
+js-bundle: 'leaflet'
