@@ -71,6 +71,7 @@ Document use of nodemon for development
 
 ## Browser support
 Browser support based on https://www.gov.uk/service-manual/user-centred-design/browsers-and-devices.html
+
 Two distinct levels of support are given and denoted next to each browser: ‘compliant’ or ‘functional’. Compliant means that the service should look as good in this browser as in other modern browsers. Functional means that while it might not look perfect the service is still usable. In both cases the user should be able to access the information they need or complete their service.
 
 ### Desktop devices
