@@ -68,3 +68,31 @@ A tarball of built out assets can be downloaded from [http://land-registry-eleme
 
 Guidelines to follow
 Document use of nodemon for development
+
+## Browser support
+Browser support based on https://www.gov.uk/service-manual/user-centred-design/browsers-and-devices.html
+Two distinct levels of support are given and denoted next to each browser: ‘compliant’ or ‘functional’. Compliant means that the service should look as good in this browser as in other modern browsers. Functional means that while it might not look perfect the service is still usable. In both cases the user should be able to access the information they need or complete their service.
+
+### Desktop devices
+
+| Browser                           | Support level  |
+| --------------------------------- | -------------- |
+| Windows Internet Explorer 7       | Functional     |
+| Windows Internet Explorer 8+      | Compliant      |
+| Edge (latest version)             | Compliant      |
+| Google Chrome (latest version)    | Compliant      |
+| Mozilla Firefox (latest version)  | Compliant      |
+| Mac OS X  Safari 8+               | Compliant      |
+| Google Chrome (latest version)    | Compliant      |
+| Mozilla Firefox (latest version)  | Compliant      |
+
+### Small screen devices
+
+| Operating system  | Version           | Support    |
+| ----------------- | ----------------- | ---------- |
+| iOS 7+            | Mobile Safari     | Compliant  |
+| Android 2.3.x     | Android Browser   | Functional |
+| Android 3.x       | Android Browser   | Functional |
+| Android 4.x       | Google Chrome     | Compliant  |
+|                   | Android Browser   | Compliant  |
+| Windows Phone 8.1 | Internet Explorer | Compliant  |
