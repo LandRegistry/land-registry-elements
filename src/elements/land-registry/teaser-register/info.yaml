@@ -5,3 +5,4 @@ categories:
 
 dependencies:
   - elements/govuk/details
+  - elements/govuk/lists

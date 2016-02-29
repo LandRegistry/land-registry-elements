@@ -10,20 +10,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 ### Doing
 
 ### MVP
-- Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
-- Manual cross browser testing (Browserstack)
-- Fixing anything from the above ^
-- Minify JS output
-  - browserify-incremental necessitates the use of full paths in the built output - really we need to suppress this for all but the local build
-- Concat and minify stylesheet output
-- Favicons / apple touch icons etc
-- Split out LeafletJS into a different bundle as it's huge and we don't need it on every page.
 - Review ARIA roles
-
-### Documentation
-- Write usage guidelines
-  - Add example of how to include the assets in an application
-- Write contribution guidelines
 
 ### Questions and issues
 - When using form validation with no error summaries such as the consumer rights act tickbox - where does the keyboard focus go to? Gov uk slack suggests having a visually hidden error summary that screenreaders will read?
@@ -31,16 +18,28 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 - Colour contrast tests are failing on gov uk elements (Phase banner and highlight box). I have modified the colours so that they no longer fail - check this with a designer and see what they think? Andy Porter?
 - There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
 
+### Test phase
+- Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
+- Manual cross browser testing (Browserstack)
+- Fixing anything from the above ^
+
+### Documentation
+- Write usage guidelines
+  - Add example of how to include the assets in an application
+- Write contribution guidelines
+- Fully document the structure of a component folder and info.yaml
+
 --------------------------------------------------------------------------------
 
 ### Non MVP todos
+- Concat and minify stylesheet output
 - Configurable build
+  - Switch configurable builds to use component IDs not categories
   - Exclude examples css from the relevant builds
   - Download configurable build via GET parameters
   - Form to select components and pipe into above build?
 - Make the visual regression testing less punishing to contributors - need to ensure we strike the right balance and don't put up barriers to contributing
 - Visual regression testing at mobile breakpoints
-- HTML beautfication for those that might view source
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
 - per component tests in each component's folder
 - Get basics like breadcrumbs and main element into a parent template
@@ -69,3 +68,32 @@ A tarball of built out assets can be downloaded from [http://land-registry-eleme
 
 Guidelines to follow
 Document use of nodemon for development
+
+## Browser support
+Browser support based on https://www.gov.uk/service-manual/user-centred-design/browsers-and-devices.html
+
+Two distinct levels of support are given and denoted next to each browser: ‘compliant’ or ‘functional’. Compliant means that the service should look as good in this browser as in other modern browsers. Functional means that while it might not look perfect the service is still usable. In both cases the user should be able to access the information they need or complete their service.
+
+### Desktop devices
+
+| Browser                           | Support level  |
+| --------------------------------- | -------------- |
+| Windows Internet Explorer 7       | Functional     |
+| Windows Internet Explorer 8+      | Compliant      |
+| Edge (latest version)             | Compliant      |
+| Google Chrome (latest version)    | Compliant      |
+| Mozilla Firefox (latest version)  | Compliant      |
+| Mac OS X  Safari 8+               | Compliant      |
+| Google Chrome (latest version)    | Compliant      |
+| Mozilla Firefox (latest version)  | Compliant      |
+
+### Small screen devices
+
+| Operating system  | Version           | Support    |
+| ----------------- | ----------------- | ---------- |
+| iOS 7+            | Mobile Safari     | Compliant  |
+| Android 2.3.x     | Android Browser   | Functional |
+| Android 3.x       | Android Browser   | Functional |
+| Android 4.x       | Google Chrome     | Compliant  |
+|                   | Android Browser   | Compliant  |
+| Windows Phone 8.1 | Internet Explorer | Compliant  |

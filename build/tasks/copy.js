@@ -1,10 +1,13 @@
 var path = require('path');
 var ncp = require('ncp').ncp;
 var components = require('../modules/components');
+var mkdirp = require('mkdirp');
 
 function copy(from, to) {
   console.time('Copy from ' + from + ' to ' + to);
   return new Promise(function(resolve, reject) {
+    mkdirp.sync(to);
+
     ncp(from, to, function(err, files) {
       if(err) {
         reject(err);
@@ -24,35 +27,32 @@ function copy(from, to) {
 var landregistryComponentAssets = function(config) {
   var componentCopyOperations = [];
 
-  return components.getComponents(config)
-    .then(function(components) {
+  return new Promise(function(resolve, reject) {
 
-      components.forEach(function(component) {
+    components.getComponents(config)
+      .then(function(components) {
+        components.forEach(function(component) {
 
-        if(component.copy) {
-          componentCopyOperations.push(copy(path.join(component.path, component.copy.from), component.copy.to));
-        }
-      });
+          if(component.copy) {
+            componentCopyOperations.push(copy(path.join(component.path, component.copy.from), path.join(config.destination, component.copy.to)));
+          }
+        });
 
-    })
-    .then(function() {
-      return new Promise(function(resolve, reject) {
         Promise
           .all(componentCopyOperations)
           .then(resolve)
           .catch(reject);
       });
-    });
 
-  // return copy('node_modules/govuk_template_mustache/assets', 'dist/assets');
+  });
 }
 
-var govUkTemplateAssets = function() {
-  return copy('node_modules/govuk_template_mustache/assets', 'dist/assets');
+var govUkTemplateAssets = function(config) {
+  return copy('node_modules/govuk_template_mustache/assets', path.join(config.destination, 'assets'));
 }
 
-var govUkToolkitAssets = function() {
-  return copy('node_modules/govuk-elements-sass/node_modules/govuk_frontend_toolkit/images', 'dist/assets/images/icons');
+var govUkToolkitAssets = function(config) {
+  return copy('node_modules/govuk-elements-sass/node_modules/govuk_frontend_toolkit/images', path.join(config.destination, 'assets/images/icons'));
 }
 
 module.exports = {

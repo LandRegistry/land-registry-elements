@@ -1,5 +1,6 @@
 var extend = require('extend');
 var path = require('path');
+var pretty = require('pretty');
 
 var components = require('../modules/components');
 var handlebars = require('../modules/handlebars');
@@ -15,21 +16,26 @@ module.exports = function(app){
     Promise
       .all([
         handlebars(),
-        components.getComponent(path.join('src', req.params[0]))
+        components.getComponent(req.params[0])
       ])
       .spread(function(hbs, component) {
 
         var variant = component.variants[req.params.variant];
         var context = extend(variant.context, {component: component });
 
-        res.send(renderPage(hbs, {
+        renderPage(hbs, {
           title: variant.name,
           content: hbs.compile(variant.content)(variant.context)
-        }));
+        })
+        .then(function(html) {
+          res.send(pretty(html));
+        });
 
       })
-      .catch(function(er) {
-        console.error(er);
+      .catch(function(err) {
+        require('trace');
+        require('clarify');
+        console.trace(err);
       });
   });
 

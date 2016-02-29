@@ -1,8 +1,36 @@
 var components = require('../modules/components');
-var browserify = require('browserify-incremental');
 var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
+var browserify = require('browserify');
+var browserify_incremental = require('browserify-incremental');
+
+/**
+ * Helper to sort the components into bundles
+ */
+function bundleSort(components) {
+  var bundles = {};
+
+  components.forEach(function(component) {
+    var bundle;
+
+    // If a bundle is defined in the info file use it, otherwise default to the landregistry bundle
+    if(typeof component['js-bundle'] !== 'undefined') {
+      bundle = component['js-bundle'];
+    } else {
+      bundle = 'landregistry';
+    }
+
+    // Collect the components together against their respective bundles
+    if(typeof bundles[bundle] === 'undefined') {
+      bundles[bundle] = [];
+    }
+
+    bundles[bundle].push(component);
+  });
+
+  return bundles;
+}
 
 /**
  * Function to build out the JavaScript
@@ -12,42 +40,82 @@ var mkdirp = require('mkdirp');
 function compileJavaScript(config) {
   console.time('Compile JavaScript');
 
-  return components.getComponentsTree(config)
-    .then(function(componentsTree) {
+  return components.getComponents(config)
+    .then(bundleSort)
+    .then(function(bundles) {
 
       return new Promise(function(resolve, reject) {
 
-        var b = browserify({
-          transform: [
-            require('hoganify')
-          ]
-        }, {
-          cacheFile: '.tmp/browserify-incremental.json'
-        });
+        var bundleQueue = [];
 
-        // Build up our JS based on the dependency tree
-        componentsTree.forEach(function(componentId) {
+        // Create a new browserify build for each bundle
+        for(var bundleKey in bundles) {
+          if(bundles.hasOwnProperty(bundleKey)) {
 
-          // Check to see if the component exposes a js file
-          if(fs.existsSync(path.join('src', componentId, 'controller.js'))) {
-            b.add(path.join('src', componentId, 'controller.js'));
+            bundleQueue.push(new Promise(function(resolve, reject) {
+
+              var bundle = bundles[bundleKey];
+
+              var b;
+              var browserfyConfig = {
+                transform: [
+                  require('hoganify')
+                ]
+              };
+
+              // If we're in production mode, turn off debug and enable uglification
+              // and use the vanilla browserify module
+              if(config.mode === 'production') {
+                b = browserify(browserfyConfig);
+                b.transform({ global: true }, 'uglifyify');
+              } else {
+                // Otherwise use debug mode
+                browserfyConfig.debug = true;
+
+                // And do incremental builds for speed
+                b = browserify_incremental(browserfyConfig, {
+                  cacheFile: '.tmp/browserify-incremental-' + bundleKey + '.json'
+                });
+              }
+
+              // Build up our bundle based on the components for this bundle
+              bundle.forEach(function(component) {
+
+                // Check to see if the component exposes a js file
+                if(fs.existsSync(path.join(component.path, 'controller.js'))) {
+                  b.add(path.join(component.path, 'controller.js'));
+                }
+              });
+
+              // Write the resulting JavaScript out to diska
+              var stream = fs.createWriteStream(path.join(config.destination, 'assets/javascripts/' + bundleKey + '.js'), { flags : 'w' });
+              b.bundle().pipe(stream);
+
+              stream.on('close', function () {
+                resolve(path.join(config.destination, 'assets/javascripts/' + bundleKey + '.js'));
+              });
+
+              stream.on('error', function (e) {
+                reject(e);
+              });
+
+            }));
           }
-        });
+        };
 
-        var stream = fs.createWriteStream('dist/assets/javascripts/landregistry.js', { flags : 'w' });
-        b.bundle().pipe(stream);
-
-        stream.on('close', function () {
-          resolve('dist/assets/javascripts/landregistry.js');
-          console.timeEnd('Compile JavaScript');
-        });
-
-        stream.on('error', function (e) {
-          reject(e);
-        });
+        // Process all the bundles defined above
+        Promise.all(bundleQueue)
+          .then(resolve)
+          .then(function() {
+            console.timeEnd('Compile JavaScript');
+          })
+          .catch(reject);
 
       });
     });
 }
 
-module.exports = compileJavaScript;
+module.exports = {
+  compile: compileJavaScript,
+  sort: bundleSort
+}

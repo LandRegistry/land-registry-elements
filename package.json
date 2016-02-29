@@ -8,7 +8,7 @@
     "generateTestURLs": "node build/tasks/testURLs.js",
     "build": "node build/doBuild.js",
     "start": "node build/doBuild.js && node build/server.js",
-    "generateReferenceRenderings": "node build/tasks/generateReferenceRenderings.js"
+    "generateReferenceRenderings": "npm run build && node build/tasks/generateReferenceRenderings.js"
   },
   "repository": {
     "type": "git",
@@ -41,6 +41,7 @@
     "browserify": "^13.0.0",
     "browserify-incremental": "^3.0.1",
     "browsernizr": "^2.0.1",
+    "clarify": "^1.0.5",
     "closest": "0.0.1",
     "copy": "^0.1.3",
     "delegate": "^3.0.1",
@@ -59,15 +60,20 @@
     "js-htmlencode": "^0.1.0",
     "js-yaml": "^3.5.2",
     "leaflet": "^0.7.7",
+    "lodash": "^4.5.1",
     "markdown": "^0.5.0",
+    "minifyify": "^7.3.2",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
     "node-sass": "^3.4.2",
     "npm": "^3.6.0",
     "polyfill-service": "^3.2.0",
+    "pretty": "^1.0.0",
     "proj4leaflet": "^0.7.2",
     "promise-helpers": "^0.2.0",
     "rimraf": "^2.5.1",
+    "trace": "^2.3.0",
+    "uglifyify": "^3.0.1",
     "validate.js": "^0.9.0",
     "yfm": "^0.2.0"
   }

@@ -4,6 +4,7 @@ var glob = require('glob');
 var path = require('path');
 var fs = require('fs');
 var DepGraph = require('dependency-graph').DepGraph;
+var _ = require('lodash');
 
 var cache = {
   getComponents: {
@@ -19,14 +20,16 @@ var cache = {
  * @param {String} component The component ID to fetch
  * @return {Promise} Promise which resolves with the component data
  */
-function getComponent(componentPath) {
+function getComponent(componentId) {
   return new Promise(function(resolve, reject) {
+
+    var componentPath = path.join('src', componentId);
 
     var component = yaml.safeLoad(fs.readFileSync(path.join(componentPath, 'info.yaml'), 'utf8'));
 
     component.path = componentPath;
 
-    component.id = componentPath.replace('src/', '');
+    component.id = componentId;
 
     if(fs.existsSync(path.join(componentPath, 'template.hbs'))) {
       component.template = fs.readFileSync(path.join(componentPath, 'template.hbs'), 'utf8');
@@ -58,7 +61,7 @@ function getComponent(componentPath) {
       });
 
       if(er) {
-        reject(er)
+        reject(er);
       } else {
         resolve(component);
       }
@@ -73,13 +76,14 @@ function getComponent(componentPath) {
  */
 function getComponents(config) {
 
-  if(cache.getComponents.expiry < Date.now()) {
+  if(typeof config === 'undefined') {
+    config = {
+      cache: true,
+      components: true
+    };
+  }
 
-    if(typeof config === 'undefined') {
-      config = {
-        components: true
-      };
-    }
+  if(!config.cache || cache.getComponents.expiry < Date.now()) {
 
     return new Promise(function(resolve, reject) {
       glob('src/**/info.yaml', function (er, files) {
@@ -87,7 +91,7 @@ function getComponents(config) {
         var queue = [];
 
         files.forEach(function(filename) {
-          queue.push(getComponent(path.dirname(filename)));
+          queue.push(getComponent(path.dirname(filename).replace('src/', '')));
         });
 
         if(er) {
@@ -98,9 +102,11 @@ function getComponents(config) {
               return filterComponents(components, config);
             })
             .then(function(components) {
-              // console.log(components);
-              cache.getComponents.components = components;
-              cache.getComponents.expiry = Date.now() + 5000;
+              if(config.cache) {
+                cache.getComponents.components = components;
+                cache.getComponents.expiry = Date.now() + 5000;
+              }
+
               return components;
             })
             .then(resolve)
@@ -122,6 +128,59 @@ function getComponents(config) {
 }
 
 /**
+ * Function to get a component's dependencies. Is called recursively
+ * @return {Promise} Promise which resolves with the component data
+ */
+function resolveComponentDependencies(component, graph, components) {
+  return new Promise(function(resolve, reject) {
+
+    var promises = [];
+
+    // Add dependencies
+    if(component.dependencies) {
+      component.dependencies.forEach(function(dependency) {
+
+        // If the component depends on something that isn't yet in the
+        // build then we need to add it
+        if(!graph.hasNode(dependency)) {
+          graph.addNode(dependency);
+
+          promises.push(new Promise(function(resolve, reject) {
+            getComponent(dependency)
+              .then(function(component) {
+                resolve(component);
+              })
+              .catch(function(err) {
+                reject(err);
+              });
+          }));
+        }
+
+        graph.addDependency(component.id, dependency);
+      })
+    }
+
+    Promise.all(promises)
+      .then(function(deps) {
+        var resolveDeps = [];
+
+        deps.forEach(function(dep) {
+          components.push(dep);
+          resolveDeps.push(resolveComponentDependencies(dep, graph, components));
+        });
+
+        return Promise.all(resolveDeps);
+      })
+      .then(function() {
+        resolve(components);
+      })
+      .catch(function(err) {
+        reject(err);
+      });
+  });
+}
+
+/**
  * Function to filter components as requested in the config
  * @param config Config object indicating which components to include in the build
  * @return {Promise} Promise which resolves with all the component data
@@ -129,7 +188,6 @@ function getComponents(config) {
 function filterComponents(components, config) {
   return new Promise(function(resolve, reject) {
 
-    // Loop backwards because we're splicing items out of the array
     var filteredComponents = components.filter(function(component) {
 
       // If the config says to blindly let every component through, then do so
@@ -137,26 +195,10 @@ function filterComponents(components, config) {
         return true;
       }
 
-      // If a component's category isn't specified, exclude the entire thing
-      if(typeof config.components[component.categories.primary] === 'undefined') {
-        return false;
-      }
-
-      // If the component's entire primary category is included, let it through
-      if(config.components[component.categories.primary] === true) {
-        return true;
-      }
-
-      // Else if more detailed config is given, check the secondary category
-      if(config.components[component.categories.primary][component.categories.secondary] === true) {
-        return true;
-      }
-
-      // If we've fallen through to here, the component has not been specified in the build, so we nuke it
-      return false;
+      return (config.components.indexOf(component.id) !== -1);
     });
 
-    if(filterComponents.length > 0) {
+    if(filteredComponents.length > 0) {
       resolve(filteredComponents);
     } else {
       reject(new Error('No components specified'));
@@ -171,13 +213,14 @@ function filterComponents(components, config) {
  * @return {Promise} Promise which resolves with all the component data
  */
 function getComponentsTree(config) {
-  if(cache.getComponentsTree.expiry < Date.now()) {
+  if(!config.cache || cache.getComponentsTree.expiry < Date.now()) {
 
     return new Promise(function(resolve, reject) {
 
+      var graph = new DepGraph();
+
       getComponents(config)
         .then(function(components) {
-          var graph = new DepGraph();
 
           // Initial pass adding the components to the graph
           // Has to be done first as you can't add dependencies to components that
@@ -186,19 +229,28 @@ function getComponentsTree(config) {
             graph.addNode(component.id);
           });
 
-          // Add dependencies
+          return components;
+        })
+        .then(function(components) {
+          var promises = [];
+
           components.forEach(function(component) {
-            if(component.dependencies) {
-              component.dependencies.forEach(function(dependency) {
-                graph.addDependency(component.id, dependency);
-              })
-            }
+            promises.push(resolveComponentDependencies(component, graph, components));
           });
 
-          cache.getComponentsTree.components = graph.overallOrder();
-          cache.getComponentsTree.expiry = Date.now() + 5000;
+          return Promise.all(promises);
+        })
+        .then(function(components) {
+          var componentGraph = graph.overallOrder();
 
-          resolve(cache.getComponentsTree.components);
+          console.log('Running build with', componentGraph);
+
+          if(config.cache) {
+            cache.getComponentsTree.components = componentGraph;
+            cache.getComponentsTree.expiry = Date.now() + 5000;
+          }
+
+          resolve(componentGraph);
         })
         .catch(function(err) {
           reject(err);

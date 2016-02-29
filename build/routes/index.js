@@ -1,4 +1,5 @@
 var fs = require('fs');
+var pretty = require('pretty');
 
 var components = require('../modules/components');
 var handlebars = require('../modules/handlebars');
@@ -8,7 +9,7 @@ var renderPage = require('../modules/renderPage');
  * Helper method to organise components by their categories
  */
 function sortComponents(components) {
-  // console.log(components);
+
   // Sort the components by category
   var sortedComponents = {};
   components.forEach(function(component) {
@@ -53,22 +54,22 @@ module.exports = function(app){
       ])
       .spread(function(hbs, components) {
 
-        res.send(renderPage(hbs, {
+        renderPage(hbs, {
           title: 'Index',
           content: hbs.compile(hbs.partials['layout/index'])({
             components: sortComponents(components),
             readme: fs.readFileSync('README.md')
           })
-        }));
+        })
+        .then(function(html) {
+          res.send(pretty(html));
+        });
 
       })
-      .catch(function(er) {
-        console.error(er);
-
-        res.send(renderPage(hbs, {
-          title: 'Index',
-          content: 'Error'
-        }));
+      .catch(function(err) {
+        require('trace');
+        require('clarify');
+        console.trace(err);
       });
   });
 
