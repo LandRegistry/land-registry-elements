@@ -128,6 +128,59 @@ function getComponents(config) {
 }
 
 /**
+ * Function to get a component's dependencies. Is called recursively
+ * @return {Promise} Promise which resolves with the component data
+ */
+function resolveComponentDependencies(component, graph, components) {
+  return new Promise(function(resolve, reject) {
+
+    var promises = [];
+
+    // Add dependencies
+    if(component.dependencies) {
+      component.dependencies.forEach(function(dependency) {
+
+        // If the component depends on something that isn't yet in the
+        // build then we need to add it
+        if(!graph.hasNode(dependency)) {
+          graph.addNode(dependency);
+
+          promises.push(new Promise(function(resolve, reject) {
+            getComponent(dependency)
+              .then(function(component) {
+                resolve(component);
+              })
+              .catch(function(err) {
+                reject(err);
+              });
+          }));
+        }
+
+        graph.addDependency(component.id, dependency);
+      })
+    }
+
+    Promise.all(promises)
+      .then(function(deps) {
+        var resolveDeps = [];
+
+        deps.forEach(function(dep) {
+          components.push(dep);
+          resolveDeps.push(resolveComponentDependencies(dep, graph, components));
+        });
+
+        return Promise.all(resolveDeps);
+      })
+      .then(function() {
+        resolve(components);
+      })
+      .catch(function(err) {
+        reject(err);
+      });
+  });
+}
+
+/**
  * Function to filter components as requested in the config
  * @param config Config object indicating which components to include in the build
  * @return {Promise} Promise which resolves with all the component data
@@ -179,53 +232,13 @@ function getComponentsTree(config) {
           return components;
         })
         .then(function(components) {
+          var promises = [];
 
-          return new Promise(function(resolve, reject) {
-
-            var promises = [];
-
-            // Add dependencies
-            components.forEach(function(component) {
-              if(component.dependencies) {
-                component.dependencies.forEach(function(dependency) {
-
-                  // console.log(component.id, 'depends on', dependency);
-
-                  // If the component depends on something that isn't yet in the
-                  // build then we need to add it
-                  if(!graph.hasNode(dependency)) {
-                    graph.addNode(dependency);
-
-                    promises.push(new Promise(function(resolve, reject) {
-                      getComponent(dependency)
-                        .then(function(component) {
-                          resolve(component);
-                        })
-                        .catch(function(err) {
-                          reject(err);
-                        });
-                    }));
-                  }
-
-                  graph.addDependency(component.id, dependency);
-                })
-              }
-            });
-
-            Promise.all(promises)
-              .then(function(deps) {
-                deps.forEach(function(dep) {
-                  components.push(dep);
-                });
-              })
-              .then(function() {
-                resolve(components);
-              })
-              .catch(function(err) {
-                reject(err);
-              });
+          components.forEach(function(component) {
+            promises.push(resolveComponentDependencies(component, graph, components));
           });
 
+          return Promise.all(promises);
         })
         .then(function(components) {
           var componentGraph = graph.overallOrder();

@@ -1,10 +1,13 @@
 var path = require('path');
 var ncp = require('ncp').ncp;
 var components = require('../modules/components');
+var mkdirp = require('mkdirp');
 
 function copy(from, to) {
   console.time('Copy from ' + from + ' to ' + to);
   return new Promise(function(resolve, reject) {
+    mkdirp.sync(to);
+
     ncp(from, to, function(err, files) {
       if(err) {
         reject(err);
