@@ -1,9 +1,10 @@
-var markdown = require('markdown').markdown;
+var Remarkable = require('remarkable');
+var md = new Remarkable();
 
 module.exports = function(handlebars) {
   return function(options) {
     var contents = options.fn(this);
 
-    return new handlebars.SafeString(markdown.toHTML(contents));
+    return new handlebars.SafeString(md.render(contents));
   }
 };
