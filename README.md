@@ -94,7 +94,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### MVP
-- Fix bug on landing form with radios
 - When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
 
 ### Questions and issues
