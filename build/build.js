@@ -4,7 +4,6 @@ var cleanDist = require('./tasks/clean_dist');
 var copy = require('./tasks/copy');
 var sass = require('./tasks/sass');
 var javascript = require('./tasks/javascript');
-var polyfillJS = require('./tasks/polyfillJS');
 
 module.exports = function(options) {
 
