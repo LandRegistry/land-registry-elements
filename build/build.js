@@ -41,9 +41,6 @@ module.exports = function(options) {
         return javascript.compile(config);
       })
       .then(function() {
-        return polyfillJS(config)
-      })
-      .then(function() {
         resolve(path.join(config.destination, 'assets'));
       })
       .catch(function(e) {

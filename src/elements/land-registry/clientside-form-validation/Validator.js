@@ -5,6 +5,7 @@ var extend = require('extend');
 var domify = require('domify');
 var closest = require('closest');
 var delegate = require('delegate');
+require('classlist-polyfill');
 
 /**
  * Form validation

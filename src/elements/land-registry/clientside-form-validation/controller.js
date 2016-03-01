@@ -1,5 +1,6 @@
 'use strict';
 
+require('classlist-polyfill');
 var Validator = require('./Validator');
 
 var forms = document.querySelectorAll('[data-clientside-validation]');
