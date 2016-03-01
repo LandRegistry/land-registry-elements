@@ -144,16 +144,16 @@ Two distinct levels of support are given and denoted next to each browser: ‘co
 
 ### Desktop devices
 
-| Browser                           | Support level  |
-| --------------------------------- | -------------- |
-| Windows Internet Explorer 7       | Functional     |
-| Windows Internet Explorer 8+      | Compliant      |
-| Edge (latest version)             | Compliant      |
-| Google Chrome (latest version)    | Compliant      |
-| Mozilla Firefox (latest version)  | Compliant      |
-| Mac OS X  Safari 8+               | Compliant      |
-| Google Chrome (latest version)    | Compliant      |
-| Mozilla Firefox (latest version)  | Compliant      |
+| Operating system | Browser                           | Support level  |
+| ---------------- | --------------------------------- | -------------- |
+| Windows          | Internet Explorer 7               | Functional     |
+|                  | Internet Explorer 8+              | Compliant      |
+|                  | Edge (latest version)             | Compliant      |
+|                  | Google Chrome (latest version)    | Compliant      |
+|                  | Mozilla Firefox (latest version)  | Compliant      |
+| Mac              | OS X  Safari 8+                   | Compliant      |
+|                  | Google Chrome (latest version)    | Compliant      |
+|                  | Mozilla Firefox (latest version)  | Compliant      |
 
 ### Small screen devices
 
@@ -161,7 +161,6 @@ Two distinct levels of support are given and denoted next to each browser: ‘co
 | ----------------- | ----------------- | ---------- |
 | iOS 7+            | Mobile Safari     | Compliant  |
 | Android 2.3.x     | Android Browser   | Functional |
-| Android 3.x       | Android Browser   | Functional |
 | Android 4.x       | Google Chrome     | Compliant  |
 |                   | Android Browser   | Compliant  |
 | Windows Phone 8.1 | Internet Explorer | Compliant  |
