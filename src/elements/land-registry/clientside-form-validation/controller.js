@@ -1,6 +1,6 @@
 'use strict';
 
-var Validator = require('./validator');
+var Validator = require('./Validator');
 
 var forms = document.querySelectorAll('[data-clientside-validation]');
 var rules;

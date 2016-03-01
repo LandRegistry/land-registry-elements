@@ -1,6 +1,11 @@
-document.querySelector('.split-detail-trigger').addEventListener('click', function(e) {
-  e.preventDefault();
+'use strict';
 
-  this.classList.toggle('split-detail-trigger-active');
-  document.querySelector(this.getAttribute('href')).classList.toggle('split-detail-contents-active');
-});
+var SplitDetail = require('./SplitDetail');
+
+var instance;
+var splitDetailTriggers = document.querySelectorAll('.split-detail-trigger');
+
+for (var i = 0; i < splitDetailTriggers.length; i++) {
+  instance = new SplitDetail(splitDetailTriggers[i]);
+  instance.create();
+}
