@@ -54,7 +54,7 @@
       if (!node || node.nodeName.toLowerCase() === match) {
         break;
       }
-    } while (node = node.parentNode);
+    } while ((node = node.parentNode));
 
     return node;
   }
