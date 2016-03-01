@@ -1,26 +1,10 @@
 @import "govuk_frontend_toolkit/design-patterns/alpha-beta";
 @import "govuk_elements/phase-banner";
 
-// Note: The gov uk defined colours are not accessible from a contrast perspective
-// so they have been modified here
-.phase-banner-alpha {
-  .phase-tag {
-    background-color: darken($alpha-colour, 1%);
-  }
-}
-
-.phase-banner-beta {
-  .phase-tag {
-    background-color: darken($beta-colour, 17%);
-  }
-}
-
 .phase-tag-alpha {
   @include phase-tag($state: beta);
-  background-color: darken($alpha-colour, 1%);
 }
 
 .phase-tag-beta {
   @include phase-tag($state: beta);
-  background-color: darken($beta-colour, 17%);
 }

@@ -94,13 +94,10 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### MVP
-- When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
-
 ### Questions and issues
 - If the generate build download button fails due to dependencies not being declared properly, we need to show an error message because otherwise it just dies
 - When using form validation with no error summaries such as the consumer rights act tickbox - where does the keyboard focus go to? Gov uk slack suggests having a visually hidden error summary that screenreaders will read?
 - What is our browser support?
-- Colour contrast tests are failing on gov uk elements (Phase banner and highlight box). I have modified the colours so that they no longer fail - check this with a designer and see what they think? Andy Porter?
 - There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
 - The w3c validator service is rate limited so sometimes the html validation fails for no good reason
 
@@ -122,6 +119,8 @@ Contains the main test suite. Components should not specify tests in here but sh
 --------------------------------------------------------------------------------
 
 ### Non MVP todos
+- When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
+
 - Concat and minify stylesheet output
 - Visual regression testing at mobile breakpoints
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
