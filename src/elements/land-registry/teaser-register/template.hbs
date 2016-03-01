@@ -26,12 +26,22 @@
   {{/if}}
 
   {{#if is_caution_title}}
-  <details class="font-xsmall">
+  <p class="font-xsmall"><strong class="bold">Caution against first registration</strong> <a class="split-detail-trigger" href="#whats-caution-against-first-registration">What's this?</a></p>
+
+  <div class="split-detail-contents font-xsmall" id="whats-caution-against-first-registration">
+    <div class="panel panel-border-narrow">
+      <p>This property hasn’t been registered yet. You can’t find out who owns it from this service. </p>
+      <p>Someone other than the owner (known as the ‘cautioner’) has registered a right or interest in the property. They will be told if anyone tries to register it, and can object to the registration going ahead until their claim has been looked at. You can get their name and address from this service.</p>
+      <p>Registration has only been compulsory since the 1990s. Property that hasn’t changed hands since then may not be registered.</p>
+    </div>
+  </div>
+
+  {{!-- <details class="font-xsmall">
     <summary>Caution against first registration</summary>
 
     <p>This property hasn’t been registered yet. You can’t find out who owns it from this service. </p>
     <p>Someone other than the owner (known as the ‘cautioner’) has registered a right or interest in the property. They will be told if anyone tries to register it, and can object to the registration going ahead until their claim has been looked at. You can get their name and address from this service.</p>
     <p>Registration has only been compulsory since the 1990s. Property that hasn’t changed hands since then may not be registered.</p>
-  </details>
+  </details> --}}
   {{/if}}
 </div>

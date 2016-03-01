@@ -1,0 +1,32 @@
+.split-detail-trigger {
+  margin-left: 5px;
+  text-decoration: none;
+
+  &:visited {
+    color: $link-colour;
+  }
+
+  &:focus {
+    background-color: transparent;
+  }
+
+  &:before {
+    content: '⯈ '
+  }
+
+  &-active {
+    &:before {
+      content: '⯆ '
+    }
+  }
+}
+
+.split-detail-contents {
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+
+  &-active {
+    max-height: 1000px;
+  }
+}
