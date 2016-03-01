@@ -94,7 +94,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### MVP
-- Replace html validtion with https://github.com/svenkreiss/html5validator so that we sidestep the rate limiting on the w3c validation service
 - When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
 
 ### Questions and issues
@@ -102,6 +101,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 - What is our browser support?
 - Colour contrast tests are failing on gov uk elements (Phase banner and highlight box). I have modified the colours so that they no longer fail - check this with a designer and see what they think? Andy Porter?
 - There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
+- The w3c validator service is rate limited so sometimes the html validation fails for no good reason
 
 ### Test phase
 - Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
@@ -122,19 +122,12 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Non MVP todos
 - Concat and minify stylesheet output
-- Configurable build
-  - Switch configurable builds to use component IDs not categories
-  - Exclude examples css from the relevant builds
-  - Download configurable build via GET parameters
-  - Form to select components and pipe into above build?
-- Make the visual regression testing less punishing to contributors - need to ensure we strike the right balance and don't put up barriers to contributing
 - Visual regression testing at mobile breakpoints
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
 - per component tests in each component's folder
 - Get basics like breadcrumbs and main element into a parent template
 - Make sure any pattern documentation is in README.md files and not in the demos
 - Test suite for the clientside validation checking that it matches the spec set out by gov uk
-- Thumbnail renderings on the index page?
 - Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
 - Browsersync
 - Exclude image assets that are not referenced in the css to keep the build output clean
