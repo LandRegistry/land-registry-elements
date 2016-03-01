@@ -60,7 +60,7 @@ describe('The pattern library page at', function() {
           }
 
           // Suppress phase-tag colour contrast errors
-          if(result.code === 'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail' && (result.context === '<strong class="phase-tag">BETA</strong>' || result.context === '<strong class="phase-tag-beta">BETA</strong>')) {
+          if(result.code === 'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail' && (result.context.indexOf('phase-tag') !== -1 || result.context.indexOf('phase-tag-beta') !== -1 || result.context.indexOf('phase-tag-alpha') !== -1)) {
             return;
           }
 
