@@ -97,7 +97,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Questions and issues
 - If the generate build download button fails due to dependencies not being declared properly, we need to show an error message because otherwise it just dies
 - When using form validation with no error summaries such as the consumer rights act tickbox - where does the keyboard focus go to? Gov uk slack suggests having a visually hidden error summary that screenreaders will read?
-- What is our browser support?
 - There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
 - The w3c validator service is rate limited so sometimes the html validation fails for no good reason
 
