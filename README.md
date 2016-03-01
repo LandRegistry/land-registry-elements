@@ -94,11 +94,11 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### MVP
-- Split detail pattern
 - Fix bug on landing form with radios
 - When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
 
 ### Questions and issues
+- If the generate build download button fails due to dependencies not being declared properly, we need to show an error message because otherwise it just dies
 - When using form validation with no error summaries such as the consumer rights act tickbox - where does the keyboard focus go to? Gov uk slack suggests having a visually hidden error summary that screenreaders will read?
 - What is our browser support?
 - Colour contrast tests are failing on gov uk elements (Phase banner and highlight box). I have modified the colours so that they no longer fail - check this with a designer and see what they think? Andy Porter?
