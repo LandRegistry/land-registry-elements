@@ -51,24 +51,28 @@
 
         <dt>Tenure type</dt>
         <dd>
-          <details class="font-xsmall">
-            <summary class="bold-small">{{tenureType}}</summary>
-            {{#tenure_leasehold}}
-              <p>You only own a leasehold property for a fixed period of time. You'll have a legal agreement the landlord (sometimes known as the ‘freeholder’) called a ‘lease’. This tells you how many years you’ll own the property.</p>
-              <p>Most flats are leasehold. Houses can be leasehold too and usually are if they’re bought through a shared ownership scheme.</p>
-              <p>The leasehold and freehold are registered separately with the Land Registry. Each has its own title documents.</p>
-              <p><b class="bold-xsmall">You are buying a summary of the leasehold owner, not the freehold.</b></p>
+          {{tenureType}}
+          <a class="split-detail-trigger" href="#what-is-tenure">What's this?</a>
 
-              <a rel="external" href="https://www.gov.uk/leasehold-property/overview">More about Leasehold on GOV.UK</a>
-            {{/tenure_leasehold}}
+          <div class="split-detail-contents" id="what-is-tenure">
+            <div class="panel panel-border-narrow font-xsmall">
+              {{#tenure_leasehold}}
+                <p>You only own a leasehold property for a fixed period of time. You'll have a legal agreement the landlord (sometimes known as the ‘freeholder’) called a ‘lease’. This tells you how many years you’ll own the property.</p>
+                <p>Most flats are leasehold. Houses can be leasehold too and usually are if they’re bought through a shared ownership scheme.</p>
+                <p>The leasehold and freehold are registered separately with the Land Registry. Each has its own title documents.</p>
+                <p><b class="bold">You are buying a summary of the leasehold owner, not the freehold.</b></p>
 
-            {{#tenure_freehold}}
-              <p>You own a freehold building and land outright. It is yours until you sell it or give it away.</p>
-              <p>Most houses are freehold. Most flats are leasehold. That means someone else owns the freehold for the building the flat is in.</p>
-              <p><b class="bold-xsmall">If you want to know who owns a particular flat, you probably need the leasehold instead.</b></p>
-              <p>Houses can also be leasehold and usually are if they’re bought through a shared ownership scheme.</p>
-            {{/tenure_freehold}}
-          </details>
+                <a rel="external" href="https://www.gov.uk/leasehold-property/overview">More about Leasehold on GOV.UK</a>
+              {{/tenure_leasehold}}
+
+              {{#tenure_freehold}}
+                <p>You own a freehold building and land outright. It is yours until you sell it or give it away.</p>
+                <p>Most houses are freehold. Most flats are leasehold. That means someone else owns the freehold for the building the flat is in.</p>
+                <p><b class="bold">If you want to know who owns a particular flat, you probably need the leasehold instead.</b></p>
+                <p>Houses can also be leasehold and usually are if they’re bought through a shared ownership scheme.</p>
+              {{/tenure_freehold}}
+            </div>
+          </div>
 
           <p class="font-xsmall">A property can have both a freehold and a leasehold title. To get a different tenure for this address, <a href="#">go back</a> and select the one you need.</p>
         </dd>
