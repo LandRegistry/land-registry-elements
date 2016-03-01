@@ -7,25 +7,30 @@ var rules;
 var instance;
 var element;
 
-for (var i = 0; i < forms.length; i++) {
-  element = forms[i];
+// IE8 doesn't get clientside validation as it validatejs does not support it
+if(!document.documentElement.classList.contains('lte-ie8')) {
 
-  // Slurp the form validator config from the associated script tag in the DOM
-  var configID = element.getAttribute('data-clientside-validation');
+  for (var i = 0; i < forms.length; i++) {
+    element = forms[i];
 
-  var configElement = document.getElementById(configID);
+    // Slurp the form validator config from the associated script tag in the DOM
+    var configID = element.getAttribute('data-clientside-validation');
 
-  // If we can't find any config, bail out
-  if(!configElement) {
-    break;
+    var configElement = document.getElementById(configID);
+
+    // If we can't find any config, bail out
+    if(!configElement) {
+      break;
+    }
+
+    rules = JSON.parse(configElement.textContent);
+
+    instance = new Validator(element, {
+      'rules': rules,
+      'showSummary': !element.hasAttribute('data-clientside-validation-no-summary')
+    });
+
+    instance.create();
   }
 
-  rules = JSON.parse(configElement.innerText);
-
-  instance = new Validator(element, {
-    'rules': rules,
-    'showSummary': !element.hasAttribute('data-clientside-validation-no-summary')
-  });
-
-  instance.create();
 }
