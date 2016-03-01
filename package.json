@@ -4,7 +4,7 @@
   "description": "Land registry frontend pattern library - building on top of http://govuk-elements.herokuapp.com",
   "main": "build/devServer.js",
   "scripts": {
-    "test": "npm run build && npm run generateTestURLs && mocha",
+    "test": "npm run build && npm run generateTestURLs && mocha && eslint src/**",
     "generateTestURLs": "node build/tasks/testURLs.js",
     "build": "node build/doBuild.js",
     "start": "node build/doBuild.js && node build/server.js",

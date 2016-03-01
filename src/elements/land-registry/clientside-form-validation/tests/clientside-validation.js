@@ -1,8 +1,6 @@
-var should = require('should');
+// var should = require('should');
 var webdriverio = require('webdriverio');
 var selenium = require('selenium-standalone');
-var fs = require('fs');
-var path = require('path');
 
 var client = webdriverio.remote({
   logLevel: 'command',
@@ -17,11 +15,6 @@ describe('Clientside validation', function() {
 
   before(function(done){
     selenium.install(
-      {
-        logger: function (message) {
-          console.log(message);
-        }
-      },
       function (err) {
         if (err) return done(err);
 
