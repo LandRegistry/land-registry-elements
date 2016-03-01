@@ -133,7 +133,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
 - Browsersync
 - Exclude image assets that are not referenced in the css to keep the build output clean
-- http://eslint.org/ and https://www.npmjs.com/package/eslint-plugin-cross-browser-compatibility-check
 - Write up results of user testing against any components where this has been carried out
 - Convert CSS to BEM?
 - Split out gov uk JS and include it into the core component with browserify?
