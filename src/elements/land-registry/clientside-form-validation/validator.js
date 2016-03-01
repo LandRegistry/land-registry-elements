@@ -1,6 +1,6 @@
 'use strict';
 
-global.validate = require('validate.js'); // Expose validate as a global so that people can add custom validation routines easily
+var validate = global.validate = require('validate.js'); // Expose validate as a global so that people can add custom validation routines easily
 var extend = require('extend');
 var domify = require('domify');
 var closest = require('closest');
@@ -41,7 +41,6 @@ function Validator(element, config) {
   extend(options, config);
 
   // Private variables
-  var validatorInstance;
   var errorSummary;
 
   /**
