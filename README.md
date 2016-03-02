@@ -99,6 +99,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 - When using form validation with no error summaries such as the consumer rights act tickbox - where does the keyboard focus go to? Gov uk slack suggests having a visually hidden error summary that screenreaders will read?
 - There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
 - The w3c validator service is rate limited so sometimes the html validation fails for no good reason
+- Visual regression is sometimes unnecessarily punishing - can this be refactored or approached in a different manner to make it easier?
 
 ### Test phase
 - Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
@@ -120,7 +121,9 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Non MVP todos
 - When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
 
+- Testplan generator? I.e. take a list of pages and browsers and put together a list for you to complete
 - Concat and minify stylesheet output
+- Is there a simpler way we can expose the build output for people to include in their application's sass. I.e. so that any mixins from the gov uk stuff is included in the application rather than just the built out css.
 - Visual regression testing at mobile breakpoints
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
 - per component tests in each component's folder
