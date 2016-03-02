@@ -1,5 +1,6 @@
 'use strict';
 
+require('../core/polyfills/Array.prototype.forEach');
 require('classlist-polyfill');
 var Validator = require('./Validator');
 

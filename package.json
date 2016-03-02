@@ -58,6 +58,7 @@
     "handlebars": "^4.0.5",
     "hogan.js": "^3.0.2",
     "hoganify": "^0.2.0",
+    "ie8": "^0.3.2",
     "js-htmlencode": "^0.1.0",
     "js-yaml": "^3.5.2",
     "leaflet": "^0.7.7",
