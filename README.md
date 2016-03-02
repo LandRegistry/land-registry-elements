@@ -94,14 +94,12 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### MVP
-- When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
-
 ### Questions and issues
+- If the generate build download button fails due to dependencies not being declared properly, we need to show an error message because otherwise it just dies
 - When using form validation with no error summaries such as the consumer rights act tickbox - where does the keyboard focus go to? Gov uk slack suggests having a visually hidden error summary that screenreaders will read?
-- What is our browser support?
-- Colour contrast tests are failing on gov uk elements (Phase banner and highlight box). I have modified the colours so that they no longer fail - check this with a designer and see what they think? Andy Porter?
 - There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
 - The w3c validator service is rate limited so sometimes the html validation fails for no good reason
+- Visual regression is sometimes unnecessarily punishing - can this be refactored or approached in a different manner to make it easier?
 
 ### Test phase
 - Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
@@ -121,7 +119,12 @@ Contains the main test suite. Components should not specify tests in here but sh
 --------------------------------------------------------------------------------
 
 ### Non MVP todos
+- When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
+
+- Get IE8 polyfills out into a separate bundle
+- Testplan generator? I.e. take a list of pages and browsers and put together a list for you to complete
 - Concat and minify stylesheet output
+- Is there a simpler way we can expose the build output for people to include in their application's sass. I.e. so that any mixins from the gov uk stuff is included in the application rather than just the built out css.
 - Visual regression testing at mobile breakpoints
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
 - per component tests in each component's folder
@@ -145,16 +148,16 @@ Two distinct levels of support are given and denoted next to each browser: ‘co
 
 ### Desktop devices
 
-| Browser                           | Support level  |
-| --------------------------------- | -------------- |
-| Windows Internet Explorer 7       | Functional     |
-| Windows Internet Explorer 8+      | Compliant      |
-| Edge (latest version)             | Compliant      |
-| Google Chrome (latest version)    | Compliant      |
-| Mozilla Firefox (latest version)  | Compliant      |
-| Mac OS X  Safari 8+               | Compliant      |
-| Google Chrome (latest version)    | Compliant      |
-| Mozilla Firefox (latest version)  | Compliant      |
+| Operating system | Browser                           | Support level  |
+| ---------------- | --------------------------------- | -------------- |
+| Windows          | Internet Explorer 7               | Functional     |
+|                  | Internet Explorer 8+              | Compliant      |
+|                  | Edge (latest version)             | Compliant      |
+|                  | Google Chrome (latest version)    | Compliant      |
+|                  | Mozilla Firefox (latest version)  | Compliant      |
+| Mac              | OS X  Safari 8+                   | Compliant      |
+|                  | Google Chrome (latest version)    | Compliant      |
+|                  | Mozilla Firefox (latest version)  | Compliant      |
 
 ### Small screen devices
 
@@ -162,7 +165,6 @@ Two distinct levels of support are given and denoted next to each browser: ‘co
 | ----------------- | ----------------- | ---------- |
 | iOS 7+            | Mobile Safari     | Compliant  |
 | Android 2.3.x     | Android Browser   | Functional |
-| Android 3.x       | Android Browser   | Functional |
 | Android 4.x       | Google Chrome     | Compliant  |
 |                   | Android Browser   | Compliant  |
 | Windows Phone 8.1 | Internet Explorer | Compliant  |

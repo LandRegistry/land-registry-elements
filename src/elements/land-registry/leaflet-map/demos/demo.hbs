@@ -76,10 +76,10 @@ title: LeafletJS map
         minZoom: 15,
         maxZoom: 19,
         // controls
-        dragging: false,
-        touchZoom: false,
+        dragging: true,
+        touchZoom: true,
         doubleClickZoom: false,
-        scrollWheelZoom: false,
+        scrollWheelZoom: true,
         boxZoom: false,
         keyboard: false,
         tap: false,
@@ -117,7 +117,7 @@ title: LeafletJS map
 
       if(!document.getElementById('map').classList.contains('polygon')) {
         L.marker(bounds.getCenter(), {
-            title: 'Hover Text'
+            title: ''
         }).addTo(map);
       }
 
