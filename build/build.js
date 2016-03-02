@@ -4,6 +4,7 @@ var cleanDist = require('./tasks/clean_dist');
 var copy = require('./tasks/copy');
 var sass = require('./tasks/sass');
 var javascript = require('./tasks/javascript');
+var polyfill = require('./tasks/autopolyfiller');
 
 module.exports = function(options) {
 
@@ -38,6 +39,9 @@ module.exports = function(options) {
       })
       .then(function() {
         return javascript.compile(config);
+      })
+      .then(function(bundles) {
+        return polyfill(config, bundles);
       })
       .then(function() {
         resolve(path.join(config.destination, 'assets'));

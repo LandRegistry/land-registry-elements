@@ -87,17 +87,21 @@ function compileJavaScript(config) {
                 }
               });
 
-              // Write the resulting JavaScript out to diska
+              // Write the resulting JavaScript out to disk
               var stream = fs.createWriteStream(path.join(config.destination, 'assets/javascripts/' + bundleKey + '.js'), { flags : 'w' });
               b.bundle().pipe(stream);
 
-              stream.on('close', function () {
-                resolve(path.join(config.destination, 'assets/javascripts/' + bundleKey + '.js'));
-              });
+              (function(bundleKey) {
 
-              stream.on('error', function (e) {
-                reject(e);
-              });
+                stream.on('close', function () {
+                  resolve(path.join(config.destination, 'assets/javascripts/' + bundleKey + '.js'));
+                });
+
+                stream.on('error', function (e) {
+                  reject(e);
+                });
+
+              })(bundleKey);
 
             }));
           }

@@ -38,6 +38,7 @@
     "webshot": "^0.18.0"
   },
   "dependencies": {
+    "autopolyfiller": "^1.6.1",
     "browserify": "^13.0.0",
     "browserify-incremental": "^3.0.1",
     "browsernizr": "^2.0.1",
@@ -69,7 +70,7 @@
     "node-sass": "^3.4.2",
     "npm": "^3.6.0",
     "pretty": "^1.0.0",
-    "proj4leaflet": "^0.7.2",
+    "proj4leaflet": "kartena/Proj4Leaflet",
     "promise-helpers": "^0.2.0",
     "remarkable": "^1.6.2",
     "rimraf": "^2.5.1",
