@@ -9,6 +9,7 @@
   @include phase-tag($state: beta);
 }
 
+// @see https://github.com/LandRegistry/land-registry-elements/issues/11
 .phase-banner-alpha,
 .phase-banner-beta {
   p {
