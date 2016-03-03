@@ -1,0 +1,17 @@
+<div class="breadcrumbs">
+  <strong class="bold-xsmall small-viewports-only">You are here:</strong>
+
+  <div class="breadcrumbs-inner">
+    <ol>
+{{#each this}}
+  {{#if href}}
+      <li>
+        <a href="{{href}}">{{text}}</a>
+      </li>
+  {{else}}
+      <li>{{text}}</li>
+  {{/if}}
+{{/each}}
+    </ol>
+  </div>
+</div>

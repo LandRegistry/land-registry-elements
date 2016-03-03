@@ -8,3 +8,13 @@
 .phase-tag-beta {
   @include phase-tag($state: beta);
 }
+
+// @see https://github.com/LandRegistry/land-registry-elements/issues/11
+.phase-banner-alpha,
+.phase-banner-beta {
+  p {
+    @include media(mobile) {
+      line-height: 1.5;
+    }
+  }
+}

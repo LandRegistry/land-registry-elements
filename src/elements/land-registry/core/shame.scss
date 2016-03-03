@@ -1,3 +1,15 @@
 .clear {
   clear: both;
 }
+
+.small-viewports-only {
+  @include media(tablet) {
+    display: none;
+  }
+}
+
+.large-viewports-only {
+  @include media(mobile) {
+    display: none;
+  }
+}
