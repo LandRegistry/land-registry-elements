@@ -18,7 +18,8 @@ $path: '/images/';
       white-space: nowrap;
       overflow-x: scroll;
       overflow-y: hidden;
-      // -webkit-overflow-scrolling: touch;
+      padding: 3px 0 10px 0;
+      -webkit-overflow-scrolling: touch;
 
       &:before,
       &:after {

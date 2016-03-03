@@ -20,4 +20,6 @@ function calc() {
   }
 }
 
-calc();
+window.addEventListener('load', function() {
+  calc();
+});
