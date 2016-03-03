@@ -96,7 +96,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Questions and issues
 - Test build with each component selected individually to ensure that all components have their dependencies declared correctly
-- There is a constrained width applied to `.vat-receipt` so that it doesn't stretch too wide on phablets - is this a more general pattern?
 - The w3c validator service is rate limited so sometimes the html validation fails for no good reason
 - Visual regression is sometimes unnecessarily punishing - can this be refactored or approached in a different manner to make it easier?
 

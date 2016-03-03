@@ -2,3 +2,6 @@ name: Language switcher
 categories:
   primary: Land Registry
   secondary: Utilities
+
+dependencies:
+  - elements/govuk/core

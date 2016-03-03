@@ -45,5 +45,6 @@
 .column-flip {
   > [class*="column-"] {
     float: right;
+    width: 100%;
   }
 }
