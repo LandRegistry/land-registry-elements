@@ -101,9 +101,7 @@ function Validator(element, config) {
       e.preventDefault();
     }
 
-    if(options.showSummary) {
-      showSummary(errorData);
-    }
+    showSummary(errorData);
 
     if(options.showIndividualFormErrors) {
       showIndividualFormErrors(errorData);
@@ -150,6 +148,11 @@ function Validator(element, config) {
 
       // Create an error summary
       errorSummary = domify(options.summaryTemplate.render(data));
+
+      if(!options.showSummary) {
+        errorSummary.classList.add('visuallyhidden');
+      }
+
       element.insertBefore(errorSummary, element.firstChild);
 
       // Place focus on the summary
