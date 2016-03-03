@@ -68,6 +68,7 @@
   color: $link-colour;
   cursor: pointer;
   line-height: inherit;
+  margin: 0;
 
   &:active {
     color: $link-active-colour
