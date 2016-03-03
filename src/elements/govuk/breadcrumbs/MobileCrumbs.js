@@ -11,6 +11,7 @@ function MobileCrumbs(element, config) {
   var options = {
     leftClass: 'breadcrumbs-at-left',
     rightClass: 'breadcrumbs-at-right',
+    enabledClass: 'breadcrumbs-mobile-scrolling-enabled',
     debounceDelay: 150
   };
 
@@ -30,6 +31,8 @@ function MobileCrumbs(element, config) {
       return;
     }
 
+    // element.classList.add(options.enabledClass);
+
     // Scroll the crumbtrail all the way to the right by default
     element.scrollLeft = element.clientWidth;
 
@@ -44,7 +47,7 @@ function MobileCrumbs(element, config) {
    * Main scroll event listener
    * @param  {Event} e
    */
-  function scrollListener(e) {
+  function scrollListener() {
     clearTimeout(scrollTimeout);
 
     scrollTimeout = setTimeout(function() {
@@ -57,10 +60,10 @@ function MobileCrumbs(element, config) {
    * Used to "stick" the crumbtrail to the right hand side
    * @param  {Event} e
    */
-  function resizeListener(e) {
-    clearTimeout(scrollTimeout);
+  function resizeListener() {
+    clearTimeout(resizeTimeout);
 
-    scrollTimeout = setTimeout(function() {
+    resizeTimeout = setTimeout(function() {
       element.scrollLeft = element.clientWidth;
 
       calc();
@@ -73,6 +76,24 @@ function MobileCrumbs(element, config) {
    */
   function calc() {
 
+
+console.log(element.clientWidth ,element.scrollWidth)
+    // If we're too narrow to need peepage
+    if(element.clientWidth >= element.scrollWidth) {
+      element.classList.remove(options.leftClass);
+      element.classList.remove(options.rightClass);
+      element.classList.remove(options.enabledClass);
+
+      console.log('too narrow')
+
+      return;
+    }
+
+    console.log('wide enough')
+
+    element.classList.add(options.enabledClass);
+
+
     // If we're at the end
     if(element.scrollLeft === element.scrollWidth - element.offsetWidth) {
       element.classList.add(options.rightClass);
@@ -83,6 +104,7 @@ function MobileCrumbs(element, config) {
     else if(element.scrollLeft === 0) {
       element.classList.add(options.leftClass);
       element.classList.remove(options.rightClass);
+
     }
 
     // Otherwise we're somewhere in between
@@ -96,6 +118,10 @@ function MobileCrumbs(element, config) {
    * Tear everything down again
    */
   function destroy() {
+    // Unbind any queued listeners
+    clearTimeout(resizeTimeout);
+    clearTimeout(scrollTimeout);
+
     // Unbind events
     element.removeEventListener('scroll', scrollListener);
     window.removeEventListener('load', calc);
@@ -104,6 +130,7 @@ function MobileCrumbs(element, config) {
     // Remove all classes
     element.classList.remove(options.leftClass);
     element.classList.remove(options.rightClass);
+    element.classList.remove(options.enabledClass);
   }
 
   var self = {

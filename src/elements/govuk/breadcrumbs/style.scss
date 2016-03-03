@@ -9,6 +9,16 @@ $path: '/images/';
 .breadcrumbs {
   padding: $gutter-half 0;
 
+  li {
+    @include media(tablet) {
+      @include core-14;
+    }
+
+    @include media(desktop) {
+      @include core-16;
+    }
+  }
+
   @include media(mobile) {
     .breadcrumbs-inner {
       position: relative;
@@ -16,38 +26,42 @@ $path: '/images/';
 
     ol {
       white-space: nowrap;
-      overflow-x: scroll;
-      overflow-y: hidden;
       padding: 3px 0 10px 0;
-      -webkit-overflow-scrolling: touch;
+      overflow: hidden;
 
-      &:before,
-      &:after {
-        content: "\2026"!important;
-        display: block;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        width: 25px;
-      }
+      &.breadcrumbs-mobile-scrolling-enabled {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
 
-      &:before {
-        background: transparent linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
-        left: 0;
-      }
+        &:before,
+        &:after {
+          content: "\2026"!important;
+          display: block;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          width: 25px;
+        }
 
-      &:after {
-        background: transparent linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
-        right: 0;
-        text-align: right;
-      }
+        &:before {
+          background: transparent linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+          left: 0;
+        }
 
-      &.breadcrumbs-at-left:before {
-        display: none;
-      }
+        &:after {
+          background: transparent linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+          right: 0;
+          text-align: right;
+        }
 
-      &.breadcrumbs-at-right:after {
-        display: none;
+        &.breadcrumbs-at-left:before {
+          display: none;
+        }
+
+        &.breadcrumbs-at-right:after {
+          display: none;
+        }
       }
     }
 

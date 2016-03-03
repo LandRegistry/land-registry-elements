@@ -8,7 +8,7 @@ var instances = [];
   instances.push(new MobileCrumbs(item));
 });
 
-var conduct = new Conduct({
+new Conduct({
   'media_queries': [
     {
       query: '(max-width: 640px)',
@@ -23,5 +23,5 @@ var conduct = new Conduct({
         });
       }
     }
-  ],
+  ]
 });
