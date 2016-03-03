@@ -1,6 +1,7 @@
 .split-detail-trigger {
   margin-left: 5px;
   text-decoration: none;
+  white-space: nowrap;
 
   &:visited {
     color: $link-colour;
