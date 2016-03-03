@@ -13,3 +13,8 @@
     display: none;
   }
 }
+
+a[href^="tel:"] {
+  text-decoration: inherit;
+  color: inherit;
+}

@@ -10,6 +10,7 @@ var renderPage = function(hbs, data) {
   return new Promise(function(resolve, reject) {
     var pageData = {
       head: [
+        '<meta name="format-detection" content="telephone=no">',
         '<!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="/stylesheets/elements-ie6.css" /><![endif]-->',
         '<!--[if IE 7]><link rel="stylesheet" type="text/css" media="all" href="/stylesheets/elements-ie7.css" /><![endif]-->',
         '<!--[if IE 8]><link rel="stylesheet" type="text/css" media="all" href="/stylesheets/elements-ie8.css" /><![endif]-->',
@@ -30,7 +31,7 @@ var renderPage = function(hbs, data) {
         '<ul>',
           '<li><a href="#">Terms &amp; Conditions</a></li>',
           '<li>Built by the <a href="https://www.gov.uk/government/organisations/land-registry">Land Registry</a></li>',
-          '<li>If you need help using the service you can call Land Registry on 0300 006 0411. If you need to speak to someone in Welsh call 0300 006 0422.</li>',
+          '<li>If you need help using the service you can call Land Registry on <a href="tel:+443000060411">0300 006 0411.</a> If you need to speak to someone in Welsh call <a href="tel:+443000060411">0300 006 0422</a>.</li>',
         '</ul>'
       ].join('\n'),
       licenceMessage: '<p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>',
