@@ -76,23 +76,17 @@ function MobileCrumbs(element, config) {
    */
   function calc() {
 
-
-console.log(element.clientWidth ,element.scrollWidth)
     // If we're too narrow to need peepage
     if(element.clientWidth >= element.scrollWidth) {
       element.classList.remove(options.leftClass);
       element.classList.remove(options.rightClass);
       element.classList.remove(options.enabledClass);
 
-      console.log('too narrow')
-
       return;
     }
 
-    console.log('wide enough')
-
+    // Otherwise, enable the peepage
     element.classList.add(options.enabledClass);
-
 
     // If we're at the end
     if(element.scrollLeft === element.scrollWidth - element.offsetWidth) {

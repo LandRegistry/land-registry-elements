@@ -4,7 +4,7 @@ categories:
   secondary: DRV beta pages
 
 dependencies:
-  - elements/govuk/breadcrumbs
+  - elements/land-registry/breadcrumbs
   - elements/govuk/details
   - elements/govuk/panels
   - elements/govuk/layout
