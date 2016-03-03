@@ -11,12 +11,12 @@
   }
 
   &:before {
-    content: '⯈ '
+    content: '\25ba'
   }
 
   &-active {
     &:before {
-      content: '⯆ '
+      content: '\25bc'
     }
   }
 }
