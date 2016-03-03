@@ -6,6 +6,10 @@
   form {
     display: flex;
     justify-content: flex-end;
+
+    .no-flexbox & {
+      display: block;
+    }
   }
 }
 
@@ -33,13 +37,22 @@
   // On browsers that support flexbox, the order of the links is switched around
   // Therefore we need to flip the pipe to the other end of the link
   .language-switcher-invert & {
-    .flexbox & {
-      padding: 0 0 0 5px;
-      margin: 0 0 0 5px;
+    padding: 0 0 0 5px;
+    margin: 0 0 0 5px;
+
+    &:after {
+      right: auto;
+      left: 0;
+    }
+
+    .no-flexbox &,
+    .lte-ie8 & {
+      padding: 0 5px 0 0;
+      margin: 0 5px 0 0;
 
       &:after {
-        right: auto;
-        left: 0;
+        right: 0;
+        left: auto;
       }
     }
   }
@@ -56,6 +69,7 @@
   color: $link-colour;
   cursor: pointer;
   line-height: inherit;
+  margin: 0;
 
   &:active {
     color: $link-active-colour

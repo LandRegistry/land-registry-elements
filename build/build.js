@@ -5,6 +5,7 @@ var copy = require('./tasks/copy');
 var sass = require('./tasks/sass');
 var javascript = require('./tasks/javascript');
 var polyfill = require('./tasks/autopolyfiller');
+var autoprefixer = require('./tasks/autoprefixer');
 
 module.exports = function(options) {
 
@@ -36,6 +37,9 @@ module.exports = function(options) {
       })
       .then(function() {
         return sass(config);
+      })
+      .then(function() {
+        return autoprefixer(config);
       })
       .then(function() {
         return javascript.compile(config);

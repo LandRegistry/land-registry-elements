@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "autopolyfiller": "^1.6.1",
+    "autoprefixer": "^6.3.3",
     "browserify": "^13.0.0",
     "browserify-incremental": "^3.0.1",
     "browsernizr": "^2.0.1",
@@ -70,6 +71,7 @@
     "ncp": "^2.0.0",
     "node-sass": "^3.4.2",
     "npm": "^3.6.0",
+    "postcss": "^5.0.19",
     "pretty": "^1.0.0",
     "proj4leaflet": "kartena/Proj4Leaflet",
     "promise-helpers": "^0.2.0",

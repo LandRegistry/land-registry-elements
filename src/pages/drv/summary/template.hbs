@@ -2,13 +2,11 @@
   {{> elements/govuk/phase-banner }}
 
   <div class="grid-row printhidden">
-    <div class="column-two-thirds">
-      {{#with breadcrumbs }}
-        {{> elements/land-registry/breadcrumbs }}
-      {{/with}}
+    <div class="column-two-thirds mobile-column-one-half">
+      {{> elements/land-registry/back-link }}
     </div>
 
-    <div class="column-third">
+    <div class="column-third mobile-column-one-half">
       {{> elements/land-registry/language-switcher }}
     </div>
   </div>
@@ -79,7 +77,7 @@
       {{/with}}
 
       <div class="panel panel-border-narrow spacing-top-single">
-        <p>If you have any problems with your purchase, you can call Land Registry on 0300 006 0411.</p>
+        <p>If you have any problems with your purchase, you can call Land Registry on <a href="tel:+443000060411">0300 006 0411</a>.</p>
         <p>For more contact methods, visit <a href="https://www.gov.uk/government/organisations/land-registry">www.gov.uk/government/organisations/land-registry</a></p>
       </div>
 

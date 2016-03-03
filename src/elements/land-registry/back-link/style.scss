@@ -1,0 +1,24 @@
+.back-link {
+  text-decoration: none;
+  @include core-16;
+  margin-top: $gutter-half;
+  display: inline-block;
+
+  &:before {
+    content: '\25C0 ';
+    margin-right: 8px;
+    font-family: dingbats, arial unicode ms, sans-serif;
+  }
+}
+
+.back-link-prefix {
+  @include media(mobile) {
+    display: none;
+  }
+}
+
+.back-link-destination {
+  @include media(tablet) {
+    text-transform: lowercase;
+  }
+}
