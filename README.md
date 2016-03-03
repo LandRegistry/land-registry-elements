@@ -118,16 +118,14 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Non MVP todos
 - When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
 
-- Get IE8 polyfills out into a separate bundle
 - Testplan generator? I.e. take a list of pages and browsers and put together a list for you to complete
 - Concat and minify stylesheet output
 - Is there a simpler way we can expose the build output for people to include in their application's sass. I.e. so that any mixins from the gov uk stuff is included in the application rather than just the built out css.
 - Visual regression testing at mobile breakpoints
 - Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
-- per component tests in each component's folder
 - Get basics like breadcrumbs and main element into a parent template
 - Make sure any pattern documentation is in README.md files and not in the demos
-- Test suite for the clientside validation checking that it matches the spec set out by gov uk
+- Write more comprehensive test suite for the clientside validation checking that it matches the spec set out by gov uk
 - Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
 - Browsersync
 - Exclude image assets that are not referenced in the css to keep the build output clean
