@@ -1,25 +1,27 @@
-var crumbs = document.querySelector('.breadcrumbs ol');
-crumbs.scrollLeft = crumbs.clientWidth;
+var Conduct = require('conduct.js');
+var MobileCrumbs = require('./MobileCrumbs');
 
-crumbs.addEventListener('scroll', function(e) {
-  console.log(crumbs.scrollLeft, crumbs.scrollWidth - crumbs.offsetWidth);
+var crumbs = document.querySelectorAll('.breadcrumbs ol');
+var instances = [];
 
-  calc();
+[].forEach.call(crumbs, function(item) {
+  instances.push(new MobileCrumbs(item));
 });
 
-function calc() {
-  if(crumbs.scrollLeft === crumbs.scrollWidth - crumbs.offsetWidth) {
-    crumbs.classList.add('breadcrumbs-at-right');
-    crumbs.classList.remove('breadcrumbs-at-left');
-  } else if(crumbs.scrollLeft === 0) {
-    crumbs.classList.add('breadcrumbs-at-left');
-    crumbs.classList.remove('breadcrumbs-at-right');
-  } else {
-    crumbs.classList.remove('breadcrumbs-at-left');
-    crumbs.classList.remove('breadcrumbs-at-right');
-  }
-}
-
-window.addEventListener('load', function() {
-  calc();
+var conduct = new Conduct({
+  'media_queries': [
+    {
+      query: '(max-width: 640px)',
+      match: function() {
+        instances.forEach(function(instance) {
+          instance.create();
+        });
+      },
+      unmatch: function() {
+        instances.forEach(function(instance) {
+          instance.destroy();
+        });
+      }
+    }
+  ],
 });

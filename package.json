@@ -45,6 +45,7 @@
     "clarify": "^1.0.5",
     "classlist-polyfill": "^1.0.2",
     "closest": "0.0.1",
+    "conduct.js": "^1.0.0",
     "copy": "^0.1.3",
     "delegate": "^3.0.1",
     "dependency-graph": "^0.4.1",
