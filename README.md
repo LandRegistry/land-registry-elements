@@ -94,7 +94,17 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 ### MVP
 
-### Questions and issues
+- Can we disable the panny hand on leaflet maps seeing as we arent enabling panning
+- What things can we update on webseal
+  - Can I ship my clientside validation?
+  - Can we edit 403 pages etc?
+- The h1 on the search results page is also the form label. Is this ok?!
+- "The summary will tell you" list items looking a bit tight. Same on the results page expanders. Same on landing form expanders
+- Make the language switcher default to english!
+- What's the govuk logo doing out of line?!
+- Empty out footer
+  - remove telephone numbers
+  - remove OGL
 - Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
 - Investigate whether we can expose our assets using sass-eyeglass (https://github.com/sass-eyeglass/eyeglass)
 

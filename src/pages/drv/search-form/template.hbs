@@ -1,14 +1,12 @@
 <main id="content" role="main">
   {{> elements/govuk/phase-banner }}
 
-  <h1 class="heading-large spacing-top-single">Search the land and property register</h1>
+  <h1 class="heading-large">Search the land and property register</h1>
 
   <div class="grid-row spacing-top-single">
 
     <div class="column-two-thirds tablet-column-two-thirds">
-      <p>You’ll get a summary and title register. This costs £3 inc VAT. </p>
-      <p>The summary shows, in a clear format, who owns the property, what they paid for it and whether there’s a mortgage on it. The title register is the full text of the register, in PDF format.</p>
-      <p>If you also need a title plan, <a rel="external" href="https://eservices.landregistry.gov.uk/wps/portal/Property_Search">use the Land Registry 'Find a Property' service</a>.</p>
+      <p>You can get a summary of information about registered property or land in England and Wales, even if you don’t own it. This costs £3 inc VAT.</p>
 
       {{#with search-form}}
         {{> elements/land-registry/search-form }}
@@ -17,8 +15,8 @@
       <details>
         <summary>Don't know the postcode?</summary>
         <div class="panel panel-border-narrow">
-          <span class="phase-tag-beta">BETA</span>
-          <p>This is a trial service. You can try searching by street name but it may not work properly.</p>
+          <span class="phase-tag-beta spacing-bottom-half">BETA</span>
+          <p>This is a new service. You can try searching by street name but it may not work properly.</p>
           <h2 class="heading-small">Find a property without a postcode</h2>
           <p>Use the Land Registry 'Find a Property' service to <a rel="external" href="https://eservices.landregistry.gov.uk/wps/portal/Property_Search">find a property by street address, title number, or using a map</a>.</p>
         </div>

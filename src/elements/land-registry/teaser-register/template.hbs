@@ -10,24 +10,24 @@
   <b class="bold-xsmall">{{tenureType}}</b>
   {{else}}
 
-  <p class="font-xsmall"><strong class="bold">No title information found</strong> <a class="split-detail-trigger" href="#no-title-information-found{{id}}">Why's this?</a></p>
+  <p class="font-xsmall">No title information found <a class="split-detail-trigger" href="#no-title-information-found{{id}}">Why <span class="visuallyhidden">has title information </span>not<span class="visuallyhidden"> been found for {{#each propertyAddress}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</span>?</a></p>
 
   <div class="split-detail-contents font-xsmall" id="no-title-information-found{{id}}">
     <div class="panel panel-border-narrow">
-      <span class="phase-tag-beta">BETA</span>
+
       <p>This may be because:</p>
 
-      <ul class="list-bullet spacing-top-half spacing-bottom-half">
-        <li>The title details aren’t available through this new service. Try <a href="https://eservices.landregistry.gov.uk/wps/portal/Property_Search">searching for the property on the old Land Registry service</a> instead.</li>
-        <li>The property isn’t registered yet. Registration has only been compulsory since the 1990s. If the property hasn’t changed hands since then it may not be registered.</li>
+      <ul class="list-bullet">
+        <li>This service is new, so some titles aren’t available here yet. Try  <a href="https://eservices.landregistry.gov.uk/www/wps/portal/!ut/p/b1/04_SjzS0MDc3NjeyNDDSj9CPykssy0xPLMnMz0vMAfGjzOKNjSxMDA1NjDwsjM3MDTxN3dyNDUNMjQ1MjPWDU_P0c6McFQGRbYf3/">searching on the Land Registry 'Find a Property' service</a> instead.</li>
+        <li>The property isn’t registered yet. Registration has only been compulsory across England and Wales since the 1990s. If the property hasn’t changed hands since then it may not be registered.</li>
+
       </ul>
-      <p>If you need additional help, you can call Land Registry on <a href="tel:+443000060411">0300 006 0411</a>.</p>
     </div>
   </div>
 
   {{/if}}
 
-  {{#if is_caution_title}}
+{{!--   {{#if is_caution_title}}
   <p class="font-xsmall"><strong class="bold">Caution against first registration</strong> <a class="split-detail-trigger" href="#whats-caution-against-first-registration{{id}}">What's this?</a></p>
 
   <div class="split-detail-contents font-xsmall" id="whats-caution-against-first-registration{{id}}">
@@ -37,5 +37,5 @@
       <p>Registration has only been compulsory since the 1990s. Property that hasn’t changed hands since then may not be registered.</p>
     </div>
   </div>
-  {{/if}}
+  {{/if}} --}}
 </div>

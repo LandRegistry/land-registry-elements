@@ -23,6 +23,8 @@
 
     <div class="column-two-thirds tablet-column-two-thirds">
 
+      <hr class="spacing-top-flush">
+
       <dl class="definition-tabular">
 
         {{#with propertyAddress}}
@@ -77,8 +79,7 @@
       {{/with}}
 
       <div class="panel panel-border-narrow spacing-top-single">
-        <p>If you have any problems with your purchase, you can call Land Registry on <a href="tel:+443000060411">0300 006 0411</a>.</p>
-        <p>For more contact methods, visit <a href="https://www.gov.uk/government/organisations/land-registry">www.gov.uk/government/organisations/land-registry</a></p>
+        <p>If you have any problems with your purchase, you can contact Land Registry using the <a href="http://landregistry.custhelp.com/app/contactus_general/">general enquiry contact form</a> or call <a class="bold" href="tel:+443000060411">0300 006 0411</a>.</p>
       </div>
 
       <hr>
@@ -153,7 +154,7 @@
     var options = {
       continuousWorld: true,
       worldCopyJump: false,
-      minZoom: 15,
+      minZoom: 5,
       maxZoom: 19,
       // controls
       dragging: false,
@@ -164,7 +165,7 @@
       keyboard: false,
       tap: false,
       zoomControl: true,
-      attributionControl: false
+      attributionControl: true
     };
 
     // set up the map
@@ -172,7 +173,9 @@
 
     // create the tile layer with correct attribution
     var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    var osm = new L.TileLayer(osmUrl);
+    var osm = new L.TileLayer(osmUrl, {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    });
     map.addLayer(osm);
 
     //Add a scale control to the map
