@@ -45,6 +45,9 @@
 .column-flip {
   > [class*="column-"] {
     float: right;
-    width: 100%;
+
+    @include media(mobile) {
+      width: 100%;
+    }
   }
 }
