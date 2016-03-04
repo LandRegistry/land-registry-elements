@@ -106,6 +106,7 @@ Contains the main test suite. Components should not specify tests in here but sh
   - remove telephone numbers
   - remove OGL
 - Do I need to build the login form?
+- Can we pop the language switcher in the footer
 - Investigate whether we can expose our assets using sass-eyeglass (https://github.com/sass-eyeglass/eyeglass)
 
 ### Test phase 2
