@@ -4,4 +4,6 @@ categories:
   secondary: Core
 
 dependencies:
+  - elements/govuk/core
+  - elements/govuk/layout
   - elements/govuk/panels

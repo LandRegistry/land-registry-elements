@@ -16,7 +16,7 @@ files.forEach(function(file) {
 
       build({
           mode: 'development',
-          cache: true,
+          cache: false,
           components: [component],
           destination: '.tmp/dist'
         })
