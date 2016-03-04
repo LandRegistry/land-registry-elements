@@ -8,3 +8,6 @@ copy:
   to: 'assets/images/leaflet'
 
 js-bundle: 'leaflet'
+
+dependencies:
+  - elements/govuk/core

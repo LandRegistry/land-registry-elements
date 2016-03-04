@@ -1,7 +1,7 @@
 var should = require('should');
 var request = require('superagent');
 var fs = require('fs');
-var w3cjs = require('w3cjs');
+var htmllint = require('htmllint');
 
 /**
  * HTML validation checks
@@ -19,27 +19,41 @@ describe('The pattern library page at', function() {
         .get(url)
         .end(function(err, res){
 
-          w3cjs.validate({
-            input: res.text,
-            callback: function (res) {
+          htmllint(res.text, {
+            'attr-name-style': false,
+            'attr-bans': ['align', 'background', 'bgcolor', 'border', 'frameborder', 'longdesc', 'marginwidth', 'marginheight', 'scrolling'],
+            'doctype-first': true,
+            'doctype-html5': true,
+            'id-class-style': false,
+            'indent-style': false,
+            'indent-width': false,
+            'img-req-alt': true,
+            'label-req-for': true,
+            'tag-name-match': true,
+            'tag-name-lowercase': true,
+            'line-end-style': false,
+            'attr-req-value': false,
+            'tag-bans': ['style']
+          })
+            .then(function(issues) {
+
+              if(issues === false) {
+                return done();
+              }
 
               var output = url;
 
-              res.messages.forEach(function(message) {
-
-                // Don't need to fail the test for info messages
-                if(message.type === 'info') {
-                  return;
-                }
-
-                output += '\nLine: ' + message.lastLine + ' Col: ' + message.firstColumn + ' => ' + message.message;
+              issues.forEach(function(issue) {
+                output += '\nLine: ' + issue.line + ' Col: ' + issue.column + ' => ' + (issue.msg || htmllint.messages.renderIssue(issue)) + '\n';
               });
 
               output.should.be.equal(url);
 
-              done();
-            }
-          });
+              return done();
+            })
+            .catch(function(e) {
+              done(e)
+            });
         });
 
     });

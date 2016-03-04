@@ -8,7 +8,9 @@ module.exports = function(app){
    */
   app.get('/build', function(req, res){
     if(!req.query.components) {
-      throw new Error('No components selected');
+      res.send('No components selected');
+
+      return;
     }
 
     build({
@@ -21,6 +23,7 @@ module.exports = function(app){
         res.tgz(directory, 'land-registry-elements.tar.gz', false);
       })
       .catch(function(err) {
+        res.send(err.formatted);
         require('trace');
         require('clarify');
         console.trace(err);

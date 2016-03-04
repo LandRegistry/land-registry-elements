@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "gm": "^1.21.1",
+    "htmllint": "^0.2.7",
     "mocha": "^2.4.5",
     "pa11y": "^3.5.1",
     "sanitize-filename": "^1.5.3",
@@ -33,7 +34,6 @@
     "should": "^8.2.1",
     "superagent": "^1.7.2",
     "supertest": "^1.1.0",
-    "w3cjs": "^0.3.0",
     "webdriverio": "^4.0.3",
     "webshot": "^0.18.0"
   },
