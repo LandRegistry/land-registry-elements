@@ -87,6 +87,10 @@ function compileSass(config) {
       // Turn the lines into a string suitable for passing to node-sass
       sassContents = sassContents.join('\n');
 
+      if(sassContents.length === 0) {
+        return Promise.resolve();
+      }
+
       // Write out separate versions of the stylesheet for the various IEs
       // @TODO: Does this really live here? Could we have it in files on disk in a more "traditional" way? Is there too much magic here?
       var stylesheets = [

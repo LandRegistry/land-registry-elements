@@ -2,3 +2,6 @@ name: Back link
 categories:
   primary: Land Registry
   secondary: Utilities
+
+dependencies:
+  - elements/govuk/core

@@ -10,8 +10,16 @@ var prefix = function(config) {
   console.time('Autoprefixing CSS');
 
   return new Promise(function(resolve, reject) {
+    if(!fs.existsSync(path.join(config.destination, 'assets/stylesheets/elements.css'))) {
+      console.timeEnd('Autoprefixing CSS');
+      return resolve();
+    }
+
     var cssPath = path.join(config.destination, 'assets/stylesheets/elements.css');
     fs.readFile(cssPath, function(err, data) {
+      if(err) {
+        reject(err);
+      }
 
       postcss([ autoprefixer ]).process(data).then(function (result) {
         result.warnings().forEach(function (warn) {

@@ -4,5 +4,5 @@ categories:
   secondary: Core
 
 dependencies:
-  - elements/govuk/typography
+  - elements/govuk/core
   - elements/land-registry/media
