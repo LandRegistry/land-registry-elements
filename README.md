@@ -95,7 +95,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### MVP
 
 ### Questions and issues
-- Visual regression is sometimes unnecessarily punishing - can this be refactored or approached in a different manner to make it easier?
 - Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
 - Investigate whether we can expose our assets using sass-eyeglass (https://github.com/sass-eyeglass/eyeglass)
 
