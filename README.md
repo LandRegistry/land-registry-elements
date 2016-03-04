@@ -99,7 +99,6 @@ Contains the main test suite. Components should not specify tests in here but sh
   - Can I ship my clientside validation?
   - Can we edit 403 pages etc?
 - The h1 on the search results page is also the form label. Is this ok?!
-- "The summary will tell you" list items looking a bit tight. Same on the results page expanders. Same on landing form expanders
 - Make the language switcher default to english!
 - What's the govuk logo doing out of line?!
 - Empty out footer
