@@ -105,7 +105,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Empty out footer
   - remove telephone numbers
   - remove OGL
-- Review latest version of prototype and make sure we're up to date. Draw a line under it here! This will be what we put on prod (Aside from minor tweaks etc)
+- Do I need to build the login form?
 - Investigate whether we can expose our assets using sass-eyeglass (https://github.com/sass-eyeglass/eyeglass)
 
 ### Test phase 2
