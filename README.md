@@ -125,8 +125,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 --------------------------------------------------------------------------------
 
 ### Non MVP todos
-- Investigate why webshot sometimes outputs minor variations and git thinks they've changed
-- Pull request templates
+- Investigate why webshot sometimes outputs minor variations and git thinks they've changed (PNG headers?)
 - When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
 - Testplan generator? I.e. take a list of pages and browsers and put together a list for you to complete
 - Concat and minify stylesheet output
