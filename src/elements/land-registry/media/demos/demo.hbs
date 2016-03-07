@@ -1,40 +1,37 @@
 ---
 title: Media
 ---
-<main id="content" role="main">
-  <h1 class="heading-xlarge">
-    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
-    {{component.name}}
-  </h1>
+<h1 class="heading-xlarge">
+  <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+  {{component.name}}
+</h1>
 
-  {{#markdown}}{{component.readme}}{{/markdown}}
+{{#markdown}}{{component.readme}}{{/markdown}}
 
-  {{#capture 'demo'}}
-    <div class="media">
-      <div class="media-item">
-        <div style="width:30px;height:30px;background:grey"></div>
-      </div>
-
-      <div class="media-body">
-        <p class="spacing-top-flush">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-      </div>
+{{#capture 'demo'}}
+  <div class="media">
+    <div class="media-item">
+      <div style="width:30px;height:30px;background:grey"></div>
     </div>
 
-    <div class="media">
-      <div class="media-item">
-        <div style="width:150px;height:80px;background:grey"></div>
-      </div>
-
-      <div class="media-body">
-        <p class="spacing-top-flush">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-      </div>
+    <div class="media-body">
+      <p class="spacing-top-flush">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
     </div>
-  {{/capture}}
+  </div>
 
-  {{{demo}}}
+  <div class="media">
+    <div class="media-item">
+      <div style="width:150px;height:80px;background:grey"></div>
+    </div>
 
-  <hr>
+    <div class="media-body">
+      <p class="spacing-top-flush">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+    </div>
+  </div>
+{{/capture}}
 
-  <pre class="language-markup"><code>{{#htmlencode}}{{{demo}}}{{/htmlencode}}</code></pre>
+{{{demo}}}
 
-</main>
+<hr>
+
+<pre class="language-markup"><code>{{#htmlencode}}{{{demo}}}{{/htmlencode}}</code></pre>
