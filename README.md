@@ -104,6 +104,9 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Questions
 - The h1 on the search results page is also the form label. Is this ok?!
 
+### Issues
+- HTML prettifier is breaking the typography demo markup by inserting extra spaces?
+
 ### Test phase 2
 - Manual cross browser testing (Browserstack)
 - Fixing anything from the above ^
