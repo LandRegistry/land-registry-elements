@@ -94,19 +94,19 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 ### MVP
 
-- Can we disable the panny hand on leaflet maps seeing as we arent enabling panning
-- What things can we update on webseal
-  - Can I ship my clientside validation?
-  - Can we edit 403 pages etc?
-- The h1 on the search results page is also the form label. Is this ok?!
-- Make the language switcher default to english!
 - What's the govuk logo doing out of line?!
 - Empty out footer
   - remove telephone numbers
   - remove OGL
 - Do I need to build the login form?
+- What things can we update on webseal
+  - Can I ship my clientside validation?
+  - Can we edit 403 pages etc?
 - Can we pop the language switcher in the footer
 - Investigate whether we can expose our assets using sass-eyeglass (https://github.com/sass-eyeglass/eyeglass)
+
+### Questions
+- The h1 on the search results page is also the form label. Is this ok?!
 
 ### Test phase 2
 - Manual cross browser testing (Browserstack)

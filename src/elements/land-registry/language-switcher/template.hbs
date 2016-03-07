@@ -1,6 +1,6 @@
-<div class="language-switcher {{#if english }}{{else}}language-switcher-invert{{/if}}">
+<div class="language-switcher {{#unless english }}{{else}}language-switcher-invert{{/unless}}">
   <form method="get">
-    {{#if english }}
+    {{#unless english }}
 
       <span class="language-switcher-current">
         <span class="visuallyhidden">Current language:</span> English
@@ -20,6 +20,6 @@
         <span class="visuallyhidden">Switch to</span> English
       </button>
 
-    {{/if}}
+    {{/unless}}
   </form>
 </div>
