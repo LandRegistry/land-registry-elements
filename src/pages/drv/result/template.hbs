@@ -9,7 +9,7 @@
 
   <h1 class="heading-large spacing-top-single">Confirm your order</h1>
 
-  <p>You’ll get a summary of the information Land Registry holds for this property title:</p>
+  <p>You'll get a summary of the information Land Registry holds for this property title.</p>
 
   <div class="grid-row column-flip spacing-top-single">
     <div class="column-one-third tablet-column-one-third">
@@ -20,7 +20,7 @@
 
       <dl class="definition-tabular">
 
-        {{#is_caution_title}}
+{{!--         {{#is_caution_title}}
           <dt class="bold-small">Caution</dt>
           <dd>
             <details class="font-xsmall">
@@ -36,7 +36,7 @@
             </details>
           </dd>
         {{/is_caution_title}}
-
+ --}}
         {{#with propertyAddress}}
           <dt>Address</dt>
           <dd class="bold-medium">
@@ -50,7 +50,7 @@
         <dt>Tenure type</dt>
         <dd>
           {{tenureType}}
-          <a class="split-detail-trigger" href="#what-is-tenure">What's this?</a>
+          <a class="split-detail-trigger" href="#what-is-tenure">What does this mean?</a>
 
           <div class="split-detail-contents" id="what-is-tenure">
             <div class="panel panel-border-narrow font-xsmall">
@@ -78,7 +78,8 @@
       </dl>
 
       <h2 class="heading-medium collapse-top">The summary will tell you</h2>
-      <ul class="list-bullet">
+      <ul class="list list-bullet">
+
         {{#tenure_freehold}}
           <li>current owner’s name and address</li>
         {{/tenure_freehold}}
@@ -87,13 +88,13 @@
           <li>current leaseholder’s name and address</li>
         {{/tenure_leasehold}}
 
-        <li>what they paid for the property – you won’t get this if it was bought before April 2000, if no money changed hands, or if the owner didn’t buy it outright</li>
+        <li>what was paid for the property – you won’t get this if it was bought before April 2000, if they paid less than £100, or if Land Registry have agreed not to record the price</li>
 
         {{#lease_term}}
           <li>how long the lease is for</li>
         {{/lease_term}}
 
-        <li>if there is a mortgage on the property, the lender’s name and  address</li>
+        <li>if there is a mortgage on the property, the lender’s name and address</li>
       </ul>
 
       <div class="warning media">
@@ -202,7 +203,7 @@
     var options = {
       continuousWorld: true,
       worldCopyJump: false,
-      minZoom: 15,
+      minZoom: 5,
       maxZoom: 19,
       // controls
       dragging: false,
@@ -213,7 +214,7 @@
       keyboard: false,
       tap: false,
       zoomControl: true,
-      attributionControl: false
+      attributionControl: true
     };
 
     // set up the map
@@ -221,7 +222,9 @@
 
     // create the tile layer with correct attribution
     var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    var osm = new L.TileLayer(osmUrl);
+    var osm = new L.TileLayer(osmUrl, {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    });
     map.addLayer(osm);
 
     //Add a scale control to the map

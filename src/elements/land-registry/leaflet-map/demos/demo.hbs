@@ -73,18 +73,18 @@ title: LeafletJS map
       var options = {
         continuousWorld: true,
         worldCopyJump: false,
-        minZoom: 15,
+        minZoom: 5,
         maxZoom: 19,
         // controls
-        dragging: true,
-        touchZoom: true,
+        dragging: false,
+        touchZoom: false,
         doubleClickZoom: false,
-        scrollWheelZoom: true,
+        scrollWheelZoom: false,
         boxZoom: false,
         keyboard: false,
         tap: false,
         zoomControl: true,
-        attributionControl: false
+        attributionControl: true
       };
 
       // set up the map
@@ -92,7 +92,9 @@ title: LeafletJS map
 
       // create the tile layer with correct attribution
       var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-      var osm = new L.TileLayer(osmUrl);
+      var osm = new L.TileLayer(osmUrl, {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      });
       map.addLayer(osm);
 
       //Add a scale control to the map

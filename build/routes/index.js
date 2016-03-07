@@ -56,7 +56,7 @@ module.exports = function(app){
 
         renderPage(hbs, {
           title: 'Index',
-          content: hbs.compile(hbs.partials['layout/index'])({
+          content: hbs.compile(hbs.partials['pages/core/index'])({
             components: sortComponents(components),
             readme: fs.readFileSync('README.md')
           })

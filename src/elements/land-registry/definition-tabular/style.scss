@@ -8,6 +8,7 @@
       width: $one-quarter;
       margin-bottom: $gutter-one-third;
       padding-right: $gutter-half;
+      box-sizing: border-box;
     }
 
     &:after {

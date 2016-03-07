@@ -25,7 +25,8 @@ module.exports = function(app){
 
         renderPage(hbs, {
           title: variant.name,
-          content: hbs.compile(variant.content)(variant.context)
+          content: hbs.compile(variant.content)(variant.context),
+          pageData: variant.context.pageData
         })
         .then(function(html) {
           res.send(pretty(html));
