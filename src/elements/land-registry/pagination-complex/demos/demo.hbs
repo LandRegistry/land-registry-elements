@@ -44,20 +44,17 @@ variants:
     prev: true
     next: false
 ---
-<main id="content" role="main">
-  <h1 class="heading-xlarge">
-    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
-    {{component.name}}
-  </h1>
+<h1 class="heading-xlarge">
+  <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+  {{component.name}}
+</h1>
 
-  {{#markdown}}{{component.readme}}{{/markdown}}
+{{#markdown}}{{component.readme}}{{/markdown}}
 
-  {{#each variants}}
-    {{> elements/land-registry/pagination-complex }}
+{{#each variants}}
+  {{> elements/land-registry/pagination-complex }}
 
-    <pre class="language-markup"><code>{{#htmlencode}}{{> elements/land-registry/pagination-complex }}{{/htmlencode}}</code></pre>
+  <pre class="language-markup"><code>{{#htmlencode}}{{> elements/land-registry/pagination-complex }}{{/htmlencode}}</code></pre>
 
-    <br><hr><br>
-  {{/each}}
-
-</main>
+  <br><hr><br>
+{{/each}}

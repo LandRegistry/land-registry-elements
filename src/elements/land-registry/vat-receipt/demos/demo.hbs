@@ -17,22 +17,19 @@ vat-receipts:
       addressLocality: Croydon
       postalCode: CR0 2AQ
 ---
-<main id="content" role="main">
-  <h1 class="heading-xlarge">
-    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
-    {{component.name}}
-  </h1>
+<h1 class="heading-xlarge">
+  <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+  {{component.name}}
+</h1>
 
-  {{#each vat-receipts}}
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        {{> elements/land-registry/vat-receipt}}
-      </div>
+{{#each vat-receipts}}
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      {{> elements/land-registry/vat-receipt}}
     </div>
+  </div>
 
-    <pre class="language-markup"><code>{{#htmlencode}}{{> elements/land-registry/vat-receipt}}{{/htmlencode}}</code></pre>
+  <pre class="language-markup"><code>{{#htmlencode}}{{> elements/land-registry/vat-receipt}}{{/htmlencode}}</code></pre>
 
-    <hr>
-  {{/each}}
-
-</main>
+  <hr>
+{{/each}}

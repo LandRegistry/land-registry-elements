@@ -15,48 +15,45 @@ icon-buttons:
     value: Print this page
     icon: print
 ---
-<main id="content" role="main">
+<h1 class="heading-xlarge">
+  <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+  {{component.name}}
+</h1>
 
-  <h1 class="heading-xlarge">
-    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
-    {{component.name}}
-  </h1>
+{{#markdown}}{{component.readme}}{{/markdown}}
 
-  {{#markdown}}{{component.readme}}{{/markdown}}
+<hr>
 
-  <hr>
+<h2 class="heading-medium">Standard buttons</h2>
+{{#each buttons}}
+  <div class="example">
+    <input class="button{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}} type="submit" value="{{value}}">
 
-  <h2 class="heading-medium">Standard buttons</h2>
-  {{#each buttons}}
-    <div class="example">
-      <input class="button{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}} type="submit" value="{{value}}">
+    <pre class="language-markup"><code>{{#htmlencode}}<input class="button{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}} type="submit" value="{{value}}">{{/htmlencode}}</code></pre>
+  </div>
+{{/each}}
 
-      <pre class="language-markup"><code>{{#htmlencode}}<input class="button{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}} type="submit" value="{{value}}">{{/htmlencode}}</code></pre>
+<h2 class="heading-medium">Icon buttons</h2>
+{{#each icon-buttons}}
+  <div class="example">
+    <button class="button {{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}}><span class="icon icon-{{icon}}"></span>{{value}}</button>
+
+    <pre class="language-markup"><code>{{#htmlencode}}<button class="button{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}}><span class="icon icon-{{icon}}"></span>{{value}}</button>{{/htmlencode}}</code></pre>
+  </div>
+{{/each}}
+
+<h3 class="heading-small">Light variant (E.g. for use inside a highlight box)</h3>
+{{#each icon-buttons}}
+  <div class="example">
+    <div class="govuk-box-highlight">
+      <button class="button button-light bold{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}}><span class="icon icon-{{icon}}"></span>{{value}}</button>
     </div>
-  {{/each}}
-
-  <h2 class="heading-medium">Icon buttons</h2>
-  {{#each icon-buttons}}
-    <div class="example">
-      <button class="button {{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}}><span class="icon icon-{{icon}}"></span>{{value}}</button>
-
-      <pre class="language-markup"><code>{{#htmlencode}}<button class="button{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}}><span class="icon icon-{{icon}}"></span>{{value}}</button>{{/htmlencode}}</code></pre>
-    </div>
-  {{/each}}
-
-  <h3 class="heading-small">Light variant (E.g. for use inside a highlight box)</h3>
-  {{#each icon-buttons}}
-    <div class="example">
-      <div class="govuk-box-highlight">
-        <button class="button button-light bold{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}}><span class="icon icon-{{icon}}"></span>{{value}}</button>
-      </div>
 
 <pre class="language-markup"><code>{{#htmlencode}}<div class="govuk-box-highlight">
-  <button class="button button-light bold{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}}><span class="icon icon-{{icon}}"></span>{{value}}</button>
+<button class="button button-light bold{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}}><span class="icon icon-{{icon}}"></span>{{value}}</button>
 </div>
 {{/htmlencode}}</code></pre>
 
-    </div>
+  </div>
 
-  {{/each}}
-</main>
+{{/each}}

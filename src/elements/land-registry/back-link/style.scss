@@ -19,6 +19,9 @@
 
 .back-link-destination {
   @include media(tablet) {
-    text-transform: lowercase;
+
+    .back-link-prefix + & {
+      text-transform: lowercase;
+    }
   }
 }

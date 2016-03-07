@@ -1,94 +1,90 @@
 ---
 title: Full demo
 ---
-<main id="content" role="main">
-  <h1 class="heading-xlarge">
-    <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
-    {{component.name}}
-  </h1>
+<h1 class="heading-xlarge">
+  <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+  {{component.name}}
+</h1>
 
-  {{#capture 'form'}}
-    <form method="GET" id="example_form" data-clientside-validation="example_form_validation">
-      <div class="form-group">
-        <label class="form-label" for="full-name">Full name</label>
-        <input class="form-control" type="text" id="full-name" name="full-name">
-      </div>
+{{#capture 'form'}}
+  <form method="GET" id="example_form" data-clientside-validation="example_form_validation">
+    <div class="form-group">
+      <label class="form-label" for="full-name">Full name</label>
+      <input class="form-control" type="text" id="full-name" name="full-name">
+    </div>
 
-      <div class="form-group">
-        <label class="form-label" for="another-field">Another field</label>
-        <input class="form-control" type="text" id="another-field" name="another-field">
-        <span class="form-hint">(optional)</span>
-      </div>
+    <div class="form-group">
+      <label class="form-label" for="another-field">Another field</label>
+      <input class="form-control" type="text" id="another-field" name="another-field">
+      <span class="form-hint">(optional)</span>
+    </div>
 
-      <div class="form-group">
-        <label class="form-label" for="another-required-field">Another required field</label>
-        <input class="form-control" type="text" id="another-required-field" name="another-required-field">
-      </div>
+    <div class="form-group">
+      <label class="form-label" for="another-required-field">Another required field</label>
+      <input class="form-control" type="text" id="another-required-field" name="another-required-field">
+    </div>
 
-      <fieldset class="inline">
+    <fieldset class="inline">
 
-        <legend class="visuallyhidden">Insert question here?</legend>
-
-        <div class="form-group">
-
-          <label class="block-label" for="radio-1">
-            <input id="radio-1" type="radio" name="radio-group" value="Yes">
-            Yes
-          </label>
-
-          <label class="block-label" for="radio-2">
-            <input id="radio-2" type="radio" name="radio-group" value="No">
-            No
-          </label>
-
-        </div>
-
-      </fieldset>
+      <legend class="visuallyhidden">Insert question here?</legend>
 
       <div class="form-group">
-        <label class="block-label" for="terms">
-          <input id="terms" name="terms" type="checkbox" value="agree">
-          I agree that you will provide the summary as soon as I've paid.<br>
-          I accept that I will lose my right to cancel the contract as soon as the summary is displayed.
+
+        <label class="block-label" for="radio-1">
+          <input id="radio-1" type="radio" name="radio-group" value="Yes">
+          Yes
         </label>
+
+        <label class="block-label" for="radio-2">
+          <input id="radio-2" type="radio" name="radio-group" value="No">
+          No
+        </label>
+
       </div>
 
-      <input type="submit" class="button" value="Submit" id="submit">
-    </form>
+    </fieldset>
 
-    <script type="application/json" id="example_form_validation">
-      {
-        "full-name": {
-          "presence": {
-            "message": "Please supply your full name"
-          }
-        },
-        "another-required-field": {
-          "presence": {
-            "message": "Another required field must be filled in"
-          }
-        },
-        "radio-group": {
-          "presence": {
-            "message": "Please choose an option"
-          }
-        },
-        "terms": {
-          "presence": {
-            "message": "You need to agree to receive the summary right away and that you’ll lose your right to cancel"
-          }
+    <div class="form-group">
+      <label class="block-label" for="terms">
+        <input id="terms" name="terms" type="checkbox" value="agree">
+        I agree that you will provide the summary as soon as I've paid.<br>
+        I accept that I will lose my right to cancel the contract as soon as the summary is displayed.
+      </label>
+    </div>
+
+    <input type="submit" class="button" value="Submit" id="submit">
+  </form>
+
+  <script type="application/json" id="example_form_validation">
+    {
+      "full-name": {
+        "presence": {
+          "message": "Please supply your full name"
+        }
+      },
+      "another-required-field": {
+        "presence": {
+          "message": "Another required field must be filled in"
+        }
+      },
+      "radio-group": {
+        "presence": {
+          "message": "Please choose an option"
+        }
+      },
+      "terms": {
+        "presence": {
+          "message": "You need to agree to receive the summary right away and that you’ll lose your right to cancel"
         }
       }
-    </script>
-  {{/capture}}
+    }
+  </script>
+{{/capture}}
 
-  {{{form}}}
+{{{form}}}
 
-  <hr>
+<hr>
 
-  {{#markdown}}{{{component.readme}}}{{/markdown}}
+{{#markdown}}{{{component.readme}}}{{/markdown}}
 
-  <pre class="language-markup"><code>{{#htmlencode}}{{{form}}}{{/htmlencode}}</code></pre>
-
-
-</main>
+<pre class="language-markup"><code>{{#htmlencode}}{{{form}}}{{/htmlencode}}</code></pre>
