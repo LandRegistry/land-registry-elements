@@ -1,14 +1,18 @@
 ---
 title: Back link
-demo:
-  backDestinationTitle: Search results
+variants:
+  -
+    backDestinationTitle: Search again
+  -
+    backPrefix: Back to
+    backDestinationTitle: Search results
 ---
 <main id="content" role="main">
   {{> elements/govuk/phase-banner }}
 
   <div class="grid-row printhidden">
     <div class="column-two-thirds mobile-column-one-half">
-      {{#with demo}}{{> elements/land-registry/back-link }}{{/with}}
+      {{#with variants.[1]}}{{> elements/land-registry/back-link }}{{/with}}
     </div>
 
     <div class="column-third mobile-column-one-half">
@@ -21,11 +25,14 @@ demo:
     {{component.name}}
   </h1>
 
-  <p>See above for demo.</p>
+  <p>See above for in-situ demo.</p>
 
   {{#markdown}}{{component.readme}}{{/markdown}}
 
-  <pre class="language-markup"><code>{{#htmlencode}}{{#with demo}}{{> elements/land-registry/back-link }}{{/with}}{{/htmlencode}}</code></pre>
+  {{#each variants}}
+    {{> elements/land-registry/back-link }}
+    <pre class="language-markup"><code>{{#htmlencode}}{{> elements/land-registry/back-link }}{{/htmlencode}}</code></pre>
+  {{/each}}
 
 
 </main>
