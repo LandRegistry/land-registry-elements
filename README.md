@@ -92,7 +92,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 ## Roadmap:
 
 ### Doing
-- Slim down typography demos etc
+- Slim down typography demos etc.
 ### MVP
 
 - Do I need to build the login form?
