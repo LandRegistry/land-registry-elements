@@ -6,3 +6,9 @@
   padding-bottom: 100%;
   background-color: $grey-2;  // Grey background so that it is obvious that something will load in this space
 }
+
+// Fixes https://github.com/Leaflet/Leaflet/issues/4051
+// This can be removed once this ticket is resolved
+.leaflet-container {
+  touch-action: auto;
+}

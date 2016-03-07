@@ -94,8 +94,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 ### MVP
 
-- Cant scroll map on android 6
-
 - Do I need to build the login form?
 - What things can we update on webseal
   - Can I ship my clientside validation?
