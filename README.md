@@ -94,14 +94,10 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 ### MVP
 
-- Empty out footer
-  - remove telephone numbers
-  - remove OGL
 - Do I need to build the login form?
 - What things can we update on webseal
   - Can I ship my clientside validation?
   - Can we edit 403 pages etc?
-- Can we pop the language switcher in the footer
 - Investigate whether we can expose our assets using sass-eyeglass (https://github.com/sass-eyeglass/eyeglass)
 
 ### Questions
@@ -134,7 +130,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Get basics like breadcrumbs and main element into a parent template
 - Make sure any pattern documentation is in README.md files and not in the demos
 - Write more comprehensive test suite for the clientside validation checking that it matches the spec set out by gov uk
-- Consider pulling out the template from the govuk_template_mustache module instead of using it verbatim thereby allowing us to clean it up a little, and split the pieces like the footer out into partials.
 - Browsersync
 - Exclude image assets that are not referenced in the css to keep the build output clean
 - Write up results of user testing against any components where this has been carried out

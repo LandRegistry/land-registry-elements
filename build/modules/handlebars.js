@@ -44,9 +44,6 @@ function registerCoreHelpers(hbs) {
 function registerLayouts(hbs) {
   return new Promise(function(resolve, reject) {
 
-    // Register the govuk_template from node_modules
-    hbs.registerPartial('layout/govuk_template', fs.readFileSync('node_modules/govuk_template_mustache/views/layouts/govuk_template.html', 'utf8'));
-
     // Register custom layouts that will inherit from the above
     glob('src/layouts/**/*.hbs', function (er, files) {
       files.forEach(function(filename) {
