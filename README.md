@@ -94,7 +94,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 ### MVP
 
-- What's the govuk logo doing out of line?!
 - Empty out footer
   - remove telephone numbers
   - remove OGL
