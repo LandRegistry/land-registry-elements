@@ -24,7 +24,7 @@ module.exports = function(options) {
     destination: 'dist'
   }, options);
 
-  config.destination = path.join(pkg_dir.sync(), config.destination);
+  config.destination = path.join(pkg_dir.sync(__dirname), config.destination);
 
   return new Promise(function(resolve, reject) {
 

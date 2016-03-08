@@ -35,7 +35,7 @@ var landregistryComponentAssets = function(config) {
         components.forEach(function(component) {
 
           if(component.copy) {
-            componentCopyOperations.push(copy(path.join(pkg_dir.sync(), component.path, component.copy.from), path.join(config.destination, component.copy.to)));
+            componentCopyOperations.push(copy(path.join(pkg_dir.sync(__dirname), component.path, component.copy.from), path.join(config.destination, component.copy.to)));
           }
         });
 
@@ -49,11 +49,11 @@ var landregistryComponentAssets = function(config) {
 }
 
 var govUkTemplateAssets = function(config) {
-  return copy(path.join(pkg_dir.sync(), 'node_modules/govuk_template_mustache/assets'), path.join(config.destination, 'assets'));
+  return copy(path.join(pkg_dir.sync(__dirname), 'node_modules/govuk_template_mustache/assets'), path.join(config.destination, 'assets'));
 }
 
 var govUkToolkitAssets = function(config) {
-  return copy(path.join(pkg_dir.sync(), 'node_modules/govuk-elements-sass/node_modules/govuk_frontend_toolkit/images'), path.join(config.destination, 'assets/images/icons'));
+  return copy(path.join(pkg_dir.sync(__dirname), 'node_modules/govuk-elements-sass/node_modules/govuk_frontend_toolkit/images'), path.join(config.destination, 'assets/images/icons'));
 }
 
 module.exports = {
