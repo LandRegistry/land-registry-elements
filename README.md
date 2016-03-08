@@ -62,7 +62,7 @@ The pattern library can be started with the command `npm start`. This will start
 
 ## Contributing to this repository
 
-In order to work on the pattern library it is recommended that you install nodemon (`npm install -g nodemon`) and use this to run the application instead of `npm start`. This will watch for changes to .scss and .js etc and re-run the build immediately instead of requiring you to manually restart the server constantly.
+In order to work on the pattern library it is recommended that you install nodemon (`npm install -g nodemon`) and use the command `npm run dev` to run the application instead of `npm start`. This will watch for changes to .scss and .js etc and re-run the build immediately instead of requiring you to manually restart the server constantly.
 
 ### Guidelines to follow
 When building new UI components you should always bear the [goals](#goals) in mind such that new work is as reusable, stable and modular as possible.
