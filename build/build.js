@@ -6,6 +6,7 @@ var sass = require('./tasks/sass');
 var javascript = require('./tasks/javascript');
 var polyfill = require('./tasks/autopolyfiller');
 var autoprefixer = require('./tasks/autoprefixer');
+var pkg_dir = require('pkg-dir');
 
 module.exports = function(options) {
 
@@ -22,6 +23,8 @@ module.exports = function(options) {
     components: true,
     destination: 'dist'
   }, options);
+
+  config.destination = path.join(pkg_dir.sync(), config.destination);
 
   return new Promise(function(resolve, reject) {
 
