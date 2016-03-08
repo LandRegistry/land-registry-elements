@@ -3,6 +3,7 @@ var sass = require('node-sass');
 var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
+var pkg_dir = require('pkg-dir');
 
 /**
  * Custom node-sass importer to fetch css files from leafletjs
@@ -16,7 +17,7 @@ var mkdirp = require('mkdirp');
 var leafletCssImporter = function(url, prev, done) {
   if (url.indexOf('leafletjs') === 0) {
     return done({
-      contents: fs.readFileSync('./node_modules/leaflet/dist/leaflet.css', 'utf8')
+      contents: fs.readFileSync(path.join(pkg_dir.sync(__dirname), './node_modules/leaflet/dist/leaflet.css'), 'utf8')
     });
   }
 
@@ -35,7 +36,7 @@ var leafletCssImporter = function(url, prev, done) {
 var govukFrontendToolkitImporter = function(url, prev, done) {
   if (url.indexOf('govuk_frontend_toolkit') === 0) {
     return done({
-      file: url.replace('govuk_frontend_toolkit', 'node_modules/govuk-elements-sass/node_modules/govuk_frontend_toolkit/stylesheets')
+      file: url.replace('govuk_frontend_toolkit', path.join(pkg_dir.sync(__dirname), 'node_modules/govuk-elements-sass/node_modules/govuk_frontend_toolkit/stylesheets'))
     });
   }
 
@@ -54,7 +55,7 @@ var govukFrontendToolkitImporter = function(url, prev, done) {
 var govukElementsImporter = function(url, prev, done) {
   if (url.indexOf('govuk_elements') === 0) {
     return done({
-      file: url.replace('govuk_elements', 'node_modules/govuk-elements-sass/public/sass/elements')
+      file: url.replace('govuk_elements', path.join(pkg_dir.sync(__dirname), 'node_modules/govuk-elements-sass/public/sass/elements'))
     });
   }
 
@@ -79,8 +80,8 @@ function compileSass(config) {
       componentsTree.forEach(function(componentId) {
 
         // Check to see if the component exposes a stylesheet
-        if(fs.existsSync(path.join('src', componentId, 'style.scss'))) {
-          sassContents.push('@import "src/' + componentId + '/style.scss";');
+        if(fs.existsSync(path.join(config.moduleDir, 'src', componentId, 'style.scss'))) {
+          sassContents.push('@import "' + path.join(config.moduleDir, 'src', componentId) + '/style.scss";');
         }
       });
 
@@ -124,7 +125,7 @@ function compileSass(config) {
               govukElementsImporter
             ],
             includePaths: [
-              'src/elements'
+              path.join(config.moduleDir, 'src/elements')
             ],
             outputStyle: 'expanded'
           }, function(err, result) {

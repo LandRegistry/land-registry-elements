@@ -5,6 +5,7 @@ var path = require('path');
 var fs = require('fs');
 var DepGraph = require('dependency-graph').DepGraph;
 var _ = require('lodash');
+var pkg_dir = require('pkg-dir');
 
 var cache = {
   getComponents: {
@@ -23,7 +24,7 @@ var cache = {
 function getComponent(componentId) {
   return new Promise(function(resolve, reject) {
 
-    var componentPath = path.join('src', componentId);
+    var componentPath = path.join(pkg_dir.sync(__dirname), 'src', componentId);
 
     var component = yaml.safeLoad(fs.readFileSync(path.join(componentPath, 'info.yaml'), 'utf8'));
 
@@ -86,12 +87,12 @@ function getComponents(config) {
   if(!config.cache || cache.getComponents.expiry < Date.now()) {
 
     return new Promise(function(resolve, reject) {
-      glob('src/**/info.yaml', function (er, files) {
+      glob(path.join(config.moduleDir, 'src/**/info.yaml'), function (er, files) {
 
         var queue = [];
 
         files.forEach(function(filename) {
-          queue.push(getComponent(path.dirname(filename).replace('src/', '')));
+          queue.push(getComponent(path.dirname(filename).replace(path.join(config.moduleDir, 'src/'), '')));
         });
 
         if(er) {

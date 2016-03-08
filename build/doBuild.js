@@ -10,7 +10,7 @@ var results = new Promise(function(resolve, reject) {
       console.timeEnd('Total build time');
       console.log('Assets built to:', directory);
 
-      resolve(path.resolve('.', directory));
+      resolve(directory);
     })
     .catch(function(err) {
       require('trace');

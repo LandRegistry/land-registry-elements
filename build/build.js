@@ -21,10 +21,11 @@ module.exports = function(options) {
     mode: 'development',
     cache: true,
     components: true,
-    destination: 'dist'
+    destination: 'dist',
+    moduleDir: pkg_dir.sync(__dirname)
   }, options);
 
-  config.destination = path.join(pkg_dir.sync(__dirname), config.destination);
+  config.destination = path.join(config.moduleDir, config.destination);
 
   return new Promise(function(resolve, reject) {
 

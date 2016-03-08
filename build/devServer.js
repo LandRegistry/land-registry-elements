@@ -1,2 +1,2 @@
-var build = require('./doBuild');
+var build = require('./doBuild')();
 require('./server');
