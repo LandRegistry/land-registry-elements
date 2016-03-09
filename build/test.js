@@ -1,2 +1,1 @@
 require('./doBuild');
-require('./server');
