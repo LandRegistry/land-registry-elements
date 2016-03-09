@@ -94,7 +94,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 ### MVP
 - Sort out any duplications in ie.js and polyfills.js
-- Pattern library server and require()d build are both building to /dist. Build should go to .tmp
 - Get nodemon working in the centos dev env
 
 - Do I need to build the login form?
