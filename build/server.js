@@ -31,7 +31,7 @@ fs.readdir(path.join(__dirname, '/routes'), function(err, files) {
 // Go go go
 app.listen(process.env.PORT || 3000);
 
-console.log('listening on localhost:' + (process.env.npm_package_config_port || 3000));
+console.log('listening on localhost:' + (process.env.npm_config_port || 3000));
 
 // Export our server for testing purposes
 module.exports = app;
