@@ -80,7 +80,8 @@ function getComponents(config) {
   if(typeof config === 'undefined') {
     config = {
       cache: true,
-      components: true
+      components: true,
+      moduleDir: '.'
     };
   }
 

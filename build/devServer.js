@@ -1,3 +1,2 @@
-require('./doBuild').then(function() {
-  require('./server');
-});
+require('./doBuild');
+require('./server');
