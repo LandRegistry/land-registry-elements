@@ -25,7 +25,10 @@ module.exports = function(options) {
     moduleDir: pkg_dir.sync(__dirname)
   }, options);
 
-  config.destination = path.join(config.moduleDir, config.destination);
+  // If we've not been passed an absolute path, make it a path relative to this module
+  if(!path.isAbsolute(config.destination)) {
+    config.destination = path.join(config.moduleDir, config.destination);
+  }
 
   return new Promise(function(resolve, reject) {
 
