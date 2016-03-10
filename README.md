@@ -96,6 +96,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Fix image paths
 - Sort out any duplications in ie.js and polyfills.js
 - Get nodemon working in the centos dev env
+- Check to see whether gzip is enabled on production
 
 - Do I need to build the login form?
 - What things can we update on webseal
