@@ -22,7 +22,8 @@ module.exports = function(options) {
     cache: true,
     components: true,
     destination: 'dist',
-    moduleDir: pkg_dir.sync(__dirname)
+    moduleDir: pkg_dir.sync(__dirname),
+    assetPath: ''
   }, options);
 
   // If we've not been passed an absolute path, make it a path relative to this module

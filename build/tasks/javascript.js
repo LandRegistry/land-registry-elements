@@ -60,7 +60,12 @@ function compileJavaScript(config) {
               var browserfyConfig = {
                 transform: [
                   require('hoganify')
-                ]
+                ],
+                insertGlobalVars: {
+                  'assetPath': function(file, dir) {
+                    return '"' + config.assetPath + '"';
+                  }
+                }
               };
 
               // If we're in production mode, turn off debug and enable uglification

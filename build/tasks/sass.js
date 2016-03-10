@@ -75,8 +75,13 @@ function compileSass(config) {
 
       var promises = [];
 
-      // Build up our sass imports based on the dependency tree
+
       var sassContents = [];
+
+      // Inject our asset path variable
+      sassContents.push('$assetPath: "' + config.assetPath + '";');
+
+      // Build up our sass imports based on the dependency tree
       componentsTree.forEach(function(componentId) {
 
         // Check to see if the component exposes a stylesheet

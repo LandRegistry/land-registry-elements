@@ -93,7 +93,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Doing
 ### MVP
-- MAke sure we configure the build to only load the appropriate elements for the DRV beta
+- Fix image paths
 - Sort out any duplications in ie.js and polyfills.js
 - Get nodemon working in the centos dev env
 
