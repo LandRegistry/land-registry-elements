@@ -267,10 +267,21 @@ function getComponentsTree(config) {
   }
 }
 
+function populateTree(componentsTree) {
+  var promises = [];
+
+  componentsTree.forEach(function(componentId) {
+    promises.push(getComponent(componentId));
+  });
+
+  return Promise.all(promises);
+}
+
 module.exports = {
   getComponent: getComponent,
   getComponents: getComponents,
-  getComponentsTree: getComponentsTree
+  getComponentsTree: getComponentsTree,
+  populateTree: populateTree
 };
 
 

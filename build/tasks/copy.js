@@ -27,25 +27,18 @@ function copy(from, to) {
 var landregistryComponentAssets = function(config) {
   var componentCopyOperations = [];
 
-  return new Promise(function(resolve, reject) {
+  return components.getComponentsTree(config)
+    .then(components.populateTree)
+    .then(function(componentsTree) {
 
-    components.getComponents(config)
-      .then(function(components) {
-
-        components.forEach(function(component) {
-
-          if(component.copy) {
-            componentCopyOperations.push(copy(path.join(component.path, component.copy.from), path.join(config.destination, component.copy.to)));
-          }
-        });
-
-        Promise
-          .all(componentCopyOperations)
-          .then(resolve)
-          .catch(reject);
+      componentsTree.forEach(function(component) {
+        if(component.copy) {
+          componentCopyOperations.push(copy(path.resolve(component.path, component.copy.from), path.join(config.destination, component.copy.to)));
+        }
       });
 
-  });
+      return Promise.all(componentCopyOperations);
+    });
 }
 
 var govUkTemplateAssets = function(config) {

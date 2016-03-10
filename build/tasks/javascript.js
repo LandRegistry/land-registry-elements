@@ -40,7 +40,8 @@ function bundleSort(components) {
 function compileJavaScript(config) {
   console.time('Compile JavaScript');
 
-  return components.getComponents(config)
+  return components.getComponentsTree(config)
+    .then(components.populateTree)
     .then(bundleSort)
     .then(function(bundles) {
 
