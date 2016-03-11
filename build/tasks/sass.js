@@ -132,7 +132,7 @@ function compileSass(config) {
             includePaths: [
               path.join(config.moduleDir, 'src/elements')
             ],
-            outputStyle: 'expanded'
+            outputStyle: (config.mode === 'production') ? 'compressed' : 'expanded'
           }, function(err, result) {
             if(err) {
               reject(err);

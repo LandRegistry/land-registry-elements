@@ -103,7 +103,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 - detail/summary elements inside warning panels look funny because of the overflow hidden on the inner container
 - No JS fallback for the T&Cs checkbox?
 - Fix hardcoded prices in recent work and fold in the VAT work
-- Fix image paths
 - Sort out any duplications in ie.js and polyfills.js
 - Minify css
 - Get nodemon working in the centos dev env
@@ -112,6 +111,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Aria roles on the split detail component
 - Translate "Current language" and "Switch to" pieces of hidden text in the language switcher
 - Rename DRV components to something else once the final service name has been chosen?
+- Can register_assets in digital-register-frontend/service/static/__init__.py be simplified and the file copy steps be removed? Ideally get the assets into the images folder?
 
 - Do I need to build the login form?
 - What things can we update on webseal
