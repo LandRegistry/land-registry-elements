@@ -17,3 +17,4 @@ dependencies:
   - elements/land-registry/vat-receipt
   - elements/land-registry/vertical-spacing
   - elements/land-registry/warning
+  - elements/land-registry/back-link

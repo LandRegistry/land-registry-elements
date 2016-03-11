@@ -93,10 +93,16 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Doing
 ### MVP
+- detail/summary elements inside warning panels look funny because of the overflow hidden on the inner container
+- No JS fallback for the T&Cs checkbox?
+- Fix hardcoded prices in recent work and fold in the VAT work
 - Fix image paths
 - Sort out any duplications in ie.js and polyfills.js
+- Minify css
 - Get nodemon working in the centos dev env
 - Check to see whether gzip is enabled on production
+- Remove all references to breadcrumbs in server.py
+- Aria roles on the split detail component
 
 - Do I need to build the login form?
 - What things can we update on webseal
