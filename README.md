@@ -97,10 +97,8 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Why does the indexPolygon come out with all the LeafletJS specific stuff? Shouldn't that be in the frontend and not in the data?
 - Where do feedback links go?
 - Render out lease length?
-- Get price paid into the demos?
+- Get price paid into the land-registry-elements demos?
 - caution title "what you will get" text needs updating in the demo
-- Improve lenders markup
-- Improve proprietor markup
 - Address template in digital-register-frontend
 - detail/summary elements inside warning panels look funny because of the overflow hidden on the inner container
 - No JS fallback for the T&Cs checkbox?
