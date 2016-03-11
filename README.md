@@ -93,6 +93,15 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Doing
 ### MVP
+- Format of "price paid" data does not match prototype
+- Why does the indexPolygon come out with all the LeafletJS specific stuff? Shouldn't that be in the frontend and not in the data?
+- Where do feedback links go?
+- Render out lease length?
+- Get price paid into the demos?
+- caution title "what you will get" text needs updating in the demo
+- Improve lenders markup
+- Improve proprietor markup
+- Address template in digital-register-frontend
 - detail/summary elements inside warning panels look funny because of the overflow hidden on the inner container
 - No JS fallback for the T&Cs checkbox?
 - Fix hardcoded prices in recent work and fold in the VAT work
@@ -103,6 +112,8 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Check to see whether gzip is enabled on production
 - Remove all references to breadcrumbs in server.py
 - Aria roles on the split detail component
+- Translate "Current language" and "Switch to" pieces of hidden text in the language switcher
+- Rename DRV components to something else once the final service name has been chosen?
 
 - Do I need to build the login form?
 - What things can we update on webseal
