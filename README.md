@@ -119,6 +119,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Translate "Current language" and "Switch to" pieces of hidden text in the language switcher
 - Rename DRV components to something else once the final service name has been chosen?
 - Can register_assets in digital-register-frontend/service/static/__init__.py be simplified and the file copy steps be removed? Ideally get the assets into the images folder?
+- Do some speed tests of vagrant shared folder with and without NFS?
 
 - Do I need to build the login form?
 - What things can we update on webseal
