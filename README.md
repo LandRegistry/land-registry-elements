@@ -62,7 +62,7 @@ The pattern library can be started with the command `npm start`. This will start
 
 ## Contributing to this repository
 
-In order to work on the pattern library it is recommended that you install nodemon (`npm install -g nodemon`) and use the command `npm run dev` to run the application instead of `npm start`. This will watch for changes to .scss and .js etc and re-run the build immediately instead of requiring you to manually restart the server constantly.
+In order to work on the pattern library it is recommended that you install supervisor (`npm install -g supervisor`) and use the command `npm run dev` to run the application instead of `npm start`. This will watch for changes to .scss and .js etc and re-run the build immediately instead of requiring you to manually restart the server constantly. You may also wish to develop locally rather than in a vagrant box so that rebuilds occur more quickly.
 
 ### Guidelines to follow
 When building new UI components you should always bear the [goals](#goals) in mind such that new work is as reusable, stable and modular as possible.
@@ -93,19 +93,26 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Doing
 ### MVP
+- Sort out https://github.com/LandRegistry/land-registry-elements/issues/11
+- Fix tests for map not actually testing for the rendered map (Currently just tests for the map div existing) (See https://medium.com/@ebeigarts/expect-to-become-966970143cd3#.mfug5iwr7 for "become" function)
+- Final Terms and Conditions?!
+- Cookies page looking a bit wonky
+- Remove "sleep" from test @US231 "I see an explanation of what caution title means"
+- Decouple digital-register-frontend build script from vagrant path
+- Acceptance tests for .back-link
+- Acceptance tests for any other new stuff?
+- Ensure styleguide is up to date with anything new from digital-register-frontend
+- confirm selection page address markup wrong?
+- Fix hardcoded prices in recent work and fold in the VAT work
 - Format of "price paid" data does not match prototype
 - Why does the indexPolygon come out with all the LeafletJS specific stuff? Shouldn't that be in the frontend and not in the data?
 - Where do feedback links go?
-- Render out lease length?
 - Get price paid into the land-registry-elements demos?
 - caution title "what you will get" text needs updating in the demo
-- Address template in digital-register-frontend
 - detail/summary elements inside warning panels look funny because of the overflow hidden on the inner container
-- No JS fallback for the T&Cs checkbox?
-- Fix hardcoded prices in recent work and fold in the VAT work
 - Sort out any duplications in ie.js and polyfills.js
 - Minify css
-- Get nodemon working in the centos dev env
+- export sass instead of css and nuke the custom importers
 - Check to see whether gzip is enabled on production
 - Remove all references to breadcrumbs in server.py
 - Aria roles on the split detail component
