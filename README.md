@@ -93,11 +93,11 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Doing
 ### MVP
-- Sort out https://github.com/LandRegistry/land-registry-elements/issues/11
 - Fix tests for map not actually testing for the rendered map (Currently just tests for the map div existing) (See https://medium.com/@ebeigarts/expect-to-become-966970143cd3#.mfug5iwr7 for "become" function)
+- Remove "sleep" from test @US231 "I see an explanation of what caution title means"
+- Sort out https://github.com/LandRegistry/land-registry-elements/issues/11
 - Final Terms and Conditions?!
 - Cookies page looking a bit wonky
-- Remove "sleep" from test @US231 "I see an explanation of what caution title means"
 - Decouple digital-register-frontend build script from vagrant path
 - Acceptance tests for .back-link
 - Acceptance tests for any other new stuff?
