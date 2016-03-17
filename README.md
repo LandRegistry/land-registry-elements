@@ -96,9 +96,10 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Final Terms and Conditions?!
 - Cookies page looking a bit wonky
 - Decouple digital-register-frontend build script from vagrant path
+- Document which stylesheets to include
 
 ### Nice to have
-- export sass instead of css and nuke the custom importers
+- Fix leaflet css so that it's not hardcoded in the layout
 - Ensure styleguide is up to date with anything new from digital-register-frontend
 - Fix hardcoded VAT-less price
 - Fix tests for map not actually testing for the rendered map (Currently just tests for the map div existing) (See https://medium.com/@ebeigarts/expect-to-become-966970143cd3#.mfug5iwr7 for "become" function)
