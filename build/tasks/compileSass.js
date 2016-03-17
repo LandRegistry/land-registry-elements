@@ -3,7 +3,6 @@ var sass = require('node-sass');
 var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
-var pkg_dir = require('pkg-dir');
 
 /**
  * Function to build out the CSS

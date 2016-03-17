@@ -5,7 +5,7 @@ categories:
 copy:
   -
     from: 'icons'
-    to: 'assets/images/icons/land-registry'
+    to: '../../../../dist/assets/images/icons/land-registry'
 
 dependencies:
   - elements/govuk/core

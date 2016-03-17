@@ -6,4 +6,4 @@ categories:
 copy:
   -
     from: 'images'
-    to: 'assets/images'
+    to: '../../../../dist/assets/images'

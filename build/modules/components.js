@@ -5,7 +5,7 @@ var path = require('path');
 var fs = require('fs');
 var DepGraph = require('dependency-graph').DepGraph;
 var _ = require('lodash');
-var pkg_dir = require('pkg-dir');
+var pkg_up = require('pkg-up');
 
 var cache = {
   getComponents: {
@@ -24,7 +24,7 @@ var cache = {
 function getComponent(componentId) {
   return new Promise(function(resolve, reject) {
 
-    var componentPath = path.join(pkg_dir.sync(__dirname), 'src', componentId);
+    var componentPath = path.join(path.dirname(pkg_up.sync(__dirname)), 'src', componentId);
 
     var component = yaml.safeLoad(fs.readFileSync(path.join(componentPath, 'info.yaml'), 'utf8'));
 

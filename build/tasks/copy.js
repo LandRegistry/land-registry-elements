@@ -1,31 +1,38 @@
 var path = require('path');
 var fs = require('fs');
-var ncp = require('ncp').ncp;
 var components = require('../modules/components');
 var mkdirp = require('mkdirp');
+var ncp = require('ncp').ncp;
 
 function copy(from, to) {
   console.time('Copy from ' + from + ' to ' + to);
   return new Promise(function(resolve, reject) {
-    mkdirp.sync(to);
 
     var stat = fs.statSync(from);
 
     if(stat.isFile()) {
-      console.timeEnd('Copy from ' + from + ' to ' + to);
-      fs.createReadStream(from).pipe(fs.createWriteStream(path.join(to, path.basename(from))));
-      return resolve(to)
+      fs.createReadStream(from)
+        .pipe(fs.createWriteStream(to))
+        .on('finish', function() {
+          resolve(to);
+          console.timeEnd('Copy from ' + from + ' to ' + to);
+        })
+        .on('error', function(err) {
+          reject(err);
+        });
+    } else {
+      mkdirp.sync(to);
+
+      ncp(from, to, function(err, files) {
+        if(err) {
+          reject(err);
+          return;
+        }
+
+        resolve(files);
+        console.timeEnd('Copy from ' + from + ' to ' + to);
+      });
     }
-
-    ncp(from, to, function(err, files) {
-      if(err) {
-        reject(err);
-        return;
-      }
-
-      resolve(files);
-      console.timeEnd('Copy from ' + from + ' to ' + to);
-    });
   });
 }
 
@@ -43,7 +50,7 @@ var landregistryComponentAssets = function(config) {
       componentsTree.forEach(function(component) {
         if(component.copy) {
           component.copy.forEach(function(copyOperation) {
-            componentCopyOperations.push(copy(path.resolve(component.path, copyOperation.from), path.join(config.destination, copyOperation.to)));
+            componentCopyOperations.push(copy(path.resolve(component.path, copyOperation.from), path.resolve(component.path, copyOperation.to)));
           });
         }
       });

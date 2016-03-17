@@ -78,7 +78,7 @@
     "ncp": "^2.0.0",
     "node-sass": "^3.4.2",
     "npm": "^3.6.0",
-    "pkg-dir": "^1.0.0",
+    "pkg-up": "^1.0.0",
     "postcss": "^5.0.19",
     "pretty": "^1.0.0",
     "proj4leaflet": "github:kartena/Proj4Leaflet",

@@ -7,7 +7,7 @@ var compileSass = require('./tasks/compileSass');
 var javascript = require('./tasks/javascript');
 var polyfill = require('./tasks/autopolyfiller');
 var autoprefixer = require('./tasks/autoprefixer');
-var pkg_dir = require('pkg-dir');
+var pkg_up = require('pkg-up');
 
 module.exports = function(options) {
 
@@ -23,7 +23,7 @@ module.exports = function(options) {
     cache: true,
     components: true,
     destination: 'dist',
-    moduleDir: pkg_dir.sync(__dirname),
+    moduleDir: path.dirname(pkg_up.sync(__dirname)),
     assetPath: ''
   }, options);
 

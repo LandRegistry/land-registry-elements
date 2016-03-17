@@ -100,7 +100,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 - confirm selection page address markup wrong?
 
 ### Nice to have
-- Fix leaflet css so that it's not hardcoded in the layout
 - Fix hardcoded VAT-less price
 - Fix tests for map not actually testing for the rendered map (Currently just tests for the map div existing) (See https://medium.com/@ebeigarts/expect-to-become-966970143cd3#.mfug5iwr7 for "become" function)
 - Remove "sleep" from test @US231 "I see an explanation of what caution title means"
