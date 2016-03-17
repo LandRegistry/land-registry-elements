@@ -28,8 +28,8 @@
   },
   "homepage": "https://github.com/LandRegistry/land-registry-elements#readme",
   "engines": {
-    "npm": "2.x",
-    "node": "4.x"
+    "npm": "3.x",
+    "node": "5.x"
   },
   "devDependencies": {
     "gm": "^1.21.1",

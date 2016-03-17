@@ -2,7 +2,8 @@ var extend = require('extend');
 var path = require('path');
 var cleanDist = require('./tasks/clean_dist');
 var copy = require('./tasks/copy');
-var sass = require('./tasks/sass');
+var generateSass = require('./tasks/generateSass');
+var compileSass = require('./tasks/compileSass');
 var javascript = require('./tasks/javascript');
 var polyfill = require('./tasks/autopolyfiller');
 var autoprefixer = require('./tasks/autoprefixer');
@@ -44,7 +45,10 @@ module.exports = function(options) {
         return copy.landregistryComponentAssets(config);
       })
       .then(function() {
-        return sass(config);
+        return generateSass(config);
+      })
+      .then(function(stylesheets) {
+        return compileSass(config, stylesheets);
       })
       .then(function() {
         return autoprefixer(config);

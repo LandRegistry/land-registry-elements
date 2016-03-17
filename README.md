@@ -43,7 +43,7 @@ Example to follow
 By ticking the components you require on the index page, you will be provided with a URL to which you can make a GET request in your applications build pipeline. You can manually download a build (Using the buttons on the homepage) and commit it to your repository if necessary but you are encouraged to automate this wherever possible. See [Running the pattern library](#running-the-pattern-library) for more information on running the pattern library yourself. Alternatively you can make GET requests to the heroku demo directly but this is perhaps not recommended as it adds a dependency on an external service to your build script.
 
 ### Bypass the pattern library's build scripts entirely!
-The pattern library comes with a set of build scripts that will build out CSS and JS from the component folders in the repository by working out what is required based on the dependencies of each component (See [Defining a component](#defining-a-component) for more details). However if this is too prescriptive for your needs then you can sidestep this. At the end of the day, the patterns are simply defined as SCSS files on disk - you can simply `@import` them into your application's SCSS file if this better suits your needs. The caveat is that you would need to define the custom importers as found in the sass render module at [build/tasks/sass.js](build/tasks/sass.js) (As documented at [https://github.com/sass/node-sass#importer--v200---experimental](https://github.com/sass/node-sass#importer--v200---experimental)). These are required in order to fetch the govuk sass files from the `node_modules` folder. This option is potentially more complex than the other options so should probably be considered as a last resort - It is listed as an option for completeness and to clarify that the build scripts in this repository are _complementary to_ and not _necessary for_ the UI patterns contained herein.
+The pattern library comes with a set of build scripts that will build out CSS and JS from the component folders in the repository by working out what is required based on the dependencies of each component (See [Defining a component](#defining-a-component) for more details). However if this is too prescriptive for your needs then you can sidestep this. At the end of the day, the patterns are simply defined as SCSS files on disk - you can simply `@import` them into your application's SCSS file if this better suits your needs.
 
 --------------------------------------------------------------------------------
 
@@ -51,8 +51,7 @@ The pattern library comes with a set of build scripts that will build out CSS an
 The pattern library can be started with the command `npm start`. This will start a webserver running on `localhost:3000` where you can view the pattern library. You can then make GET requests to `localhost:3000/build` as per the [instructions here](make-a-get-request-to-the-pattern-library-application)
 
 ### Requirements
-* Node.js 4.x
-(_Note: Node.JS 5 is currently not supported due to issues with the way the `node_modules` folder is structured in npm 3_)
+* Node.js 5.x (If you currently use Node.js 4 for gov uk things, using a version manager such as [nvm](https://github.com/creationix/nvm) would be recommended to easily switch between versions)
 
 ### Requirements to run the test suite
 * [mocha](https://www.npmjs.com/package/mocha), installed globally
@@ -92,18 +91,22 @@ Contains the main test suite. Components should not specify tests in here but sh
 ## Roadmap:
 
 ### Doing
-### MVP
-- Fix tests for map not actually testing for the rendered map (Currently just tests for the map div existing) (See https://medium.com/@ebeigarts/expect-to-become-966970143cd3#.mfug5iwr7 for "become" function)
-- Remove "sleep" from test @US231 "I see an explanation of what caution title means"
-- Sort out https://github.com/LandRegistry/land-registry-elements/issues/11
+### Essential
+- Retemplating new landing page
 - Final Terms and Conditions?!
 - Cookies page looking a bit wonky
 - Decouple digital-register-frontend build script from vagrant path
+
+### Nice to have
+- export sass instead of css and nuke the custom importers
+- Ensure styleguide is up to date with anything new from digital-register-frontend
+- Fix hardcoded VAT-less price
+- Fix tests for map not actually testing for the rendered map (Currently just tests for the map div existing) (See https://medium.com/@ebeigarts/expect-to-become-966970143cd3#.mfug5iwr7 for "become" function)
+- Remove "sleep" from test @US231 "I see an explanation of what caution title means"
+- Sort out https://github.com/LandRegistry/land-registry-elements/issues/11
 - Acceptance tests for .back-link
 - Acceptance tests for any other new stuff?
-- Ensure styleguide is up to date with anything new from digital-register-frontend
 - confirm selection page address markup wrong?
-- Fix hardcoded prices in recent work and fold in the VAT work
 - Format of "price paid" data does not match prototype
 - Why does the indexPolygon come out with all the LeafletJS specific stuff? Shouldn't that be in the frontend and not in the data?
 - Where do feedback links go?
@@ -112,20 +115,28 @@ Contains the main test suite. Components should not specify tests in here but sh
 - detail/summary elements inside warning panels look funny because of the overflow hidden on the inner container
 - Sort out any duplications in ie.js and polyfills.js
 - Minify css
-- export sass instead of css and nuke the custom importers
 - Check to see whether gzip is enabled on production
 - Remove all references to breadcrumbs in server.py
 - Aria roles on the split detail component
 - Translate "Current language" and "Switch to" pieces of hidden text in the language switcher
 - Rename DRV components to something else once the final service name has been chosen?
 - Can register_assets in digital-register-frontend/service/static/__init__.py be simplified and the file copy steps be removed? Ideally get the assets into the images folder?
-- Do some speed tests of vagrant shared folder with and without NFS?
+- Get hold of accessibility testing results and see if anything there is fixable
+- Investigate why webshot sometimes outputs minor variations and git thinks they've changed (PNG headers?)
+- When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
+- Testplan generator? I.e. take a list of pages and browsers and put together a list for you to complete
+- Visual regression testing at mobile breakpoints
+- Make sure any pattern documentation is in README.md files and not in the demos
+- Write more comprehensive test suite for the clientside validation checking that it matches the spec set out by gov uk
+- Exclude image assets that are not referenced in the css to keep the build output clean
+- Write up results of user testing against any components where this has been carried out
+- Split out gov uk JS and include it into the core component with browserify?
+
 
 - Do I need to build the login form?
 - What things can we update on webseal
   - Can I ship my clientside validation?
   - Can we edit 403 pages etc?
-- Investigate whether we can expose our assets using sass-eyeglass (https://github.com/sass-eyeglass/eyeglass)
 
 ### Questions
 - The h1 on the search results page is also the form label. Is this ok?!
@@ -146,25 +157,6 @@ Contains the main test suite. Components should not specify tests in here but sh
     - via a get request
 - Write contribution guidelines
 - Fully document the structure of a component folder and info.yaml
-
---------------------------------------------------------------------------------
-
-### Non MVP todos
-- Investigate why webshot sometimes outputs minor variations and git thinks they've changed (PNG headers?)
-- When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
-- Testplan generator? I.e. take a list of pages and browsers and put together a list for you to complete
-- Concat and minify stylesheet output
-- Is there a simpler way we can expose the build output for people to include in their application's sass. I.e. so that any mixins from the gov uk stuff is included in the application rather than just the built out css.
-- Visual regression testing at mobile breakpoints
-- Fix build with npm3 (And get it tested alongside npm2 in TravisCI)
-- Make sure any pattern documentation is in README.md files and not in the demos
-- Write more comprehensive test suite for the clientside validation checking that it matches the spec set out by gov uk
-- Browsersync
-- Exclude image assets that are not referenced in the css to keep the build output clean
-- Write up results of user testing against any components where this has been carried out
-- Convert CSS to BEM?
-- Split out gov uk JS and include it into the core component with browserify?
-- Migrate to nunjucks (Super low importance)
 
 --------------------------------------------------------------------------------
 
