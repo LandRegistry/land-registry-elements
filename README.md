@@ -94,7 +94,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Essential
 - Retemplating new landing page
 - Final Terms and Conditions?!
-- Cookies page looking a bit wonky
 - Decouple digital-register-frontend build script from vagrant path
 - Document which stylesheets to include
 - Ensure styleguide is up to date with anything new from digital-register-frontend
