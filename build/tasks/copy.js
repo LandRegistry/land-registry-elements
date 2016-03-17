@@ -50,7 +50,7 @@ var landregistryComponentAssets = function(config) {
       componentsTree.forEach(function(component) {
         if(component.copy) {
           component.copy.forEach(function(copyOperation) {
-            componentCopyOperations.push(copy(path.resolve(component.path, copyOperation.from), path.resolve(component.path, copyOperation.to)));
+            componentCopyOperations.push(copy(path.resolve(component.path, copyOperation.from), path.join(config.destination, copyOperation.to)));
           });
         }
       });
@@ -71,4 +71,5 @@ module.exports = {
   'landregistryComponentAssets': landregistryComponentAssets,
   'govUkTemplateAssets': govUkTemplateAssets,
   'govUkToolkitAssets': govUkToolkitAssets,
+  'copy': copy
 };

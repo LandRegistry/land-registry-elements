@@ -7,6 +7,7 @@ var compileSass = require('./tasks/compileSass');
 var javascript = require('./tasks/javascript');
 var polyfill = require('./tasks/autopolyfiller');
 var autoprefixer = require('./tasks/autoprefixer');
+var componentBuilds = require('./tasks/componentBuilds');
 var pkg_up = require('pkg-up');
 
 module.exports = function(options) {
@@ -43,6 +44,9 @@ module.exports = function(options) {
       })
       .then(function() {
         return copy.landregistryComponentAssets(config);
+      })
+      .then(function() {
+        return componentBuilds(config);
       })
       .then(function() {
         return generateSass(config);
