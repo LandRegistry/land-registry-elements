@@ -97,17 +97,17 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Cookies page looking a bit wonky
 - Decouple digital-register-frontend build script from vagrant path
 - Document which stylesheets to include
+- Ensure styleguide is up to date with anything new from digital-register-frontend
+- confirm selection page address markup wrong?
 
 ### Nice to have
 - Fix leaflet css so that it's not hardcoded in the layout
-- Ensure styleguide is up to date with anything new from digital-register-frontend
 - Fix hardcoded VAT-less price
 - Fix tests for map not actually testing for the rendered map (Currently just tests for the map div existing) (See https://medium.com/@ebeigarts/expect-to-become-966970143cd3#.mfug5iwr7 for "become" function)
 - Remove "sleep" from test @US231 "I see an explanation of what caution title means"
 - Sort out https://github.com/LandRegistry/land-registry-elements/issues/11
 - Acceptance tests for .back-link
 - Acceptance tests for any other new stuff?
-- confirm selection page address markup wrong?
 - Format of "price paid" data does not match prototype
 - Why does the indexPolygon come out with all the LeafletJS specific stuff? Shouldn't that be in the frontend and not in the data?
 - Where do feedback links go?
