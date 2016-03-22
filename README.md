@@ -92,10 +92,11 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Doing
 ### Essential
+- Document which stylesheets to include (Pull govuk template and fonts in via sass?)
+- dont export css?
 - "Back to search results" link broken
 - Retemplating new landing page
 - Decouple digital-register-frontend build script from vagrant path
-- Document which stylesheets to include
 - Ensure styleguide is up to date with anything new from digital-register-frontend
 - confirm selection page address markup wrong?
 - Build a back link script for use on pages such as the T&Cs page

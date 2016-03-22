@@ -11,7 +11,7 @@
     "generateTestURLs": "node build/tasks/testURLs.js",
     "build": "node build/doBuild.js",
     "start": "node build/devServer.js",
-    "dev": "supervisor -i test,dist,.tmp,node_modules -e js,scss,hogan build/devServer.js",
+    "dev": "supervisor -i test,dist,.tmp,node_modules -e js,scss,hogan,yaml build/devServer.js",
     "generateReferenceRenderings": "npm run build && node build/tasks/generateReferenceRenderings.js"
   },
   "repository": {
