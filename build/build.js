@@ -20,7 +20,7 @@ module.exports = function(options) {
    * the "Build" category which contains styles for example pages
    */
   var config = extend({
-    mode: 'development',
+    mode: 'production',
     cache: true,
     components: true,
     destination: 'dist',

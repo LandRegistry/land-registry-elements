@@ -4,7 +4,9 @@ var path = require('path');
 
 var build = require('./build');
 
-build()
+build({
+  mode: 'development'
+})
   .then(function(directory) {
     console.timeEnd('Total build time');
     console.log('Assets built to:', directory);
