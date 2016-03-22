@@ -92,7 +92,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Doing
 ### Essential
-- "Back to search results" link broken
+- "Back to search results" link broken.
 - Retemplating new landing page
 - Decouple digital-register-frontend build script from vagrant path
 - Ensure styleguide is up to date with anything new from digital-register-frontend
