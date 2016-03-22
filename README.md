@@ -92,8 +92,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Doing
 ### Essential
-- Document which stylesheets to include (Pull govuk template and fonts in via sass?)
-- dont export css?
 - "Back to search results" link broken
 - Retemplating new landing page
 - Decouple digital-register-frontend build script from vagrant path
@@ -102,6 +100,8 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Build a back link script for use on pages such as the T&Cs page
 
 ### Nice to have
+- Document which stylesheets to include (Pull govuk template and fonts in via sass?)
+- dont export css?
 - Fix hardcoded VAT-less price
 - Fix tests for map not actually testing for the rendered map (Currently just tests for the map div existing) (See https://medium.com/@ebeigarts/expect-to-become-966970143cd3#.mfug5iwr7 for "become" function)
 - Remove "sleep" from test @US231 "I see an explanation of what caution title means"
