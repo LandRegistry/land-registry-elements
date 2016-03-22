@@ -28,22 +28,7 @@ The patterns in this library have been cross browser tested (As per the [Browser
 
 ## Usage
 
-The Land Registry elements repository is a "Living style guide". This means that it should be seen as the central reference point for your application's frontend assets. There are a range of ways you can achieve this (very approximately in order of difficulty):
-
-### Via Grunt.js
-Example to follow
-
-### Via Gulp.js
-Example to follow
-
-### As a Node.JS module
-Example to follow
-
-### Make a GET request to the pattern library application
-By ticking the components you require on the index page, you will be provided with a URL to which you can make a GET request in your applications build pipeline. You can manually download a build (Using the buttons on the homepage) and commit it to your repository if necessary but you are encouraged to automate this wherever possible. See [Running the pattern library](#running-the-pattern-library) for more information on running the pattern library yourself. Alternatively you can make GET requests to the heroku demo directly but this is perhaps not recommended as it adds a dependency on an external service to your build script.
-
-### Bypass the pattern library's build scripts entirely!
-The pattern library comes with a set of build scripts that will build out CSS and JS from the component folders in the repository by working out what is required based on the dependencies of each component (See [Defining a component](#defining-a-component) for more details). However if this is too prescriptive for your needs then you can sidestep this. At the end of the day, the patterns are simply defined as SCSS files on disk - you can simply `@import` them into your application's SCSS file if this better suits your needs.
+The Land Registry elements repository is a "Living style guide". This means that it should be seen as the central reference point for your application's frontend assets. There are a range of ways you can achieve this and these are all documented in the [land-registry-elements-examples](https://github.com/LandRegistry/land-registry-elements-examples) repository.
 
 --------------------------------------------------------------------------------
 
