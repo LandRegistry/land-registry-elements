@@ -1,28 +1,35 @@
 {
   "name": "land-registry-elements",
+  "config": {
+    "port": "3000"
+  },
   "version": "0.0.1",
   "description": "Land registry frontend pattern library - building on top of http://govuk-elements.herokuapp.com",
-  "main": "build/devServer.js",
+  "main": "build/build.js",
   "scripts": {
-    "test": "npm run build && npm run generateTestURLs && mocha && eslint src/**",
+    "test": "npm run build && npm run generateTestURLs && mocha && eslint src/** --ignore-pattern build.js",
     "generateTestURLs": "node build/tasks/testURLs.js",
     "build": "node build/doBuild.js",
-    "start": "node build/doBuild.js && node build/server.js",
+    "start": "node build/devServer.js",
+    "dev": "supervisor -i test,dist,.tmp,node_modules -e js,scss,hogan,yaml build/devServer.js",
     "generateReferenceRenderings": "npm run build && node build/tasks/generateReferenceRenderings.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LandRegistry/land-registry-elements.git"
   },
-  "author": "Andy Mantell <andy.mantell@digital.landregistry.gov.uk>",
+  "author": {
+    "name": "Andy Mantell",
+    "email": "andy.mantell@digital.landregistry.gov.uk"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/LandRegistry/land-registry-elements/issues"
   },
   "homepage": "https://github.com/LandRegistry/land-registry-elements#readme",
   "engines": {
-    "npm": "2.x",
-    "node": "4.x"
+    "npm": "3.x",
+    "node": "5.x"
   },
   "devDependencies": {
     "gm": "^1.21.1",
@@ -71,9 +78,10 @@
     "ncp": "^2.0.0",
     "node-sass": "^3.4.2",
     "npm": "^3.6.0",
+    "pkg-up": "^1.0.0",
     "postcss": "^5.0.19",
     "pretty": "^1.0.0",
-    "proj4leaflet": "kartena/Proj4Leaflet",
+    "proj4leaflet": "github:kartena/Proj4Leaflet",
     "promise-helpers": "^0.2.0",
     "remarkable": "^1.6.2",
     "rimraf": "^2.5.1",

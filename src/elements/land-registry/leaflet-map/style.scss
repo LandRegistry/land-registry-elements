@@ -1,10 +1,9 @@
-@import "leafletjs";
+@import '../../../../node_modules/leaflet/dist/leaflet.scss';
 
 .map {
   width: 100%;
   height: 0;
   padding-bottom: 100%;
-  background-color: $grey-2;  // Grey background so that it is obvious that something will load in this space
 }
 
 // Fixes https://github.com/Leaflet/Leaflet/issues/4051

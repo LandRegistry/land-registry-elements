@@ -10,3 +10,5 @@ dependencies:
   - elements/land-registry/teaser-register
   - elements/land-registry/language-switcher
   - elements/land-registry/vertical-spacing
+  - elements/land-registry/supplementary-panel
+  - elements/land-registry/pagination-simple

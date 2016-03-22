@@ -9,13 +9,13 @@
 
     <p class="font-xsmall">35 results found</p>
 
-    <ul>
+    <ol class="search-results-listing">
     {{#each results}}
       <li>
         {{> elements/land-registry/teaser-register }}
       </li>
     {{/each}}
-    </ul>
+    </ol>
 
     {{#with pagination}}
       {{> elements/land-registry/pagination-simple }}

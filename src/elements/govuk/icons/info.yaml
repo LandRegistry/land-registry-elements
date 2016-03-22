@@ -3,8 +3,9 @@ categories:
   primary: Govuk
   secondary: Core
 copy:
-  from: 'icons'
-  to: 'assets/images/icons/land-registry'
+  -
+    from: 'icons'
+    to: 'assets/images/icons/land-registry'
 
 dependencies:
   - elements/govuk/core

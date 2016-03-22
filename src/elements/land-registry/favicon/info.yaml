@@ -4,5 +4,6 @@ categories:
   secondary: Core
 
 copy:
-  from: 'images'
-  to: 'assets/images'
+  -
+    from: 'images'
+    to: 'assets/images'

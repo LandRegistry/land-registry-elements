@@ -2,10 +2,13 @@ var extend = require('extend');
 var path = require('path');
 var cleanDist = require('./tasks/clean_dist');
 var copy = require('./tasks/copy');
-var sass = require('./tasks/sass');
+var generateSass = require('./tasks/generateSass');
+var compileSass = require('./tasks/compileSass');
 var javascript = require('./tasks/javascript');
 var polyfill = require('./tasks/autopolyfiller');
 var autoprefixer = require('./tasks/autoprefixer');
+var componentBuilds = require('./tasks/componentBuilds');
+var pkg_up = require('pkg-up');
 
 module.exports = function(options) {
 
@@ -20,8 +23,15 @@ module.exports = function(options) {
     mode: 'development',
     cache: true,
     components: true,
-    destination: 'dist'
+    destination: 'dist',
+    moduleDir: path.dirname(pkg_up.sync(__dirname)),
+    assetPath: ''
   }, options);
+
+  // If we've not been passed an absolute path, make it a path relative to this module
+  if(!path.isAbsolute(config.destination)) {
+    config.destination = path.join(config.moduleDir, config.destination);
+  }
 
   return new Promise(function(resolve, reject) {
 
@@ -36,7 +46,13 @@ module.exports = function(options) {
         return copy.landregistryComponentAssets(config);
       })
       .then(function() {
-        return sass(config);
+        return componentBuilds(config);
+      })
+      .then(function() {
+        return generateSass(config);
+      })
+      .then(function(stylesheets) {
+        return compileSass(config, stylesheets);
       })
       .then(function() {
         return autoprefixer(config);

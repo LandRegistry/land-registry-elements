@@ -1,0 +1,10 @@
+name: Cookies
+categories:
+  primary: Land Registry
+  secondary: DRV beta pages
+
+dependencies:
+  - elements/govuk/layout
+  - elements/govuk/core
+  - elements/govuk/tables
+  - elements/land-registry/vertical-spacing

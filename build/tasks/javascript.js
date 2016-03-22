@@ -40,7 +40,8 @@ function bundleSort(components) {
 function compileJavaScript(config) {
   console.time('Compile JavaScript');
 
-  return components.getComponents(config)
+  return components.getComponentsTree(config)
+    .then(components.populateTree)
     .then(bundleSort)
     .then(function(bundles) {
 
@@ -60,14 +61,19 @@ function compileJavaScript(config) {
               var browserfyConfig = {
                 transform: [
                   require('hoganify')
-                ]
+                ],
+                insertGlobalVars: {
+                  'assetPath': function(file, dir) {
+                    return '"' + config.assetPath + '"';
+                  }
+                }
               };
 
               // If we're in production mode, turn off debug and enable uglification
               // and use the vanilla browserify module
               if(config.mode === 'production') {
                 b = browserify(browserfyConfig);
-                b.transform({ global: true }, 'uglifyify');
+                b.transform({ global: true }, require('uglifyify'));
               } else {
                 // Otherwise use debug mode
                 browserfyConfig.debug = true;
@@ -88,6 +94,7 @@ function compileJavaScript(config) {
               });
 
               // Write the resulting JavaScript out to disk
+              mkdirp.sync(path.join(config.destination, 'assets/javascripts'));
               var stream = fs.createWriteStream(path.join(config.destination, 'assets/javascripts/' + bundleKey + '.js'), { flags : 'w' });
               b.bundle().pipe(stream);
 

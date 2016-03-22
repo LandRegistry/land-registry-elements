@@ -1,5 +1,7 @@
 console.time('Total build time');
 
+var path = require('path');
+
 var build = require('./build');
 
 build()

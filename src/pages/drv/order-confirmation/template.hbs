@@ -10,32 +10,35 @@
 
 <p>You'll get a summary of the information Land Registry holds for this property title.</p>
 
-<div class="grid-row column-flip spacing-top-single">
+<div class="grid-row column-flip spacing-top-half">
   <div class="column-one-third tablet-column-one-third spacing-bottom-single">
     <div class="map" id="map"></div>
   </div>
 
   <div class="column-two-thirds tablet-column-two-thirds">
 
+    {{#is_caution_title}}
+      <div class="warning media">
+        <div class="media-item">
+          <i class="icon icon-important">
+            <span class="visuallyhidden">Warning</span>
+          </i>
+        </div>
+
+        <div class="media-body">
+          <h2 class="heading-small spacing-bottom-flush">Caution against first registration</h2>
+          <a class="split-detail-trigger font-xsmall" href="#what-is-caution">What does this mean?</a>
+
+          <div class="split-detail-contents" id="what-is-caution">
+            <p>A caution against first registration protects an interest in land which hasn’t yet been registered with the Land Registry. It entitles the person who registered the caution to be told if someone tries to register the land, and object to completion of the registration until their claim has been considered.</p>
+            <a rel="external" href="https://www.gov.uk/government/publications/caution-against-first-registration/practice-guide-3-cautions-against-first-registration">More about cautions against first registration</a>
+          </div>
+        </div>
+      </div>
+    {{/is_caution_title}}
+
     <dl class="definition-tabular">
 
-{{!--         {{#is_caution_title}}
-        <dt class="bold-small">Caution</dt>
-        <dd>
-          <details class="font-xsmall">
-            <summary class="bold-small">Caution against first registration</summary>
-            <div class="panel panel-border-narrow">
-
-              <p>This property hasn’t been registered yet. You can’t find out who owns it from this service. </p>
-
-              <p>Someone other than the owner (known as the ‘cautioner’) has registered a right or interest in the property. They will be told if anyone tries to register it, and can object to the registration going ahead until their claim has been looked at. You can get their name and address from this service.</p>
-
-              <p>Registration has only been compulsory since the 1990s. Property that hasn’t changed hands since then may not be registered.</p>
-            </div>
-          </details>
-        </dd>
-      {{/is_caution_title}}
---}}
       {{#with propertyAddress}}
         <dt>Address</dt>
         <dd class="bold-medium">

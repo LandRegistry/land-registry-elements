@@ -22,6 +22,13 @@
     @include media(tablet) {
       float: left;
       width: $three-quarters;
+      margin-left: $one-quarter;
+    }
+  }
+
+  dt + dd {
+    @include media(tablet) {
+      margin-left: 0;
     }
   }
 }

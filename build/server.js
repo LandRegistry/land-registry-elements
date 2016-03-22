@@ -13,8 +13,6 @@ app.use('/images', express.static('dist/assets/images'));
 app.use('/javascripts', express.static('dist/assets/javascripts'));
 app.use('/stylesheets', express.static('dist/assets/stylesheets'));
 
-
-
 // Individual routes pulled from the routes directory
 fs.readdir(path.join(__dirname, '/routes'), function(err, files) {
   if(err) {
@@ -31,7 +29,7 @@ fs.readdir(path.join(__dirname, '/routes'), function(err, files) {
 // Go go go
 app.listen(process.env.PORT || 3000);
 
-console.log('listening on localhost:' + (process.env.PORT || 3000));
+console.log('listening on localhost:' + (process.env.npm_config_port || 3000));
 
 // Export our server for testing purposes
 module.exports = app;
