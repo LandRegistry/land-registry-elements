@@ -55,7 +55,7 @@ describe('The pattern library page at', function() {
 
       file.on('finish', function() {
 
-        gm.compare('test/fixtures/visual-regression/test-renderings/' + fileName + '.png', 'test/fixtures/visual-regression/reference-renderings/' + fileName + '.png', gmOptions, function (err, isEqual, equality, raw, path1, path2) {
+        gm.compare('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png', 'test/fixtures/visual-regression/test-renderings/' + fileName + '.png', gmOptions, function (err, isEqual, equality, raw, path1, path2) {
           if (err) throw err;
 
           equality.should.below(0.001);
