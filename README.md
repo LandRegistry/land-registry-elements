@@ -77,9 +77,9 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Doing
 ### Essential
+- Add land-registry-elements as an npm dependency and write a script for the jenkins build step
 - "Back to search results" link broken.
 - Retemplating new landing page
-- Decouple digital-register-frontend build script from vagrant path
 - Ensure styleguide is up to date with anything new from digital-register-frontend
 - confirm selection page address markup wrong?
 - Build a back link script for use on pages such as the T&Cs page

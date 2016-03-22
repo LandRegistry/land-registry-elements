@@ -60,11 +60,11 @@ var landregistryComponentAssets = function(config) {
 }
 
 var govUkTemplateAssets = function(config) {
-  return copy('node_modules/govuk_template_mustache/assets', path.join(config.destination, 'assets'));
+  return copy(path.join(config.includePath, 'node_modules/govuk_template_mustache/assets'), path.join(config.destination, 'assets'));
 }
 
 var govUkToolkitAssets = function(config) {
-  return copy('node_modules/govuk_frontend_toolkit/images', path.join(config.destination, 'assets/images/icons'));
+  return copy(path.join(config.includePath, 'node_modules/govuk_frontend_toolkit/images'), path.join(config.destination, 'assets/images/icons'));
 }
 
 module.exports = {
