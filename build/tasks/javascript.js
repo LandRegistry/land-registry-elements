@@ -94,6 +94,7 @@ function compileJavaScript(config) {
               });
 
               // Write the resulting JavaScript out to disk
+              mkdirp.sync(path.join(config.destination, 'assets/javascripts'));
               var stream = fs.createWriteStream(path.join(config.destination, 'assets/javascripts/' + bundleKey + '.js'), { flags : 'w' });
               b.bundle().pipe(stream);
 

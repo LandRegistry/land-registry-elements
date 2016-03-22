@@ -5,5 +5,5 @@ module.exports = function(config) {
   var from = path.resolve(__dirname, '../../../../node_modules/leaflet/dist/leaflet.css');
   var to = path.resolve(__dirname, '../../../../node_modules/leaflet/dist/leaflet.scss');
 
-  return copy(from, to);
+  return copy.copy(from, to);
 };

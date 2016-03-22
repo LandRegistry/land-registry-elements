@@ -11,7 +11,7 @@ var componentBuilds = function(config) {
 
       componentsTree.forEach(function(component) {
         if (fs.existsSync(path.join(component.path, 'build.js'))) {
-          componentBuildOperations.push(require(path.join(component.path, 'build.js')));
+          componentBuildOperations.push(require(path.join(component.path, 'build.js'))(config));
         }
       });
 
