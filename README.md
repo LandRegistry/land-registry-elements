@@ -85,6 +85,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Build a back link script for use on pages such as the T&Cs page
 
 ### Nice to have
+- Visual regression tests raising some false positives again. Investigate...
 - Document which stylesheets to include (Pull govuk template and fonts in via sass?)
 - dont export css?
 - Fix hardcoded VAT-less price
