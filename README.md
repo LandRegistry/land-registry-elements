@@ -79,14 +79,16 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Essential
 - Add land-registry-elements as an npm dependency and write a script for the jenkins build step
-- Price formatting? I.e. £3.00
+- Sort out any duplications in ie.js and polyfills.js
+- Additional translations
 
 ### Nice to have
+- Fix hardcoded VAT-less price
+- HTML prettification removed as it breaks the inline JSON for clientside validation - can we get it back in?
 - Consider use of alert role to announce client side validation errors https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alert_role
 - Visual regression tests raising some false positives again. Investigate...
 - Document which stylesheets to include (Pull govuk template and fonts in via sass?)
 - dont export css?
-- Fix hardcoded VAT-less price
 - Fix tests for map not actually testing for the rendered map (Currently just tests for the map div existing) (See https://medium.com/@ebeigarts/expect-to-become-966970143cd3#.mfug5iwr7 for "become" function)
 - Remove "sleep" from test @US231 "I see an explanation of what caution title means"
 - Sort out https://github.com/LandRegistry/land-registry-elements/issues/11
@@ -96,14 +98,10 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Why does the indexPolygon come out with all the LeafletJS specific stuff? Shouldn't that be in the frontend and not in the data?
 - Where do feedback links go?
 - Get price paid into the land-registry-elements demos?
-- caution title "what you will get" text needs updating in the demo
-- detail/summary elements inside warning panels look funny because of the overflow hidden on the inner container
-- Sort out any duplications in ie.js and polyfills.js
 - Minify css
 - Check to see whether gzip is enabled on production
 - Remove all references to breadcrumbs in server.py
 - Aria roles on the split detail component
-- Translate "Current language" and "Switch to" pieces of hidden text in the language switcher
 - Rename DRV components to something else once the final service name has been chosen?
 - Can register_assets in digital-register-frontend/service/static/__init__.py be simplified and the file copy steps be removed? Ideally get the assets into the images folder?
 - Get hold of accessibility testing results and see if anything there is fixable
