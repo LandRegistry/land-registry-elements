@@ -17,26 +17,6 @@
 
   <div class="column-two-thirds tablet-column-two-thirds">
 
-    {{#is_caution_title}}
-      <div class="warning media">
-        <div class="media-item">
-          <i class="icon icon-important">
-            <span class="visuallyhidden">Warning</span>
-          </i>
-        </div>
-
-        <div class="media-body">
-          <h2 class="heading-small spacing-bottom-flush">Caution against first registration</h2>
-          <a class="split-detail-trigger font-xsmall" href="#what-is-caution">What does this mean?</a>
-
-          <div class="split-detail-contents" id="what-is-caution">
-            <p>A caution against first registration protects an interest in land which hasn’t yet been registered with the Land Registry. It entitles the person who registered the caution to be told if someone tries to register the land, and object to completion of the registration until their claim has been considered.</p>
-            <a rel="external" href="https://www.gov.uk/government/publications/caution-against-first-registration/practice-guide-3-cautions-against-first-registration">More about cautions against first registration</a>
-          </div>
-        </div>
-      </div>
-    {{/is_caution_title}}
-
     <dl class="definition-tabular">
 
       {{#with propertyAddress}}
@@ -51,7 +31,7 @@
 
       <dt>Tenure type</dt>
       <dd>
-        {{tenureType}}
+        <strong class="bold">{{tenureType}}</strong>
         <a class="split-detail-trigger font-xsmall" href="#what-is-tenure">What does this mean?</a>
 
         <div class="split-detail-contents" id="what-is-tenure">
@@ -79,6 +59,23 @@
 
     </dl>
 
+    {{#is_caution_title}}
+      <h2 class="heading-medium">Land Registry does not know the owner of this property</h2>
+      <ul class="list-bullet">
+        <li>Someone other than the owner (known as the ‘cautioner’) has registered a right or interest in the property.</li>
+        <li><strong class="bold">The summary will give you the cautioner's name and address</strong>.</li>
+      </ul>
+      <p class="spacing-bottom-flush spacing-top-single">This is known as a caution against first registration</p>
+      <details class="font-xsmall">
+        <summary>More about cautions against first registration</summary>
+        <div class="panel panel-narrow">
+          <p>This property hasn’t been registered yet. You can’t find out who owns it from this service. </p>
+          <p>Someone other than the owner (known as the ‘cautioner’) has registered a right or interest in the property. They will be told if anyone tries to register it, and can object to the registration going ahead until their claim has been looked at. You can get their name and address from this service.</p>
+          <p>Registration has only been compulsory since the 1990s. Property that hasn’t changed hands since then may not be registered.</p>
+        </div>
+      </details>
+    {{/is_caution_title}}
+
     <h2 class="heading-medium collapse-top">The summary will tell you</h2>
     <ul class="list list-bullet">
 
@@ -91,10 +88,6 @@
       {{/tenure_leasehold}}
 
       <li>what was paid for the property – you won’t get this if it was bought before April 2000, if they paid less than £100, or if Land Registry have agreed not to record the price</li>
-
-      {{#lease_term}}
-        <li>how long the lease is for</li>
-      {{/lease_term}}
 
       <li>if there is a mortgage on the property, the lender’s name and address</li>
     </ul>
