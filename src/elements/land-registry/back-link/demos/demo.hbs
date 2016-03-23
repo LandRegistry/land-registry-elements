@@ -2,6 +2,9 @@
 title: Back link
 variants:
   -
+    historyBased: true
+    backDestinationTitle: "Back (history based, hidden without JS)"
+  -
     backDestinationTitle: Search again
   -
     backPrefix: Back to
@@ -25,8 +28,6 @@ variants:
 </h1>
 
 <p>See above for in-situ demo.</p>
-
-{{#markdown}}{{component.readme}}{{/markdown}}
 
 {{#each variants}}
   {{> elements/land-registry/back-link }}

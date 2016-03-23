@@ -79,10 +79,8 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Essential
 - Add land-registry-elements as an npm dependency and write a script for the jenkins build step
-- "Back to search results" link broken.
 - Ensure styleguide is up to date with anything new from digital-register-frontend
 - confirm selection page address markup wrong?
-- Build a back link script for use on pages such as the T&Cs page
 
 ### Nice to have
 - Consider use of alert role to announce client side validation errors https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alert_role
