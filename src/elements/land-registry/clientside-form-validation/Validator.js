@@ -57,8 +57,9 @@ function Validator(element, config) {
     // Bind form submit handler
     element.addEventListener('submit', submit);
 
-    // Set up form field keyup handlers
+    // Set up form field handlers
     delegate(element, '.form-control', 'keyup', keyup);
+    delegate(element, '.form-control', 'focusout', focusout);
 
     // Summary click handlers
     delegate(element, '.error-summary-list a', 'click', summaryClick);
@@ -113,8 +114,6 @@ function Validator(element, config) {
    * Keyup handler
    */
   function keyup(e) {
-    var errorData = validateForm();
-
     // We don't want to start flagging errors to the user until they have
     // at least attempted to enter a value into a field. This allows them to
     // tab around the form as much as they like to begin with and requried
@@ -122,11 +121,20 @@ function Validator(element, config) {
     if(e.delegateTarget.value.length > 0) {
       e.delegateTarget.isDirty = true;
     }
+  }
+
+  /**
+   * focusout handler
+   */
+  function focusout(e) {
+    var errorData = validateForm();
 
     if(e.delegateTarget.isDirty && options.showIndividualFormErrors) {
       showIndividualFormErrors(errorData, e.delegateTarget);
     }
   }
+
+
 
   /**
    * Error summary

@@ -60,6 +60,11 @@ title: Full demo
       "full-name": {
         "presence": {
           "message": "Please supply your full name"
+        },
+        "length": {
+          "minimum": 3,
+          "maximum": 70,
+          "message": "This field should be between 3 and 70 characters"
         }
       },
       "another-required-field": {

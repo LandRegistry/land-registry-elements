@@ -29,7 +29,7 @@ module.exports = function(app){
           pageData: variant.context.pageData
         })
         .then(function(html) {
-          res.send(pretty(html));
+          res.send(html);
         });
 
       })
