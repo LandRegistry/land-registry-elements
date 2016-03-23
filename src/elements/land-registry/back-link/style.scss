@@ -25,11 +25,3 @@
     }
   }
 }
-
-[data-back-link] {
-  display: none;
-
-  .js-enabled & {
-    display: inline-block;
-  }
-}

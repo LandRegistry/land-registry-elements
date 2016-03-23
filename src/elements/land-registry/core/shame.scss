@@ -14,6 +14,13 @@
   }
 }
 
+.js-only {
+  body:not(.js-enabled) & {
+    display: none;
+  }
+}
+
+
 a[href^="tel:"] {
   text-decoration: inherit;
   color: inherit;
