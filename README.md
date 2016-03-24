@@ -78,9 +78,13 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### Essential
-- Add land-registry-elements as an npm dependency and write a script for the jenkins build step
 - Sort out any duplications in ie.js and polyfills.js
+- Sort out https://github.com/LandRegistry/land-registry-elements/issues/11
+- Minify css
+- Rebase
 - Additional translations
+- autoprefixer
+- Check to see whether gzip is enabled on production
 
 ### Nice to have
 - Fix hardcoded VAT-less price
@@ -91,16 +95,9 @@ Contains the main test suite. Components should not specify tests in here but sh
 - dont export css?
 - Fix tests for map not actually testing for the rendered map (Currently just tests for the map div existing) (See https://medium.com/@ebeigarts/expect-to-become-966970143cd3#.mfug5iwr7 for "become" function)
 - Remove "sleep" from test @US231 "I see an explanation of what caution title means"
-- Sort out https://github.com/LandRegistry/land-registry-elements/issues/11
-- Acceptance tests for .back-link
-- Acceptance tests for any other new stuff?
 - Format of "price paid" data does not match prototype
 - Why does the indexPolygon come out with all the LeafletJS specific stuff? Shouldn't that be in the frontend and not in the data?
-- Where do feedback links go?
 - Get price paid into the land-registry-elements demos?
-- Minify css
-- Check to see whether gzip is enabled on production
-- Remove all references to breadcrumbs in server.py
 - Aria roles on the split detail component
 - Rename DRV components to something else once the final service name has been chosen?
 - Can register_assets in digital-register-frontend/service/static/__init__.py be simplified and the file copy steps be removed? Ideally get the assets into the images folder?
@@ -114,6 +111,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 - Exclude image assets that are not referenced in the css to keep the build output clean
 - Write up results of user testing against any components where this has been carried out
 - Split out gov uk JS and include it into the core component with browserify?
+- Write a script for the jenkins build step...
 
 
 - Do I need to build the login form?
