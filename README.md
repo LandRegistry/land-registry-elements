@@ -78,11 +78,8 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### Essential
-- Move gov uk template into it's own component
-- Add in an html shiv
-- Reinstate pdf thumbnail on digital-register-frontend
-- html shiv
 - Sort out https://github.com/LandRegistry/land-registry-elements/issues/11
+- Reinstate pdf thumbnail on digital-register-frontend
 - Minify css
 - Rebase
 - Additional translations
