@@ -1,6 +1,7 @@
 require('./javascript/html5shiv');
 
 require('./javascript/Array.isArray');
+require('./javascript/Event');
 require('./javascript/Array.prototype.every');
 require('./javascript/Array.prototype.filter');
 require('./javascript/Array.prototype.forEach');
