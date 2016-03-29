@@ -78,7 +78,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### Essential
-- Reinstate pdf thumbnail on digital-register-frontend
 - Minify css
 - Rebase
 - Additional translations

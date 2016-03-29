@@ -46,7 +46,7 @@
   > [class*="column-"] {
     float: right;
 
-    @include media(mobile) {
+    @include media($max-width: 500px) {
       width: 100%;
     }
   }
