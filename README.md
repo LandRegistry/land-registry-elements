@@ -78,12 +78,13 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### Essential
+- Move gov uk template into it's own component
+- Reinstate pdf thumbnail on digital-register-frontend
 - Sort out any duplications in ie.js and polyfills.js
 - Sort out https://github.com/LandRegistry/land-registry-elements/issues/11
 - Minify css
 - Rebase
 - Additional translations
-- autoprefixer
 - Check to see whether gzip is enabled on production
 
 ### Nice to have

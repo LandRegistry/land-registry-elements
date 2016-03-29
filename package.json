@@ -88,6 +88,7 @@
     "trace": "^2.3.0",
     "uglifyify": "^3.0.1",
     "validate.js": "^0.9.0",
+    "webfontloader": "^1.6.24",
     "yfm": "^0.2.0"
   }
 }
