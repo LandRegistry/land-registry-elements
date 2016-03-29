@@ -78,12 +78,14 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### Essential
-- Sort out https://github.com/LandRegistry/land-registry-elements/issues/11
 - Reinstate pdf thumbnail on digital-register-frontend
 - Minify css
 - Rebase
 - Additional translations
 - Check to see whether gzip is enabled on production
+
+### Bugs
+- https://github.com/LandRegistry/land-registry-elements/issues/11
 
 ### Nice to have
 - Fix hardcoded VAT-less price
