@@ -38,12 +38,6 @@ module.exports = function(options) {
 
     cleanDist(config)
       .then(function() {
-        return copy.govUkTemplateAssets(config);
-      })
-      .then(function() {
-        return copy.govUkToolkitAssets(config);
-      })
-      .then(function() {
         return copy.landregistryComponentAssets(config);
       })
       .then(function() {
