@@ -1,7 +1,5 @@
 'use strict';
 
-require('../core/polyfills/Array.prototype.forEach');
-require('classlist-polyfill');
 var Validator = require('./Validator');
 
 var forms = document.querySelectorAll('[data-clientside-validation]');

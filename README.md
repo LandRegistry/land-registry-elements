@@ -79,7 +79,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Essential
 - Move gov uk template into it's own component
-- Sort out any duplications in ie.js and polyfills.js (Remove IE.js)
 - Add in an html shiv
 - Reinstate pdf thumbnail on digital-register-frontend
 - html shiv

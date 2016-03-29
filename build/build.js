@@ -5,7 +5,6 @@ var copy = require('./tasks/copy');
 var generateSass = require('./tasks/generateSass');
 var compileSass = require('./tasks/compileSass');
 var javascript = require('./tasks/javascript');
-var polyfill = require('./tasks/autopolyfiller');
 var autoprefixer = require('./tasks/autoprefixer');
 var componentBuilds = require('./tasks/componentBuilds');
 var pkg_up = require('pkg-up');
@@ -54,9 +53,6 @@ module.exports = function(options) {
       })
       .then(function() {
         return javascript.compile(config);
-      })
-      .then(function(bundles) {
-        return polyfill(config, bundles);
       })
       .then(function() {
         resolve(path.join(config.destination, 'assets'));

@@ -1,6 +1,5 @@
 'use strict';
 
-require('classlist-polyfill');
 var extend = require('extend');
 
 /**
