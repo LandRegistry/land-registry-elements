@@ -78,8 +78,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### Essential
-- Dig around the validation rules and see where they came from
-- Consider error message on search form - change it to postcode not search term (In the length validation too)
 - Form validation summary needs refreshing when individual fields are validated
 - Radio buttons and checkboxes don't revalidate when you alter them
 - Documentation!
