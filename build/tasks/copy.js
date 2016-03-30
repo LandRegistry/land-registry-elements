@@ -11,6 +11,9 @@ function copy(from, to) {
     var stat = fs.statSync(from);
 
     if(stat.isFile()) {
+
+      mkdirp.sync(path.dirname(to));
+
       fs.createReadStream(from)
         .pipe(fs.createWriteStream(to))
         .on('finish', function() {
@@ -59,17 +62,7 @@ var landregistryComponentAssets = function(config) {
     });
 }
 
-var govUkTemplateAssets = function(config) {
-  return copy(path.join(config.includePath, 'node_modules/govuk_template_mustache/assets'), path.join(config.destination, 'assets'));
-}
-
-var govUkToolkitAssets = function(config) {
-  return copy(path.join(config.includePath, 'node_modules/govuk_frontend_toolkit/images'), path.join(config.destination, 'assets/images/icons'));
-}
-
 module.exports = {
   'landregistryComponentAssets': landregistryComponentAssets,
-  'govUkTemplateAssets': govUkTemplateAssets,
-  'govUkToolkitAssets': govUkToolkitAssets,
   'copy': copy
 };

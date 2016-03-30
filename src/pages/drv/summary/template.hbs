@@ -22,26 +22,6 @@
 
   <div class="column-two-thirds tablet-column-two-thirds">
 
-    {{#is_caution_title}}
-      <div class="warning media">
-        <div class="media-item">
-          <i class="icon icon-important">
-            <span class="visuallyhidden">Warning</span>
-          </i>
-        </div>
-
-        <div class="media-body">
-          <h2 class="heading-small spacing-bottom-flush">Caution against first registration</h2>
-          <a class="split-detail-trigger font-xsmall" href="#what-is-caution">What does this mean?</a>
-
-          <div class="split-detail-contents" id="what-is-caution">
-            <p>A caution against first registration protects an interest in land which hasn’t yet been registered with the Land Registry. It entitles the person who registered the caution to be told if someone tries to register the land, and object to completion of the registration until their claim has been considered.</p>
-            <a rel="external" href="https://www.gov.uk/government/publications/caution-against-first-registration/practice-guide-3-cautions-against-first-registration">More about cautions against first registration</a>
-          </div>
-        </div>
-      </div>
-    {{/is_caution_title}}
-
     <dl class="definition-tabular">
 
       {{#with propertyAddress}}
@@ -53,11 +33,11 @@
 
       <dt>{{#tenure_freehold}}Owner{{/tenure_freehold}}{{#tenure_leasehold}}Leaseholder{{/tenure_leasehold}}</dt>
 
-      {{#with address}}
-        <dd>
+      {{#each owners}}
+        <dd{{#unless @last}} class="spacing-bottom-single"{{/unless}}>
           {{> elements/land-registry/address }}
         </dd>
-      {{/with}}
+      {{/each}}
 
       {{#with tenureType}}
         <dt>Tenure type</dt>
@@ -80,7 +60,7 @@
       </div>
 
       <h2 class="heading-medium collapse-top">What did you think of this service?</h2>
-      <p><a rel="external" href="#">Please give us your feedback</a> (takes 30 seconds). <br>This is a trial service and your feedback will help us improve it.</p>
+      <p><a rel="external" href="#">Please give us your feedback</a> (takes 30 seconds). <br>This is a new service and your feedback will help us improve it.</p>
 
     </div>
 
@@ -104,7 +84,7 @@
     <div class="printhidden">
       <h2 class="heading-medium">What next</h2>
       <ul class="list list-bullet">
-        <li><a href="#">Search for another title using this service</a></li>
+        <li><a href="#">Search again</a></li>
         <li><a href="https://gov.uk">Return to GOV.UK</a></li>
       </ul>
     </div>

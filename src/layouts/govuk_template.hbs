@@ -26,26 +26,8 @@
     <!--[if IE 8]><link rel="stylesheet" type="text/css" media="all" href="/stylesheets/elements-ie8.css" /><![endif]-->
     <!-- End Elements css -->
 
-    <!--[if IE 8]>
-    <script type="text/javascript">
-      (function(){if(window.opera){return;}
-       setTimeout(function(){var a=document,g,b={families:(g=
-       ["nta"]),urls:["{{{ assetPath }}}stylesheets/fonts-ie8.css"]},
-       c="{{{ assetPath }}}javascripts/vendor/goog/webfont-debug.js",d="script",
-       e=a.createElement(d),f=a.getElementsByTagName(d)[0],h=g.length;WebFontConfig
-       ={custom:b},e.src=c,f.parentNode.insertBefore(e,f);for(;h=h-1;a.documentElement
-       .className+=' wf-'+g[h].replace(/\s/g,'').toLowerCase()+'-n4-loading');},0)
-      })()
-    </script>
-    <![endif]-->
-    <!--[if gte IE 9]><!-->
-      <link href="{{{ assetPath }}}stylesheets/fonts.css" media="all" rel="stylesheet" type="text/css" />
-    <!--<![endif]-->
-
-
-    <!--[if lt IE 9]>
-      <script src="{{{ assetPath }}}javascripts/ie.js" type="text/javascript"></script>
-    <![endif]-->
+    <!--[if lte IE 8]><script src="{{{ assetPath }}}javascripts/polyfills.js"></script><![endif]-->
+    <!--[if IE 8]><link href="{{{ assetPath }}}stylesheets/fonts-ie8.css" media="all" rel="stylesheet" type="text/css" /><![endif]-->
 
     <link rel="shortcut icon" href="{{{ assetPath }}}images/favicon.ico" type="image/x-icon" />
 
@@ -80,8 +62,6 @@
     {{!-- <div id="global-app-error" class="app-error hidden"></div> --}}
 
     <script src="{{{ assetPath }}}javascripts/govuk-template.js" type="text/javascript"></script>
-
-    <!--[if lte IE 8]><script src="/javascripts/polyfills.js"></script><![endif]-->
 
     {{{scripts}}}
   </body>

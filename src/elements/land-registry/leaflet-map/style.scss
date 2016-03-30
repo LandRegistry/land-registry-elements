@@ -11,3 +11,9 @@
 .leaflet-container {
   touch-action: auto;
 }
+
+@media print {
+  .leaflet-control-container {
+    display: none;
+  }
+}
