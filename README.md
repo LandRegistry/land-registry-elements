@@ -78,8 +78,6 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### Essential
-- On the feedback section - change "Trial" to "new"
-- At the bottom of the summary page - write "Search again" instead of "search for another title using this service"
 - Increase spacing between multiple owners
 - Make sure the owners label is only pluralised when theres more than 1
 - Where has the map attribution gone?

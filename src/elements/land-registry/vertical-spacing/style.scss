@@ -1,45 +1,43 @@
-body {  // Arbitrary specificity increase to allow these spacing classes to override other single classes such as grid rows
-  .spacing-top-flush {
-    margin-top: 0;
-  }
+.spacing-top-flush {
+  margin-top: 0!important;
+}
 
-  .spacing-top-double {
-    margin-top: 2 * $gutter;
-  }
+.spacing-top-double {
+  margin-top: 2 * $gutter!important;
+}
 
-  .spacing-top-single {
-    margin-top: $gutter;
-  }
+.spacing-top-single {
+  margin-top: $gutter!important;
+}
 
-  .spacing-top-half,
-  .spacing-top-single-half {
-    margin-top: $gutter-half;
-  }
+.spacing-top-half,
+.spacing-top-single-half {
+  margin-top: $gutter-half!important;
+}
 
-  .spacing-top-third,
-  .spacing-top-single-third {
-    margin-top: $gutter-one-third;
-  }
+.spacing-top-third,
+.spacing-top-single-third {
+  margin-top: $gutter-one-third!important;
+}
 
-  .spacing-bottom-flush {
-    margin-bottom: 0;
-  }
+.spacing-bottom-flush {
+  margin-bottom: 0!important;
+}
 
-  .spacing-bottom-double {
-    margin-bottom: 2 * $gutter;
-  }
+.spacing-bottom-double {
+  margin-bottom: 2 * $gutter!important;
+}
 
-  .spacing-bottom-single {
-    margin-bottom: $gutter;
-  }
+.spacing-bottom-single {
+  margin-bottom: $gutter!important;
+}
 
-  .spacing-bottom-half,
-  .spacing-bottom-one-half {
-    margin-bottom: $gutter-half;
-  }
+.spacing-bottom-half,
+.spacing-bottom-one-half {
+  margin-bottom: $gutter-half!important;
+}
 
-  .spacing-bottom-third,
-  .spacing-bottom-one-third {
-    margin-bottom: $gutter-one-third;
-  }
+.spacing-bottom-third,
+.spacing-bottom-one-third {
+  margin-bottom: $gutter-one-third!important;
 }
