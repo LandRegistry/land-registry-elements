@@ -78,23 +78,17 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### Essential
-- Increase spacing between multiple owners
-- Make sure the owners label is only pluralised when theres more than 1
-- Where has the map attribution gone?
-- Display 25 results per page on search results pages
-- External link marker on FaP link in supplementary panel
-- Drop the spacing between the results down to a half unit
 - Dig around the validation rules and see where they came from
 - Consider error message on search form - change it to postcode not search term (In the length validation too)
 - Form validation summary needs refreshing when individual fields are validated
 - Radio buttons and checkboxes don't revalidate when you alter them
-- Back link should never go into purple "visited" state
 - Documentation!
 - Minify css
 - Rebase
 - Additional translations
 - Check to see whether gzip is enabled on production
 - Check end to end journey in a screen reader
+- Display 25 results per page on search results pages
 
 ### Bugs
 - https://github.com/LandRegistry/land-registry-elements/issues/11

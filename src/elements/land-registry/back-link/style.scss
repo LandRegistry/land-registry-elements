@@ -4,6 +4,11 @@
   margin-top: $gutter-half;
   display: inline-block;
 
+  &,
+  &:visited {
+    color: $link-colour;
+  }
+
   &:before {
     content: '\25C0 ';
     margin-right: 8px;
