@@ -58,6 +58,8 @@ function Validator(element, config) {
 
     // Set up form field handlers
     delegate(element, '.form-control', 'keyup', keyup);
+    delegate(element, 'input[type="radio"]', 'change', boolChange);
+    delegate(element, 'input[type="checkbox"]', 'change', boolChange);
     delegate(element, '.form-control', 'focusout', focusout);
 
     // Summary click handlers
@@ -133,7 +135,16 @@ function Validator(element, config) {
     }
   }
 
+  /**
+   * radio / checkbox change
+   */
+  function boolChange(e) {
+    var errorData = validateForm();
 
+    if(options.showIndividualFormErrors) {
+      showIndividualFormErrors(errorData, e.delegateTarget);
+    }
+  }
 
   /**
    * Error summary
@@ -178,7 +189,7 @@ function Validator(element, config) {
 
       var target = formGroup.querySelector('input');
 
-      if(restrictTo && target !== restrictTo) {
+      if(restrictTo && target.getAttribute('name') !== restrictTo.getAttribute('name')) {
         return;
       }
 

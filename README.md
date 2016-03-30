@@ -78,20 +78,17 @@ Contains the main test suite. Components should not specify tests in here but sh
 ### Doing
 
 ### Essential
-- Form validation summary needs refreshing when individual fields are validated
-- Radio buttons and checkboxes don't revalidate when you alter them
 - Documentation!
-- Minify css
 - Rebase
 - Additional translations
-- Check to see whether gzip is enabled on production
-- Check end to end journey in a screen reader
-- Display 25 results per page on search results pages
 
 ### Bugs
 - https://github.com/LandRegistry/land-registry-elements/issues/11
 
 ### Nice to have
+- Check to see whether gzip is enabled on production
+- Display 25 results per page on search results pages
+- Check end to end journey in a screen reader
 - Fix hardcoded VAT-less price
 - HTML prettification removed as it breaks the inline JSON for clientside validation - can we get it back in?
 - Consider use of alert role to announce client side validation errors https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alert_role
