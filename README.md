@@ -79,8 +79,8 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Essential
 - Documentation!
-- Rebase
 - Additional translations
+- Can I nuke the ntatabularnumbers font?
 
 ### Bugs
 - https://github.com/LandRegistry/land-registry-elements/issues/11
