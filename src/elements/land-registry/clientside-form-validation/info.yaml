@@ -6,3 +6,4 @@ categories:
 dependencies:
   - elements/govuk/forms
   - elements/land-registry/core
+  - elements/land-registry/polyfills/promise

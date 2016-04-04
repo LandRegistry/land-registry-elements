@@ -79,6 +79,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 ### Essential
 - Documentation!
+- Add more variants and more data to the summary demos
 - Additional translations
 - Can I nuke the ntatabularnumbers font?
 

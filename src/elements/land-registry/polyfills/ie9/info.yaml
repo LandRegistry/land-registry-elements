@@ -1,6 +1,6 @@
-name: Polyfills
+name: IE9 polyfills
 categories:
   primary: Land Registry
   secondary: Utilities
 
-js-bundle: polyfills
+js-bundle: polyfills-ie9

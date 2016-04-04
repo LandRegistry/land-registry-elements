@@ -1,7 +1,6 @@
 'use strict';
 
 var extend = require('extend');
-require('classlist-polyfill');
 
 /**
  * Mobile crumbtrail behaviour
