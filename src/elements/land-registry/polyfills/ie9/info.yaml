@@ -1,6 +1,6 @@
-name: Promise polyfill
+name: IE9 polyfills
 categories:
   primary: Land Registry
   secondary: Utilities
 
-js-bundle: polyfills-promise
+js-bundle: polyfills-ie9

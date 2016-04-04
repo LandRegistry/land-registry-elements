@@ -9,7 +9,6 @@ require('./javascript/Array.prototype.indexOf');
 require('./javascript/Array.prototype.map');
 require('./javascript/Array.prototype.reduce');
 require('./javascript/Date.now');
-require('./javascript/Element.classList');
 require('./javascript/Function.prototype.bind');
 require('./javascript/Object.defineProperties');
 require('./javascript/Object.defineProperty');
