@@ -5,4 +5,4 @@ categories:
 
 dependencies:
   - elements/govuk/core
-  - elements/land-registry/polyfills
+  - elements/land-registry/polyfills/ie8

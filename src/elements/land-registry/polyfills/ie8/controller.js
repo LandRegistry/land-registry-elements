@@ -16,3 +16,5 @@ require('./javascript/Object.defineProperty');
 require('./javascript/Object.keys');
 require('./javascript/String.prototype.trim');
 require('./javascript/Window.prototype.matchMedia');
+require('./javascript/Window.JSON');
+require('es6-promise').polyfill();
