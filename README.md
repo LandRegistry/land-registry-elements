@@ -87,7 +87,7 @@ Contains the main test suite. Components should not specify tests in here but sh
 - https://github.com/LandRegistry/land-registry-elements/issues/11
 
 ### Nice to have
-- Check to see whether gzip is enabled on production
+- Run webpagetest on prod
 - Display 25 results per page on search results pages
 - Check end to end journey in a screen reader
 - Fix hardcoded VAT-less price
