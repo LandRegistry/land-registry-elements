@@ -6,9 +6,14 @@ Initially this repo will comprise production ready HTML, CSS and JavaScript for 
 A demo is available at: [http://land-registry-elements.herokuapp.com/](http://land-registry-elements.herokuapp.com/)
 (Note: This may take a moment to spin up if the heroku instance has gone to sleep)
 
-## If you want to:
-* Get some assets for your application - head to the [Usage](#usage) section of this document.
-* Contribute new UI components to this library - read the [project goals](#goals) and then head to the [contributing to this repository](#contributing-to-this-repository) section.
+## I want to:
+
+### Get some CSS & JS for my application
+* Head to the [Usage](#usage) section
+
+### Contribute new components to this library
+* Read the [project goals](#goals)
+* Read [contributing to this repository](#contributing-to-this-repository)
 
 --------------------------------------------------------------------------------
 
@@ -73,74 +78,35 @@ Contains the main test suite. Components should not specify tests in here but sh
 
 --------------------------------------------------------------------------------
 
-## Roadmap:
+## Todos
 
-### Doing
-
-### Essential
+- Visual regression tests raising some false positives again and so is disabled. Investigate...
 - Documentation!
+  - Write usage guidelines
+    - Add example of how to include the assets in an application
+      - via a get request
+  - Write contribution guidelines
+  - Fully document the structure of a component folder and info.yaml
 - Add more variants and more data to the summary demos
-- Additional translations
-- Can I nuke the ntatabularnumbers font?
-
-### Bugs
-- https://github.com/LandRegistry/land-registry-elements/issues/11
-
-### Nice to have
-- Run webpagetest on prod
-- Display 25 results per page on search results pages
-- Check end to end journey in a screen reader
-- Fix hardcoded VAT-less price
-- HTML prettification removed as it breaks the inline JSON for clientside validation - can we get it back in?
+- Can we nuke the ntatabularnumbers font if and when it's not used?
+- HTML prettification removed because:
+  - it breaks the inline JSON for clientside validation
+  - it breaks the typography demo markup by inserting extra spaces?
+  - Can we fix the above and get it back in?
 - Consider use of alert role to announce client side validation errors https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alert_role
-- Visual regression tests raising some false positives again. Investigate...
 - Document which stylesheets to include (Pull govuk template and fonts in via sass?)
-- dont export css?
-- Fix tests for map not actually testing for the rendered map (Currently just tests for the map div existing) (See https://medium.com/@ebeigarts/expect-to-become-966970143cd3#.mfug5iwr7 for "become" function)
-- Remove "sleep" from test @US231 "I see an explanation of what caution title means"
-- Format of "price paid" data does not match prototype
-- Why does the indexPolygon come out with all the LeafletJS specific stuff? Shouldn't that be in the frontend and not in the data?
 - Get price paid into the land-registry-elements demos?
 - Aria roles on the split detail component
 - Rename DRV components to something else once the final service name has been chosen?
-- Can register_assets in digital-register-frontend/service/static/__init__.py be simplified and the file copy steps be removed? Ideally get the assets into the images folder?
-- Get hold of accessibility testing results and see if anything there is fixable
 - Investigate why webshot sometimes outputs minor variations and git thinks they've changed (PNG headers?)
 - When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
 - Testplan generator? I.e. take a list of pages and browsers and put together a list for you to complete
 - Visual regression testing at mobile breakpoints
-- Make sure any pattern documentation is in README.md files and not in the demos
 - Write more comprehensive test suite for the clientside validation checking that it matches the spec set out by gov uk
 - Exclude image assets that are not referenced in the css to keep the build output clean
-- Write up results of user testing against any components where this has been carried out
 - Split out gov uk JS and include it into the core component with browserify?
-- Write a script for the jenkins build step...
+- Question: The h1 on the search results page is also the form label. Is this ok?!
 
-
-- Do I need to build the login form?
-- What things can we update on webseal
-  - Can I ship my clientside validation?
-  - Can we edit 403 pages etc?
-
-### Questions
-- The h1 on the search results page is also the form label. Is this ok?!
-
-### Issues
-- HTML prettifier is breaking the typography demo markup by inserting extra spaces?
-
-### Test phase 2
-- Manual cross browser testing (Browserstack)
-- Fixing anything from the above ^
-
-### Documentation
-- Write usage guidelines
-  - Add example of how to include the assets in an application
-    - with grunt
-    - with gulp
-    - as a node module
-    - via a get request
-- Write contribution guidelines
-- Fully document the structure of a component folder and info.yaml
 
 --------------------------------------------------------------------------------
 
