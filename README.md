@@ -64,16 +64,131 @@ Used by the build scripts as a temporary place to write things to disk.
 * `/build`
 Contains all the build scripts and the development server. Most work on new components should not need to alter this folder
 * `/src`
-The main folder containing component's and their stylesheets, JavaScript etc. **This is the main folder in which most work on new components should take place**
+The main folder containing components and their stylesheets, JavaScript etc. **This is the main folder in which most work on new components should take place**
 * `/test`
 Contains the main test suite. Components should not specify tests in here but should instead specify them in the component's folder. See "[defining new tests](#defining-new-tests)" for more details
 
 ### Defining a new component
 
+A component's machine name is defined by the path relative to the `src` directory, for example the form validation component's machine name is `elements/land-registry/clientside-form-validation`
+
+There are a few base files which come together to make up a component. These are as follows:
+
+#### `info.yaml`
+This file defines various pieces of information about the component. Without this file the component will not be available to include in a build. The following "worst case" info.yaml documents the available configuration options:
+
+```
+name: My component
+
+# These categories are only used to group the component on the index page.
+# They are required, but do not affect the built output
+categories:
+  primary: Land registry
+  secondary: Utilities
+
+# Use dependencies to indicate which components should also be included in a build
+# alongside this one. Amongst other things this is used to automatically
+# construct the SASS @import statements
+dependencies:
+  - elements/govuk/core
+  - elements/land-registry/teaser-register
+  - elements/land-registry/language-switcher
+
+# This is an array of directory copy operations which can be useful for copying
+# assets from the component's directory into the output folder. For example, the
+# favicon component contains a folder of images which it copies to the dist folder
+# It is important to note that the `from` folder is relative to the component
+# and the `to` folder is relative to the build output folder
+copy:
+  -
+    from: 'images'
+    to: 'assets/images'
+  -
+    from: '../../../../node_modules/leaflet/dist/images'
+    to: 'assets/images/leaflet'
+
+# This option allows any JavaScript defined by this component to be built to a
+# separate output bundle. For example, the LeafletJS component exports a very
+# large JavaScript file which should only be included on pages that absolutely
+# require it. Therefore it is useful to split it out into a separate bundle.
+# If this is not defined, the component's JS will be lumped into the main bundle.
+js-bundle: my-js-bundle
+```
+
+#### `style.scss`
+This is the main stylesheet entry point for the component. It will be automatically included in the built output. You can `@import` and suchlike from within this file if you need to split your component's css across multiple files. (Although if you have that much css in a single component you might consider whether it truly is a single component or whether it should be split up!)
+
+#### `controller.js`
+Similarly to style.scss, this is the main entry point for JavaScript. Any JS written in this file will get included in the built output. JavaScript is built using Browserify so these files are crucially _not_ executed in the global scope. (I.e. variables declared here will not be available on the `Window`). This file should be kept lightweight and devoid of logic. Logic and behaviour should be encapsulated in separate files and `require()`d as a CommonJS module (just like Node.JS). The controller's job is then to simply apply these modules to DOM elements. The [back link](src/elements/land-registry/back-link) component is a simple example of this (Observe the split between `controller.js` and `BackLink.js`). The idea is to split up your code into reusable chunks / modules and to avoid "spaghetti" code.
+
+#### `README.md`
+This should be used for any component specific documentation. It can be rendered on the component's demo pages (See below) as `{{#markdown}}{{component.readme}}{{/markdown}}`.
+
+#### `build.js`
+If a component defines this file it will be run at build time and can be used to perform any build tasks that are unique to this component. For example, performing weird and wonderful copy operations.
+
+#### `template.hbs`
+This is a handlebars file which represents the canonical rendering for the component. It is available in handlebars as `{{> elements/land-registry/my-component }}` (I.e. using the full machine name). Data can be applied to it using the handlebars `{{#with}}` block helpers in the demo
+
+#### `demos/*.hbs`
+All handlebars files in this directory will be rendered as demos on the index page. If no demos are defined, the component will not appear on the index page (Although it will still be available to be used a a dependency in other components).
+
+Each demo should define some yaml frontmatter as follows:
+
+```
+---
+title: Title of your demo here
+---
+```
+
+This title will be used on the index page as the title of the demo. Additional frontmatter can be added to this block and used by the demo. For example:
+
+```
+---
+title: Simple frontmatter demo
+foo:
+  -
+    my-value: Foo
+  -
+    my-value: Bar
+  -
+    my-value: Wibble
+---
+
+{{#each foo}}
+  {{> elements/land-registry/my-component }}
+{{#each}}
+```
+
+And then in you component's `template.hbs` you might render out `{{my-value}}`. This particular example would render 3 variants of your component with each of the values.
+
+#### `tests/*.js`
+Any `.js` files in this directory will be included in the `npm test` script and run by TravisCI. This should be used to test anything component specific rather than putting your tests in the main tests folder in the root.
+
+See [clientside-validation](elements/land-registry/clientside-validation/tests/clientside-validation.js) for an example of a component specific test.
+
 ### Tests
-#### Running the test suite
+To run the test suite, type `npm test` on the command line. In order to do so, you will need to `npm install -g mocha eslint`
+
+Tests are run with [mocha](http://mochajs.org/). Some useful available modules include:
+* [should.js](https://github.com/tj/should.js)
+* [superagent](https://github.com/visionmedia/superagent)
+* [supertest](https://github.com/visionmedia/supertest)
+* [webdriverio](https://github.com/webdriverio/webdriverio) and [selenium-standalone](https://github.com/vvo/selenium-standalone)
+
 #### Defining new tests
+New tests can be defined by adding a new file to the `/tests` directory or to the `tests` directory in your component.
+
 #### Visual regression tests
+**NOTE: These are currently disabled. See [Todos](#todos)**
+
+Visual regression tests are built into the TravisCI pipeline such that if work on a pull request changes the rendering of any existing pages then Travis will exist with a failure. If this happens you can review the diff renderings in `tests/fixtures/visual-regression/diff-renderings` and investigate what differences may have occured.
+
+It is worth noting that when creating new pages, the absence of a reference rendering will cause the tests to fail!
+
+Either way, when updating existing components, or adding new components, you will need to run `npm run generateReferenceRenderings`. This script will update the contents of `test/fixtures/visual-regression/reference-renderings` which you should then commit to the repository.
+
+*IMPORTANT*: After you have updated the reference renderings and committed the results, you should review the changes in the diff display of your github pull request. It would be all too easy to simply update the reference renderings with breaking changes to existing components and simply ignore them - monitoring these renderings requires a human element!
 
 
 --------------------------------------------------------------------------------
