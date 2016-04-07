@@ -180,7 +180,6 @@ Tests are run with [mocha](http://mochajs.org/). Some useful available modules i
 New tests can be defined by adding a new file to the `/tests` directory or to the `tests` directory in your component.
 
 #### Visual regression tests
-**NOTE: These are currently disabled. See [Todos](#todos)**
 
 Visual regression tests are built into the TravisCI pipeline such that if work on a pull request changes the rendering of any existing pages then Travis will exist with a failure. If this happens you can review the diff renderings in `tests/fixtures/visual-regression/diff-renderings` and investigate what differences may have occured.
 
@@ -195,13 +194,12 @@ Either way, when updating existing components, or adding new components, you wil
 
 ## Todos
 
-- Visual regression tests raising some false positives again and so is disabled. Investigate...
+- Upload diff renderings from Travis to an S3 bucket so Travis failures can be analysed
 - Documentation!
   - Write usage guidelines
     - Add example of how to include the assets in an application
       - via a get request
   - Write contribution guidelines
-  - Fully document the structure of a component folder and info.yaml
 - Add more variants and more data to the summary demos
 - Can we nuke the ntatabularnumbers font if and when it's not used?
 - HTML prettification removed because:
@@ -213,7 +211,6 @@ Either way, when updating existing components, or adding new components, you wil
 - Get price paid into the land-registry-elements demos?
 - Aria roles on the split detail component
 - Rename DRV components to something else once the final service name has been chosen?
-- Investigate why webshot sometimes outputs minor variations and git thinks they've changed (PNG headers?)
 - When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
 - Testplan generator? I.e. take a list of pages and browsers and put together a list for you to complete
 - Visual regression testing at mobile breakpoints

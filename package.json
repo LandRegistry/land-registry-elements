@@ -32,9 +32,9 @@
     "node": "5.x"
   },
   "devDependencies": {
-    "gm": "^1.21.1",
     "htmllint": "^0.2.7",
     "mocha": "^2.4.5",
+    "node-resemble-js": "0.0.5",
     "pa11y": "^3.5.1",
     "sanitize-filename": "^1.5.3",
     "selenium-standalone": "^4.9.1",
