@@ -194,7 +194,7 @@ Either way, when updating existing components, or adding new components, you wil
 
 ## Todos
 
-- Upload diff renderings from Travis  to an S3 bucket so Travis failures can be analysed
+- Switch Travis' visual regression diffs to be uploaded to a Land Registry S3 bucket
 - Refactor to be more decoupled from gov uk stuff so that it can be used on internally facing LR projects?
 - Documentation!
   - Write usage guidelines
