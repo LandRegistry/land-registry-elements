@@ -218,6 +218,7 @@ Either way, when updating existing components, or adding new components, you wil
 - Exclude image assets that are not referenced in the css to keep the build output clean
 - Split out gov uk JS and include it into the core component with browserify?
 - Question: The h1 on the search results page is also the form label. Is this ok?!
+- Conditionally revealing radio buttons broken due to not including enough govuk JavaScript
 
 
 --------------------------------------------------------------------------------

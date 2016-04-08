@@ -11,8 +11,8 @@ var path = require('path');
 var resemble = require('node-resemble-js');
 
 var options = {
-  renderDelay: 1000,
-  timeout: 10000,
+  takeShotOnCallback: true,
+  timeout: 30000,
   errorIfStatusIsNot200: true,
   shotSize: {
     width: 'all',
