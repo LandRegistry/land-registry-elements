@@ -1,5 +1,6 @@
 @import "../../../../node_modules/govuk-elements-sass/public/sass/elements/tables";
 
-table {
-  font-size: inherit;
+th,
+td {
+  @include core-16;
 }
