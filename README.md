@@ -194,7 +194,7 @@ Either way, when updating existing components, or adding new components, you wil
 
 ## Todos
 
-- Upload diff renderings from Travis to an S3 bucket so Travis failures can be analysed
+- Upload diff renderings from Travis  to an S3 bucket so Travis failures can be analysed
 - Documentation!
   - Write usage guidelines
     - Add example of how to include the assets in an application
