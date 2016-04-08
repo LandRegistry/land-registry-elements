@@ -11,7 +11,7 @@ if (typeof window.callPhantom === 'function') {
     var poll = setInterval(function() {
       count++;
 
-      if(document.body.classList.contains('wf-loading') && count < 100) {
+      if(document.documentElement.classList.contains('wf-loading') && count < 100) {
         return;
       }
 
