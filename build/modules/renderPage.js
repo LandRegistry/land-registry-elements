@@ -28,7 +28,7 @@ var renderPage = function(hbs, data) {
       .then(javascript.sort)
       .then(function(bundles) {
         Object.keys(bundles).forEach(function(bundle) {
-          pageData.scripts.push('<script defer src="/javascripts/' + bundle + '.js"></script>')
+          pageData.scripts.push('<script src="/javascripts/' + bundle + '.js"></script>')
         });
       })
       .then(function() {

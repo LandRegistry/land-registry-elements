@@ -5,18 +5,25 @@ var webshot = require('webshot');
 var sanitize = require('sanitize-filename');
 var url = require('url');
 var mkdirp = require('mkdirp');
-var gm = require('gm');
+var rimraf = require('rimraf');
+// var gm = require('gm');
 var path = require('path');
+var resemble = require('node-resemble-js');
 
 var options = {
-  renderDelay: 1000,
-  timeout: 10000,
+  takeShotOnCallback: true,
+  timeout: 30000,
   errorIfStatusIsNot200: true,
   shotSize: {
     width: 'all',
     height: 'all'
   }
 };
+
+var tolerance = 0;
+
+rimraf.sync('test/fixtures/visual-regression/test-renderings');
+rimraf.sync('test/fixtures/visual-regression/diff-renderings');
 
 mkdirp.sync('test/fixtures/visual-regression/test-renderings');
 mkdirp.sync('test/fixtures/visual-regression/diff-renderings');
@@ -49,20 +56,32 @@ describe('The pattern library page at', function() {
         file.end();
       });
 
-      var gmOptions = {
-        file: 'test/fixtures/visual-regression/diff-renderings/' + fileName + '.png'
-      };
+      resemble.outputSettings({
+        largeImageThreshold: 0
+      });
 
       file.on('finish', function() {
 
-        gm.compare('test/fixtures/visual-regression/test-renderings/' + fileName + '.png', 'test/fixtures/visual-regression/reference-renderings/' + fileName + '.png', gmOptions, function (err, isEqual, equality, raw, path1, path2) {
-          if (err) throw err;
+        resemble('test/fixtures/visual-regression/test-renderings/' + fileName + '.png')
+          .compareTo('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png')
+          .onComplete(function(data){
 
-          //equality.should.below(0.001);
-          isEqual.should.be.true();
+            if(!data.isSameDimensions || data.misMatchPercentage > tolerance) {
+              data.getDiffImage()
+                .pack()
+                .pipe(fs.createWriteStream('test/fixtures/visual-regression/diff-renderings/' + fileName + '.png'))
+                .on('close', function() {
 
-          done();
-        });
+                  data.isSameDimensions.should.be.true;
+                  data.misMatchPercentage.should.below(tolerance);
+
+                  done();
+                });
+            } else {
+              done();
+            }
+
+          });
 
       });
 

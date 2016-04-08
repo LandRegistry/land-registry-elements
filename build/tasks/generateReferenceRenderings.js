@@ -10,8 +10,8 @@ require('../server');
 mkdirp.sync('test/fixtures/visual-regression/reference-renderings');
 
 var options = {
-  renderDelay: 1000,
-  timeout: 10000,
+  takeShotOnCallback: true,
+  timeout: 30000,
   errorIfStatusIsNot200: true,
   shotSize: {
     width: 'all',

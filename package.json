@@ -10,6 +10,7 @@
     "test": "npm run build && npm run generateTestURLs && mocha && eslint src/** --ignore-pattern build.js --ignore-pattern src/elements/land-registry/polyfills",
     "generateTestURLs": "node build/tasks/testURLs.js",
     "build": "node build/doBuild.js",
+    "build-prod": "node build/doBuildProd.js",
     "start": "node build/devServer.js",
     "dev": "supervisor -i test,dist,.tmp,node_modules -e js,scss,hogan,yaml build/devServer.js",
     "generateReferenceRenderings": "npm run build && node build/tasks/generateReferenceRenderings.js"
@@ -32,9 +33,9 @@
     "node": "5.x"
   },
   "devDependencies": {
-    "gm": "^1.21.1",
     "htmllint": "^0.2.7",
     "mocha": "^2.4.5",
+    "node-resemble-js": "0.0.5",
     "pa11y": "^3.5.1",
     "sanitize-filename": "^1.5.3",
     "selenium-standalone": "^4.9.1",

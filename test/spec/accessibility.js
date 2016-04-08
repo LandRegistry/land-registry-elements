@@ -52,6 +52,11 @@ describe('The pattern library page at', function() {
       test.run(url, function (error, results) {
         var output = '';
 
+        if(!Array.isArray(results)) {
+          done();
+          return;
+        }
+
         results.forEach(function(result) {
 
           // Manually suppress leafletjs related errors
