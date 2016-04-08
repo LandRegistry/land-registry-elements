@@ -18,7 +18,7 @@ files.forEach(function(file) {
           mode: 'development',
           cache: false,
           components: [component],
-          destination: '.tmp/dist'
+          destination: path.join('.tmp/test-builds', component)
         })
         .then(function(directory) {
           // console.log('Assets built to:', directory);
