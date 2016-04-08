@@ -3,7 +3,7 @@ require('browsernizr');
 
 // Hook into the PhantomJS test runner and instruct it to take a screenshot on load
 // If PhantomJS isn't present this will have no effect
-if (true || typeof window.callPhantom === 'function') {
+if (typeof window.callPhantom === 'function') {
   window.addEventListener('load', function() {
     // Poll to establish whether webfonts have loaded yet
     var count = 0;
