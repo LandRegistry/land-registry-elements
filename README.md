@@ -38,7 +38,7 @@ The Land Registry elements repository is a "Living style guide". This means that
 --------------------------------------------------------------------------------
 
 ## Running the pattern library
-The pattern library can be started with the command `npm start`. This will start a webserver running on `localhost:3000` where you can view the pattern library. You can then make GET requests to `localhost:3000/build` as per the [instructions here](make-a-get-request-to-the-pattern-library-application)
+The pattern library can be started with the command `npm start`. This will start a webserver running on `localhost:3000` where you can view the pattern library.
 
 ### Requirements
 * Node.js 5.x (If you currently use Node.js 4 for gov uk things, using a version manager such as [nvm](https://github.com/creationix/nvm) would be recommended to easily switch between versions)
