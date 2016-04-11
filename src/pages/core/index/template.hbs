@@ -14,10 +14,28 @@
 
 <hr>
 
-<form action="/build" method="GET">
-  <input type="submit" class="button" value="Generate build" />
-  <p class="form-hint">Download a build containing the assets selected below.</p>
-  <p class="form-hint">Note that ticking a component will automatically include dependencies of that component in the build even if it is not explicitly ticked here.</p>
+<form action="/build" method="GET" class="component-build-form">
+
+  <details>
+    <summary>Download a build</summary>
+
+    <div class="panel panel-indent-narrow">
+      <p>Download a build containing the assets selected below.</p>
+      <p>Note that ticking a component will automatically include dependencies of that component in the build even if it is not explicitly ticked here.</p>
+
+      <div class="form-group">
+        <input type="submit" class="button" value="Generate build" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="build-url-1">Build URL</label>
+        <input class="form-control build-url" type="text" id="build-url-1">
+        <span class="form-hint">Make GET requests to this URL in your build pipeline to return a tarball of assets (View <a href="https://github.com/LandRegistry/land-registry-elements-examples/">land-registry-elements-examples</a> for more examples of how to integrate into your build - this is just one of several options)</span>
+      </div>
+    </div>
+  </details>
+
+  <h2 class="heading-large spacing-bottom-flush">Components</h2>
 
   <div class="form-group">
     {{#with components}}
@@ -49,5 +67,19 @@
     {{/with}}
   </div>
 
-  <input type="submit" class="button" value="Generate build" />
+  <div class="panel panel-indent-narrow">
+    <p>Download a build containing the assets selected above.</p>
+    <p>Note that ticking a component will automatically include dependencies of that component in the build even if it is not explicitly ticked here.</p>
+
+    <div class="form-group">
+      <input type="submit" class="button" value="Generate build" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="build-url-2">Build URL</label>
+      <input class="form-control build-url" type="text" id="build-url-2">
+      <span class="form-hint">Make GET requests to this URL in your build pipeline to return a tarball of assets (View <a href="https://github.com/LandRegistry/land-registry-elements-examples/">land-registry-elements-examples</a> for more examples of how to integrate into your build - this is just one of several options)</span>
+    </div>
+  </div>
+
 </form>
