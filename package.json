@@ -82,6 +82,7 @@
     "pretty": "^1.0.0",
     "proj4leaflet": "github:kartena/Proj4Leaflet",
     "promise-helpers": "^0.2.0",
+    "pubsub-js": "^1.5.3",
     "remarkable": "^1.6.2",
     "rimraf": "^2.5.1",
     "trace": "^2.3.0",
