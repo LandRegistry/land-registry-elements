@@ -1,26 +1,46 @@
-// Hook into the PhantomJS test runner and instruct it to take a screenshot on load
-// If PhantomJS isn't present this will have no effect
-if (typeof window.callPhantom === 'function') {
-  window.addEventListener('load', function() {
-    // Poll to establish whether webfonts have loaded yet
-    var count = 0;
+var PubSub = require('pubsub-js');
 
-    var poll = setInterval(function() {
-      count++;
+var events = {
+  fonts: false,
+  leaflet: false
+};
 
-      if(document.documentElement.classList.contains('wf-loading') && count < 100) {
-        return;
-      }
 
-      clearInterval(poll);
+// Wait for webfonts to load
+PubSub.subscribe('webfonts.active', function() {
+  events.fonts = true;
+});
 
-      // Wait for things like Leaflet to load if they're present
-      var hasMap = (document.querySelectorAll('.map').length > 0);
 
-      setTimeout(function() {
-        window.callPhantom('takeShot');
-      }, (hasMap ? 10000 : 0))
+// Poll to see if Leaflet maps have loaded yet
+// This doesn't expose an event so we have to manually wait and hope
+// If leaflet ever exposes an event this could be refactored and the tests
+// sped up significantly
+var hasMap = (document.querySelectorAll('.map').length > 0);
+setTimeout(function() {
+  events.leaflet = true;
+}, (hasMap ? 10000 : 0))
 
-    }, 100);
-  });
-}
+
+// Wait for window load event
+window.addEventListener('load', function() {
+
+  // Poll to see whether things have loaded yet
+  var poll = setInterval(function() {
+
+    // If things haven't loaded yet, go round again
+    if(!(events.leaflet && events.fonts)) {
+      return;
+    }
+
+    // Once things have loaded, stop polling
+    clearInterval(poll);
+
+    // And tell phantom to get on with it
+    if (typeof window.callPhantom === 'function') {
+      window.callPhantom('takeShot');
+    }
+
+  }, 100);
+
+});
