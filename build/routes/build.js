@@ -17,6 +17,7 @@ module.exports = function(app){
       mode: 'production',
       cache: false,
       components: Object.keys(req.query.components),
+      assetPath: req.query.assetPath ? req.query.assetPath : '',
       destination: '.tmp/dist'
     })
       .then(function(directory) {
