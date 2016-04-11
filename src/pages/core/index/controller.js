@@ -27,7 +27,7 @@ if(form) {
     var queryString = '?';
 
     values.forEach(function(value, index) {
-      queryString += 'components[' + index + ']=' + value + '&';
+      queryString += 'components[' + value + ']=on&';
     });
 
     // And stick it in the input fields on the index page
