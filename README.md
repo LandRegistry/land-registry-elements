@@ -196,11 +196,6 @@ Either way, when updating existing components, or adding new components, you wil
 
 - Switch Travis' visual regression diffs to be uploaded to a Land Registry S3 bucket
 - Refactor to be more decoupled from gov uk stuff so that it can be used on internally facing LR projects?
-- Documentation!
-  - Write usage guidelines
-    - Add example of how to include the assets in an application
-      - via a get request (Using bash)
-  - Write contribution guidelines
 - Add more variants and more data to the summary demos
 - Can we nuke the ntatabularnumbers font if and when it's not used?
 - HTML prettification removed because:
