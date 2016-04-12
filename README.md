@@ -1,7 +1,7 @@
 # land-registry-elements
 [![Build Status](https://travis-ci.org/LandRegistry/land-registry-elements.svg)](https://travis-ci.org/LandRegistry/land-registry-elements)
 
-Initially this repo will comprise production ready HTML, CSS and JavaScript for the Find Property Information beta. The wider goal however is for this to be a central location for all tested, production ready UI patterns suitable for use in any public facing Land Registry products. It builds upon and extends the foundations set out in https://github.com/alphagov/govuk_elements as well as providing new UI patterns as required.
+Initially this repo will comprise production ready HTML, CSS and JavaScript for the Find property information beta. The wider goal however is for this to be a central location for all tested, production ready UI patterns suitable for use in any public facing Land Registry products. It builds upon and extends the foundations set out in https://github.com/alphagov/govuk_elements as well as providing new UI patterns as required.
 
 A demo is available at: [http://land-registry-elements.herokuapp.com/](http://land-registry-elements.herokuapp.com/)
 (Note: This may take a moment to spin up if the heroku instance has gone to sleep)
@@ -27,7 +27,7 @@ Too often, projects reinvent UI patterns in similar yet inconsistent ways. By lo
 The patterns in this library are built in a modular way such that including a pattern in your application should not change the rendering of other patterns. Future development should adhere to this principle (See [Visual regression tests](#visual-regression-tests))
 
 ### To engender confidence
-The patterns in this library have been cross browser tested (As per the [Browser support](#browser-support) section and in many cases have been through user testing (For example, as part of the Find Property Information user testing). This library should be seen as a trustworthy source of CSS and JS for use in your application.
+The patterns in this library have been cross browser tested (As per the [Browser support](#browser-support) section and in many cases have been through user testing (For example, as part of the Find property information user testing). This library should be seen as a trustworthy source of CSS and JS for use in your application.
 
 --------------------------------------------------------------------------------
 
