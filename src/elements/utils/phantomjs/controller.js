@@ -37,8 +37,12 @@ window.addEventListener('load', function() {
     clearInterval(poll);
 
     // And tell phantom to get on with it
+    // But give it an extra second of readiness fudge factor :-|
     if (typeof window.callPhantom === 'function') {
-      window.callPhantom('takeShot');
+      setTimeout(function() {
+
+        window.callPhantom('takeShot');
+      }, 1000);
     }
 
   }, 100);
