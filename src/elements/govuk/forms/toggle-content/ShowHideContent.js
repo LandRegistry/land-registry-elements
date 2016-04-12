@@ -35,7 +35,7 @@ function ShowHideContent(element, config) {
     element.addEventListener('click', click);
   }
 
-  function click(e) {
+  function click() {
     var state = element.getAttribute('aria-expanded') === 'false' ? true : false;
 
     // If we're talking radio buttons, then hide all other conditional content in the group

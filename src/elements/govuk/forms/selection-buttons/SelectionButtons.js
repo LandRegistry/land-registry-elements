@@ -67,7 +67,7 @@ function SelectionButtons(element, config) {
     }
   }
 
-  function clickHandler(e) {
+  function clickHandler() {
     markSelected();
   }
 
