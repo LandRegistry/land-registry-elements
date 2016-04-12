@@ -6,9 +6,9 @@ var sanitize = require('sanitize-filename');
 var url = require('url');
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
-// var gm = require('gm');
 var path = require('path');
 var resemble = require('node-resemble-js');
+var trim = require('trim-character');
 
 var options = {
   takeShotOnCallback: true,
@@ -42,6 +42,7 @@ describe('The pattern library page at', function() {
 
       var fileName = url.parse(componentUrl).pathname;
       fileName = fileName.replace(new RegExp('/', 'g'), '-');
+      fileName = trim(fileName, '-');
       fileName = sanitize(fileName);
 
       var renderStream = webshot(componentUrl, options);
