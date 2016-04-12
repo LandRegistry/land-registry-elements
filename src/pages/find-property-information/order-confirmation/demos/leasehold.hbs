@@ -5,7 +5,8 @@ pageData:
   hideFooterContactNumbers: true
   propositionName: Find property information
 
-backDestinationTitle: Search again
+backPrefix: Back to
+backDestinationTitle: Search results
 
 title_number: FAKE177634
 date: 20 October 2015 at 11:59:18
@@ -17,13 +18,12 @@ propertyAddress:
   addressLocality: Trumpton
   postalCode: TR15 5RZ
 
-owners:
-  -
-    person: Bob Smith
-    streetAddress:
-      - 1 Pretend Street
-    addressLocality: Trumpton
-    postalCode: TR15 5RZ
+address:
+  person: Bob Smith
+  streetAddress:
+    - 1 Pretend Street
+  addressLocality: Trumpton
+  postalCode: TR15 5RZ
 
 tenureType: Leasehold
 tenure_leasehold: true
@@ -46,4 +46,4 @@ vat-receipt:
     addressLocality: Croydon
     postalCode: CR0 2AQ
 ---
-{{> pages/drv/summary}}
+{{> pages/find-property-information/order-confirmation}}

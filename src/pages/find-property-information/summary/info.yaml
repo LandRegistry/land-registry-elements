@@ -1,7 +1,7 @@
-name: Order confirmation page
+name: Summary page
 categories:
   primary: Land Registry
-  secondary: DRV beta pages
+  secondary: Find property information beta pages
 
 dependencies:
   - elements/govuk/details
@@ -9,12 +9,9 @@ dependencies:
   - elements/govuk/layout
   - elements/govuk/phase-banner
   - elements/land-registry/address
-  - elements/land-registry/clientside-form-validation
   - elements/land-registry/definition-tabular
   - elements/land-registry/language-switcher
   - elements/land-registry/leaflet-map
   - elements/land-registry/print-button
   - elements/land-registry/vat-receipt
   - elements/land-registry/vertical-spacing
-  - elements/land-registry/warning
-  - elements/land-registry/back-link
