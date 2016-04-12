@@ -43,6 +43,7 @@
     "should": "^8.3.0",
     "superagent": "^1.8.3",
     "supertest": "^1.2.0",
+    "throat": "^2.0.2",
     "trim-character": "^2.0.1",
     "webdriverio": "^4.0.5",
     "webshot": "^0.18.0"

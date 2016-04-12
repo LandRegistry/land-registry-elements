@@ -38,12 +38,74 @@ describe('The pattern library page at', function() {
 
   urls.forEach(function(componentUrl) {
 
-    it(componentUrl + ' should not have regressed visually', function(done) {
+    it(componentUrl + ' should not have regressed visually on desktop', function(done) {
 
       var fileName = url.parse(componentUrl).pathname;
       fileName = fileName.replace(new RegExp('/', 'g'), '-');
       fileName = trim(fileName, '-');
       fileName = sanitize(fileName);
+      fileName = 'desktop-' + fileName;
+
+      var renderStream = webshot(componentUrl, options);
+      var file = fs.createWriteStream('test/fixtures/visual-regression/test-renderings/' + fileName + '.png', {encoding: 'binary'});
+      var referenceRendering = fs.readFileSync('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png');
+
+      renderStream.on('data', function(data) {
+        file.write(data.toString('binary'), 'binary');
+      });
+
+      renderStream.on('end', function() {
+        file.end();
+      });
+
+      resemble.outputSettings({
+        largeImageThreshold: 0
+      });
+
+      file.on('finish', function() {
+
+        resemble('test/fixtures/visual-regression/test-renderings/' + fileName + '.png')
+          .compareTo('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png')
+          .onComplete(function(data){
+
+            if(!data.isSameDimensions || data.misMatchPercentage > tolerance) {
+              data.getDiffImage()
+                .pack()
+                .pipe(fs.createWriteStream('test/fixtures/visual-regression/diff-renderings/' + fileName + '.png'))
+                .on('close', function() {
+
+                  data.isSameDimensions.should.be.true;
+                  data.misMatchPercentage.should.below(tolerance);
+
+                  done();
+                });
+            } else {
+              done();
+            }
+
+          });
+
+      });
+
+    });
+
+    it(componentUrl + ' should not have regressed visually on mobile', function(done) {
+
+      var fileName = url.parse(componentUrl).pathname;
+      fileName = fileName.replace(new RegExp('/', 'g'), '-');
+      fileName = trim(fileName, '-');
+      fileName = sanitize(fileName);
+      fileName = 'mobile-' + fileName;
+
+      options.screenSize = {
+        width: 320,
+        height: 480
+      };
+
+      options.shotSize = {
+        width: 320,
+        height: 'all'
+      };
 
       var renderStream = webshot(componentUrl, options);
       var file = fs.createWriteStream('test/fixtures/visual-regression/test-renderings/' + fileName + '.png', {encoding: 'binary'});
