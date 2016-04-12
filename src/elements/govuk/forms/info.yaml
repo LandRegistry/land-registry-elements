@@ -8,3 +8,4 @@ dependencies:
   - elements/govuk/layout
   - elements/govuk/panels
   - elements/govuk/forms/selection-buttons
+  - elements/govuk/forms/toggle-content
