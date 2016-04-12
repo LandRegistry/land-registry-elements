@@ -1,6 +1,5 @@
 var extend = require('extend');
 var path = require('path');
-var pretty = require('pretty');
 
 var components = require('../modules/components');
 var handlebars = require('../modules/handlebars');

@@ -1,5 +1,4 @@
 var fs = require('fs');
-var pretty = require('pretty');
 
 var components = require('../modules/components');
 var handlebars = require('../modules/handlebars');
@@ -62,7 +61,7 @@ module.exports = function(app){
           })
         })
         .then(function(html) {
-          res.send(pretty(html));
+          res.send(html);
         });
 
       })

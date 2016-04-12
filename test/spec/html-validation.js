@@ -27,13 +27,14 @@ describe('The pattern library page at', function() {
             'id-class-style': false,
             'indent-style': false,
             'indent-width': false,
-            'img-req-alt': true,
+            'img-req-alt': false, // Disabled due to changes upstream in htmllint. See https://github.com/LandRegistry/land-registry-elements/issues/46
             'label-req-for': true,
             'tag-name-match': true,
             'tag-name-lowercase': true,
             'line-end-style': false,
             'attr-req-value': false,
-            'tag-bans': ['style']
+            'tag-bans': ['style'],
+            'title-max-len': false
           })
             .then(function(issues) {
 
