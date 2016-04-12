@@ -194,6 +194,7 @@ Either way, when updating existing components, or adding new components, you wil
 
 ## Todos
 
+- Visual regression testing at mobile breakpoints
 - Switch Travis' visual regression diffs to be uploaded to a Land Registry S3 bucket
 - Refactor to be more decoupled from gov uk stuff so that it can be used on internally facing LR projects?
 - Add more variants and more data to the summary demos
@@ -207,7 +208,6 @@ Either way, when updating existing components, or adding new components, you wil
 - Get price paid into the land-registry-elements demos?
 - Aria roles on the split detail component
 - Testplan generator? I.e. take a list of pages and browsers and put together a list for you to complete
-- Visual regression testing at mobile breakpoints
 - Write more comprehensive test suite for the clientside validation checking that it matches the spec set out by gov uk
 - Exclude image assets that are not referenced in the css to keep the build output clean
 - Split out gov uk JS and include it into the core component with browserify?
