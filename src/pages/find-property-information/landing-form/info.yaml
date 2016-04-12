@@ -1,7 +1,7 @@
 name: Landing form
 categories:
   primary: Land Registry
-  secondary: DRV beta pages
+  secondary: Find Property Information beta pages
 
 dependencies:
   - elements/govuk/details
