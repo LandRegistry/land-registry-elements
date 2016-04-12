@@ -196,11 +196,6 @@ Either way, when updating existing components, or adding new components, you wil
 
 - Switch Travis' visual regression diffs to be uploaded to a Land Registry S3 bucket
 - Refactor to be more decoupled from gov uk stuff so that it can be used on internally facing LR projects?
-- Documentation!
-  - Write usage guidelines
-    - Add example of how to include the assets in an application
-      - via a get request
-  - Write contribution guidelines
 - Add more variants and more data to the summary demos
 - Can we nuke the ntatabularnumbers font if and when it's not used?
 - HTML prettification removed because:
@@ -212,7 +207,6 @@ Either way, when updating existing components, or adding new components, you wil
 - Get price paid into the land-registry-elements demos?
 - Aria roles on the split detail component
 - Rename DRV components to something else once the final service name has been chosen?
-- When ticking components on the homepage, output the necessary URL to generate the build to make it easier for users who are using the pattern library via GET requests
 - Testplan generator? I.e. take a list of pages and browsers and put together a list for you to complete
 - Visual regression testing at mobile breakpoints
 - Write more comprehensive test suite for the clientside validation checking that it matches the spec set out by gov uk
