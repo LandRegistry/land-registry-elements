@@ -4,6 +4,7 @@ var mkdirp = require('mkdirp');
 var webshot = require('webshot');
 var sanitize = require('sanitize-filename');
 var url = require('url');
+var trim = require('trim-character');
 
 require('../server');
 
@@ -28,6 +29,7 @@ require('./testURLs')
 
       var fileName = url.parse(componentUrl).pathname;
       fileName = fileName.replace(new RegExp('/', 'g'), '-');
+      fileName = trim(fileName, '-');
       fileName = sanitize(fileName);
 
       promises.push(new Promise(function(resolve, reject) {
