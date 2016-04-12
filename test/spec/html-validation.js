@@ -33,7 +33,8 @@ describe('The pattern library page at', function() {
             'tag-name-lowercase': true,
             'line-end-style': false,
             'attr-req-value': false,
-            'tag-bans': ['style']
+            'tag-bans': ['style'],
+            'title-max-len': false
           })
             .then(function(issues) {
 
