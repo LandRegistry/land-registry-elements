@@ -9,6 +9,7 @@ var rimraf = require('rimraf');
 var path = require('path');
 var resemble = require('node-resemble-js');
 var trim = require('trim-character');
+var extend = require('extend');
 
 var options = {
   takeShotOnCallback: true,
@@ -19,6 +20,19 @@ var options = {
     height: 'all'
   }
 };
+
+var mobileOptions = extend({}, options);
+
+mobileOptions.screenSize = {
+  width: 320,
+  height: 480
+};
+
+mobileOptions.shotSize = {
+  width: 320,
+  height: 'all'
+};
+
 
 var tolerance = 0;
 
@@ -97,17 +111,7 @@ describe('The pattern library page at', function() {
       fileName = sanitize(fileName);
       fileName = 'mobile-' + fileName;
 
-      options.screenSize = {
-        width: 320,
-        height: 480
-      };
-
-      options.shotSize = {
-        width: 320,
-        height: 'all'
-      };
-
-      var renderStream = webshot(componentUrl, options);
+      var renderStream = webshot(componentUrl, mobileOptions);
       var file = fs.createWriteStream('test/fixtures/visual-regression/test-renderings/' + fileName + '.png', {encoding: 'binary'});
       var referenceRendering = fs.readFileSync('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png');
 
