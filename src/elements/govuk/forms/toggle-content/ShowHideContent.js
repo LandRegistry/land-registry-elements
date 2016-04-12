@@ -33,6 +33,10 @@ function ShowHideContent(element, config) {
     }
 
     element.addEventListener('click', click);
+
+    if(element.checked) {
+      click();
+    }
   }
 
   function click() {
