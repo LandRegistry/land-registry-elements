@@ -19,6 +19,20 @@
 
     <dl class="definition-tabular">
 
+      {{#is_caution_title}}
+        <dt class="bold-small">Caution</dt>
+        <dd>
+          <details class="font-xsmall">
+            <summary class="bold-small">What does Caution mean?</summary>
+            <div class="panel">
+              <p>This property hasn’t been registered yet. You can’t find out who owns it from this service. </p>
+              <p>Someone other than the owner (known as the ‘cautioner’) has registered a right or interest in the property. They will be told if anyone tries to register it, and can object to the registration going ahead until their claim has been looked at. You can get their name and address from this service.</p>
+              <p>Registration has only been compulsory since the 1990s. Property that hasn’t changed hands since then may not be registered.</p>
+            </div>
+          </details>
+        </dd>
+      {{/is_caution_title}}
+
       {{#with propertyAddress}}
         <dt>Address</dt>
         <dd class="bold-medium">
@@ -59,38 +73,31 @@
 
     </dl>
 
-    {{#is_caution_title}}
-      <h2 class="heading-medium">Land Registry does not know the owner of this property</h2>
-      <ul class="list-bullet">
-        <li>Someone other than the owner (known as the ‘cautioner’) has registered a right or interest in the property.</li>
-        <li><strong class="bold">The summary will give you the cautioner's name and address</strong>.</li>
-      </ul>
-      <p class="spacing-bottom-flush spacing-top-single">This is known as a caution against first registration</p>
-      <details class="font-xsmall">
-        <summary>More about cautions against first registration</summary>
-        <div class="panel panel-narrow">
-          <p>This property hasn’t been registered yet. You can’t find out who owns it from this service. </p>
-          <p>Someone other than the owner (known as the ‘cautioner’) has registered a right or interest in the property. They will be told if anyone tries to register it, and can object to the registration going ahead until their claim has been looked at. You can get their name and address from this service.</p>
-          <p>Registration has only been compulsory since the 1990s. Property that hasn’t changed hands since then may not be registered.</p>
-        </div>
-      </details>
-    {{/is_caution_title}}
-
     <h2 class="heading-medium collapse-top">The summary will tell you</h2>
     <ul class="list list-bullet">
 
-      {{#tenure_freehold}}
-        <li>current owner’s name and address</li>
-      {{/tenure_freehold}}
+      {{#is_caution_title}}
+        <li>the name of the cautioner and their address</li>
+        <li>information about the cautioner’s claim</li>
+      {{/is_caution_title}}
 
-      {{#tenure_leasehold}}
-        <li>current leaseholder’s name and address</li>
-      {{/tenure_leasehold}}
+      {{^is_caution_title}}
+        {{#tenure_freehold}}
+          <li>current owner’s name and address</li>
+        {{/tenure_freehold}}
 
-      <li>what was paid for the property – you won’t get this if it was bought before April 2000, if they paid less than £100, or if Land Registry have agreed not to record the price</li>
+        {{#tenure_leasehold}}
+          <li>current leaseholder’s name and address</li>
+        {{/tenure_leasehold}}
 
-      <li>if there is a mortgage on the property, the lender’s name and address</li>
+        <li>what was paid for the property – you won’t get this if it was bought before April 2000, if they paid less than £100, or if Land Registry have agreed not to record the price</li>
+
+        <li>if there is a mortgage on the property, the lender’s name and address</li>
+      {{/is_caution_title}}
+
     </ul>
+
+    <p class="spacing-top-single">This information can change if we receive an application. This service is unable to tell you whether or not there is an application pending with the Land Registry.</p>
 
     <div class="warning media">
       <div class="media-item">
