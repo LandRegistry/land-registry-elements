@@ -1,1 +1,1 @@
-npm run dev --port=$PORT
+npm start --port=$PORT
