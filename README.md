@@ -194,7 +194,7 @@ Either way, when updating existing components, or adding new components, you wil
 
 ## Todos
 
-- Visual regression testing at mobile breakpoints
+- DRY out the visual regression test code and the generateReferenceRendering code
 - Switch Travis' visual regression diffs to be uploaded to a Land Registry S3 bucket
 - Refactor to be more decoupled from gov uk stuff so that it can be used on internally facing LR projects?
 - Add more variants and more data to the summary demos

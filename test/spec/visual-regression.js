@@ -9,6 +9,7 @@ var rimraf = require('rimraf');
 var path = require('path');
 var resemble = require('node-resemble-js');
 var trim = require('trim-character');
+var extend = require('extend');
 
 var options = {
   takeShotOnCallback: true,
@@ -19,6 +20,19 @@ var options = {
     height: 'all'
   }
 };
+
+var mobileOptions = extend({}, options);
+
+mobileOptions.screenSize = {
+  width: 320,
+  height: 480
+};
+
+mobileOptions.shotSize = {
+  width: 320,
+  height: 'all'
+};
+
 
 var tolerance = 0;
 
@@ -38,14 +52,66 @@ describe('The pattern library page at', function() {
 
   urls.forEach(function(componentUrl) {
 
-    it(componentUrl + ' should not have regressed visually', function(done) {
+    it(componentUrl + ' should not have regressed visually on desktop', function(done) {
 
       var fileName = url.parse(componentUrl).pathname;
       fileName = fileName.replace(new RegExp('/', 'g'), '-');
       fileName = trim(fileName, '-');
       fileName = sanitize(fileName);
+      fileName = 'desktop-' + fileName;
 
       var renderStream = webshot(componentUrl, options);
+      var file = fs.createWriteStream('test/fixtures/visual-regression/test-renderings/' + fileName + '.png', {encoding: 'binary'});
+      var referenceRendering = fs.readFileSync('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png');
+
+      renderStream.on('data', function(data) {
+        file.write(data.toString('binary'), 'binary');
+      });
+
+      renderStream.on('end', function() {
+        file.end();
+      });
+
+      resemble.outputSettings({
+        largeImageThreshold: 0
+      });
+
+      file.on('finish', function() {
+
+        resemble('test/fixtures/visual-regression/test-renderings/' + fileName + '.png')
+          .compareTo('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png')
+          .onComplete(function(data){
+
+            if(!data.isSameDimensions || data.misMatchPercentage > tolerance) {
+              data.getDiffImage()
+                .pack()
+                .pipe(fs.createWriteStream('test/fixtures/visual-regression/diff-renderings/' + fileName + '.png'))
+                .on('close', function() {
+
+                  data.isSameDimensions.should.be.true;
+                  data.misMatchPercentage.should.below(tolerance);
+
+                  done();
+                });
+            } else {
+              done();
+            }
+
+          });
+
+      });
+
+    });
+
+    it(componentUrl + ' should not have regressed visually on mobile', function(done) {
+
+      var fileName = url.parse(componentUrl).pathname;
+      fileName = fileName.replace(new RegExp('/', 'g'), '-');
+      fileName = trim(fileName, '-');
+      fileName = sanitize(fileName);
+      fileName = 'mobile-' + fileName;
+
+      var renderStream = webshot(componentUrl, mobileOptions);
       var file = fs.createWriteStream('test/fixtures/visual-regression/test-renderings/' + fileName + '.png', {encoding: 'binary'});
       var referenceRendering = fs.readFileSync('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png');
 

@@ -5,6 +5,8 @@ var webshot = require('webshot');
 var sanitize = require('sanitize-filename');
 var url = require('url');
 var trim = require('trim-character');
+var extend = require('extend');
+var throat = require('throat')(5)
 
 require('../server');
 
@@ -20,6 +22,19 @@ var options = {
   }
 };
 
+var mobileOptions = extend({}, options);
+
+mobileOptions.screenSize = {
+  width: 320,
+  height: 480
+};
+
+mobileOptions.shotSize = {
+  width: 320,
+  height: 'all'
+};
+
+
 require('./testURLs')
   .then(function(urls) {
 
@@ -32,18 +47,40 @@ require('./testURLs')
       fileName = trim(fileName, '-');
       fileName = sanitize(fileName);
 
-      promises.push(new Promise(function(resolve, reject) {
+      // Desktop screenshot
+      promises.push(throat(function() {
+        return new Promise(function(resolve, reject) {
+          var renderStream = webshot(componentUrl, options);
+          var file = fs.createWriteStream('test/fixtures/visual-regression/reference-renderings/desktop-' + fileName + '.png', {encoding: 'binary'});
 
-        var renderStream = webshot(componentUrl, options);
-        var file = fs.createWriteStream('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png', {encoding: 'binary'});
+          renderStream.on('data', function(data) {
+            file.write(data.toString('binary'), 'binary');
+          });
 
-        renderStream.on('data', function(data) {
-          file.write(data.toString('binary'), 'binary');
+          renderStream.on('end', function() {
+            console.log('Desktop screenshot taken for', componentUrl);
+
+            resolve();
+          });
         });
+      }));
 
-        renderStream.on('end', function() {
-          console.log('Screenshot taken for', componentUrl);
-          resolve();
+      // Mobile screenshot
+      promises.push(throat(function() {
+        return new Promise(function(resolve, reject) {
+
+          var renderStream = webshot(componentUrl, mobileOptions);
+          var file = fs.createWriteStream('test/fixtures/visual-regression/reference-renderings/mobile-' + fileName + '.png', {encoding: 'binary'});
+
+          renderStream.on('data', function(data) {
+            file.write(data.toString('binary'), 'binary');
+          });
+
+          renderStream.on('end', function() {
+            console.log('Mobile screenshot taken for', componentUrl);
+
+            resolve();
+          });
         });
       }));
 
