@@ -6,7 +6,7 @@ var sanitize = require('sanitize-filename');
 var url = require('url');
 var trim = require('trim-character');
 var extend = require('extend');
-var throat = require('throat')(5)
+var throat = require('throat')(3)
 
 require('../server');
 
