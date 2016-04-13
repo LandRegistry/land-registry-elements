@@ -34,7 +34,7 @@ mobileOptions.shotSize = {
 };
 
 
-var tolerance = 0;
+var tolerance = 0.05;
 
 rimraf.sync('test/fixtures/visual-regression/test-renderings');
 rimraf.sync('test/fixtures/visual-regression/diff-renderings');
