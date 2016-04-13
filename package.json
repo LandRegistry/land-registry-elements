@@ -35,7 +35,6 @@
   },
   "devDependencies": {
     "htmllint": "^0.3.0",
-    "mocha": "^2.4.5",
     "node-resemble-js": "0.0.5",
     "pa11y": "^3.6.0",
     "sanitize-filename": "^1.5.3",
