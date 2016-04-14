@@ -3,11 +3,6 @@ categories:
   primary: Land Registry
   secondary: Utilities
 
-copy:
-  -
-    from: '../../../../node_modules/leaflet/dist/images'
-    to: 'assets/images/leaflet'
-
 js-bundle: leaflet
 
 dependencies:
