@@ -1,24 +1,22 @@
 var copy = require('../../../../build/tasks/copy');
 var path = require('path');
 
-var copyOperations = [
-  {
-    from: 'node_modules/leaflet/dist/leaflet.css',
-    to: 'node_modules/leaflet/dist/leaflet.scss'
-  },
-  {
-    from: 'node_modules/leaflet/dist/images',
-    to: 'assets/images/leaflet'
-  }
-];
 
 module.exports = function(config) {
   var promises = [];
 
-  copyOperations.forEach(function(operation) {
-    operation.from = path.join(config.includePath, operation.from);
-    operation.to = path.join(config.destination, operation.to);
+  var copyOperations = [
+    {
+      from: path.join(config.includePath, 'node_modules/leaflet/dist/leaflet.css'),
+      to: path.join(config.includePath, 'node_modules/leaflet/dist/leaflet.scss')
+    },
+    {
+      from: path.join(config.includePath, 'node_modules/leaflet/dist/images'),
+      to: path.join(config.destination, 'assets/images/leaflet')
+    }
+  ];
 
+  copyOperations.forEach(function(operation) {
     promises.push(copy.copy(operation.from, operation.to))
   });
 
