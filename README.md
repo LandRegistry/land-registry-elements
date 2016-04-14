@@ -6,7 +6,7 @@ Initially this repo will comprise production ready HTML, CSS and JavaScript for 
 A demo is available at: [http://land-registry-elements.herokuapp.com/](http://land-registry-elements.herokuapp.com/)
 (Note: This may take a moment to spin up if the heroku instance has gone to sleep)
 
-## I want to:
+## I want to
 
 ### Get some CSS & JS for my application
 * Head to the [Usage](#usage) section
