@@ -2,8 +2,8 @@
 // so we need to tweak the path either side of the breadcrumb imports to make
 // the right images get picked up by the file-url() function
 $path: $assetPath + '/images/icons/';
-@import "../../../../node_modules/govuk_frontend_toolkit/stylesheets/design-patterns/breadcrumbs";
-@import "../../../../node_modules/govuk-elements-sass/public/sass/elements/breadcrumbs";
+@import "node_modules/govuk_frontend_toolkit/stylesheets/design-patterns/breadcrumbs";
+@import "node_modules/govuk-elements-sass/public/sass/elements/breadcrumbs";
 $path: $assetPath + '/images/';
 
 .breadcrumbs {
