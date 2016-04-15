@@ -45,7 +45,13 @@
         </dd>
       {{/with}}
 
-      <dt>{{#tenure_freehold}}Owner{{/tenure_freehold}}{{#tenure_leasehold}}Leaseholder{{/tenure_leasehold}}</dt>
+      {{#is_caution_title}}
+        <dt>Cautioner</dt>
+      {{/is_caution_title}}
+
+      {{^is_caution_title}}
+        <dt>{{#tenure_freehold}}Owner{{/tenure_freehold}}{{#tenure_leasehold}}Leaseholder{{/tenure_leasehold}}</dt>
+      {{/is_caution_title}}
 
       {{#each owners}}
         <dd{{#unless @last}} class="spacing-bottom-single"{{/unless}}>
