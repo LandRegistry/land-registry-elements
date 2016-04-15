@@ -21,6 +21,7 @@ function compileSass(config, stylesheets) {
       sass.render({
         data: stylesheet.data,
         includePaths: [
+          config.moduleDir,
           path.join(config.moduleDir, 'src/elements')
         ],
         outputStyle: (config.mode === 'production') ? 'compressed' : 'expanded'
