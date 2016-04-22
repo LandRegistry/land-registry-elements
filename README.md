@@ -194,6 +194,9 @@ Either way, when updating existing components, or adding new components, you wil
 
 ## Todos
 
+- Re-think language switcher translations
+  - "Current language" hidden text should be in the language of the page at that point
+  - "Switch to X" should be in the target language of the page you want to switch to
 - Revert caution title display to earlier prototype until we've tested it
 - DRY out the visual regression test code and the generateReferenceRendering code
 - Switch Travis' visual regression diffs to be uploaded to a Land Registry S3 bucket
