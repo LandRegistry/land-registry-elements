@@ -99,7 +99,7 @@
       {{#with lenders}}
         <dt>Lender{{#ifCond this.length '>' 1}}s{{/ifCond}}</dt>
         {{#each this}}
-          <dd{{#unless @last}} class="spacing-bottom-single"{{/unless}}>
+          <dd>
             <span class="bold">{{name}}</span>
 
             {{#if co_reg_no }}
