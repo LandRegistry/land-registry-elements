@@ -40,12 +40,20 @@
 
       {{#with address}}
         <dt>Address</dt>
-        <dd class="bold-medium">
-          <div class="address">
+        <dd>
+          <div class="address bold-medium">
             {{#each this}}
               <span>{{this}}</span>
             {{/each}}
           </div>
+
+          {{#with ../property_notes }}
+            <ul>
+              {{#each this}}
+                <li class="spacing-top-single">{{ this }}</li>
+              {{/each}}
+            </ul>
+          {{/with}}
         </dd>
       {{/with}}
 

@@ -10,33 +10,41 @@ backDestinationTitle: Search results
 
 
 tenure: Freehold
-last_changed_datetime: '2001-06-28T11:56:38+01:00'
-last_changed_date: 28 June 2001
-last_changed_time: '11:56:38'
+last_changed_datetime: '2009-04-20T15:38:36+01:00'
+last_changed_date: 20 April 2009
+last_changed_time: '15:38:36'
 data:
-  title_number: FAKE1000003
-address:
-  - 3 Lockman Points
+  title_number: FAKE1000006
+address: &ref_0
+  - 6 Lockman Points
   - Port Mina
   - PO0 1NV
 proprietors:
-  - name: Miss Ian Wolff
+  - name: Witting PLC
     addresses:
-      - - Sawayn Common
-        - Ardenberg
-        - NE2 6ZT
+      - - Carlie Route
+        - Lake Deon
+        - NE2 5BG
+    co_reg_no: 878544275
+    company_location: null
+  - name: Miss Gilbert Reilly
+    addresses:
+      - *ref_0
+  - name: Dr. Milton Stiedemann
+    addresses:
+      - *ref_0
 lenders:
-  - name: HSBC bank
+  - name: TSB bank
+    addresses:
+      - - Queen street
+        - West Justina
+        - PO4 8PQ
+  - name: TSB bank
     addresses:
       - - Royal Parade
-        - Diegoport
-        - NO6 0WZ
-  - name: Cooperative bank
-    addresses:
-      - - High street
-        - Lake Gay
-        - RA2 1YW
-ppi_data: '£188,000 the price stated to have been paid on 12 June 2002'
+        - Saraibury
+        - EA8 2QK
+ppi_data: '£578,000 the price stated to have been paid on 17 June 2011'
 indexPolygon:
   properties:
     feature_id: 4019
@@ -253,22 +261,6 @@ indexPolygon:
       name: 'urn:ogc:def:crs:EPSG::27700'
     type: name
   type: Feature
-
-vat-receipt:
-  date: 25 Jan 2016
-  invoice-number: ABC1234578
-  items: Summary of title FAKE177634
-  net-value: £1.67
-  vat: £0.33
-  total: £2.00
-  vat-registration-number: GB 8888 181 53
-  address:
-    organization: Land Registry
-    streetAddress:
-      - Trafalgar house
-      - 1 Bedford Park
-    addressLocality: Croydon
-    postalCode: CR0 2AQ
 
 ---
 {{> pages/find-property-information/order-confirmation}}
