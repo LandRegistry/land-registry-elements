@@ -10,9 +10,9 @@
   </div>
 </div>
 
-<h1 class="heading-large spacing-top-single">Summary of title {{title_number}}</h1>
+<h1 class="heading-large spacing-top-single">Summary of title {{data.title_number}}</h1>
 
-<p class="font-xsmall">This title was last changed on <time datetime="{{datetime}}">{{date}}</time></p>
+<p class="font-xsmall">This title was last changed on <time datetime="{{last_changed_datetime}}">{{last_changed_date}} at {{last_changed_time}}</time></p>
 
 <div class="grid-row column-flip spacing-top-single">
   <div class="column-one-third tablet-column-one-third spacing-bottom-single">
@@ -38,36 +38,92 @@
         </dd>
       {{/is_caution_title}}
 
-      {{#with propertyAddress}}
+      {{#with address}}
         <dt>Address</dt>
         <dd class="bold-medium">
-          {{> elements/land-registry/address }}
+          <div class="address">
+            {{#each this}}
+              <span>{{this}}</span>
+            {{/each}}
+          </div>
         </dd>
       {{/with}}
 
-      {{#is_caution_title}}
-        <dt>Cautioner</dt>
-      {{/is_caution_title}}
+      {{#if is_caution_title}}
+        <dt>Cautioner{{#ifCond proprietors.length '>' 1}}s{{/ifCond}}</dt>
+      {{else}}
 
-      {{^is_caution_title}}
-        <dt>{{#tenure_freehold}}Owner{{/tenure_freehold}}{{#tenure_leasehold}}Leaseholder{{/tenure_leasehold}}</dt>
-      {{/is_caution_title}}
+        {{#ifCond tenure '==' 'Freehold'}}
+          <dt>Owner{{#ifCond proprietors.length '>' 1}}s{{/ifCond}}</dt>
+        {{/ifCond}}
 
-      {{#each owners}}
+        {{#ifCond tenure '==' 'Leasehold'}}
+          <dt>Leaseholder{{#ifCond proprietors.length '>' 1}}s{{/ifCond}}</dt>
+        {{/ifCond}}
+
+      {{/if}}
+
+      {{#each proprietors}}
         <dd{{#unless @last}} class="spacing-bottom-single"{{/unless}}>
-          {{> elements/land-registry/address }}
+          <h2 class="bold">{{name}}</h2>
+
+          {{#if co_reg_no }}
+            <div>{{ co_reg_no }}</div>
+
+            {{#if company_location }}
+              <div>{{ company_location }}</div>
+            {{/if}}
+          {{/if}}
+
+          {{#each addresses}}
+            <div class="address spacing-top-half">
+              {{#each this}}
+                <span>{{this}}</span>
+              {{/each}}
+            </div>
+          {{/each}}
         </dd>
       {{/each}}
 
-      {{#with tenureType}}
+      {{#with lenders}}
+        <dt>Lender{{#ifCond this.length '>' 1}}s{{/ifCond}}</dt>
+        {{#each this}}
+          <dd{{#unless @last}} class="spacing-bottom-single"{{/unless}}>
+            <span class="bold">{{name}}</span>
+
+            {{#if co_reg_no }}
+              <span>{{ co_reg_no }}</span>
+
+              {{#if company_location }}
+                <span>{{ company_location }}</span>
+              {{/if}}
+            {{/if}}
+
+            {{#each addresses}}
+              <div class="address spacing-bottom-half">
+                {{#each this}}
+                  <span>{{this}}</span>
+                {{/each}}
+              </div>
+            {{/each}}
+          </dd>
+        {{/each}}
+      {{/with}}
+
+      {{#with tenure}}
         <dt>Tenure type</dt>
         <dd class="bold-small">{{this}}</dd>
       {{/with}}
 
-      {{#lease_term}}
+      {{#with ppi_data}}
+        <dt>Price paid</dt>
+        <dd class="bold-small">{{this}}</dd>
+      {{/with}}
+
+      {{#with lease_term}}
         <dt>Lease length</dt>
         <dd class="bold-small">{{this}}</dd>
-      {{/lease_term}}
+      {{/with}}
 
     </dl>
 
