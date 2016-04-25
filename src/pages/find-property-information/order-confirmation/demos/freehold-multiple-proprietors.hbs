@@ -1,37 +1,49 @@
 ---
-title: Leasehold one leaseholder
+title: Freehold multiple proprietors
 pageData:
   hideFooterOGL: true
   hideFooterContactNumbers: true
   propositionName: Find property information
 
-backDestinationTitle: Search again
+backPrefix: Back to
+backDestinationTitle: Search results
 
-tenure: Leasehold
-last_changed_datetime: '2013-05-23T11:56:30+01:00'
-last_changed_date: 23 May 2013
-last_changed_time: '11:56:30'
+tenure: Freehold
+last_changed_datetime: '2009-04-20T15:38:36+01:00'
+last_changed_date: 20 April 2009
+last_changed_time: '15:38:36'
 data:
-  title_number: FAKE1000001
+  title_number: FAKE1000006
 address: &ref_0
-  - 1 Lockman Points
+  - 6 Lockman Points
   - Port Mina
   - PO0 1NV
 proprietors:
-  - name: Mrs. Kaylie Mayert
+  - name: Witting PLC
+    addresses:
+      - - Carlie Route
+        - Lake Deon
+        - NE2 5BG
+    co_reg_no: 878544275
+    company_location: null
+  - name: Miss Gilbert Reilly
+    addresses:
+      - *ref_0
+  - name: Dr. Milton Stiedemann
     addresses:
       - *ref_0
 lenders:
-  - name: HSBC bank
+  - name: TSB bank
     addresses:
-      - - High street
-        - North Marilyne
-        - LA8 8LE
-property_notes:
-  - >-
-    As to the part tinted blue on the title plan, only the first floor is
-    included in the title.
-ppi_data: '£604,000 the price stated to have been paid on 8 June 2014'
+      - - Queen street
+        - West Justina
+        - PO4 8PQ
+  - name: TSB bank
+    addresses:
+      - - Royal Parade
+        - Saraibury
+        - EA8 2QK
+ppi_data: '£578,000 the price stated to have been paid on 17 June 2011'
 indexPolygon:
   properties:
     feature_id: 4019
@@ -266,4 +278,4 @@ vat-receipt:
     postalCode: CR0 2AQ
 
 ---
-{{> pages/find-property-information/summary}}
+{{> pages/find-property-information/order-confirmation}}
