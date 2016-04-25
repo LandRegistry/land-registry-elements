@@ -1,26 +1,49 @@
 ---
-title: Freehold caution title
+title: Freehold multiple proprietors
 pageData:
   hideFooterOGL: true
   hideFooterContactNumbers: true
   propositionName: Find property information
 
-backDestinationTitle: Search again
+backPrefix: Back to
+backDestinationTitle: Search results
 
 tenure: Freehold
-last_changed_datetime: '2010-04-29T08:02:10+01:00'
-last_changed_date: 29 April 2010
-last_changed_time: '8:02:10'
+last_changed_datetime: '2009-04-20T15:38:36+01:00'
+last_changed_date: 20 April 2009
+last_changed_time: '15:38:36'
 data:
-  title_number: FAKE1000094
+  title_number: FAKE1000006
 address: &ref_0
-  - 33 Robin Prairie
+  - 6 Lockman Points
   - Port Mina
-  - PO1 8MC
+  - PO0 1NV
 proprietors:
-  - name: Ms. Ivah Spinka
+  - name: Witting PLC
+    addresses:
+      - - Carlie Route
+        - Lake Deon
+        - NE2 5BG
+    co_reg_no: 878544275
+    company_location: null
+  - name: Miss Gilbert Reilly
     addresses:
       - *ref_0
+  - name: Dr. Milton Stiedemann
+    addresses:
+      - *ref_0
+lenders:
+  - name: TSB bank
+    addresses:
+      - - Queen street
+        - West Justina
+        - PO4 8PQ
+  - name: TSB bank
+    addresses:
+      - - Royal Parade
+        - Saraibury
+        - EA8 2QK
+ppi_data: '£578,000 the price stated to have been paid on 17 June 2011'
 indexPolygon:
   properties:
     feature_id: 4019
@@ -237,7 +260,6 @@ indexPolygon:
       name: 'urn:ogc:def:crs:EPSG::27700'
     type: name
   type: Feature
-is_caution_title: true
 
 vat-receipt:
   date: 25 Jan 2016
@@ -256,4 +278,4 @@ vat-receipt:
     postalCode: CR0 2AQ
 
 ---
-{{> pages/find-property-information/summary}}
+{{> pages/find-property-information/order-confirmation}}

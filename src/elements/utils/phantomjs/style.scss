@@ -1,0 +1,18 @@
+.phantom-js-test-rendering {
+  .map {
+    position: relative;
+
+    &:before {
+      content: 'Maps disabled in PhantomJS';
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      text-align: center;
+      display: block;
+    }
+
+    * {
+      display: none;
+    }
+  }
+}
