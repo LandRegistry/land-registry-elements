@@ -46,3 +46,27 @@
     }
   }
 }
+
+.definition-tabular-sectioned {
+  dt {
+    @include bold-24();
+    margin-top: $gutter-half;
+    padding-top: $gutter-half;
+    margin-bottom: $gutter-half;
+    border-top: 1px solid $border-colour;
+
+    @include media(tablet) {
+      float: left;
+      clear: left;
+      width: $one-quarter;
+      margin-bottom: $gutter-one-third;
+      padding-right: $gutter-half;
+      box-sizing: border-box;
+      margin-top: 0;
+      padding-top: 0;
+      border: 0;
+      font-size: inherit;
+      font-weight: inherit;
+    }
+  }
+}
