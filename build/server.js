@@ -6,6 +6,9 @@ var path = require('path');
 var express = require('express');
 var app = express();
 
+var compression = require('compression');
+app.use(compression());
+
 /**
  * Serve static files such as css, js, images
  */
