@@ -68,13 +68,16 @@
           <h2 class="bold">{{name}}</h2>
 
           {{#if co_reg_no }}
+            <h3 class="visuallyhidden">Company registration number</h3>
             <div>{{ co_reg_no }}</div>
 
             {{#if company_location }}
+              <h3 class="visuallyhidden">Company location</h3>
               <div>{{ company_location }}</div>
             {{/if}}
           {{/if}}
 
+          <h3 class="visuallyhidden">Addresses</h3>
           {{#each addresses}}
             <div class="address spacing-top-half">
               {{#each this}}
