@@ -54,6 +54,7 @@
     "browsernizr": "^2.1.0",
     "clarify": "^1.0.5",
     "closest": "0.0.1",
+    "compression": "^1.6.1",
     "conduct.js": "^1.0.0",
     "copy": "^0.2.0",
     "delegate": "^3.0.1",

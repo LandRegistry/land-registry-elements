@@ -198,11 +198,9 @@ Either way, when updating existing components, or adding new components, you wil
   - "Current language" hidden text should be in the language of the page at that point
   - "Switch to X" should be in the target language of the page you want to switch to
 - Cookies link missing from Find property information footer
-- Revert caution title display to earlier prototype until we've tested it
 - DRY out the visual regression test code and the generateReferenceRendering code
 - Switch Travis' visual regression diffs to be uploaded to a Land Registry S3 bucket
 - Refactor to be more decoupled from gov uk stuff so that it can be used on internally facing LR projects?
-- Add more variants and more data to the summary demos
 - Can we nuke the ntatabularnumbers font if and when it's not used?
 - HTML prettification removed because:
   - it breaks the inline JSON for clientside validation
@@ -210,13 +208,11 @@ Either way, when updating existing components, or adding new components, you wil
   - Can we fix the above and get it back in?
 - Consider use of alert role to announce client side validation errors https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alert_role
 - Document which stylesheets to include (Pull govuk template and fonts in via sass?)
-- Get price paid into the land-registry-elements demos?
 - Aria roles on the split detail component
 - Testplan generator? I.e. take a list of pages and browsers and put together a list for you to complete
 - Write more comprehensive test suite for the clientside validation checking that it matches the spec set out by gov uk
 - Exclude image assets that are not referenced in the css to keep the build output clean
 - Split out gov uk JS and include it into the core component with browserify?
-- Question: The h1 on the search results page is also the form label. Is this ok?!
 
 
 --------------------------------------------------------------------------------
