@@ -187,7 +187,7 @@ function Validator(element, config) {
     // Remove any previous form element errors
     [].forEach.call(element.querySelectorAll('.form-group'), function(formGroup) {
 
-      var target = formGroup.querySelector('input');
+      var target = formGroup.querySelector('.form-control');
 
       if(restrictTo && target.getAttribute('name') !== restrictTo.getAttribute('name')) {
         return;
