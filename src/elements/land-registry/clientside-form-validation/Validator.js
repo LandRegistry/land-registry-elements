@@ -186,8 +186,11 @@ function Validator(element, config) {
 
     // Remove any previous form element errors
     [].forEach.call(element.querySelectorAll('.form-group'), function(formGroup) {
-
       var target = formGroup.querySelector('.form-control');
+
+      if(!target) {
+        return;
+      }
 
       if(restrictTo && target.getAttribute('name') !== restrictTo.getAttribute('name')) {
         return;
@@ -209,6 +212,10 @@ function Validator(element, config) {
       // Flag each element that has an error
       errors.forEach(function(error) {
         var target = document.querySelectorAll('[name="' + error.name + '"]')[0];
+
+        if(!target) {
+          return;
+        }
 
         if(restrictTo && target !== restrictTo) {
           return;
