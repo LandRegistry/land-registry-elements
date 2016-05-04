@@ -222,9 +222,17 @@ function Validator(element, config) {
         }
 
         var message = domify(options.individualErrorTemplate.render(error));
-        closest(target, '.form-group').insertBefore(message, target.nextSibling);
 
         var formGroup = closest(target, '.form-group');
+
+        // If the element is a direct child of the form group, insert the error after it
+        if(target.parentNode === formGroup) {
+          formGroup.insertBefore(message, target.nextSibling);
+        } else {
+          // Otherwise insert it at the end of the form group
+          formGroup.appendChild(message);
+        }
+
         formGroup.classList.add('error');
 
         // Link the form field to the error message with an aria attribute
