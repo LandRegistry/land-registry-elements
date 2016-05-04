@@ -222,7 +222,7 @@ function Validator(element, config) {
         }
 
         var message = domify(options.individualErrorTemplate.render(error));
-        closest(target, '.form-group').appendChild(message);
+        closest(target, '.form-group').insertBefore(message, target.nextSibling);
 
         var formGroup = closest(target, '.form-group');
         formGroup.classList.add('error');
