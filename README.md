@@ -194,6 +194,8 @@ Either way, when updating existing components, or adding new components, you wil
 
 ## Todos
 
+- Re-enable clientside validation test suite - failing now that validatejs has been put in async mode?
+- Write more comprehensive test suite for the clientside validation checking that it matches the spec set out by gov uk
 - Re-think language switcher translations
   - "Current language" hidden text should be in the language of the page at that point
   - "Switch to X" should be in the target language of the page you want to switch to
@@ -210,7 +212,6 @@ Either way, when updating existing components, or adding new components, you wil
 - Document which stylesheets to include (Pull govuk template and fonts in via sass?)
 - Aria roles on the split detail component
 - Testplan generator? I.e. take a list of pages and browsers and put together a list for you to complete
-- Write more comprehensive test suite for the clientside validation checking that it matches the spec set out by gov uk
 - Exclude image assets that are not referenced in the css to keep the build output clean
 - Split out gov uk JS and include it into the core component with browserify?
 

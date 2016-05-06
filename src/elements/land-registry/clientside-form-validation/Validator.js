@@ -30,6 +30,8 @@ function Validator(element, config) {
     message: 'The following errors were found:',
     description: false,
 
+    controlSelector: '.form-control, input[type="checkbox"], input[type="radio"]',
+
     // Note: Pre-compiled with hoganify browserify transform: @see https://www.npmjs.com/package/hoganify
     summaryTemplate: require('./clientside-templates/summary.hogan'),
     individualErrorTemplate: require('./clientside-templates/individualError.hogan'),
@@ -70,26 +72,39 @@ function Validator(element, config) {
   /**
    * Main validation helper
    */
-  function validateForm() {
-    var errors = validate(element, options.rules, {
-      fullMessages: false
-    });
+  function validateForm(callback) {
 
-    var errorData = [];
+    validate.async(element, options.rules, {
+      fullMessages: false,
+      cleanAttributes: false
+    })
+    .then(
+      function() {
+        // Success handler - I.e. no validation errors
+        callback([]);
+      },
+      function(errors) {
+        var errorData = [];
 
-    // Pre-process the errors to be suitable for hogan
-    for(var key in errors) {
-      if(errors.hasOwnProperty(key)) {
-        errors[key].forEach(function(error) {
-          errorData.push({
-            'name': key,
-            'message': error
-          });
-        });
+        if (errors instanceof Error) {
+          // This means an exception was thrown from a validator
+        } else {
+          // Pre-process the errors to be suitable for hogan
+          for(var key in errors) {
+            if(errors.hasOwnProperty(key)) {
+              errors[key].forEach(function(error) {
+                errorData.push({
+                  'name': key,
+                  'message': error
+                });
+              });
+            }
+          }
+
+          callback(errorData);
+        }
       }
-    }
-
-    return errorData;
+    );
   }
 
   /**
@@ -97,17 +112,19 @@ function Validator(element, config) {
    */
   function submit(e) {
 
-    var errorData = validateForm();
+    validateForm(function(errorData) {
 
-    if(errorData.length > 0) {
-      e.preventDefault();
-    }
+      if(errorData.length > 0) {
+        e.preventDefault();
+      }
 
-    showSummary(errorData);
+      showSummary(errorData);
 
-    if(options.showIndividualFormErrors) {
-      showIndividualFormErrors(errorData);
-    }
+      if(options.showIndividualFormErrors) {
+        showIndividualFormErrors(errorData);
+      }
+
+    });
 
   }
 
@@ -128,22 +145,26 @@ function Validator(element, config) {
    * focusout handler
    */
   function focusout(e) {
-    var errorData = validateForm();
 
-    if(e.delegateTarget.isDirty && options.showIndividualFormErrors) {
-      showIndividualFormErrors(errorData, e.delegateTarget);
-    }
+    validateForm(function(errorData) {
+      if(e.delegateTarget.isDirty && options.showIndividualFormErrors) {
+        showIndividualFormErrors(errorData, e.delegateTarget);
+      }
+    });
+
   }
 
   /**
    * radio / checkbox change
    */
   function boolChange(e) {
-    var errorData = validateForm();
 
-    if(options.showIndividualFormErrors) {
-      showIndividualFormErrors(errorData, e.delegateTarget);
-    }
+    validateForm(function(errorData) {
+      if(options.showIndividualFormErrors) {
+        showIndividualFormErrors(errorData, e.delegateTarget);
+      }
+    });
+
   }
 
   /**
@@ -186,11 +207,7 @@ function Validator(element, config) {
 
     // Remove any previous form element errors
     [].forEach.call(element.querySelectorAll('.form-group'), function(formGroup) {
-      var target = formGroup.querySelector('.form-control');
-
-      if(!target) {
-        return;
-      }
+      var target = formGroup.querySelector(options.controlSelector);
 
       if(restrictTo && target.getAttribute('name') !== restrictTo.getAttribute('name')) {
         return;
@@ -198,7 +215,9 @@ function Validator(element, config) {
 
       formGroup.classList.remove('error');
 
-      target.removeAttribute('aria-describedby');
+      if(target) {
+        target.removeAttribute('aria-describedby');
+      }
 
       var errorMessage = formGroup.querySelector('.error-message');
 
@@ -237,7 +256,7 @@ function Validator(element, config) {
 
         // Link the form field to the error message with an aria attribute
         target.setAttribute('aria-describedby', 'error-message-' + error.name);
-      })
+      });
 
     }
   }
