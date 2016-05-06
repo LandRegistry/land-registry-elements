@@ -70,24 +70,36 @@ function Validator(element, config) {
   /**
    * Main validation helper
    */
-  function validateForm() {
-    var errors = validate(element, options.rules, {
-      fullMessages: false
-    });
-
+  function validateForm(callback) {
     var errorData = [];
 
-    // Pre-process the errors to be suitable for hogan
-    for(var key in errors) {
-      if(errors.hasOwnProperty(key)) {
-        errors[key].forEach(function(error) {
-          errorData.push({
-            'name': key,
-            'message': error
-          });
-        });
+    validate.async(element, options.rules, {
+      fullMessages: false
+    })
+    .then(
+      function() {
+        // Success handler - I.e. no validation errors
+      },
+      function(errors) {
+        if (errors instanceof Error) {
+          // This means an exception was thrown from a validator
+        } else {
+          // Pre-process the errors to be suitable for hogan
+          for(var key in errors) {
+            if(errors.hasOwnProperty(key)) {
+              errors[key].forEach(function(error) {
+                errorData.push({
+                  'name': key,
+                  'message': error
+                });
+              });
+            }
+          }
+
+          callback(errorData);
+        }
       }
-    }
+    );
 
     return errorData;
   }
@@ -97,17 +109,19 @@ function Validator(element, config) {
    */
   function submit(e) {
 
-    var errorData = validateForm();
+    validateForm(function(errorData) {
 
-    if(errorData.length > 0) {
-      e.preventDefault();
-    }
+      if(errorData.length > 0) {
+        e.preventDefault();
+      }
 
-    showSummary(errorData);
+      showSummary(errorData);
 
-    if(options.showIndividualFormErrors) {
-      showIndividualFormErrors(errorData);
-    }
+      if(options.showIndividualFormErrors) {
+        showIndividualFormErrors(errorData);
+      }
+
+    });
 
   }
 
@@ -128,22 +142,26 @@ function Validator(element, config) {
    * focusout handler
    */
   function focusout(e) {
-    var errorData = validateForm();
 
-    if(e.delegateTarget.isDirty && options.showIndividualFormErrors) {
-      showIndividualFormErrors(errorData, e.delegateTarget);
-    }
+    validateForm(function(errorData) {
+      if(e.delegateTarget.isDirty && options.showIndividualFormErrors) {
+        showIndividualFormErrors(errorData, e.delegateTarget);
+      }
+    });
+
   }
 
   /**
    * radio / checkbox change
    */
   function boolChange(e) {
-    var errorData = validateForm();
 
-    if(options.showIndividualFormErrors) {
-      showIndividualFormErrors(errorData, e.delegateTarget);
-    }
+    validateForm(function(errorData) {
+      if(options.showIndividualFormErrors) {
+        showIndividualFormErrors(errorData, e.delegateTarget);
+      }
+    });
+
   }
 
   /**
