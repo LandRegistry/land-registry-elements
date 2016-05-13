@@ -44,7 +44,6 @@ function Validator(element, config) {
 
   // Private variables
   var errorSummary;
-  var isValid = false;
 
   /**
    * Set everything up
@@ -72,39 +71,26 @@ function Validator(element, config) {
   /**
    * Main validation helper
    */
-  function validateForm(callback) {
+  function validateForm() {
+    var errors = validate(element, options.rules, {
+      fullMessages: false
+    });
 
-    validate.async(element, options.rules, {
-      fullMessages: false,
-      cleanAttributes: false
-    })
-    .then(
-      function() {
-        // Success handler - I.e. no validation errors
-        callback([]);
-      },
-      function(errors) {
-        var errorData = [];
+    var errorData = [];
 
-        if (errors instanceof Error) {
-          // This means an exception was thrown from a validator
-        } else {
-          // Pre-process the errors to be suitable for hogan
-          for(var key in errors) {
-            if(errors.hasOwnProperty(key)) {
-              errors[key].forEach(function(error) {
-                errorData.push({
-                  'name': key,
-                  'message': error
-                });
-              });
-            }
-          }
-
-          callback(errorData);
-        }
+    // Pre-process the errors to be suitable for hogan
+    for(var key in errors) {
+      if(errors.hasOwnProperty(key)) {
+        errors[key].forEach(function(error) {
+          errorData.push({
+            'name': key,
+            'message': error
+          });
+        });
       }
-    );
+    }
+
+    return errorData;
   }
 
   /**
@@ -112,34 +98,17 @@ function Validator(element, config) {
    */
   function submit(e) {
 
-    // If the form has been marked as valid, just let it through and submit
-    if(isValid) {
-      return;
-    } else {
-      // Otherwise, prevent the submission
+    var errorData = validateForm();
+
+    if(errorData.length > 0) {
       e.preventDefault();
     }
 
-    // And delete the form
-    validateForm(function(errorData) {
+    showSummary(errorData);
 
-      showSummary(errorData);
-
-      if(options.showIndividualFormErrors) {
-        showIndividualFormErrors(errorData);
-      }
-
-      if(errorData.length > 0) {
-        isValid = false;
-      } else {
-
-        // if no errors were found, mark the form as valid and resubmit it
-        // On the next trip around it will simply submit as normal
-        isValid = true;
-        element.submit();
-      }
-
-    });
+    if(options.showIndividualFormErrors) {
+      showIndividualFormErrors(errorData);
+    }
 
   }
 
@@ -161,11 +130,11 @@ function Validator(element, config) {
    */
   function focusout(e) {
 
-    validateForm(function(errorData) {
-      if(e.delegateTarget.isDirty && options.showIndividualFormErrors) {
-        showIndividualFormErrors(errorData, e.delegateTarget);
-      }
-    });
+    var errorData = validateForm();
+
+    if(e.delegateTarget.isDirty && options.showIndividualFormErrors) {
+      showIndividualFormErrors(errorData, e.delegateTarget);
+    }
 
   }
 
@@ -174,11 +143,11 @@ function Validator(element, config) {
    */
   function boolChange(e) {
 
-    validateForm(function(errorData) {
-      if(options.showIndividualFormErrors) {
-        showIndividualFormErrors(errorData, e.delegateTarget);
-      }
-    });
+    var errorData = validateForm();
+
+    if(options.showIndividualFormErrors) {
+      showIndividualFormErrors(errorData, e.delegateTarget);
+    }
 
   }
 
