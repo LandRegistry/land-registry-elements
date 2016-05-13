@@ -196,7 +196,7 @@ Either way, when updating existing components, or adding new components, you wil
 
 - Re-enable clientside validation test suite - failing now that validatejs has been put in async mode?
 - Write more comprehensive test suite for the clientside validation checking that it matches the spec set out by gov uk
-- Re-think language switcher translations
+- Re-think language switcher translations.
   - "Current language" hidden text should be in the language of the page at that point?
   - "Switch to X" should be in the target language of the page you want to switch to
 - Cookies link missing from Find property information footer
