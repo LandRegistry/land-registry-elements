@@ -44,6 +44,7 @@ function Validator(element, config) {
 
   // Private variables
   var errorSummary;
+  var isValid = false;
 
   /**
    * Set everything up
@@ -112,16 +113,31 @@ function Validator(element, config) {
    */
   function submit(e) {
 
-    validateForm(function(errorData) {
+    // If the form has been marked as valid, just let it through and submit
+    if(isValid) {
+      return;
+    } else {
+      // Otherwise, prevent the submission
+      e.preventDefault();
+    }
 
-      if(errorData.length > 0) {
-        e.preventDefault();
-      }
+    // And delete the form
+    validateForm(function(errorData) {
 
       showSummary(errorData);
 
       if(options.showIndividualFormErrors) {
         showIndividualFormErrors(errorData);
+      }
+
+      if(errorData.length > 0) {
+        isValid = false;
+      } else {
+
+        // if no errors were found, mark the form as valid and resubmit it
+        // On the next trip around it will simply submit as normal
+        isValid = true;
+        element.submit();
       }
 
     });
