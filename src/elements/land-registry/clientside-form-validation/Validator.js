@@ -67,7 +67,6 @@ function Validator(element, config) {
 
     // Summary click handlers
     delegate(element, '.error-summary-list a', 'click', summaryClick);
-
   }
 
   /**
