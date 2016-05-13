@@ -33,7 +33,7 @@ describe('Clientside validation', function() {
       .init()
       .url('http://localhost:3000/components/elements/land-registry/clientside-form-validation/demo/')
       .setValue('#full-name', 'WebdriverIO')
-      .click('#submit')
+      .submitForm('#example_form')
       .element('.error-summary')
       .call(done);
   });
