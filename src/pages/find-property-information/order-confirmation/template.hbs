@@ -77,12 +77,17 @@
 
     </dl>
 
-    <h2 class="heading-medium collapse-top">The summary will tell you</h2>
+    {{#if is_caution_title}}
+      <h2 class="heading-medium collapse-top">Land Registry does not know the owner of this property</h2>
+    {{else}}
+      <h2 class="heading-medium collapse-top">The summary will tell you</h2>
+    {{/if}}
+
     <ul class="list list-bullet">
 
       {{#if is_caution_title}}
-        <li>the name of the cautioner and their address</li>
-        <li>information about the cautioner’s claim</li>
+        <li>Someone other than the owner (known as the ‘cautioner’) has registered a right or interest in the property.</li>
+          <li><strong class="bold">The summary will give you the cautioner's name and address.</strong></li>
       {{else}}
 
         {{#ifCond tenure '==' 'Freehold'}}
