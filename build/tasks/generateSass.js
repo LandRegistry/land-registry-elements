@@ -29,12 +29,14 @@ function generateSass(config) {
           }
         });
 
+        // If we've got no stylesheets then bail out
+        if(sassContents.length === 0) {
+          return resolve([]);
+        }
+
         // Turn the lines into a string suitable for passing to node-sass
         sassContents = sassContents.join('\n');
 
-        if(sassContents.length === 0) {
-          return Promise.resolve();
-        }
 
         // Write out separate versions of the stylesheet for the various IEs
         var stylesheets = [
