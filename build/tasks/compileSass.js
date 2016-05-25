@@ -12,6 +12,11 @@ var mkdirp = require('mkdirp');
 function compileSass(config, stylesheets) {
   console.time('Compile SASS');
 
+  // If we've got no stylesheets then bail out
+  if(stylesheets.length === 0) {
+    return Promise.resolve();
+  }
+
   var promises = [];
 
   stylesheets.forEach(function(stylesheet) {

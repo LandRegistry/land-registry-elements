@@ -61,13 +61,17 @@ function compileJavaScript(config) {
               var browserfyConfig = {
                 transform: [
                   require('hoganify')
-                ],
-                insertGlobalVars: {
+                ]
+              };
+
+              // Only insert asset path as a global if it is not set to false
+              if(config.assetPath !== false) {
+                browserfyConfig.insertGlobalVars = {
                   'assetPath': function(file, dir) {
                     return '"' + config.assetPath + '"';
                   }
-                }
-              };
+                };
+              }
 
               // If we're in production mode, turn off debug and enable uglification
               // and use the vanilla browserify module

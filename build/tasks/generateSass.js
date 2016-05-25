@@ -20,9 +20,6 @@ function generateSass(config) {
 
         var sassContents = [];
 
-        // Inject our asset path variable
-        sassContents.push('$assetPath: "' + config.assetPath + '";');
-
         // Build up our sass imports based on the dependency tree
         componentsTree.forEach(function(componentId) {
 
@@ -32,12 +29,14 @@ function generateSass(config) {
           }
         });
 
+        // If we've got no stylesheets then bail out
+        if(sassContents.length === 0) {
+          return resolve([]);
+        }
+
         // Turn the lines into a string suitable for passing to node-sass
         sassContents = sassContents.join('\n');
 
-        if(sassContents.length === 0) {
-          return Promise.resolve();
-        }
 
         // Write out separate versions of the stylesheet for the various IEs
         var stylesheets = [
