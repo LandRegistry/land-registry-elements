@@ -10,6 +10,7 @@ require('./javascript/Array.prototype.map');
 require('./javascript/Array.prototype.reduce');
 require('./javascript/Date.now');
 require('./javascript/Element.prototype.firstElementChild');
+require('./javascript/Element.prototype.textContent');
 require('./javascript/Function.prototype.bind');
 require('./javascript/Object.defineProperties');
 require('./javascript/Object.defineProperty');
