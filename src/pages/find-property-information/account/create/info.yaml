@@ -1,4 +1,4 @@
-name: Create account
+name: Register
 categories:
   primary: Land Registry
   secondary: Find property information account pages
@@ -6,7 +6,11 @@ categories:
 dependencies:
   - elements/govuk/layout
   - elements/govuk/core
+  - elements/govuk/lists
   - elements/govuk/forms
   - elements/land-registry/core
+  - elements/land-registry/split-detail
   - elements/land-registry/vertical-spacing
   - elements/land-registry/clientside-form-validation
+  - elements/land-registry/email-repeat
+  - elements/land-registry/password-reveal

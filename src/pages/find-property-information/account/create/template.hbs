@@ -1,14 +1,12 @@
 {{> elements/govuk/phase-banner }}
 
-<h1 class="heading-large">Create account</h1>
+<h1 class="heading-large">Register</h1>
 
 <div class="grid-row spacing-top-single">
 
   <div class="column-two-thirds tablet-column-two-thirds">
 
     <form action="account_created_continue" method="post" novalidate data-clientside-validation="create_account_form_validation">
-
-      {{!-- <h2 class="heading-medium">Account details</h2> --}}
 
       <fieldset>
 
@@ -25,24 +23,12 @@
             </div>
           </div>
 
-          <input class="form-control" type="email" id="email" name="email">
+          {{> elements/land-registry/email-repeat }}
 
         </div>
-
-        <div class="panel panel-border-narrow email-hint">
-          <p>Please ensure your email address is displayed correctly below. We will need this if you need to reset your password in future.</p>
-          <p id="email-hint-value" class="bold">EMAIL HINT HERE</p>
-        </div>
-
 
         <div class="form-group">
-          <label class="form-label" for="pass">Create a password</label>
-          <input class="form-control" type="password" id="pass" name="pass">
-
-          <label class="form-checkbox" for="show-password">
-            <input id="show-password" name="show-password" type="checkbox">
-            Show typing
-          </label>
+          {{> elements/land-registry/password-reveal }}
 
           <p class="form-hint">Your password must:</p>
           <ul class="form-hint list list-bullet">
@@ -53,18 +39,6 @@
           </ul>
 
         </div>
-
-        <script>
-          document.getElementById('show-password').addEventListener('click', function(e) {
-            var password = document.getElementById('pass');
-
-            if(password.type === 'password') {
-              password.type = 'text';
-            } else {
-              password.type = 'password';
-            }
-          });
-        </script>
 
       </fieldset>
 
