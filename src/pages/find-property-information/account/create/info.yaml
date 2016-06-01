@@ -1,0 +1,12 @@
+name: Create account
+categories:
+  primary: Land Registry
+  secondary: Find property information account pages
+
+dependencies:
+  - elements/govuk/layout
+  - elements/govuk/core
+  - elements/govuk/forms
+  - elements/land-registry/core
+  - elements/land-registry/vertical-spacing
+  - elements/land-registry/clientside-validation
