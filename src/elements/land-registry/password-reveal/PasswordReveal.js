@@ -10,7 +10,7 @@ function PasswordReveal(element, config) {
 
   var options = {
     toggleLabel: 'Show typing',
-    checkboxTemplate: require('./clientside-templates/checkbox.hogan'),
+    checkboxTemplate: require('./clientside-templates/checkbox.hogan')
   };
 
   extend(options, config);
@@ -44,7 +44,7 @@ function PasswordReveal(element, config) {
   /**
    * Main toggle event handler
    */
-  function toggle(e) {
+  function toggle() {
     if(element.type === 'password') {
       element.type = 'text';
     } else {
