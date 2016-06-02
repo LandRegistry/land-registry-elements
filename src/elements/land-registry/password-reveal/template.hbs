@@ -1,19 +1,2 @@
 <label class="form-label" for="pass">Create a password</label>
-<input class="form-control" type="password" id="pass" name="pass">
-
-<label class="form-checkbox" for="show-password">
-  <input id="show-password" name="show-password" type="checkbox">
-  Show typing
-</label>
-
-<script>
-  document.getElementById('show-password').addEventListener('click', function(e) {
-    var password = document.getElementById('pass');
-
-    if(password.type === 'password') {
-      password.type = 'text';
-    } else {
-      password.type = 'password';
-    }
-  });
-</script>
+<input class="form-control" type="password" id="pass" name="pass" data-password-reveal>

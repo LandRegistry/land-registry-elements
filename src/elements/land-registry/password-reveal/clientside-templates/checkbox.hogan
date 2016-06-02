@@ -1,0 +1,4 @@
+<label class="form-checkbox" for="show-password-{{target}}">
+  <input id="show-password-{{target}}" name="show-password-{{target}}" type="checkbox">
+  {{label}}
+</label>
