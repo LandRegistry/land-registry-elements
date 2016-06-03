@@ -71,7 +71,6 @@ require('./testURLs')
       // Mobile screenshot
       promises.push(throat(function() {
         return new Promise(function(resolve, reject) {
-
           var renderStream = webshot('http://land-registry-elements.herokuapp.com' + componentUrl, mobileOptions);
 
           var file = fs.createWriteStream('test/fixtures/visual-regression/reference-renderings/mobile-' + fileName + '.png', {encoding: 'binary'});
