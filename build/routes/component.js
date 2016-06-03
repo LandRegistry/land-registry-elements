@@ -18,8 +18,12 @@ module.exports = function(app){
         components.getComponent(req.params[0])
       ])
       .spread(function(hbs, component) {
-
         var variant = component.variants[req.params.variant];
+
+        if(!variant) {
+          res.sendStatus(404);
+        }
+
         var context = extend(variant.context, {component: component });
 
         renderPage(hbs, {
@@ -36,6 +40,8 @@ module.exports = function(app){
         require('trace');
         require('clarify');
         console.trace(err);
+
+        res.sendStatus(404);
       });
   });
 
