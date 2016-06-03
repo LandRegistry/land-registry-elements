@@ -1,15 +1,17 @@
 var components = require('../../build/modules/components');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
+var rimraf = require('rimraf');
 var webshot = require('webshot');
 var sanitize = require('sanitize-filename');
 var url = require('url');
 var trim = require('trim-character');
 var extend = require('extend');
-var throat = require('throat')(3)
+var throat = require('throat')(2)
 
 require('../server');
 
+rimraf.sync('test/fixtures/visual-regression/reference-renderings');
 mkdirp.sync('test/fixtures/visual-regression/reference-renderings');
 
 var options = {
@@ -50,7 +52,8 @@ require('./testURLs')
       // Desktop screenshot
       promises.push(throat(function() {
         return new Promise(function(resolve, reject) {
-          var renderStream = webshot(componentUrl, options);
+          var renderStream = webshot('http://land-registry-elements.herokuapp.com' + componentUrl, options);
+
           var file = fs.createWriteStream('test/fixtures/visual-regression/reference-renderings/desktop-' + fileName + '.png', {encoding: 'binary'});
 
           renderStream.on('data', function(data) {
@@ -69,7 +72,8 @@ require('./testURLs')
       promises.push(throat(function() {
         return new Promise(function(resolve, reject) {
 
-          var renderStream = webshot(componentUrl, mobileOptions);
+          var renderStream = webshot('http://land-registry-elements.herokuapp.com' + componentUrl, mobileOptions);
+
           var file = fs.createWriteStream('test/fixtures/visual-regression/reference-renderings/mobile-' + fileName + '.png', {encoding: 'binary'});
 
           renderStream.on('data', function(data) {
