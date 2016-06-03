@@ -7,7 +7,7 @@
   "description": "Land registry frontend pattern library - building on top of http://govuk-elements.herokuapp.com",
   "main": "build/build.js",
   "scripts": {
-    "test": "npm run build && npm run generateTestURLs && npm run generateReferenceRenderings && mocha && npm run eslint",
+    "test": "npm run build && npm run generateTestURLs && mocha && npm run eslint",
     "eslint": "eslint src/** --ignore-pattern build.js --ignore-pattern src/elements/land-registry/polyfills",
     "generateTestURLs": "node build/tasks/testURLs.js",
     "build": "node build/doBuild.js",

@@ -67,7 +67,7 @@ require('./testURLs')
                 });
 
                 renderStream.on('end', function() {
-                  console.log('Desktop screenshot taken for', componentUrl);
+                  console.log('Reference desktop screenshot taken for', componentUrl);
 
                   resolve();
                 });
@@ -95,7 +95,7 @@ require('./testURLs')
                 });
 
                 renderStream.on('end', function() {
-                  console.log('Mobile screenshot taken for', componentUrl);
+                  console.log('Reference mobile screenshot taken for', componentUrl);
 
                   resolve();
                 });
