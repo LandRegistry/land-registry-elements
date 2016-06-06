@@ -39,17 +39,17 @@ function EmailHint(element, config) {
    *
    */
   function updateHint() {
-    console.log(element);
-
-
+    // If the hint isn't already in the dom, pop it in
     if(!hintWrapper.parentNode) {
       element.parentNode.insertBefore(hintWrapper, element.nextSibling);
     }
 
+    // If the input field gets emptied out again, remove the hint
     if(element.value.length === 0) {
       hintWrapper.parentNode.removeChild(hintWrapper);
     }
 
+    // Update the hint to match the input value
     hint.textContent = element.value;
   }
 
@@ -57,7 +57,11 @@ function EmailHint(element, config) {
    * Tear everything down again
    */
   function destroy() {
+    if(hintWrapper.parentNode) {
+      hintWrapper.parentNode.removeChild(hintWrapper);
+    }
 
+    element.addEventListener('keyup', updateHint);
   }
 
   var self = {
