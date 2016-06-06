@@ -1,10 +1,17 @@
 {{> elements/govuk/phase-banner }}
 
-<h1 class="heading-large">Register</h1>
+<h1 class="heading-large">Register <a href="#why-register" class="font-xsmall split-detail-trigger">Why register?</a></h1>
 
 <div class="grid-row spacing-top-single">
 
   <div class="column-two-thirds tablet-column-two-thirds">
+
+    <div class="split-detail-contents font-xsmall" id="why-register">
+      <div class="panel panel-border-narrow spacing-bottom-single">
+        <p>Land Registry holds personal information relating to individuals and companies so to protect this information, and us from potential security threats, we ask users to create an account.</p>
+        <p>If you prefer not to create an account you can still access the information you want but you will need to use one of our other services. Please see <a href="https://www.gov.uk/get-information-about-property-and-land/overview">https://www.gov.uk/get-information-about-property-and-land/overview</a> for other ways to obtain the information you want.</p>
+      </div>
+    </div>
 
     <form action="account_created_continue" method="post" novalidate data-clientside-validation="create_account_form_validation">
 
@@ -49,7 +56,7 @@
         </label>
       </div>
 
-      <input type="submit" class="button spacing-top-single" value="Create account">
+      <input type="submit" class="button spacing-top-single" value="Register">
     </form>
 
     <script type="application/json" id="create_account_form_validation">
