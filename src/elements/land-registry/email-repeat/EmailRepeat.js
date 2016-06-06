@@ -4,9 +4,9 @@ var extend = require('extend');
 var domify = require('domify');
 
 /**
- * Email hint
+ * Email repeat
  */
-function EmailHint(element, config) {
+function EmailRepeat(element, config) {
 
   var options = {
     hintTemplate: require('./clientside-templates/email-hint.hogan')
@@ -75,4 +75,4 @@ function EmailHint(element, config) {
 
 }
 
-module.exports = EmailHint;
+module.exports = EmailRepeat;
