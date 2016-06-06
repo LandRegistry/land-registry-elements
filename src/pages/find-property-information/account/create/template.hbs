@@ -66,8 +66,10 @@
           },
           "length": {
             "minimum": 8,
-            "message": "Password should be at least 6 characters long. Characters can include letters, number and symbols."
-          }
+            "maximum": 20,
+            "message": "Password should be between 8 and 20 characters long. Characters can include letters, number and symbols."
+          },
+          "find_property_information_password": true
         },
         "terms": {
           "presence": {
