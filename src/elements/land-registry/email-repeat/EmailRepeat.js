@@ -32,6 +32,7 @@ function EmailHint(element, config) {
 
     hint = hintWrapper.querySelector('.email-hint-value');
 
+    element.addEventListener('change', updateHint);
     element.addEventListener('keyup', updateHint);
   }
 
@@ -61,6 +62,7 @@ function EmailHint(element, config) {
       hintWrapper.parentNode.removeChild(hintWrapper);
     }
 
+    element.addEventListener('change', updateHint);
     element.addEventListener('keyup', updateHint);
   }
 
