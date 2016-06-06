@@ -1,0 +1,21 @@
+---
+title: Password reveal
+---
+<h1 class="heading-xlarge">
+  <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+  {{component.name}}
+</h1>
+
+{{#capture 'form'}}
+  {{> elements/land-registry/password-reveal }}
+{{/capture}}
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    {{{form}}}
+  </div>
+</div>
+
+<hr>
+
+<pre class="language-markup"><code>{{#htmlencode}}{{{form}}}{{/htmlencode}}</code></pre>

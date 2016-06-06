@@ -203,11 +203,13 @@ function Validator(element, config) {
         target.removeAttribute('aria-describedby');
       }
 
-      var errorMessage = formGroup.querySelector('.error-message');
+      var errorMessages = formGroup.querySelectorAll('.error-message');
+      [].forEach.call(errorMessages, function(errorMessage) {
+        if(errorMessage.parentNode) {
+          errorMessage.parentNode.removeChild(errorMessage);
+        }
+      });
 
-      if(errorMessage) {
-        errorMessage.parentNode.removeChild(errorMessage);
-      }
     });
 
     if (errors.length > 0) {

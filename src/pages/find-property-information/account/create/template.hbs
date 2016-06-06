@@ -1,0 +1,90 @@
+{{> elements/govuk/phase-banner }}
+
+<h1 class="heading-large">Register <a href="#why-register" class="font-xsmall split-detail-trigger">Why register?</a></h1>
+
+<div class="grid-row spacing-top-single">
+
+  <div class="column-two-thirds tablet-column-two-thirds">
+
+    <div class="split-detail-contents font-xsmall" id="why-register">
+      <div class="panel panel-border-narrow spacing-bottom-single">
+        <p>Land Registry holds personal information relating to individuals and companies so to protect this information, and us from potential security threats, we ask users to create an account.</p>
+        <p>If you prefer not to create an account you can still access the information you want but you will need to use one of our other services. Please see <a href="https://www.gov.uk/get-information-about-property-and-land/overview">https://www.gov.uk/get-information-about-property-and-land/overview</a> for other ways to obtain the information you want.</p>
+      </div>
+    </div>
+
+    <form action="account_created_continue" method="post" novalidate data-clientside-validation="create_account_form_validation">
+
+      <fieldset>
+
+        <legend class="visuallyhidden">Account details</legend>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email address <a href="#why-do-we-need-email" class="font-xsmall split-detail-trigger">Why do we need this?</a></label>
+
+          <div class="split-detail-contents font-xsmall" id="why-do-we-need-email">
+            <div class="panel panel-border-narrow spacing-bottom-single">
+              <p>Your email address will be used to log into the service in future. We will also use this to allow you to reset your password.</p>
+              <p>We won't use your email address for any purposes other than access to this service.</p>
+              <p>We won't share your email with third parties.</p>
+            </div>
+          </div>
+
+          {{> elements/land-registry/email-repeat }}
+
+        </div>
+
+        <div class="form-group">
+          {{> elements/land-registry/password-reveal }}
+
+          <p class="form-hint">Your password must:</p>
+          <ul class="form-hint list list-bullet">
+            <li>be between 8 and 20 characters</li>
+            <li>contain at least 1 letter and 2 numbers</li>
+            <li>not be the same as your email address</li>
+            <li>not contain the symbols &pound; &#x20AC; &#x00AC; &#x00A6;</li>
+          </ul>
+
+        </div>
+
+      </fieldset>
+
+      <div class="form-group spacing-top-single">
+        <label class="block-label" for="terms">
+          <input id="terms" name="terms" type="checkbox" value="terms">
+          I have read and agree to the <a href="terms_and_conditions">Terms and Conditions</a>
+        </label>
+      </div>
+
+      <input type="submit" class="button spacing-top-single" value="Register">
+    </form>
+
+    <script type="application/json" id="create_account_form_validation">
+      {
+        "email": {
+          "email": true,
+          "presence": {
+            "message": "Email address is required"
+          }
+        },
+        "pass": {
+          "presence": {
+            "message": "Password is required"
+          },
+          "length": {
+            "minimum": 8,
+            "maximum": 20,
+            "message": "Password should be between 8 and 20 characters long. Characters can include letters, number and symbols."
+          },
+          "find_property_information_password": true
+        },
+        "terms": {
+          "presence": {
+            "message": "You must agree to our terms and conditions before continuing"
+          }
+        }
+      }
+    </script>
+
+  </div>
+</div>

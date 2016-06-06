@@ -16,7 +16,7 @@ describe('The pattern library page at', function() {
     it(url + ' should be valid HTML', function(done) {
 
       request
-        .get(url)
+        .get('http://localhost:3000' + url)
         .end(function(err, res){
 
           htmllint(res.text, {
