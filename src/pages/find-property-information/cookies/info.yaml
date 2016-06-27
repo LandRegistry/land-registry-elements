@@ -8,3 +8,4 @@ dependencies:
   - elements/govuk/core
   - elements/govuk/tables
   - elements/land-registry/vertical-spacing
+  - elements/land-registry/typography

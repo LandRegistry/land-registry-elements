@@ -11,3 +11,4 @@ dependencies:
   - elements/govuk/forms
   - elements/land-registry/clientside-form-validation
   - elements/land-registry/vertical-spacing
+  - elements/land-registry/typography

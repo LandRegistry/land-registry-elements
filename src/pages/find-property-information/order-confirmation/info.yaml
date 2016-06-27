@@ -18,3 +18,4 @@ dependencies:
   - elements/land-registry/vertical-spacing
   - elements/land-registry/warning
   - elements/land-registry/back-link
+  - elements/land-registry/typography
