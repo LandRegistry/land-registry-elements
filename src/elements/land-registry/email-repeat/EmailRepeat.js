@@ -40,14 +40,15 @@ function EmailRepeat(element, config) {
    *
    */
   function updateHint() {
+    if(!hintWrapper.parentElement) {
+      element.parentNode.insertBefore(hintWrapper, element.nextSibling);
+    }
 
     // If the input field gets emptied out again, remove the hint
-    if(element.value.length === 0) {
+    if(element.value.length === 0 && hintWrapper.parentElement) {
       hintWrapper.parentNode.removeChild(hintWrapper);
       return;
     }
-
-    element.parentNode.insertBefore(hintWrapper, element.nextSibling);
 
     // Update the hint to match the input value
     hint.textContent = element.value;
@@ -57,7 +58,9 @@ function EmailRepeat(element, config) {
    * Tear everything down again
    */
   function destroy() {
-    hintWrapper.parentNode.removeChild(hintWrapper);
+    if(hintWrapper.parentElement) {
+      hintWrapper.parentNode.removeChild(hintWrapper);
+    }
 
     element.addEventListener('change', updateHint);
     element.addEventListener('keyup', updateHint);

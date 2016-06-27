@@ -181,6 +181,8 @@ New tests can be defined by adding a new file to the `/tests` directory or to th
 
 #### Visual regression tests
 
+**Currently disabled**
+
 Visual regression tests are built into the TravisCI pipeline such that if work on a pull request changes the rendering of any existing pages then Travis will exist with a failure. If this happens you can review the diff renderings in `tests/fixtures/visual-regression/diff-renderings` and investigate what differences may have occured.
 
 It is worth noting that when creating new pages, the absence of a reference rendering will cause the tests to fail!

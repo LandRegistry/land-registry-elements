@@ -9,7 +9,7 @@
 
   <ul class="error-summary-list">
     {{#errors}}
-      <li><a href="#" data-target="{{name}}">{{message}}</a></li>
+      <li><a href="#" data-target="{{name}}">{{{message}}}</a></li>
     {{/errors}}
   </ul>
 </div>
