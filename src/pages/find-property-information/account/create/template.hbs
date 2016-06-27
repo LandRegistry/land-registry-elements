@@ -1,29 +1,24 @@
 {{> elements/govuk/phase-banner }}
 
-<h1 class="heading-large">Register <a href="#why-register" class="font-xsmall split-detail-trigger">Why register?</a></h1>
+<h1 class="heading-large">Register</h1>
 
-<div class="grid-row spacing-top-single">
+<div class="grid-row">
 
   <div class="column-two-thirds tablet-column-two-thirds">
 
-    <div class="split-detail-contents font-xsmall" id="why-register">
-      <div class="panel panel-border-narrow spacing-bottom-single">
-        <p>Land Registry holds personal information relating to individuals and companies so to protect this information, and us from potential security threats, we ask users to create an account.</p>
-        <p>If you prefer not to create an account you can still access the information you want but you will need to use one of our other services. Please see <a href="https://www.gov.uk/get-information-about-property-and-land/overview">https://www.gov.uk/get-information-about-property-and-land/overview</a> for other ways to obtain the information you want.</p>
-      </div>
-    </div>
+    <p class="lede">Due to the information this service reveals we ask users to register with us so we can monitor access.</p>
 
-    <form action="account_created_continue" method="post" novalidate data-clientside-validation="create_account_form_validation">
+    <form class="spacing-top-double" action="" method="post" novalidate data-clientside-validation="create_account_form_validation">
 
       <fieldset>
 
         <legend class="visuallyhidden">Account details</legend>
 
         <div class="form-group">
-          <label class="form-label" for="email">Email address <a href="#why-do-we-need-email" class="font-xsmall split-detail-trigger">Why do we need this?</a></label>
+          <label class="form-label" for="email">Email address <a href="#why-do-we-need-email" class="font-xsmall split-detail-trigger spacing-left-single">Why do we need this?</a></label>
 
           <div class="split-detail-contents font-xsmall" id="why-do-we-need-email">
-            <div class="panel panel-border-narrow spacing-bottom-single">
+            <div class="panel panel-border-narrow spacing-bottom-single spacing-top-half">
               <p>Your email address will be used to log into the service in future. We will also use this to allow you to reset your password.</p>
               <p>We won't use your email address for any purposes other than access to this service.</p>
               <p>We won't share your email with third parties.</p>
@@ -45,6 +40,66 @@
             <li>not contain the symbols &pound; &#x20AC; &#x00AC; &#x00A6;</li>
           </ul>
 
+        </div>
+
+      </fieldset>
+
+      <h2 class="heading-medium">Your details</h2>
+
+      <fieldset>
+
+        <legend class="visuallyhidden">Your details</legend>
+
+        <div class="form-group">
+          <label class="form-label" for="title">Title</label>
+          <select class="form-control" id="title" name="title">
+            <option value="">Please select</option>
+            <option value="Mr">Mr</option>
+            <option value="Mrs">Mrs</option>
+            <option value="Miss">Miss</option>
+            <option value="Ms">Ms</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="firstname">First name</label>
+          <input class="form-control" type="text" id="firstname" name="firstname">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="surname">Surname</label>
+          <input class="form-control" type="text" id="surname" name="surname">
+        </div>
+
+      </fieldset>
+
+      <h2 class="heading-medium">Address</h2>
+
+      <fieldset>
+
+        <legend class="visuallyhidden">Address</legend>
+
+        <div class="form-group">
+          <label class="form-label" for="address">First line of your address</label>
+          <input class="form-control" type="text" id="address" name="address">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="city">City</label>
+          <input class="form-control" type="text" id="city" name="city">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="country">Country</label>
+          <select class="form-control" id="country" name="country">
+            <option value="GB" selected="">United Kingdom</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="postcode">Postcode</label>
+          <input class="form-control" type="text" id="postcode" name="postcode">
         </div>
 
       </fieldset>
