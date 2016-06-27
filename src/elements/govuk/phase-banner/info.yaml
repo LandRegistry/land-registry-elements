@@ -2,3 +2,6 @@ name: Phase banner
 categories:
   primary: Govuk
   secondary: Core
+
+dependencies:
+  - elements/land-registry/typography

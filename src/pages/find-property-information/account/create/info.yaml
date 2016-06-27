@@ -14,3 +14,4 @@ dependencies:
   - elements/land-registry/clientside-form-validation
   - elements/land-registry/email-repeat
   - elements/land-registry/password-reveal
+  - elements/land-registry/typography
