@@ -5,7 +5,7 @@ before_install:
   - npm install -g mocha
   - npm install -g eslint
 
-before_deploy:
+after_failure:
   - tar cvzf test/fixtures/visual-regression/test-renderings.tar.gz test/fixtures/visual-regression/test-renderings
 
 cache:
