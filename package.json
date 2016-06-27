@@ -81,7 +81,7 @@
     "node-sass": "^3.7.0",
     "pkg-up": "^1.0.0",
     "postcss": "^5.0.21",
-    "proj4leaflet": "github:kartena/Proj4Leaflet",
+    "proj4leaflet": "^0.7.2",
     "promise-helpers": "^0.2.0",
     "pubsub-js": "^1.5.3",
     "remarkable": "^1.6.2",
