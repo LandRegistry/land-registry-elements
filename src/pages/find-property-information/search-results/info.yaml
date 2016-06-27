@@ -12,3 +12,4 @@ dependencies:
   - elements/land-registry/vertical-spacing
   - elements/land-registry/supplementary-panel
   - elements/land-registry/pagination-simple
+  - elements/land-registry/typography

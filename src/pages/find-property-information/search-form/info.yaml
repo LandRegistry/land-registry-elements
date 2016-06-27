@@ -9,3 +9,4 @@ dependencies:
   - elements/govuk/details
   - elements/land-registry/search-form
   - elements/land-registry/vertical-spacing
+  - elements/land-registry/typography
