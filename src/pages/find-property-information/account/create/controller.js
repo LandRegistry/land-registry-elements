@@ -35,9 +35,6 @@ global.validate.validators.find_property_information_password = function(value, 
  * of the Find property information service
  */
 global.validate.validators.find_property_information_postcode = function(value, options, key, attributes) {
-
-  var messages = [];
-
   // Postcode is required if GB is selected
   if(attributes.country === 'GB') {
     return 'Postcode is required';
