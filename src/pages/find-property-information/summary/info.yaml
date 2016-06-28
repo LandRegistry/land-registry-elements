@@ -14,5 +14,5 @@ dependencies:
   - elements/land-registry/leaflet-map
   - elements/land-registry/print-button
   - elements/land-registry/vat-receipt
-  - elements/land-registry/vertical-spacing
+  - elements/land-registry/spacing
   - elements/land-registry/typography

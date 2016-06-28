@@ -29,3 +29,16 @@ global.validate.validators.find_property_information_password = function(value, 
 
   return messages;
 };
+
+/**
+ * Postcode validator to cater for the specific postcode requirements
+ * of the Find property information service
+ */
+global.validate.validators.find_property_information_postcode = function(value, options, key, attributes) {
+  // Postcode is required if GB is selected
+  if(attributes.country === 'GB') {
+    return 'Postcode is required';
+  } else {
+    return;
+  }
+};

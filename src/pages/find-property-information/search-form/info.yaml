@@ -8,5 +8,5 @@ dependencies:
   - elements/govuk/phase-banner
   - elements/govuk/details
   - elements/land-registry/search-form
-  - elements/land-registry/vertical-spacing
+  - elements/land-registry/spacing
   - elements/land-registry/typography
