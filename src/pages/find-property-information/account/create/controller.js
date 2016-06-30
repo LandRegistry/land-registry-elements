@@ -27,7 +27,7 @@ global.validate.validators.find_property_information_password = function(value, 
     messages.push('Password must not contain the characters &pound; &#x20AC; &#x00AC; &#x00A6;');
   }
 
-  if(attributes.email === value) {
+  if(attributes.username === value) {
     messages.push('Password should not be the same as your email address');
   }
 

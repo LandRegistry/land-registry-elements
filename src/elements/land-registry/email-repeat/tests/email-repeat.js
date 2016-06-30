@@ -34,12 +34,12 @@ describe('Email repeat', function() {
     client
       .url('http://localhost:3000/components/elements/land-registry/email-repeat/demo/')
       .waitForExist('.phantom-js-test-rendering', 5000)
-      .setValue('#email', 'foo@bar.com')
+      .setValue('#username', 'foo@bar.com')
       .getText('.email-hint-value')
       .then(function(text) {
         text.should.be.equal('foo@bar.com')
       })
-      .setValue('#email', 'wibble@bob.co.uk')
+      .setValue('#username', 'wibble@bob.co.uk')
       .getText('.email-hint-value')
       .then(function(text) {
         text.should.be.equal('wibble@bob.co.uk')
@@ -52,14 +52,14 @@ describe('Email repeat', function() {
     client
       .url('http://localhost:3000/components/elements/land-registry/email-repeat/demo/')
       .waitForExist('.phantom-js-test-rendering', 5000)
-      .setValue('#email', 'foo@bar.com')
+      .setValue('#username', 'foo@bar.com')
       .getText('.email-hint-value')
       .then(function(text) {
         text.should.be.equal('foo@bar.com')
       })
-      .clearElement('#email')
+      .clearElement('#username')
       .waitForExist('.email-hint-value', 5000, true)
-      .setValue('#email', 'wibble@bob.co.uk')
+      .setValue('#username', 'wibble@bob.co.uk')
       .getText('.email-hint-value')
       .then(function(text) {
         text.should.be.equal('wibble@bob.co.uk')
