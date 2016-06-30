@@ -40,7 +40,7 @@ global.validate.validators.find_property_information_password = function(value, 
  */
 global.validate.validators.find_property_information_postcode = function(value, options, key, attributes) {
   // Postcode is required if GB is selected
-  if(attributes.country === 'GB' && !value) {
+  if(attributes.country === 'United Kingdom' && !value) {
     return 'Postcode is required';
   } else {
     return;

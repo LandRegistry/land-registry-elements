@@ -93,7 +93,7 @@
         <div class="form-group">
           <label class="form-label" for="country">Country</label>
           <select class="form-control" id="country" name="country" autocomplete="country">
-            <option value="GB" selected>United Kingdom</option>
+            <option value="United Kingdom" selected>United Kingdom</option>
             <option value="somewhere_else">Somewhere else</option>
           </select>
         </div>
@@ -153,7 +153,9 @@
           }
         },
         "username": {
-          "email": true,
+          "email": {
+            "message": "The email address you have entered is not valid"
+          },
           "presence": {
             "message": "Email address is required"
           }
