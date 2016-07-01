@@ -39,9 +39,44 @@ global.validate.validators.find_property_information_password = function(value, 
  * of the Find property information service
  */
 global.validate.validators.find_property_information_postcode = function(value, options, key, attributes) {
+
+  parts = {
+    '{fst}': 'ABCDEFGHIJKLMNOPRSTUWYZ',
+    '{sec}': 'ABCDEFGHKLMNOPQRSTUVWXY',
+    '{thd}': 'ABCDEFGHJKMNPRSTUVWXY',
+    '{fth}': 'ABEHMNPRVWXY',
+    '{inward}': 'ABDEFGHJLNPQRSTUWXYZ',
+  }
+
+  var rules = [
+    '^[{fst}][1-9]\\d[{inward}][{inward}]$',
+    '^[{fst}][1-9]\\d\\d[{inward}][{inward}]$',
+    '^[{fst}][{sec}]\\d\\d[{inward}][{inward}]$',
+    '^[{fst}][{sec}][1-9]\\d\\d[{inward}][{inward}]$',
+    '^[{fst}][1-9][{thd}]\\d[{inward}][{inward}]$',
+    '^[{fst}][{sec}][1-9][{fth}]\\d[{inward}][{inward}]$',
+  ];
+
+  var postcode_regexp = rules.join('|');
+
+  for(var key in parts) {
+    if(parts.hasOwnProperty(key)) {
+      postcode_regexp = postcode_regexp.replace(new RegExp(key, 'g'), parts[key])
+    }
+  }
+
+  postcode_regexp = new RegExp(postcode_regexp);
+
   // Postcode is required if GB is selected
-  if(attributes.country === 'United Kingdom' && !value) {
-    return 'Postcode is required';
+  if(attributes.country === 'United Kingdom') {
+
+    if(!value) {
+      return 'Postcode is required';
+    }
+
+    if(!postcode_regexp.test(value.toUpperCase().replace(/\s/, ''))) {
+      return 'Postcode is not a valid UK postcode';
+    }
   } else {
     return;
   }
