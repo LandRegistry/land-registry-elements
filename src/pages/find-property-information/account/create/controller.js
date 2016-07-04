@@ -45,12 +45,12 @@ global.validate.validators.find_property_information_password = function(value, 
  */
 global.validate.validators.find_property_information_postcode = function(value, options, key, attributes) {
 
-  parts = {
+  var parts = {
     '{fst}': 'ABCDEFGHIJKLMNOPRSTUWYZ',
     '{sec}': 'ABCDEFGHKLMNOPQRSTUVWXY',
     '{thd}': 'ABCDEFGHJKMNPRSTUVWXY',
     '{fth}': 'ABEHMNPRVWXY',
-    '{inward}': 'ABDEFGHJLNPQRSTUWXYZ',
+    '{inward}': 'ABDEFGHJLNPQRSTUWXYZ'
   }
 
   var rules = [
@@ -59,14 +59,14 @@ global.validate.validators.find_property_information_postcode = function(value, 
     '^[{fst}][{sec}]\\d\\d[{inward}][{inward}]$',
     '^[{fst}][{sec}][1-9]\\d\\d[{inward}][{inward}]$',
     '^[{fst}][1-9][{thd}]\\d[{inward}][{inward}]$',
-    '^[{fst}][{sec}][1-9][{fth}]\\d[{inward}][{inward}]$',
+    '^[{fst}][{sec}][1-9][{fth}]\\d[{inward}][{inward}]$'
   ];
 
   var postcode_regexp = rules.join('|');
 
-  for(var key in parts) {
-    if(parts.hasOwnProperty(key)) {
-      postcode_regexp = postcode_regexp.replace(new RegExp(key, 'g'), parts[key])
+  for(var i in parts) {
+    if(parts.hasOwnProperty(i)) {
+      postcode_regexp = postcode_regexp.replace(new RegExp(i, 'g'), parts[i])
     }
   }
 
