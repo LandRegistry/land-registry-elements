@@ -12,9 +12,14 @@ global.validate.validators.find_property_information_password = function(value, 
 
   value = value.toString();
 
-  var letterMatches = value.match(/[A-za-z]/g);
-  if(!Array.isArray(letterMatches) || letterMatches.length < 1) {
-    messages.push('Password must contain at least 1 letter');
+  var upperLetterMatches = value.match(/[A-Z]/g);
+  if(!Array.isArray(upperLetterMatches) || upperLetterMatches.length < 1) {
+    messages.push('Password must contain at least uppercase 1 letter');
+  }
+
+  var lowerLetterMatches = value.match(/[a-z]/g);
+  if(!Array.isArray(lowerLetterMatches) || lowerLetterMatches.length < 1) {
+    messages.push('Password must contain at least lowercase 1 letter');
   }
 
   var numberMatches = value.match(/\d/g);
