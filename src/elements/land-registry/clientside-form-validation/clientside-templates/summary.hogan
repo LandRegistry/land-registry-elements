@@ -9,7 +9,9 @@
 
   <ul class="error-summary-list">
     {{#errors}}
-      <li><a href="#" data-target="{{name}}">{{{message}}}</a></li>
+      {{#name}}
+        <li><a href="#" data-target="{{name}}">{{{message}}}</a></li>
+      {{/name}}
     {{/errors}}
 
     {{#serversideErrors}}
