@@ -71,13 +71,16 @@ function Validator(element, config) {
 
     // Grab any existing error messages and ensure they persist, regardless of clientside changes
     var existingSummary = element.querySelector('.error-summary');
-    var existingErrors = existingSummary.querySelectorAll('.error-summary-list li');
-    for (var i = 0; i < existingErrors.length; i++) {
-      serversideErrors.push(existingErrors[i].innerHTML);
+    if(existingSummary) {
+      var existingErrors = existingSummary.querySelectorAll('.error-summary-list li');
+      for (var i = 0; i < existingErrors.length; i++) {
+        serversideErrors.push(existingErrors[i].innerHTML);
+      }
+
+      existingSummary.parentNode.removeChild(existingSummary);
+      showSummary({});
     }
 
-    existingSummary.parentNode.removeChild(existingSummary);
-    showSummary({});
   }
 
   /**
@@ -264,10 +267,14 @@ function Validator(element, config) {
    * Click handler for summary items
    */
   function summaryClick(e) {
-    e.preventDefault();
+    var dataTarget = e.delegateTarget.getAttribute('data-target');
 
-    var target = document.querySelectorAll('[name="' + e.delegateTarget.getAttribute('data-target') + '"]')[0];
-    target.focus();
+    if(dataTarget) {
+      e.preventDefault();
+
+      var target = document.querySelectorAll('[name="' + dataTarget + '"]')[0];
+      target.focus();
+    }
   }
 
   /**
