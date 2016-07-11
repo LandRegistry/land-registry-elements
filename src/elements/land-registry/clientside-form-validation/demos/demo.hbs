@@ -8,6 +8,15 @@ title: Full demo
 
 {{#capture 'form'}}
   <form method="GET" id="example_form" data-clientside-validation="example_form_validation">
+
+    <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
+      <h2 class="heading-medium error-summary-heading" id="error-summary-heading">The following errors were found:</h2>
+
+      <ul class="error-summary-list">
+        <li>Example of a server side error message present in the page on load. It <a href="http://google.co.uk">contains a link</a> to something.</li>
+      </ul>
+    </div>
+
     <div class="form-group">
       <label class="form-label" for="full-name">Full name</label>
       <input class="form-control" type="text" id="full-name" name="full-name">
