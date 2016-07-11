@@ -35,8 +35,7 @@
           <p class="form-hint">Your password must:</p>
           <ul class="form-hint list list-bullet">
             <li>be between 8 and 20 characters</li>
-            <li>contain at least 1 letter and 2 numbers</li>
-            <li>not be the same as your email address</li>
+            <li>contain 2 numbers</li>
             <li>not contain the symbols &pound; &#x20AC; &#x00AC; &#x00A6;</li>
           </ul>
 
@@ -93,7 +92,7 @@
         <div class="form-group">
           <label class="form-label" for="country">Country</label>
           <select class="form-control" id="country" name="country" autocomplete="country">
-            <option value="GB" selected>United Kingdom</option>
+            <option value="United Kingdom" selected>United Kingdom</option>
             <option value="somewhere_else">Somewhere else</option>
           </select>
         </div>
@@ -153,7 +152,9 @@
           }
         },
         "username": {
-          "email": true,
+          "email": {
+            "message": "The email address you have entered is not valid"
+          },
           "presence": {
             "message": "Email address is required"
           }

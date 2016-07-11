@@ -60,8 +60,9 @@ function Validator(element, config) {
 
     // Set up form field handlers
     delegate(element, '.form-control', 'keyup', keyup);
-    delegate(element, 'input[type="radio"]', 'change', boolChange);
-    delegate(element, 'input[type="checkbox"]', 'change', boolChange);
+    delegate(element, 'select', 'change', change);
+    delegate(element, 'input[type="radio"]', 'change', change);
+    delegate(element, 'input[type="checkbox"]', 'change', change);
     delegate(element, '.form-control', 'focusout', focusout);
 
     // Summary click handlers
@@ -141,7 +142,7 @@ function Validator(element, config) {
   /**
    * radio / checkbox change
    */
-  function boolChange(e) {
+  function change(e) {
 
     var errorData = validateForm();
 
