@@ -12,14 +12,9 @@ global.validate.validators.find_property_information_password = function(value, 
 
   value = value.toString();
 
-  var upperLetterMatches = value.match(/[A-Z]/g);
-  if(!Array.isArray(upperLetterMatches) || upperLetterMatches.length < 1) {
-    messages.push('Password must contain at least uppercase 1 letter');
-  }
-
-  var lowerLetterMatches = value.match(/[a-z]/g);
-  if(!Array.isArray(lowerLetterMatches) || lowerLetterMatches.length < 1) {
-    messages.push('Password must contain at least lowercase 1 letter');
+  var letterMatches = value.match(/[A-Za-z]/g);
+  if(!Array.isArray(letterMatches) || letterMatches.length < 1) {
+    messages.push('Password must contain at least 1 letter');
   }
 
   var numberMatches = value.match(/\d/g);
@@ -30,6 +25,11 @@ global.validate.validators.find_property_information_password = function(value, 
   var exclusionMatches = value.match(/[£\u20AC\u00AC\u00A6]/g);
   if(Array.isArray(exclusionMatches) && exclusionMatches.length > 0) {
     messages.push('Password must not contain the characters &pound; &#x20AC; &#x00AC; &#x00A6;');
+  }
+
+  var spaceMatches = value.match(/\s/g);
+  if(Array.isArray(spaceMatches) && spaceMatches.length > 0) {
+    messages.push('Password must not contain spaces');
   }
 
   if(attributes.username === value) {
