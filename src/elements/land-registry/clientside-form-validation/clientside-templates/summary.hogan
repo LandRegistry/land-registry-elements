@@ -1,7 +1,7 @@
 <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
-  {{#message}}
-    <h2 class="heading-medium error-summary-heading" id="error-summary-heading">{{message}}</h2>
-  {{/message}}
+  {{#headingMessage}}
+    <h2 class="heading-medium error-summary-heading" id="error-summary-heading">{{headingMessage}}</h2>
+  {{/headingMessage}}
 
   {{#description}}
     <p>{{description}}</p>
@@ -9,7 +9,13 @@
 
   <ul class="error-summary-list">
     {{#errors}}
-      <li><a href="#" data-target="{{name}}">{{{message}}}</a></li>
+      {{#name}}
+        <li><a href="#" data-target="{{name}}">{{{message}}}</a></li>
+      {{/name}}
     {{/errors}}
+
+    {{#serversideErrors}}
+      <li>{{{.}}}</li>
+    {{/serversideErrors}}
   </ul>
 </div>

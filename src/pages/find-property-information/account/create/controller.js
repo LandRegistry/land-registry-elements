@@ -28,11 +28,11 @@ global.validate.validators.find_property_information_password = function(value, 
   }
 
   var spaceMatches = value.match(/\s/g);
-  if(Array.isArray(spaceMatches) && spaceMatches.length > 0) {
+  if(value.length > 0 && Array.isArray(spaceMatches) && spaceMatches.length > 0) {
     messages.push('Password must not contain spaces');
   }
 
-  if(attributes.username === value) {
+  if(attributes.email === value) {
     messages.push('Password should not be the same as your email address');
   }
 

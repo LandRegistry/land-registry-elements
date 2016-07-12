@@ -27,7 +27,7 @@ function Validator(element, config) {
   var options = {
     showSummary: true,
     showIndividualFormErrors: true,
-    message: 'The following errors were found:',
+    headingMessage: 'The following errors were found:',
     description: false,
 
     controlSelector: '.form-control, input[type="checkbox"], input[type="radio"]',
@@ -44,6 +44,7 @@ function Validator(element, config) {
 
   // Private variables
   var errorSummary;
+  var serversideErrors = [];
 
   /**
    * Set everything up
@@ -67,6 +68,19 @@ function Validator(element, config) {
 
     // Summary click handlers
     delegate(element, '.error-summary-list a', 'click', summaryClick);
+
+    // Grab any existing error messages and ensure they persist, regardless of clientside changes
+    var existingSummary = element.querySelector('.error-summary');
+    if(existingSummary) {
+      var existingErrors = existingSummary.querySelectorAll('.error-summary-list li');
+      for (var i = 0; i < existingErrors.length; i++) {
+        serversideErrors.push(existingErrors[i].innerHTML);
+      }
+
+      existingSummary.parentNode.removeChild(existingSummary);
+      showSummary({});
+    }
+
   }
 
   /**
@@ -158,9 +172,10 @@ function Validator(element, config) {
   function showSummary(errors) {
     // Build up data to pass to the summary template
     var data = {
-      'message': options.message,
+      'headingMessage': options.headingMessage,
       'description': options.description,
-      'errors': errors
+      'errors': errors,
+      'serversideErrors': serversideErrors
     };
 
     // Remove any previous error summary
@@ -168,7 +183,7 @@ function Validator(element, config) {
       errorSummary.parentNode.removeChild(errorSummary);
     }
 
-    if (errors.length > 0) {
+    if (data.errors.length > 0 || serversideErrors.length > 0) {
 
       // Create an error summary
       errorSummary = domify(options.summaryTemplate.render(data));
@@ -252,10 +267,14 @@ function Validator(element, config) {
    * Click handler for summary items
    */
   function summaryClick(e) {
-    e.preventDefault();
+    var dataTarget = e.delegateTarget.getAttribute('data-target');
 
-    var target = document.querySelectorAll('[name="' + e.delegateTarget.getAttribute('data-target') + '"]')[0];
-    target.focus();
+    if(dataTarget) {
+      e.preventDefault();
+
+      var target = document.querySelectorAll('[name="' + dataTarget + '"]')[0];
+      target.focus();
+    }
   }
 
   /**
