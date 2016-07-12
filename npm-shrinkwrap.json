@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "proj4leaflet": {
+      "version": "0.7.2",
+      "from": "proj4leaflet@0.7.2",
+      "dependencies": {
+        "proj4": {
+          "version": "2.3.15-alpha",
+          "from": "github:andymantell/proj4js"
+        }
+      }
+    }
+  }
+}
