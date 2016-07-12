@@ -32,7 +32,7 @@ global.validate.validators.find_property_information_password = function(value, 
     messages.push('Password must not contain spaces');
   }
 
-  if(attributes.username === value) {
+  if(attributes.email === value) {
     messages.push('Password should not be the same as your email address');
   }
 
