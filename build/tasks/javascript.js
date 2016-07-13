@@ -77,7 +77,6 @@ function compileJavaScript(config) {
               // and use the vanilla browserify module
               if(config.mode === 'production') {
                 b = browserify(browserfyConfig);
-                // b.transform(require('uglifyify'));
               } else {
                 // Otherwise use debug mode
                 browserfyConfig.debug = true;

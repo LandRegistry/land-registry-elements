@@ -7,6 +7,7 @@ var compileSass = require('./tasks/compileSass');
 var javascript = require('./tasks/javascript');
 var autoprefixer = require('./tasks/autoprefixer');
 var componentBuilds = require('./tasks/componentBuilds');
+var minifyJS = require('./tasks/minifyJS');
 var pkg_up = require('pkg-up');
 
 module.exports = function(options) {
@@ -53,6 +54,11 @@ module.exports = function(options) {
       })
       .then(function() {
         return javascript.compile(config);
+      })
+      .then(function() {
+        if(config.mode === 'production') {
+          return minifyJS(config);
+        }
       })
       .then(function() {
         resolve(path.join(config.destination, 'assets'));
