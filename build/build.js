@@ -20,14 +20,14 @@ module.exports = function(options) {
    * the "Build" category which contains styles for example pages
    */
   var config = extend({
-    includePath: '',
     mode: 'production',
     cache: true,
     components: true,
     destination: 'dist',
-    moduleDir: path.dirname(pkg_up.sync(__dirname)),
     assetPath: ''
   }, options);
+
+  config.moduleDir = path.dirname(pkg_up.sync(__dirname));
 
   // If we've not been passed an absolute path, make it a path relative to this module
   if(!path.isAbsolute(config.destination)) {

@@ -7,11 +7,11 @@ module.exports = function(config) {
 
   var copyOperations = [
     {
-      from: path.join(config.includePath, 'node_modules/leaflet/dist/leaflet.css'),
-      to: path.join(config.includePath, 'node_modules/leaflet/dist/leaflet.scss')
+      from: path.join(config.moduleDir, 'node_modules/leaflet/dist/leaflet.css'),
+      to: path.join(config.moduleDir, 'node_modules/leaflet/dist/leaflet.scss')
     },
     {
-      from: path.join(config.includePath, 'node_modules/leaflet/dist/images'),
+      from: path.join(config.moduleDir, 'node_modules/leaflet/dist/images'),
       to: path.join(config.destination, 'assets/images/leaflet')
     }
   ];
