@@ -7,7 +7,7 @@ module.exports = function(config) {
 
   var copyOperations = [
     {
-      from: path.join(config.includePath, 'src/elements/land-registry/favicon/images'),
+      from: path.join(config.moduleDir, 'src/elements/land-registry/favicon/images'),
       to: path.join(config.destination, 'assets/images')
     }
   ];

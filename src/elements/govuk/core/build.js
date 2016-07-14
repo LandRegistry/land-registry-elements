@@ -25,7 +25,7 @@ module.exports = function(config) {
   var promises = [];
 
   copyOperations.forEach(function(operation) {
-    promises.push(copy.copy(path.join(config.includePath, operation.from), path.join(config.destination, operation.to)))
+    promises.push(copy.copy(path.join(config.moduleDir, operation.from), path.join(config.destination, operation.to)))
   });
 
   return Promise.all(promises);
