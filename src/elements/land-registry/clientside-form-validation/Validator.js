@@ -77,6 +77,7 @@ function Validator(element, config) {
         serversideErrors.push(existingErrors[i].innerHTML);
       }
 
+      options.showSummary = true;
       existingSummary.parentNode.removeChild(existingSummary);
       showSummary({});
     }
