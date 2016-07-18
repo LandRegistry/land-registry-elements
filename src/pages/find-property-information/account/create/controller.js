@@ -86,3 +86,19 @@ global.validate.validators.find_property_information_postcode = function(value, 
     return;
   }
 };
+
+/**
+ * Email validator to cater for the specific email requirements
+ * of the Find property information service
+ */
+global.validate.validators.find_property_information_email = function(value, options, key, attributes) {
+
+  var messages = [];
+
+  var exclusionMatches = value.match(/[\+]/g);
+  if(Array.isArray(exclusionMatches) && exclusionMatches.length > 0) {
+    messages.push('Email must not contain the + character');
+  }
+
+  return messages;
+};
