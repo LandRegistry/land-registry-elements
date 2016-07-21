@@ -95,6 +95,10 @@ global.validate.validators.find_property_information_email = function(value, opt
 
   var messages = [];
 
+  if(!value) {
+    return;
+  }
+
   var exclusionMatches = value.match(/[\+]/g);
   if(Array.isArray(exclusionMatches) && exclusionMatches.length > 0) {
     messages.push('Email must not contain the + character');
