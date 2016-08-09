@@ -98,7 +98,7 @@ dependencies:
 # assets from the component's directory into the output folder. For example, the
 # favicon component contains a folder of images which it copies to the dist folder
 # It is important to note that the `from` folder is relative to the component
-# and the `to` folder is relative to the build output folder
+# and the `to` folder is relative to the build output folder.
 copy:
   -
     from: 'images'
