@@ -83,5 +83,13 @@
   .limit-message {
     font-size: inherit;
     text-align: left;
+
+    @media (max-width: 400px) {
+      padding-top: $gutter-half;
+      float: none;
+      width: auto;
+      clear: both;
+      text-align: right;
+    }
   }
 }
