@@ -13,10 +13,13 @@
     float: left;
     list-style: none;
     text-align: right;
+    width: 49%;
     margin: 0;
     padding: 0;
-    width: 49%;
+  }
 
+  .previous-page,
+  .next-page {
     a {
       display: block;
       color: $link-colour;
@@ -36,46 +39,49 @@
         margin-bottom: 0.1em;
         display: block;
       }
-
     }
 
-    &.next-page a:before,
-    &.previous-page a:before {
+    a:before {
       margin-top: -4px;
       display: block;
       width: 30px;
       height: 38px;
       content: " ";
     }
+  }
 
-    &.next-page a:before {
-      background: transparent file-url('icons/arrow-sprite.png') no-repeat -102px -11px;
-      margin-right: -32px;
-      float: right;
-    }
+  .next-page {
+    float: right;
+    text-align: right;
 
-    &.previous-page a:before {
-      background: transparent file-url('icons/arrow-sprite.png') no-repeat -20px -11px;
-      margin-left: -32px;
-      float: left;
-    }
-
-    &.previous-page {
-      float: left;
-      text-align: left;
-    }
-
-    &.previous-page a {
-      padding: 0.75em 0 0.75em 3em;
-    }
-
-    &.next-page {
-      float: right;
-      text-align: right;
-    }
-
-    &.next-page a {
+    a {
       padding: 0.75em 3em 0.75em 0;
+
+      &:before {
+        background: transparent file-url('icons/arrow-sprite.png') no-repeat -102px -11px;
+        margin-right: -32px;
+        float: right;
+      }
     }
+  }
+
+  .previous-page {
+    float: left;
+    text-align: left;
+
+    a {
+      padding: 0.75em 0 0.75em 3em;
+
+      &:before {
+        background: transparent file-url('icons/arrow-sprite.png') no-repeat -20px -11px;
+        margin-left: -32px;
+        float: left;
+      }
+    }
+  }
+
+  .limit-message {
+    font-size: inherit;
+    text-align: left;
   }
 }
