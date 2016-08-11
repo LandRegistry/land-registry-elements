@@ -15,3 +15,4 @@ dependencies:
   - elements/land-registry/email-repeat
   - elements/land-registry/password-reveal
   - elements/land-registry/typography
+  - elements/land-registry/form-session-storage
