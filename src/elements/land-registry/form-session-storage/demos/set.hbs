@@ -1,0 +1,22 @@
+---
+title: Setting
+---
+<h1 class="heading-xlarge">
+  <span class="heading-secondary">{{component.categories.primary}} / {{component.categories.secondary}}</span>
+  {{component.name}} ({{title}})
+</h1>
+
+{{#markdown}}{{{component.readme}}}{{/markdown}}
+
+{{#capture 'form-element'}}
+  <input class="form-control" type="text" data-session-storage-set="this-key-identifies-the-value" id="foo" name="form-session-storage">
+{{/capture}}
+
+<p>Set the <code>data-session-storage-set</code> attribute on your input element to invoke the behaviour:</p>
+<pre class="language-markup"><code>{{#htmlencode}}{{{form-element}}}{{/htmlencode}}</code></pre>
+
+<div class="form-group">
+  <label class="form-label-bold" for="foo">Type something into here</label>
+  {{{form-element}}}
+  <p class="form-hint">Now visit the <a href="/components/{{component.id}}/get">getting</a> demo to see the information you have typed appear over there!</p>
+</div>
