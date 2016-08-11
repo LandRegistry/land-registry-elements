@@ -19,8 +19,8 @@ for (var i = 0; i < set_inputs.length; i++) {
 
 // Get
 var get_inputs = document.querySelectorAll('[data-session-storage-get]');
-for (var i = 0; i < get_inputs.length; i++) {
-  element = get_inputs[i];
+for (var j = 0; j < get_inputs.length; j++) {
+  element = get_inputs[j];
 
   instance = new FormSessionStorageGet(element, {
     key: element.getAttribute('data-session-storage-get')
