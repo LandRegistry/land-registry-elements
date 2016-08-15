@@ -35,16 +35,14 @@ function DoubleClickPrevention(element, config) {
    */
   function disableButton(e){
     if(!e.defaultPrevented) {
-      setTimeout(function() {
-        element.setAttribute('disabled', 'disabled');
-        element.classList.add(options.waitClass)
+      element.setAttribute('disabled', 'disabled');
+      element.classList.add(options.waitClass)
 
-        if(element.value) {
-          element.value = options.waitText;
-        } else {
-          element.innerHTML = options.waitText;
-        }
-      }, 0);
+      if(element.value) {
+        element.value = options.waitText;
+      } else {
+        element.innerHTML = options.waitText;
+      }
     }
   }
 
