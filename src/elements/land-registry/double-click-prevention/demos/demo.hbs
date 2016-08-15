@@ -21,6 +21,6 @@ Prevent people double clicking on form buttons by adding a `data-double-click-pr
 {{/capture}}
 
 
-<form method="GET" onSubmit="javascript:console.log('submitted');return false;">
+<form method="GET" onSubmit="javascript:console && console.log('submitted');return false;">
   {{{form-element}}}
 </form>

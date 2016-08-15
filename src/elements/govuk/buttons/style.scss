@@ -31,10 +31,9 @@ $path: '../images/';
 .button-waiting {
   &,
   &[disabled="disabled"] {
-    padding-left: 30px;
+    padding-left: 40px;
     background-image: file-url('buttons/spinner.gif');
     background-repeat: no-repeat;
-    background-position: 0 center;
-    border-left: 10px solid #00823B;
+    background-position: 10px center;
   }
 }
