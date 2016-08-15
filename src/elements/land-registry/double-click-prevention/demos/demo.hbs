@@ -12,7 +12,8 @@ Prevent people double clicking on form buttons by adding a `data-double-click-pr
 
 
 {{#capture 'form-element'}}
-  <input type="text" name="foo" />
+  <label for="foo">Use this field to test pressing Enter in the form</label>
+  <input type="text" name="foo" id="foo" />
   <br><br>
   <input type="submit" class="button" value="Continue" id="button-1" data-double-click-prevention>
   <br><br>
