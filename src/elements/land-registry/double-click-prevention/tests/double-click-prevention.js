@@ -33,6 +33,7 @@ describe('Form session storage', function() {
     client
       .url('http://localhost:3000/components/elements/land-registry/double-click-prevention/demo/')
       .waitForExist('.phantom-js-test-rendering', 5000)
+      .setValue('#foo', 'WebdriverIO')
       .click('#button-1')
       .getAttribute('#button-2', 'disabled')
       .then(function(attr) {
