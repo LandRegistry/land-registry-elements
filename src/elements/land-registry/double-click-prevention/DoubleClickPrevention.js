@@ -8,15 +8,26 @@ var extend = require('extend');
 function DoubleClickPrevention(element, config) {
 
   var options = {
+    waitText: 'Please wait…',
+    waitClass: 'button-waiting'
   };
 
   extend(options, config);
+
+  // Private variables
+  var originalText;
 
   /**
    * Set everything up
    */
   function create() {
     element.form.addEventListener('submit', disableButton);
+
+    if(element.value) {
+      originalText = element.value;
+    } else {
+      originalText = element.textContent;
+    }
   }
 
   /**
@@ -24,6 +35,13 @@ function DoubleClickPrevention(element, config) {
    */
   function disableButton(e){
     element.setAttribute('disabled', 'disabled');
+    element.classList.add(options.waitClass)
+
+    if(element.value) {
+      element.value = options.waitText;
+    } else {
+      element.innerHTML = options.waitText;
+    }
   }
 
   /**
@@ -31,7 +49,14 @@ function DoubleClickPrevention(element, config) {
    */
   function destroy() {
     element.form.removeEventListener('submit', disableButton);
+    element.classList.remove(options.waitClass)
     element.removeAttribute('disabled');
+
+    if(element.value) {
+      element.value = originalText;
+    } else {
+      element.textContent = originalText;
+    }
   }
 
   var self = {

@@ -9,6 +9,10 @@ buttons:
   -
     value: Save and continue
     disabled: true
+  -
+    value: Please wait&hellip;
+    classes: button-waiting
+    disabled: true
 
 icon-buttons:
   -
@@ -27,9 +31,9 @@ icon-buttons:
 <h2 class="heading-medium">Standard buttons</h2>
 {{#each buttons}}
   <div class="example">
-    <input class="button{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}} type="submit" value="{{value}}">
+    <input class="button{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}} type="submit" value="{{{value}}}">
 
-    <pre class="language-markup"><code>{{#htmlencode}}<input class="button{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}} type="submit" value="{{value}}">{{/htmlencode}}</code></pre>
+    <pre class="language-markup"><code>{{#htmlencode}}<input class="button{{#if classes}} {{classes}}{{/if}}"{{#if disabled}} disabled="disabled"{{/if}} type="submit" value="{{{value}}}">{{/htmlencode}}</code></pre>
   </div>
 {{/each}}
 

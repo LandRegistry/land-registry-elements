@@ -5,3 +5,8 @@ categories:
 
 dependencies:
   - elements/govuk/core
+
+copy:
+  -
+    from: 'images'
+    to: 'assets/images/buttons/'
