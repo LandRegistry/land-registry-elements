@@ -16,7 +16,6 @@ function DoubleClickPrevention(element, config) {
    * Set everything up
    */
   function create() {
-    element.addEventListener('click', disableButton);
     element.form.addEventListener('submit', disableButton);
   }
 
@@ -31,7 +30,6 @@ function DoubleClickPrevention(element, config) {
    * Tear everything down again
    */
   function destroy() {
-    element.removeEventListener('click', disableButton);
     element.form.removeEventListener('submit', disableButton);
     element.removeAttribute('disabled');
   }

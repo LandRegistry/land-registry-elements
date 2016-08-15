@@ -28,16 +28,24 @@ describe('Form session storage', function() {
 
   });
 
-  it('should prevent people clicking more than once on buttons', function(done) {
+  it('should prevent people clicking more than once on input submits', function(done) {
 
     client
       .url('http://localhost:3000/components/elements/land-registry/double-click-prevention/demo/')
       .waitForExist('.phantom-js-test-rendering', 5000)
       .click('#button-1')
-      .getAttribute('#button-1', 'disabled')
+      .getAttribute('#button-2', 'disabled')
       .then(function(attr) {
         attr.should.be.equal('true')
       })
+      .call(done);
+  });
+
+  it('should prevent people clicking more than once on buttons', function(done) {
+
+    client
+      .url('http://localhost:3000/components/elements/land-registry/double-click-prevention/demo/')
+      .waitForExist('.phantom-js-test-rendering', 5000)
       .click('#button-2')
       .getAttribute('#button-2', 'disabled')
       .then(function(attr) {

@@ -12,12 +12,14 @@ Prevent people double clicking on form buttons by adding a `data-double-click-pr
 
 
 {{#capture 'form-element'}}
+  <input type="text" name="foo" />
+  <br><br>
   <input type="submit" class="button" value="Continue" id="button-1" data-double-click-prevention>
   <br><br>
   <button class="button" id="button-2" data-double-click-prevention>Continue</button>
 {{/capture}}
 
 
-<form method="GET" onSubmit="javascript:return False">
+<form method="GET" onSubmit="javascript:console.log('submitted');return false;">
   {{{form-element}}}
 </form>
