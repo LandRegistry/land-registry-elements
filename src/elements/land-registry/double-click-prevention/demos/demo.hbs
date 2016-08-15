@@ -12,8 +12,10 @@ Prevent people double clicking on form buttons by adding a `data-double-click-pr
 
 
 {{#capture 'form-element'}}
-  <label for="foo">Use this field to test pressing Enter in the form</label>
-  <input type="text" name="foo" id="foo" />
+  <div class="form-group">
+    <label class="form-label" for="foo">Use this field to test pressing Enter in the form</label>
+    <input class="form-control" type="text" name="foo" id="foo" />
+  </div>
   <br><br>
   <input type="submit" class="button" value="Continue" id="button-1" data-double-click-prevention>
   <br><br>
@@ -21,6 +23,17 @@ Prevent people double clicking on form buttons by adding a `data-double-click-pr
 {{/capture}}
 
 
-<form method="GET" onSubmit="javascript:return false;">
+<form method="GET" data-clientside-validation="demo_form_validation">
   {{{form-element}}}
 </form>
+
+
+<script type="application/json" id="demo_form_validation">
+  {
+    "foo": {
+      "presence": {
+        "message": "Please fill this in"
+      }
+    }
+  }
+</script>
