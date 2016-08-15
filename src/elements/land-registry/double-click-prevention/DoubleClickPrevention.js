@@ -34,13 +34,15 @@ function DoubleClickPrevention(element, config) {
    * Main click event handler
    */
   function disableButton(e){
-    element.setAttribute('disabled', 'disabled');
-    element.classList.add(options.waitClass)
+    if(!e.defaultPrevented) {
+      element.setAttribute('disabled', 'disabled');
+      element.classList.add(options.waitClass)
 
-    if(element.value) {
-      element.value = options.waitText;
-    } else {
-      element.innerHTML = options.waitText;
+      if(element.value) {
+        element.value = options.waitText;
+      } else {
+        element.innerHTML = options.waitText;
+      }
     }
   }
 
