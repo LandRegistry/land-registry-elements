@@ -1,4 +1,4 @@
-$path: '../images/icons/';
+$path: '../images/';
 
 @import "node_modules/govuk_frontend_toolkit/stylesheets/design-patterns/buttons";
 @import "node_modules/govuk-elements-sass/public/sass/elements/buttons";
@@ -25,5 +25,15 @@ $path: '../images/';
   &:active {
     background-color: $focus-colour;
     color: $text-colour;
+  }
+}
+
+.button-waiting {
+  &,
+  &[disabled="disabled"] {
+    padding-left: 40px;
+    background-image: file-url('buttons/spinner.gif');
+    background-repeat: no-repeat;
+    background-position: 10px center;
   }
 }
