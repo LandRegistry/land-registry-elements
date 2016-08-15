@@ -16,3 +16,4 @@ dependencies:
   - elements/land-registry/password-reveal
   - elements/land-registry/typography
   - elements/land-registry/form-session-storage
+  - elements/land-registry/double-click-prevention

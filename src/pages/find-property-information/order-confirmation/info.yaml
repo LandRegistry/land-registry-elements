@@ -19,3 +19,4 @@ dependencies:
   - elements/land-registry/warning
   - elements/land-registry/back-link
   - elements/land-registry/typography
+  - elements/land-registry/double-click-prevention
