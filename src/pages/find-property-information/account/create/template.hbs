@@ -10,9 +10,11 @@
 
     <form class="spacing-top-double" action="" method="post" novalidate data-clientside-validation="create_account_form_validation">
 
+    <h2 class="heading-medium">Email address</h2>
+
       <fieldset>
 
-        <legend class="visuallyhidden">Account details</legend>
+        <legend class="visuallyhidden">Email address</legend>
 
         <div class="form-group">
           <label class="form-label" for="email">Email address <a href="#why-do-we-need-email" class="font-xsmall split-detail-trigger spacing-left-single">Why do we need this?</a></label>
@@ -29,8 +31,25 @@
 
         </div>
 
+      </fieldset>
+
+      <h2 class="heading-medium">Create a password</h2>
+
+      <fieldset>
+
+        <legend class="visuallyhidden">Create a password</legend>
+
         <div class="form-group">
-          {{> elements/land-registry/password-reveal }}
+
+          <label class="form-label" for="pass">Create a password</label>
+          <input class="form-control" type="password" id="pass" name="pass">
+
+        </div>
+
+        <div class="form-group">
+
+          <label class="form-label" for="pass-retype">Re-type your password</label>
+          <input class="form-control" type="password" id="pass-retype" name="pass-retype">
 
           <p class="form-hint">Your password must:</p>
           <ul class="form-hint list list-bullet">
@@ -170,6 +189,15 @@
             "message": "Password should be between 8 and 20 characters long. Characters can include letters, number and symbols."
           },
           "find_property_information_password": true
+        },
+        "pass-retype": {
+          "presence": {
+            "message": "Please repeat your new password"
+          },
+          "equality": {
+            "attribute": "pass",
+            "message": "Please ensure both new password fields match"
+         }
         },
         "terms": {
           "presence": {
