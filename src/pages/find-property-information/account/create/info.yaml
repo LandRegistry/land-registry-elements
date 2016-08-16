@@ -13,7 +13,6 @@ dependencies:
   - elements/land-registry/spacing
   - elements/land-registry/clientside-form-validation
   - elements/land-registry/email-repeat
-  - elements/land-registry/password-reveal
   - elements/land-registry/typography
   - elements/land-registry/form-session-storage
   - elements/land-registry/double-click-prevention
