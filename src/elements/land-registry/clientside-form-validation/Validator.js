@@ -5,6 +5,7 @@ var extend = require('extend');
 var domify = require('domify');
 var closest = require('closest');
 var delegate = require('delegate');
+var PubSub = require('pubsub-js');
 
 /**
  * Form validation
@@ -118,6 +119,9 @@ function Validator(element, config) {
 
     if(errorData.length > 0) {
       e.preventDefault();
+      PubSub.publish('clientside-form-validation.invalid', element);
+    } else {
+      PubSub.publish('clientside-form-validation.valid', element);
     }
 
     showSummary(errorData);
