@@ -11,7 +11,8 @@ Prevent people double clicking on form buttons by adding a `data-double-click-pr
 {{/markdown}}
 
 
-{{#capture 'form-element'}}
+<h2 class="heading-medium">Form with clientside validation</h2>
+<form method="GET" data-clientside-validation="demo_form_validation">
   <div class="form-group">
     <label class="form-label" for="foo">Use this field to test pressing Enter in the form</label>
     <input class="form-control" type="text" name="foo" id="foo" />
@@ -20,11 +21,18 @@ Prevent people double clicking on form buttons by adding a `data-double-click-pr
   <input type="submit" class="button" value="Continue" id="button-1" data-double-click-prevention>
   <br><br>
   <button class="button" id="button-2" data-double-click-prevention>Continue</button>
-{{/capture}}
+</form>
 
-
-<form method="GET" data-clientside-validation="demo_form_validation">
-  {{{form-element}}}
+<h2 class="heading-medium">Form without clientside validation</h2>
+<form method="GET">
+  <div class="form-group">
+    <label class="form-label" for="foo2">Use this field to test pressing Enter in the form</label>
+    <input class="form-control" type="text" name="foo2" id="foo2" />
+  </div>
+  <br><br>
+  <input type="submit" class="button" value="Continue" id="button-3" data-double-click-prevention>
+  <br><br>
+  <button class="button" id="button-4" data-double-click-prevention>Continue</button>
 </form>
 
 

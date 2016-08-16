@@ -1,6 +1,7 @@
 'use strict';
 
 var extend = require('extend');
+var PubSub = require('pubsub-js');
 
 /**
  * Double click prevention
@@ -21,7 +22,15 @@ function DoubleClickPrevention(element, config) {
    * Set everything up
    */
   function create() {
-    element.form.addEventListener('submit', disableButton);
+    if(element.form.getAttribute('data-clientside-validation')) {
+
+      PubSub.subscribe('clientside-form-validation.valid', function(msg, data) {
+        disableButton()
+      });
+
+    } else {
+      element.form.addEventListener('submit', disableButton);
+    }
 
     if(element.value) {
       originalText = element.value;
@@ -33,16 +42,14 @@ function DoubleClickPrevention(element, config) {
   /**
    * Main click event handler
    */
-  function disableButton(e){
-    if(!e.defaultPrevented) {
-      element.setAttribute('disabled', 'disabled');
-      element.classList.add(options.waitClass)
+  function disableButton(){
+    element.setAttribute('disabled', 'disabled');
+    element.classList.add(options.waitClass)
 
-      if(element.value) {
-        element.value = options.waitText;
-      } else {
-        element.innerHTML = options.waitText;
-      }
+    if(element.value) {
+      element.value = options.waitText;
+    } else {
+      element.innerHTML = options.waitText;
     }
   }
 
