@@ -194,10 +194,11 @@ function Validator(element, config) {
       }
 
       element.insertBefore(errorSummary, element.firstChild);
+    }
 
+    if(data.errors.length > 0) {
       // Place focus on the summary
       errorSummary.focus();
-
     }
   }
 
