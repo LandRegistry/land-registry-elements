@@ -5,7 +5,7 @@ var events = {
 
 
 // Wait for webfonts to load
-PubSub.subscribe('webfonts.active', function() {
+window.PubSub.subscribe('webfonts.active', function() {
   events.fonts = true;
 });
 

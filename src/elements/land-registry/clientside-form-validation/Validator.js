@@ -118,9 +118,9 @@ function Validator(element, config) {
 
     if(errorData.length > 0) {
       e.preventDefault();
-      PubSub.publish('clientside-form-validation.invalid', element);
+      window.PubSub.publish('clientside-form-validation.invalid', element);
     } else {
-      PubSub.publish('clientside-form-validation.valid', element);
+      window.PubSub.publish('clientside-form-validation.valid', element);
     }
 
     showSummary(errorData);

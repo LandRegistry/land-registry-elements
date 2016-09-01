@@ -12,7 +12,7 @@ window.addEventListener('load', function() {
       urls: [assetPath + '/stylesheets/fonts.css']
     },
     active: function() {
-      PubSub.publish('webfonts.active');
+      window.PubSub.publish('webfonts.active');
     }
   });
 

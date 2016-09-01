@@ -23,7 +23,7 @@ function DoubleClickPrevention(element, config) {
   function create() {
     if(element.form.getAttribute('data-clientside-validation')) {
 
-      PubSub.subscribe('clientside-form-validation.valid', function(msg, data) {
+      window.PubSub.subscribe('clientside-form-validation.valid', function(msg, data) {
         disableButton()
       });
 
