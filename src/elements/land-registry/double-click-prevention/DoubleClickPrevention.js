@@ -1,7 +1,6 @@
 'use strict';
 
 var extend = require('extend');
-var PubSub = require('pubsub-js');
 
 /**
  * Double click prevention

@@ -1,5 +1,4 @@
 var WebFont = require('webfontloader');
-var PubSub = require('pubsub-js');
 
 /*global assetPath:true*/
 

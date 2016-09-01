@@ -5,7 +5,6 @@ var extend = require('extend');
 var domify = require('domify');
 var closest = require('closest');
 var delegate = require('delegate');
-var PubSub = require('pubsub-js');
 
 /**
  * Form validation

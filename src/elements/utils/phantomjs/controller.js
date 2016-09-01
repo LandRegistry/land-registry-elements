@@ -1,5 +1,3 @@
-var PubSub = require('pubsub-js');
-
 var events = {
   fonts: false,
   leaflet: false
