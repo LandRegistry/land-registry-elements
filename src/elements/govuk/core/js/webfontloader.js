@@ -1,5 +1,4 @@
 var WebFont = require('webfontloader');
-var PubSub = require('pubsub-js');
 
 /*global assetPath:true*/
 
@@ -13,7 +12,7 @@ window.addEventListener('load', function() {
       urls: [assetPath + '/stylesheets/fonts.css']
     },
     active: function() {
-      PubSub.publish('webfonts.active');
+      window.PubSub.publish('webfonts.active');
     }
   });
 
