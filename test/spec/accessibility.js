@@ -50,7 +50,7 @@ describe('The pattern library page at', function() {
 
     it(url + ' should be accessible HTML', function(done) {
 
-      test.run('http://localhost:3000' + url, function (error, results) {
+      test.run(url, function (error, results) {
         var output = '';
 
         if(!Array.isArray(results)) {

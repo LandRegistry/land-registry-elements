@@ -11,7 +11,7 @@ module.exports = components.getComponents()
         for(variant in component.variants) {
           if(component.variants.hasOwnProperty(variant)) {
 
-            urls.push('/components/' + component.id + '/' + variant);
+            urls.push('http://localhost:3000/components/' + component.id + '/' + variant);
           }
         }
       });
