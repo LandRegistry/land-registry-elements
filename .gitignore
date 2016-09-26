@@ -37,7 +37,11 @@ node_modules
 /.tmp
 
 # Visual regression test images
-test/fixtures/visual-regression
+test/fixtures/visual-regression/test-renderings
+test/fixtures/visual-regression/diff-renderings
 
 # PyCharm/IntelliJ
 .idea
+
+# Vagrant
+.vagrant

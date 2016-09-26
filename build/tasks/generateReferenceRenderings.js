@@ -12,7 +12,6 @@ var request = require('superagent');
 
 require('../server');
 
-rimraf.sync('test/fixtures/visual-regression/reference-renderings');
 mkdirp.sync('test/fixtures/visual-regression/reference-renderings');
 
 var options = {
@@ -53,57 +52,38 @@ require('./testURLs')
       // Desktop screenshot
       promises.push(throat(function() {
         return new Promise(function(resolve, reject) {
-          // Check the component exists on the reference url first
-          request
-            .get('http://land-registry-elements.herokuapp.com' + componentUrl)
-            .end(function(err, res){
-              if(res.status === 200) {
-                var renderStream = webshot('http://land-registry-elements.herokuapp.com' + componentUrl, options);
+          var renderStream = webshot(componentUrl, options);
 
-                var file = fs.createWriteStream('test/fixtures/visual-regression/reference-renderings/desktop-' + fileName + '.png', {encoding: 'binary'});
+          var file = fs.createWriteStream('test/fixtures/visual-regression/reference-renderings/desktop-' + fileName + '.png', {encoding: 'binary'});
 
-                renderStream.on('data', function(data) {
-                  file.write(data.toString('binary'), 'binary');
-                });
+          renderStream.on('data', function(data) {
+            file.write(data.toString('binary'), 'binary');
+          });
 
-                renderStream.on('end', function() {
-                  console.log('Reference desktop screenshot taken for', componentUrl);
+          renderStream.on('end', function() {
+            console.log('Reference desktop screenshot taken for', componentUrl);
 
-                  resolve();
-                });
-              } else {
-                resolve();
-              }
-            });
+            resolve();
+          });
         });
       }));
 
       // Mobile screenshot
       promises.push(throat(function() {
         return new Promise(function(resolve, reject) {
-          // Check the component exists on the reference url first
-          request
-            .get('http://land-registry-elements.herokuapp.com' + componentUrl)
-            .end(function(err, res){
-              if(res.status === 200) {
-                var renderStream = webshot('http://land-registry-elements.herokuapp.com' + componentUrl, mobileOptions);
+          var renderStream = webshot(componentUrl, mobileOptions);
 
-                var file = fs.createWriteStream('test/fixtures/visual-regression/reference-renderings/mobile-' + fileName + '.png', {encoding: 'binary'});
+          var file = fs.createWriteStream('test/fixtures/visual-regression/reference-renderings/mobile-' + fileName + '.png', {encoding: 'binary'});
 
-                renderStream.on('data', function(data) {
-                  file.write(data.toString('binary'), 'binary');
-                });
+          renderStream.on('data', function(data) {
+            file.write(data.toString('binary'), 'binary');
+          });
 
-                renderStream.on('end', function() {
-                  console.log('Reference mobile screenshot taken for', componentUrl);
+          renderStream.on('end', function() {
+            console.log('Reference mobile screenshot taken for', componentUrl);
 
-                  resolve();
-                });
-
-              } else {
-                resolve();
-              }
-            });
+            resolve();
+          });
         });
       }));
 
