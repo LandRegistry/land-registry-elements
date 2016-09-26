@@ -3,6 +3,8 @@
   @include core-16;
   margin-top: $gutter-half;
   display: inline-block;
+  position: relative;
+  padding-left: 20px;
 
   &,
   &:visited {
@@ -10,9 +12,12 @@
   }
 
   &:before {
-    // content: '\25C0 ';
-    // margin-right: 8px;
-    // font-family: dingbats, arial unicode ms, sans-serif;
+    content: '\25C0 ';
+    font-family: dingbats, arial unicode ms, sans-serif;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 
