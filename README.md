@@ -181,13 +181,11 @@ New tests can be defined by adding a new file to the `/tests` directory or to th
 
 #### Visual regression tests
 
-**Currently disabled**
-
 Visual regression tests are built into the TravisCI pipeline such that if work on a pull request changes the rendering of any existing pages then Travis will exist with a failure. If this happens you can review the diff renderings in `tests/fixtures/visual-regression/diff-renderings` and investigate what differences may have occured.
 
 It is worth noting that when creating new pages, the absence of a reference rendering will cause the tests to fail!
 
-Either way, when updating existing components, or adding new components, you will need to run `npm run generateReferenceRenderings`. This script will update the contents of `test/fixtures/visual-regression/reference-renderings` which you should then commit to the repository.
+Either way, when updating existing components, or adding new components, you will need to run `npm run generateReferenceRenderings` _inside_ the supplied Vagrant box. This script will update the contents of `test/fixtures/visual-regression/reference-renderings` which you should then commit to the repository. The Vagrant box is synced with rsync so if you have updated code after starting the box you will need to run `vagrant rsync`.
 
 *IMPORTANT*: After you have updated the reference renderings and committed the results, you should review the changes in the diff display of your github pull request. It would be all too easy to simply update the reference renderings with breaking changes to existing components and simply ignore them - monitoring these renderings requires a human element!
 
