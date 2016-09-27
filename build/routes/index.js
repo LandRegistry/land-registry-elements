@@ -53,10 +53,19 @@ module.exports = function(app){
       ])
       .spread(function(hbs, components) {
 
+        var currentComponents = components.filter(function(item) {
+          return !item.deprecated;
+        });
+
+        var deprecatedComponents = components.filter(function(item) {
+          return item.deprecated;
+        });
+
         renderPage(hbs, {
           title: 'Index',
           content: hbs.compile(hbs.partials['pages/core/index'])({
-            components: sortComponents(components),
+            components: sortComponents(currentComponents),
+            deprecatedComponents: sortComponents(deprecatedComponents),
             readme: fs.readFileSync('README.md')
           })
         })
