@@ -6,6 +6,12 @@ title: Password reveal
   {{component.name}}
 </h1>
 
+<div class="readme warning">
+{{#markdown}}
+  {{component.readme}}
+{{/markdown}}
+</div>
+
 {{#capture 'form'}}
   {{> elements/land-registry/password-reveal }}
 {{/capture}}

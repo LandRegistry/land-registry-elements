@@ -5,3 +5,5 @@ categories:
 
 dependencies:
   - elements/govuk/forms
+
+deprecated: true
