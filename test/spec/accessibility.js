@@ -70,6 +70,11 @@ describe('The pattern library page at', function() {
             return;
           }
 
+          // Supress mask-icon errors
+          if(result.code === 'WCAG2AA.Principle1.Guideline1_4.1_4_3_F24.F24.FGColour' && result.context.indexOf('mask-icon') !== -1) {
+            return;
+          }
+
           output += os.EOL + os.EOL + result.code + os.EOL + result.message + os.EOL + (result.context ? result.context + os.EOL : '')  + result.selector
         });
 
