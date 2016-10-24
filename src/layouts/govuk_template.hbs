@@ -55,5 +55,7 @@
     <script src="{{{ assetPath }}}javascripts/govuk-template.js"></script>
 
     {{{scripts}}}
+
+    <script>if (typeof window.GOVUK === 'undefined') document.body.className = document.body.className.replace('js-enabled', '');</script>
   </body>
 </html>
