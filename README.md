@@ -38,10 +38,10 @@ The Land Registry elements repository is a "Living style guide". This means that
 --------------------------------------------------------------------------------
 
 ## Running the pattern library
-The pattern library can be started with the command `npm start`. This will start a webserver running on `localhost:3000` where you can view the pattern library.
+The pattern library can be started with the command `npm start`. (Make sure to navigate to the folder where you have checked out this repository and `npm install` first) This will start a webserver running on `localhost:3000` where you can view the pattern library.
 
 ### Requirements
-* Node.js 5.x (If you currently use Node.js 4 for gov uk things, using a version manager such as [nvm](https://github.com/creationix/nvm) would be recommended to easily switch between versions)
+* Node.js 6.x (If you currently use Node.js 4 for gov uk things, using a version manager such as [nvm](https://github.com/creationix/nvm) would be recommended to easily switch between versions)
 
 ### Requirements to run the test suite
 * [mocha](https://www.npmjs.com/package/mocha), installed globally
@@ -194,7 +194,6 @@ Either way, when updating existing components, or adding new components, you wil
 
 ## Todos
 
-- Re-enable clientside validation test suite - failing now that validatejs has been put in async mode?
 - Write more comprehensive test suite for the clientside validation checking that it matches the spec set out by gov uk
 - Re-think language switcher translations.
   - "Current language" hidden text should be in the language of the page at that point?
