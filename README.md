@@ -1,5 +1,5 @@
 # land-registry-elements
-[![Build Status](https://travis-ci.org/LandRegistry/land-registry-elements.svg)](https://travis-ci.org/LandRegistry/land-registry-elements)
+[![Build Status](https://travis-ci.org/LandRegistry/land-registry-elements.svg?branch=master)](https://travis-ci.org/LandRegistry/land-registry-elements)
 
 Initially this repo will comprise production ready HTML, CSS and JavaScript for the Find property information beta. The wider goal however is for this to be a central location for all tested, production ready UI patterns suitable for use in any public facing Land Registry products. It builds upon and extends the foundations set out in https://github.com/alphagov/govuk_elements as well as providing new UI patterns as required.
 
