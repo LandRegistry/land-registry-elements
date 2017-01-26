@@ -1,0 +1,17 @@
+name: About this property (Signed out)
+categories:
+  primary: Land Registry
+  secondary: Find property information beta pages
+
+dependencies:
+  - elements/govuk/details
+  - elements/govuk/panels
+  - elements/govuk/layout
+  - elements/govuk/phase-banner
+  - elements/land-registry/address
+  - elements/land-registry/definition-tabular
+  - elements/land-registry/leaflet-map
+  - elements/land-registry/spacing
+  - elements/land-registry/back-link
+  - elements/land-registry/typography
+  - elements/land-registry/double-click-prevention
