@@ -1,0 +1,237 @@
+{{> elements/govuk/phase-banner }}
+
+<div class="grid-row printhidden">
+  <div class="column-two-thirds">
+    {{> elements/land-registry/back-link }}
+  </div>
+</div>
+
+<h1 class="heading-large spacing-top-single">Confirm your order</h1>
+
+<p>You'll get a summary of the information Land Registry holds for this property title.</p>
+
+<div class="grid-row column-flip spacing-top-half">
+  <div class="column-one-third tablet-column-one-third spacing-bottom-single">
+    <div class="map" id="map"></div>
+  </div>
+
+  <div class="column-two-thirds tablet-column-two-thirds">
+
+    <dl class="definition-tabular definition-tabular-sectioned">
+
+      {{#is_caution_title}}
+        <dt class="bold-small">Caution</dt>
+        <dd>
+          <details class="font-xsmall">
+            <summary class="bold-small">What does Caution mean?</summary>
+            <div class="panel">
+              <p>This property hasn’t been registered yet. You can’t find out who owns it from this service. </p>
+              <p>Someone other than the owner (known as the ‘cautioner’) has registered a right or interest in the property. They will be told if anyone tries to register it, and can object to the registration going ahead until their claim has been looked at. You can get their name and address from this service.</p>
+              <p>Registration has only been compulsory since the 1990s. Property that hasn’t changed hands since then may not be registered.</p>
+            </div>
+          </details>
+        </dd>
+      {{/is_caution_title}}
+
+      {{#with address}}
+        <dt>Address</dt>
+        <dd class="bold-medium">
+          <div class="address">
+            {{#each this}}
+              <span>{{this}}</span>
+            {{/each}}
+          </div>
+        </dd>
+      {{/with}}
+
+      <dt>Title number</dt>
+      <dd class="bold-small">{{data.title_number}}</dd>
+
+      <dt>Tenure type</dt>
+      <dd>
+        <strong class="bold">{{tenure}}</strong>
+        <a class="split-detail-trigger font-xsmall" href="#what-is-tenure">What does this mean?</a>
+
+        <div class="split-detail-contents" id="what-is-tenure">
+          <div class="panel panel-border-narrow font-xsmall">
+            {{#ifCond tenure '==' 'Leasehold'}}
+              <p>You only own a leasehold property for a fixed period of time. You'll have a legal agreement with the landlord (sometimes known as the ‘freeholder’) called a ‘lease’. This tells you how many years you’ll own the property.</p>
+              <p>Most flats are leasehold. Houses can be leasehold too and usually are if they’re bought through a shared ownership scheme.</p>
+              <p>The leasehold and freehold are registered separately with the Land Registry. Each has its own title documents.</p>
+              <p><b class="bold">You are buying a summary of the leasehold owner, not the freehold.</b></p>
+
+              <a rel="external" href="https://www.gov.uk/leasehold-property/overview">More about Leasehold on GOV.UK</a>
+            {{/ifCond}}
+
+            {{#ifCond tenure '==' 'Freehold'}}
+              <p>You own a freehold building and land outright. It is yours until you sell it or give it away.</p>
+              <p>Most houses are freehold. Most flats are leasehold. That means someone else owns the freehold for the building the flat is in.</p>
+              <p><b class="bold">If you want to know who owns a particular flat, you probably need the leasehold instead.</b></p>
+              <p>Houses can also be leasehold and usually are if they’re bought through a shared ownership scheme.</p>
+            {{/ifCond}}
+          </div>
+        </div>
+
+        <p class="font-xsmall">A property can have both a freehold and a leasehold title. To get a different tenure for this address, <a href="#">go back</a> and select the one you need.</p>
+      </dd>
+
+    </dl>
+
+    {{#if is_caution_title}}
+      <h2 class="heading-medium collapse-top">Land Registry does not know the owner of this property</h2>
+    {{else}}
+      <h2 class="heading-medium collapse-top">The summary will tell you</h2>
+    {{/if}}
+
+    <ul class="list list-bullet">
+
+      {{#if is_caution_title}}
+        <li>Someone other than the owner (known as the ‘cautioner’) has registered a right or interest in the property.</li>
+          <li><strong class="bold">The summary will give you the cautioner's name and address.</strong></li>
+      {{else}}
+
+        {{#ifCond tenure '==' 'Freehold'}}
+          <li>current owner’s name and address</li>
+        {{/ifCond}}
+
+        {{#ifCond tenure '==' 'Leasehold'}}
+          <li>current leaseholder’s name and address</li>
+        {{/ifCond}}
+
+        <li>what was paid for the property – you won’t get this if it was bought before April 2000, if they paid less than £100, or if Land Registry have agreed not to record the price</li>
+
+        <li>if there is a mortgage on the property, the lender’s name and address</li>
+      {{/if}}
+
+    </ul>
+
+    <p class="spacing-top-single">This information can change if we receive an application. This service is unable to tell you whether or not there is an application pending with the Land Registry.</p>
+
+    <div class="warning media">
+      <div class="media-item">
+        <i class="icon icon-important">
+          <span class="visuallyhidden">Warning</span>
+        </i>
+      </div>
+
+      <div class="media-body">
+        <h2 class="heading-small spacing-bottom-flush">You'll only be able to view the information once</h2>
+        <p class="spacing-top-flush">If you want to keep a copy you can print it out</p>
+      </div>
+    </div>
+
+    <h2 class="heading-medium">The summary costs £3 <span class="font-small">(£2.50+VAT)</span></h2>
+    <p>You can pay by credit or debit card.</p>
+
+
+    <form method="GET" id="cra_form" data-clientside-validation="cra_form_validation" data-clientside-validation-no-summary>
+      <p>You need to accept the following terms to continue.</p>
+
+      <div class="form-group">
+        <label class="block-label" for="terms">
+          <input id="terms" name="terms" type="checkbox" value="agree">
+          I agree that you will provide the summary as soon as I've paid.<br>
+          I accept that I will lose my right to cancel the contract once the summary is displayed.
+        </label>
+      </div>
+
+      <input type="submit" class="button" value="Buy title summary">
+
+      <p class="font-xsmall spacing-top-third">for £3 inc VAT</p>
+    </form>
+
+    <script type="application/json" id="cra_form_validation">
+      {
+        "terms": {
+          "presence": {
+            "message": "You need to agree to receive the summary right away and that you’ll lose your right to cancel"
+          }
+        }
+      }
+    </script>
+
+    {{> elements/land-registry/back-link}}
+
+  </div>
+</div>
+
+
+
+<script>
+window.onload = function() {
+
+  var indexData = {{#printJson indexPolygon}}{{/printJson}};
+
+    // Define coordinate system using PROJ4 standards
+  var projection_name = 'EPSG:27700'
+  // from: http://epsg.io/27700-5622 - TODO: research which transformation we should use
+  var projection_def = '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=370.396,-108.938,435.682,0,0,0,0 +units=m +no_defs'
+
+  new L.Proj.CRS(projection_name, projection_def,
+    {
+      resolutions: [2500, 1000, 500, 200, 100, 50, 25, 10, 5, 2.5, 1],
+      bounds: L.bounds([1300000,0],[700000,0])
+    }
+  );
+
+  // set up control and options
+  var options = {
+    continuousWorld: true,
+    worldCopyJump: false,
+    minZoom: 5,
+    maxZoom: 19,
+    // controls
+    dragging: false,
+    touchZoom: false,
+    doubleClickZoom: false,
+    scrollWheelZoom: false,
+    boxZoom: false,
+    keyboard: false,
+    tap: false,
+    zoomControl: true,
+    attributionControl: true
+  };
+
+  // set up the map
+  var map = new L.Map('map', options);
+
+  // create the tile layer with correct attribution
+  var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var osm = new L.TileLayer(osmUrl, {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  });
+  map.addLayer(osm);
+
+  //Add a scale control to the map
+  L.control.scale().addTo(map);
+
+  //Index stlye
+  var indexStyle = {
+    fillcolor: 'blue',
+    fillOpacity: document.getElementById('map').classList.contains('polygon') ? 0.5 : 0,
+    opacity: 0
+  };
+
+  //Create the index layer
+  var indexGeoJson = L.Proj.geoJson(indexData, {
+    style: indexStyle
+  });
+
+  indexGeoJson.addTo(map);
+
+  //Center map view on geojson polygon
+  var bounds = indexGeoJson.getBounds();
+
+  if(!document.getElementById('map').classList.contains('polygon')) {
+    L.marker(bounds.getCenter()).addTo(map);
+  }
+
+  map.fitBounds(bounds, {
+    maxZoom: 18,
+    animate: false,
+    padding: [10,10]
+  });
+
+}
+
+</script>
