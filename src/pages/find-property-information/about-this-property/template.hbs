@@ -6,7 +6,11 @@
   </div>
 </div>
 
-<h1 class="heading-large">About this property</h1>
+{{#ifCond pageData.mode '==' 'confirm' }}
+  <h1 class="heading-large">Confirm your purchase</h1>
+{{else}}
+  <h1 class="heading-large">About this property</h1>
+{{/ifCond}}
 
 <div class="grid-row spacing-top-half">
 
@@ -66,6 +70,12 @@
         <p class="font-xsmall">A property can have both a freehold and a leasehold title. To get a different tenure for this address, <a href="#">go back</a> and select the one you need.</p>
       </dd>
 
+      {{#ifCond pageData.mode '==' 'confirm' }}
+        <dt>Title number</dt>
+        <dd class="bold-small">{{data.title_number}}</dd>
+      {{/ifCond}}
+
+
     </dl>
   </div>
 
@@ -85,58 +95,75 @@
 
   <div class="column-two-thirds tablet-column-two-thirds">
     <div class="text">
-      <h2 class="heading-medium spacing-top-flush">Pay &pound;3 to find out:</h2>
+      {{#ifCond pageData.mode '==' 'confirm' }}
+        <h2 class="heading-medium spacing-top-flush">You'll receive:</h2>
 
-      <ul class="list list-bullet">
+        <ul class="list list-bullet">
 
-        {{#if is_caution_title}}
-          <li>the cautioner's name and address <strong class="bold">(the owner isn't available from this service)</strong></li>
-        {{else}}
+          {{#if is_caution_title}}
+            <li>the cautioner's name and address <strong class="bold">(the owner isn't available from this service)</strong></li>
+          {{else}}
+
+            <li>owners' names and addresses</li>
+            <li>price paid (if available)</li>
+            <li>details of any mortgage lenders</li>
+
+          {{/if}}
+        </ul>
+      {{else}}
+        <h2 class="heading-medium spacing-top-flush">Pay &pound;3 to find out:</h2>
+        <ul class="list list-bullet">
+
+          {{#if is_caution_title}}
+            <li>the cautioner's name and address <strong class="bold">(the owner isn't available from this service)</strong></li>
+          {{else}}
+
+            <li>who owns this property (name and address)</li>
+            <li>how much they paid (if available)</li>
+            <li>if there is a mortgage - the name and address of the lender</li>
+
+          {{/if}}
+
+          <li>title number (the unique reference number)</li>
+        </ul>
+      {{/ifCond}}
 
 
-          {{!-- {{#ifCond tenure '==' 'Freehold'}}
-          {{/ifCond}}
+      {{#ifCond pageData.mode '==' 'confirm' }}
+        Purchase island thing here
+      {{else}}
 
-          {{#ifCond tenure '==' 'Leasehold'}}
-          {{/ifCond}} --}}
+        <h2 class="heading-medium">How to buy this information</h2>
 
-          <li>who owns this property (name and address)</li>
-          <li>how much they paid (if available)</li>
-          <li>if there's a mortgage on it</li>
+        <ol class="list">
+          <li>
+            <span class="circle circle-step-large spacing-right-half">1</span>
+            <strong class="bold">create an account</strong>
+          </li>
+          <li>
+            <span class="circle circle-step-large spacing-right-half">2</span>
+            <strong class="bold">pay online</strong> by debit or credit card
+          </li>
+        </ol>
 
-        {{/if}}
+        <p>This information will be displayed on-screen.</p>
 
-        <li>title number (the unique reference number)</li>
+        <div class="panel panel-border-narrow">
+          <p>If you've already used this service and created an account, sign in with the email address you used before.</p>
+        </div>
 
-      </ul>
+        <p class="spacing-top-double">
+          <a class="button spacing-bottom-half" href="#">Create a new account</a><br>
+          <strong class="bold">or</strong><br>
+          <a class="button spacing-top-half" href="#">Sign in with an existing account</a>
+        <p>
 
-      <h2 class="heading-medium">How to buy this information</h2>
-
-      <ol class="list">
-        <li>
-          <span class="circle circle-step-large spacing-right-half">1</span>
-          <strong class="bold">create an account</strong></li>
-        <li>
-          <span class="circle circle-step-large spacing-right-half">2</span>
-          <strong class="bold">pay online</strong> by debit or credit card</li>
-      </ol>
-
-      <p>This information will be displayed on-screen.</p>
-
-      <div class="panel panel-border-narrow">
-        <p>If you've already used this service and created an account, sign in with the email address you used before.</p>
-      </div>
-
-      <p class="spacing-top-double">
-        <a class="button spacing-bottom-half" href="#">Create a new account</a><br>
-        <strong class="bold">or</strong><br>
-        <a class="button spacing-top-half" href="#">Sign in with an existing account</a>
-      <p>
+        {{#with bottomBackButton }}
+          {{> elements/land-registry/back-link}}
+        {{/with}}
+      {{/ifCond}}
     </div>
 
-    {{#with bottomBackButton }}
-      {{> elements/land-registry/back-link}}
-    {{/with}}
 
   </div>
 

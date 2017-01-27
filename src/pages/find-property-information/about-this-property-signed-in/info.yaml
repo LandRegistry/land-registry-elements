@@ -4,5 +4,5 @@ categories:
   secondary: Find property information beta pages
 
 dependencies:
-  - pages/find-property-information/about-this-property-signed-out
-  - pages/find-property-information/confirm-your-purchase
+  - pages/find-property-information/about-this-property
+
