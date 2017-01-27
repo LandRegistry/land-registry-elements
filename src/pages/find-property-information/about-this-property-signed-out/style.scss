@@ -1,0 +1,22 @@
+.about-page-map-container {
+  position: relative;
+}
+
+.map-outer {
+  height: 0;
+  padding-bottom: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: relative;
+
+  @include media(desktop) {
+    position: absolute;
+  }
+}
+
+.about-page-map {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
