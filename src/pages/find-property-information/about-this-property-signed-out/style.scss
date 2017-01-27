@@ -1,5 +1,11 @@
 .about-page-map-container {
   position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+
+  @include media(desktop) {
+    max-width: none;
+  }
 }
 
 .map-outer {

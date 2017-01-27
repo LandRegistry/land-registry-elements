@@ -8,7 +8,8 @@ var extend = require('extend');
 function PropertyMap(element, config) {
 
   var options = {
-    osmUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    // http://www.openstreetmap.org/#map=18/51.23589/-2.05186&layers=T
+    osmUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?layers=T',
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     leaflet: {
       continuousWorld: true,

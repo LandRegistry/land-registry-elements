@@ -10,8 +10,7 @@
 
 <div class="grid-row spacing-top-half">
 
-  <div class="column-two-thirds tablet-column-two-thirds spacing-bottom-single">
-
+  <div class="column-two-thirds spacing-bottom-single">
     <dl class="definition-tabular definition-tabular-sectioned">
 
       {{#is_caution_title}}
@@ -70,12 +69,14 @@
     </dl>
   </div>
 
-  <div class="column-one-third tablet-column-one-third about-page-map-container">
-    <div class="map-outer">
-      <div class="map about-page-map" id="map" data-map-json="map-data"></div>
-      <script type="application/json" id="map-data">
-        {{#printJson indexPolygon}}{{/printJson}}
-      </script>
+  <div class="column-one-third spacing-bottom-single">
+    <div class="about-page-map-container">
+      <div class="map-outer">
+        <div class="map about-page-map" id="map" data-map-json="map-data"></div>
+        <script type="application/json" id="map-data">
+          {{#printJson indexPolygon}}{{/printJson}}
+        </script>
+      </div>
     </div>
   </div>
 </div>
@@ -83,54 +84,55 @@
 <div class="grid-row">
 
   <div class="column-two-thirds tablet-column-two-thirds">
+    <div class="text">
+      <h2 class="heading-medium spacing-top-flush">Pay &pound;3 to find out:</h2>
 
-    <h2 class="heading-medium spacing-top-flush">Pay &pound;3 to find out:</h2>
+      <ul class="list list-bullet">
 
-    <ul class="list list-bullet">
-
-      {{#if is_caution_title}}
-        <li>the cautioner's name and address <strong class="bold">(the owner isn't available from this service)</strong></li>
-      {{else}}
+        {{#if is_caution_title}}
+          <li>the cautioner's name and address <strong class="bold">(the owner isn't available from this service)</strong></li>
+        {{else}}
 
 
-        {{!-- {{#ifCond tenure '==' 'Freehold'}}
-        {{/ifCond}}
+          {{!-- {{#ifCond tenure '==' 'Freehold'}}
+          {{/ifCond}}
 
-        {{#ifCond tenure '==' 'Leasehold'}}
-        {{/ifCond}} --}}
+          {{#ifCond tenure '==' 'Leasehold'}}
+          {{/ifCond}} --}}
 
-        <li>who owns this property (name and address)</li>
-        <li>how much they paid (if available)</li>
-        <li>if there's a mortgage on it</li>
+          <li>who owns this property (name and address)</li>
+          <li>how much they paid (if available)</li>
+          <li>if there's a mortgage on it</li>
 
-      {{/if}}
+        {{/if}}
 
-      <li>title number (the unique reference number)</li>
+        <li>title number (the unique reference number)</li>
 
-    </ul>
+      </ul>
 
-    <h2 class="heading-medium">How to buy this information</h2>
+      <h2 class="heading-medium">How to buy this information</h2>
 
-    <ol class="list">
-      <li>
-        <span class="circle circle-step-large spacing-right-half">1</span>
-        <strong class="bold">create an account</strong></li>
-      <li>
-        <span class="circle circle-step-large spacing-right-half">2</span>
-        <strong class="bold">pay online</strong> by debit or credit card</li>
-    </ol>
+      <ol class="list">
+        <li>
+          <span class="circle circle-step-large spacing-right-half">1</span>
+          <strong class="bold">create an account</strong></li>
+        <li>
+          <span class="circle circle-step-large spacing-right-half">2</span>
+          <strong class="bold">pay online</strong> by debit or credit card</li>
+      </ol>
 
-    <p>This information will be displayed on-screen.</p>
+      <p>This information will be displayed on-screen.</p>
 
-    <div class="panel panel-border-narrow">
-      <p>If you've already used this service and created an account, sign in with the email address you used before.</p>
+      <div class="panel panel-border-narrow">
+        <p>If you've already used this service and created an account, sign in with the email address you used before.</p>
+      </div>
+
+      <p class="spacing-top-double">
+        <a class="button spacing-bottom-half" href="#">Create a new account</a><br>
+        <strong class="bold">or</strong><br>
+        <a class="button spacing-top-half" href="#">Sign in with an existing account</a>
+      <p>
     </div>
-
-    <p class="spacing-top-double">
-      <a class="button spacing-bottom-half" href="#">Create a new account</a><br>
-      <strong class="bold">or</strong><br>
-      <a class="button spacing-top-half" href="#">Sign in with an existing account</a>
-    <p>
 
     {{#with bottomBackButton }}
       {{> elements/land-registry/back-link}}
