@@ -7,14 +7,14 @@
   "description": "Land registry frontend pattern library - building on top of http://govuk-elements.herokuapp.com",
   "main": "build/build.js",
   "scripts": {
-    "test": "npm run build && npm run generateTestURLs && mocha && npm run eslint",
+    "test": "npm run build && npm run generateTestURLs && mocha && npm run eslint && npm run zipTestRenderings",
     "eslint": "eslint src/** --ignore-pattern build.js --ignore-pattern src/elements/land-registry/polyfills",
     "generateTestURLs": "node build/tasks/testURLs.js",
     "build": "node build/doBuild.js",
     "build-prod": "node build/doBuildProd.js",
     "start": "node build/devServer.js",
     "dev": "supervisor -i test,dist,.tmp,node_modules -e js,scss,hogan,yaml build/devServer.js",
-    "generateReferenceRenderings": "npm run build && node build/tasks/generateReferenceRenderings.js"
+    "zipTestRenderings": "node build/zipTestRenderings.js"
   },
   "repository": {
     "type": "git",
@@ -45,7 +45,8 @@
     "throat": "^2.0.2",
     "trim-character": "^2.0.1",
     "webdriverio": "^4.0.7",
-    "webshot": "^0.18.0"
+    "webshot": "^0.18.0",
+    "zip-dir": "^1.0.2"
   },
   "dependencies": {
     "autoprefixer": "^6.3.6",
