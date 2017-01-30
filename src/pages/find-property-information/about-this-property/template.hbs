@@ -133,7 +133,7 @@
 </div>
 
 <div class="grid-row spacing-top-double">
-  <div class="column-two-thirds tablet-column-two-thirds">
+  <div class="column-two-thirds">
     {{#ifCond pageData.mode '==' 'about-signed-out' }}
 
       <h2 class="heading-medium spacing-top-flush">How to buy this information</h2>
@@ -167,7 +167,7 @@
 
     {{else}}
 
-      <div class="island">
+      <div class="island spacing-bottom-single">
         <form action="somewhere" method="POST" novalidate data-clientside-validation="pay_form_validation" data-clientside-validation-no-summary>
           <fieldset>
             <legend class="heading-medium">How to pay</legend>
