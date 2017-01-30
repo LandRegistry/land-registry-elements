@@ -81,7 +81,7 @@
 
   <div class="column-one-third spacing-bottom-single">
     <div class="about-page-map-container">
-      <div class="map-outer">
+      <div class="about-page-map-outer">
         <div class="map about-page-map" id="map" data-map-json="map-data"></div>
         <script type="application/json" id="map-data">
           {{#printJson indexPolygon}}{{/printJson}}
@@ -129,9 +129,7 @@
       {{/ifCond}}
 
 
-      {{#ifCond pageData.mode '==' 'confirm' }}
-        Purchase island thing here
-      {{else}}
+      {{#ifCond pageData.mode '==' 'about-signed-out' }}
 
         <h2 class="heading-medium">How to buy this information</h2>
 
@@ -161,6 +159,56 @@
         {{#with bottomBackButton }}
           {{> elements/land-registry/back-link}}
         {{/with}}
+
+        {{else}}
+
+          <div class="island spacing-top-double">
+            <form action="" method="POST" novalidate data-clientside-validation="pay_form_validation" data-clientside-validation-no-summary>
+              <fieldset>
+              <legend class="heading-medium">How to pay</legend>
+
+              <p>This information costs &pound;3. Payment will be taken by WorldPay on the Land Registry's behalf.</p>
+
+              <div class="media">
+                <div class="media-item">
+                  <i class="icon icon-important">
+                    <span class="visuallyhidden">Warning</span>
+                  </i>
+                </div>
+
+                <div class="media-body">
+                  <p class="heading-small spacing-bottom-flush spacing-top-flush">Important: make sure this is the property you want.</p>
+                  <p class="spacing-top-flush">You can't cancel once you've paid and the information is displayed.</p>
+                </div>
+              </div>
+
+              <div class="form-group spacing-top-single">
+                <label class="block-label" for="terms">
+                  <input id="terms" name="terms" type="checkbox" value="terms">
+                  I have read and agree to the <a href="/terms-and-conditions">terms of use</a>
+                </label>
+              </div>
+
+              <div class="spacing-bottom-single">
+                <input type="submit" class="button" value="Pay now">
+              </div>
+
+            </form>
+
+            <script type="application/json" id="pay_form_validation">
+              {
+                "terms": {
+                  "presence": {
+                    "message": "You must agree to the terms of use before continuing"
+                  }
+                }
+              }
+            </script>
+
+            {{#with bottomBackButton }}
+              {{> elements/land-registry/back-link}}
+            {{/with}}
+          </div>
       {{/ifCond}}
     </div>
 
