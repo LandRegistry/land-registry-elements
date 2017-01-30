@@ -17,15 +17,18 @@
 <div class="grid-row column-flip spacing-top-single">
   <div class="column-one-third tablet-column-one-third spacing-bottom-single">
     <div class="fpi-map-container">
-      <div class="map polygon" id="map" data-map-json="map-data">
-        <p>The map relies on JavaScript being enabled in your browser.</p>
+      <div class="fpi-map-outer">
+        <div class="map fpi-map polygon" id="map" data-map-json="map-data">
+          <p>The map relies on JavaScript being enabled in your browser.</p>
+        </div>
+        <script type="application/json" id="map-data">
+          {{#printJson indexPolygon}}{{/printJson}}
+        </script>
+
       </div>
-      <script type="application/json" id="map-data">
-        {{#printJson indexPolygon}}{{/printJson}}
-      </script>
+        <p class="font-xsmall fpi-map-note">This map shows the property’s rough extent and location, <strong class="bold">not legal boundaries</strong>.</p>
     </div>
 
-    <p class="font-xsmall">This map shows the property’s rough extent and location, <strong class="bold">not legal boundaries</strong>.</p>
   </div>
 
   <div class="column-two-thirds tablet-column-two-thirds">
