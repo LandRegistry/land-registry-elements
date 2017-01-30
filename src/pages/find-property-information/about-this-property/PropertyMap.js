@@ -2,6 +2,8 @@
 
 var extend = require('extend');
 
+/*global L:true*/
+
 /**
  * PropertyMap
  */
