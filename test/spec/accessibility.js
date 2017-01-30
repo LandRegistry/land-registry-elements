@@ -15,6 +15,7 @@ describe('The pattern library page at', function() {
       'notice',
       // 'warning'
       // Rather than ignoring all warnings, ignore specific ones as some of them are still useful
+      'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs',
       'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.BgImage',
       'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage',
       'WCAG2AA.Principle1.Guideline1_1.1_1_1.H67.2',
