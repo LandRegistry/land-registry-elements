@@ -80,13 +80,13 @@
   </div>
 
   <div class="column-one-third spacing-bottom-single">
-    <div class="about-page-map-container">
-      <div class="about-page-map-outer">
-        <div class="map about-page-map" id="map" data-map-json="map-data"></div>
-        <script type="application/json" id="map-data">
-          {{#printJson indexPolygon}}{{/printJson}}
-        </script>
+    <div class="fpi-map-container">
+      <div class="map" id="map" data-map-json="map-data">
+        <p>The map relies on JavaScript being enabled in your browser.</p>
       </div>
+      <script type="application/json" id="map-data">
+        {{#printJson indexPolygon}}{{/printJson}}
+      </script>
     </div>
   </div>
 </div>
