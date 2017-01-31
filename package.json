@@ -38,7 +38,7 @@
     "node-resemble-js": "0.2.0",
     "pa11y": "^4.6.0",
     "sanitize-filename": "^1.6.0",
-    "selenium-standalone": "^6.0.0",
+    "selenium-standalone": "^5.11.2",
     "should": "^11.2.0",
     "superagent": "^3.4.1",
     "supertest": "^3.0.0",
