@@ -31,6 +31,7 @@ describe('The pattern library page at', function() {
             'label-req-for': true,
             'tag-name-match': true,
             'tag-name-lowercase': true,
+            'tag-close': true,
             'line-end-style': false,
             'attr-req-value': false,
             'tag-bans': ['style'],

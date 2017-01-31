@@ -58,7 +58,7 @@
     @include media(tablet) {
       float: left;
       clear: left;
-      width: $one-quarter;
+      width: $one-third;
       margin-bottom: $gutter-one-third;
       padding-right: $gutter-half;
       box-sizing: border-box;
@@ -67,6 +67,20 @@
       border: 0;
       font-size: inherit;
       font-weight: inherit;
+    }
+
+    @include media(desktop) {
+      width: $one-quarter;
+    }
+  }
+
+  dd {
+    @include media(tablet) {
+      width: $two-thirds;
+    }
+
+    @include media(desktop) {
+      width: $three-quarters;
     }
   }
 }

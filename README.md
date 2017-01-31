@@ -185,7 +185,7 @@ Visual regression tests are built into the TravisCI pipeline such that if work o
 
 It is worth noting that when creating new pages, the absence of a reference rendering will cause the tests to fail!
 
-Either way, when updating existing components, or adding new components, you will need to run `npm run generateReferenceRenderings` _inside_ the supplied Vagrant box. This script will update the contents of `test/fixtures/visual-regression/reference-renderings` which you should then commit to the repository. The Vagrant box is synced with rsync so if you have updated code after starting the box you will need to run `vagrant rsync`.
+Either way, when updating existing components, or adding new components, you will need to download the updated reference renderings from the S3 bucket.
 
 *IMPORTANT*: After you have updated the reference renderings and committed the results, you should review the changes in the diff display of your github pull request. It would be all too easy to simply update the reference renderings with breaking changes to existing components and simply ignore them - monitoring these renderings requires a human element!
 
@@ -199,7 +199,6 @@ Either way, when updating existing components, or adding new components, you wil
   - "Current language" hidden text should be in the language of the page at that point?
   - "Switch to X" should be in the target language of the page you want to switch to
 - Cookies link missing from Find property information footer
-- DRY out the visual regression test code and the generateReferenceRendering code
 - Switch Travis' visual regression diffs to be uploaded to a Land Registry S3 bucket
 - Refactor to be more decoupled from gov uk stuff so that it can be used on internally facing LR projects?
 - Can we nuke the ntatabularnumbers font if and when it's not used?
@@ -220,14 +219,14 @@ Either way, when updating existing components, or adding new components, you wil
 ## Browser support
 Browser support based on https://www.gov.uk/service-manual/user-centred-design/browsers-and-devices.html
 
-Two distinct levels of support are given and denoted next to each browser: ‘compliant’ or ‘functional’. Compliant means that the service should look as good in this browser as in other modern browsers. Functional means that while it might not look perfect the service is still usable. In both cases the user should be able to access the information they need or complete their service.
+Two distinct levels of support are given and denoted next to each browser: ‘compliant’ or ‘functional’. Compliant means that the service should look as good in this browser as in other modern browsers. Functional means that while it might not look perfect the service is still usable. In both cases the user should be able to access the information they need or complete their journey.
 
 ### Desktop devices
 
 | Operating system | Browser                           | Support level  |
 | ---------------- | --------------------------------- | -------------- |
-| Windows          | Internet Explorer 7               | Functional     |
-|                  | Internet Explorer 8+              | Compliant      |
+| Windows          | Internet Explorer 8               | Functional     |
+|                  | Internet Explorer 9+              | Compliant      |
 |                  | Edge (latest version)             | Compliant      |
 |                  | Google Chrome (latest version)    | Compliant      |
 |                  | Mozilla Firefox (latest version)  | Compliant      |
