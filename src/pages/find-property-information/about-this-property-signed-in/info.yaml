@@ -1,0 +1,8 @@
+name: About this property (Signed in)
+categories:
+  primary: Land Registry
+  secondary: Find property information beta pages
+
+dependencies:
+  - pages/find-property-information/about-this-property
+

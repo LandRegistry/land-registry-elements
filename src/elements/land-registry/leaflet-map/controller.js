@@ -5,4 +5,4 @@ require('proj4leaflet');
 /*global assetPath:true*/
 
 // specify the path to the leaflet images folder
-L.Icon.Default.imagePath = assetPath + '/images/leaflet';
+L.Icon.Default.imagePath = assetPath + '/images/leaflet/';
