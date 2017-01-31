@@ -5,7 +5,9 @@ function SelectionButtons(element, config) {
 
   var options = {
     selectedClass: 'selected',
-    focusedClass: 'focused'
+    focusedClass: 'focused',
+    radioClass: 'selection-button-radio',
+    checkboxClass: 'selection-button-checkbox'
   };
 
   extend(options, config);
@@ -26,6 +28,9 @@ function SelectionButtons(element, config) {
 
     label = closest(element, 'label');
     form = closest(element, 'form');
+
+    var labelClass = (element.type === 'radio') ? options.radioClass : options.checkboxClass;
+    label.classList.add(labelClass);
 
     if(element.checked) {
       markSelected();
