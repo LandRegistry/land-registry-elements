@@ -219,14 +219,14 @@ Either way, when updating existing components, or adding new components, you wil
 ## Browser support
 Browser support based on https://www.gov.uk/service-manual/user-centred-design/browsers-and-devices.html
 
-Two distinct levels of support are given and denoted next to each browser: ‘compliant’ or ‘functional’. Compliant means that the service should look as good in this browser as in other modern browsers. Functional means that while it might not look perfect the service is still usable. In both cases the user should be able to access the information they need or complete their service.
+Two distinct levels of support are given and denoted next to each browser: ‘compliant’ or ‘functional’. Compliant means that the service should look as good in this browser as in other modern browsers. Functional means that while it might not look perfect the service is still usable. In both cases the user should be able to access the information they need or complete their journey.
 
 ### Desktop devices
 
 | Operating system | Browser                           | Support level  |
 | ---------------- | --------------------------------- | -------------- |
-| Windows          | Internet Explorer 7               | Functional     |
-|                  | Internet Explorer 8+              | Compliant      |
+| Windows          | Internet Explorer 8               | Functional     |
+|                  | Internet Explorer 9+              | Compliant      |
 |                  | Edge (latest version)             | Compliant      |
 |                  | Google Chrome (latest version)    | Compliant      |
 |                  | Mozilla Firefox (latest version)  | Compliant      |
