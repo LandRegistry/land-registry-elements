@@ -1,9 +1,7 @@
-name: Summary page
+name: Confirm your purchase
 categories:
   primary: Land Registry
   secondary: Find property information beta pages
 
 dependencies:
   - pages/find-property-information/about-this-property
-  - elements/land-registry/print-button
-  - elements/land-registry/vat-receipt

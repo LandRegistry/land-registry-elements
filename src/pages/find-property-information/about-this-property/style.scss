@@ -1,0 +1,40 @@
+.fpi-map-container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 300px;
+
+  @include media(desktop) {
+    max-width: none;
+  }
+}
+
+.fpi-map-outer {
+  height: 0;
+  padding-bottom: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: relative;
+
+  @include media(desktop) {
+    position: absolute;
+  }
+}
+
+.fpi-map-note {
+  @include media(desktop) {
+    position: absolute;
+    padding-top: 100%;
+  }
+}
+
+.fpi-map {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.island {
+  border: 4px solid $border-colour;
+  padding: $gutter / 2;
+}

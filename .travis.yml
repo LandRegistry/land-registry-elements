@@ -5,6 +5,12 @@ before_install:
   - npm install -g mocha
   - npm install -g eslint
 
+after_success:
+  - npm run zipTestRenderings
+
+after_failure:
+  - npm run zipTestRenderings
+
 cache:
   directories:
     - node_modules
