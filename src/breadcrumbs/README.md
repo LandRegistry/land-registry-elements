@@ -1,1 +1,0 @@
-The crumbtrail element is an extension of the gov.uk crumbtrail. It is the same at desktop sizes but on mobiles it comes with additional JavaScript and CSS to slim it down and turn it into a horizontally scrolling element with the label "You are here". This was driven by users confusing the breadcrumbs with some kind of main navigation at certain points during the journey.
