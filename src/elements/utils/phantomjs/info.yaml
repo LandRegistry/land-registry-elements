@@ -1,7 +1,0 @@
-name: PhantomJS
-categories:
-  primary: Utilities
-  secondary: Testing
-
-dependencies:
-  - elements/land-registry/pub-sub
