@@ -1,8 +1,0 @@
-name: Details
-categories:
-  primary: Build
-  secondary: Examples
-
-dependencies:
-  - elements/govuk/core
-  - elements/govuk/layout

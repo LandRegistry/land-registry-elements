@@ -1,8 +1,0 @@
-name: Typography
-categories:
-  primary: Govuk
-  secondary: Core
-
-dependencies:
-  - elements/govuk/core
-  - elements/govuk/forms

@@ -2,8 +2,3 @@ name: VAT receipt
 categories:
   primary: Land Registry
   secondary: Data
-
-dependencies:
-  - elements/govuk/core
-  - elements/govuk/layout
-  - elements/land-registry/definition-tabular

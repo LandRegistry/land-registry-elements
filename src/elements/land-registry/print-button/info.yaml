@@ -2,8 +2,3 @@ name: Print button
 categories:
   primary: Land Registry
   secondary: Utilities
-
-dependencies:
-  - elements/govuk/icons
-  - elements/govuk/buttons
-  - elements/govuk/highlight-box

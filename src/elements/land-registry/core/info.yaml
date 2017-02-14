@@ -2,8 +2,3 @@ name: Core
 categories:
   primary: Land Registry
   secondary: Utilities
-
-dependencies:
-  - elements/govuk/core
-  - elements/land-registry/polyfills/ie8
-  - elements/land-registry/polyfills/ie9
