@@ -1,11 +1,11 @@
-import '../../../../src/back-link/controller.js'
-import '../../../../src/clientside-form-validation/controller.js'
-import '../../../../src/core/controller.js'
-import '../../../../src/double-click-prevention/controller.js'
-import '../../../../src/email-repeat/controller.js'
-import '../../../../src/form-session-storage/controller.js'
-import '../../../../src/leaflet-map/controller.js'
-import '../../../../src/password-reveal/controller.js'
+require('../../../../src/back-link/controller.js')
+require('../../../../src/clientside-form-validation/controller.js')
+require('../../../../src/core/controller.js')
+require('../../../../src/double-click-prevention/controller.js')
+require('../../../../src/email-repeat/controller.js')
+require('../../../../src/form-session-storage/controller.js')
+require('../../../../src/leaflet-map/controller.js')
+require('../../../../src/password-reveal/controller.js')
+require('../../../../src/print-button/controller.js')
+require('../../../../src/pub-sub/controller.js')
 // import '../../../../src/polyfills/controller.js'
-import '../../../../src/print-button/controller.js'
-import '../../../../src/pub-sub/controller.js'
