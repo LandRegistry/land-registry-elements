@@ -14,79 +14,80 @@ title: Errors
   </ol>
 </div>
 
-<h1 class="heading-xlarge">
-  <span class="heading-secondary">GOV.UK elements</span>
-  Errors and validation
+
+  <h1 class="heading-xlarge">
+    <span class="heading-secondary">GOV.UK elements</span>
+    Errors and validation
+  </h1>
+
+  <p class="lede text">
+    Minimise the number of errors on a page.
+  </p>
+
+  <h2 class="heading-small heading-contents">Contents:</h2>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <ul class="list list-contents">
+        <li><a href="#one-question-per-page">Ask one question per page</a></li>
+        <li><a href="#summarise-errors">Summarise errors</a></li>
+        <li><a href="#highlight-errors">Highlight errors in forms</a></li>
+        <li><a href="#examples">Examples</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="heading-medium" id="one-question-per-page">Ask one question per page</h3>
+  <div class="text">
+  <p>
+    Recovering from errors can be hard for users, especially if a page contains multiple errors.
+  </p>
+  <p>
+    Simplify forms by rewriting and where possible, splitting long forms across multiple pages - with each page asking a single question.
+  </p>
+  </div>
+
+  <h3 class="heading-medium" id="summarise-errors">
+    Summarise errors at the top of the page
+  </h3>
+
+  <p class="text lead-in">
+    You must:
+  </p>
+
+  <ul class="text list list-bullet">
+    <li>show an error summary at the top of the page</li>
+    <li>include a heading to alert the user to the error</li>
+    <li>link to each of the problematic questions</li>
+  </ul>
+
+  <h4 class="heading-small">Error message and summary box</h4>
+<div class="example example-error">
+  <div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+  <h1 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+    Message to alert the user to a problem goes here
+  </h1>
+
+  <p>
+    Optional description of the errors and how to correct them
+  </p>
+
+  <ul class="error-summary-list">
+    <li><a href="#example-personal-details">Descriptive link to the question with an error</a></li>
+  </ul>
+
+</div>
+
+<h1 class="heading-large">
+  Check your personal details
 </h1>
 
-<p class="lede text">
-  Minimise the number of errors on a page.
-</p>
-
-<h2 class="heading-small heading-contents">Contents:</h2>
-<div class="grid-row">
-  <div class="column-two-thirds">
-    <ul class="list list-contents">
-      <li><a href="#one-question-per-page">Ask one question per page</a></li>
-      <li><a href="#summarise-errors">Summarise errors</a></li>
-      <li><a href="#highlight-errors">Highlight errors in forms</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-  </div>
-</div>
-
-<h3 class="heading-medium" id="one-question-per-page">Ask one question per page</h3>
-<div class="text">
-<p>
-  Recovering from errors can be hard for users, especially if a page contains multiple errors.
-</p>
-<p>
-  Simplify forms by rewriting and where possible, splitting long forms across multiple pages - with each page asking a single question.
-</p>
-</div>
-
-<h3 class="heading-medium" id="summarise-errors">
-  Summarise errors at the top of the page
-</h3>
-
-<p class="text lead-in">
-  You must:
-</p>
-
-<ul class="text list list-bullet">
-  <li>show an error summary at the top of the page</li>
-  <li>include a heading to alert the user to the error</li>
-  <li>link to each of the problematic questions</li>
-</ul>
-
-<h4 class="heading-small">Error message and summary box</h4>
-<div class="example example-error">
-<div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
-
-  <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-    Message to alert the user to a problem goes here
-  </h2>
-
-  <p>
-    Optional description of the error(s) and how to correct them
-  </p>
-
-  <ul class="error-summary-list">
-    <li><a href="#example-personal-details">Descriptive link to the question with an error</a></li>
-  </ul>
-
-</div>
-
-<h2 class="heading-large">
-  Check your personal details
-</h2>
-
 <p>
   Look at your name, signature and other details.
 </p>
 
 <form>
-  <div class="form-group error">
+  <div class="form-group form-group-error">
     <fieldset>
 
       <legend id="example-personal-details">
@@ -100,15 +101,15 @@ title: Errors
 
       </legend>
 
-      <label class="block-label selection-button-radio" for="personal_details_yes">
-        <input id="personal_details_yes" type="radio" name="personal_details" value="Yes">
-        <span></span> Yes, my personal details are correct
-      </label>
+      <div class="multiple-choice">
+        <input id="personal_details_yes" type="radio" name="personalDetails" value="Yes">
+        <label for="personal_details_yes">Yes, my personal details are correct</label>
+      </div>
 
-      <label class="block-label selection-button-radio" for="personal_details_no">
-        <input id="personal_details_no" type="radio" name="personal_details" value="No">
-        <span></span> No, some details are wrong or have changed
-      </label>
+      <div class="multiple-choice">
+        <input id="personal_details_no" type="radio" name="personalDetails" value="No">
+        <label for="personal_details_no">No, some details are wrong or have changed</label>
+      </div>
 
     </fieldset>
   </div>
@@ -116,103 +117,103 @@ title: Errors
   <input class="button" type="submit" value="Continue">
 
 </form>
+
 </div>
 
 <pre>
 <code class="language-markup">
-{{#htmlencode}}
-<div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+  &lt;div class=&quot;error-summary&quot; role=&quot;group&quot; aria-labelledby=&quot;error-summary-heading-example-1&quot; tabindex=&quot;-1&quot;&gt;
 
-  <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+  &lt;h1 class=&quot;heading-medium error-summary-heading&quot; id=&quot;error-summary-heading-example-1&quot;&gt;
     Message to alert the user to a problem goes here
-  </h2>
+  &lt;/h1&gt;
 
-  <p>
-    Optional description of the error(s) and how to correct them
-  </p>
+  &lt;p&gt;
+    Optional description of the errors and how to correct them
+  &lt;/p&gt;
 
-  <ul class="error-summary-list">
-    <li><a href="#example-personal-details">Descriptive link to the question with an error</a></li>
-  </ul>
+  &lt;ul class=&quot;error-summary-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#example-personal-details&quot;&gt;Descriptive link to the question with an error&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
 
-</div>
+&lt;/div&gt;
 
-<h2 class="heading-large">
+&lt;h1 class=&quot;heading-large&quot;&gt;
   Check your personal details
-</h2>
+&lt;/h1&gt;
 
-<p>
+&lt;p&gt;
   Look at your name, signature and other details.
-</p>
+&lt;/p&gt;
 
-<form>
-  <div class="form-group error">
-    <fieldset>
+&lt;form&gt;
+  &lt;div class=&quot;form-group form-group-error&quot;&gt;
+    &lt;fieldset&gt;
 
-      <legend id="example-personal-details">
+      &lt;legend id=&quot;example-personal-details&quot;&gt;
 
-        <span class="form-label-bold">
+        &lt;span class=&quot;form-label-bold&quot;&gt;
           Are your personal details correct and up-to-date?
-        </span>
-        <span class="error-message">
+        &lt;/span&gt;
+        &lt;span class=&quot;error-message&quot;&gt;
           Error message about personal details goes here
-        </span>
+        &lt;/span&gt;
 
-      </legend>
+      &lt;/legend&gt;
 
-      <label class="block-label selection-button-radio" for="personal_details_yes">
-        <input id="personal_details_yes" type="radio" name="personal_details" value="Yes">
-        <span></span> Yes, my personal details are correct
-      </label>
+      &lt;div class=&quot;multiple-choice&quot;&gt;
+        &lt;input id=&quot;personal_details_yes&quot; type=&quot;radio&quot; name=&quot;personalDetails&quot; value=&quot;Yes&quot;&gt;
+        &lt;label for=&quot;personal_details_yes&quot;&gt;Yes, my personal details are correct&lt;/label&gt;
+      &lt;/div&gt;
 
-      <label class="block-label selection-button-radio" for="personal_details_no">
-        <input id="personal_details_no" type="radio" name="personal_details" value="No">
-        <span></span> No, some details are wrong or have changed
-      </label>
+      &lt;div class=&quot;multiple-choice&quot;&gt;
+        &lt;input id=&quot;personal_details_no&quot; type=&quot;radio&quot; name=&quot;personalDetails&quot; value=&quot;No&quot;&gt;
+        &lt;label for=&quot;personal_details_no&quot;&gt;No, some details are wrong or have changed&lt;/label&gt;
+      &lt;/div&gt;
 
-    </fieldset>
-  </div>
+    &lt;/fieldset&gt;
+  &lt;/div&gt;
 
-  <input class="button" type="submit" value="Continue">
+  &lt;input class=&quot;button&quot; type=&quot;submit&quot; value=&quot;Continue&quot;&gt;
 
-</form>
-{{/htmlencode}}
+&lt;/form&gt;
+
 </code>
 </pre>
 
-<div class="panel panel-border-narrow">
-  <h3 class="heading-small">
-    The error summary must appear at the top of the page, so it is visible when the page is refreshed and is immediately read out by assistive technology.
-  </h3>
-</div>
+  <div class="panel panel-border-narrow">
+    <h3 class="heading-small">
+      The error summary must appear at the top of the page, so it is visible when the page is refreshed and is immediately read out by assistive technology.
+    </h3>
+  </div>
 
-<h3 class="heading-medium" id="highlight-errors">Highlight errors in forms</h3>
+  <h3 class="heading-medium" id="highlight-errors">Highlight errors in forms</h3>
 
-<p class="lead-in">
-  For each error:
-</p>
+  <p class="lead-in">
+    For each error:
+  </p>
 
-<ul class="list list-bullet text">
-  <li>write a message that helps the user to understand why the error occurred and what to do about it</li>
-  <li>put the message in the <code class="code">&lt;label&gt;</code> or <code class="code">&lt;legend&gt;</code> for the question,
-  after the question text, in red</li>
-  <li>use a red border to visually connect the message and the question it belongs to</li>
-  <li>if the error relates to specific text fields within the question, give these a red border as well</li>
-</ul>
+  <ul class="list list-bullet text">
+    <li>write a message that helps the user to understand why the error occurred and what to do about it</li>
+    <li>put the message in the <code class="code">&lt;label&gt;</code> or <code class="code">&lt;legend&gt;</code> for the question,
+    after the question text, in red</li>
+    <li>use a red border to visually connect the message and the question it belongs to</li>
+    <li>if the error relates to specific text fields within the question, give these a red border as well</li>
+  </ul>
 
-<p class="text">
-  For red, use the <code class="code">$error-colour</code> Sass variable &ndash; find this in the GOV.UK frontend toolkit <a href="https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/_colours.scss">colours.scss</a> file.
-</p>
+  <p class="text">
+    For red, use the <code class="code">$error-colour</code> Sass variable &ndash; find this in the GOV.UK frontend toolkit <a href="https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/_colours.scss" rel="external">colours.scss</a> file.
+  </p>
 
 <div class="example example-error">
-<div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-2" tabindex="-1">
+  <div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-2" tabindex="-1">
 
-  <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-2">
+  <h1 class="heading-medium error-summary-heading" id="error-summary-heading-example-2">
     Message to alert the user to a problem goes here
-  </h2>
+  </h1>
 
   <p>
-    Optional description of the error(s) and how to correct them
+    Optional description of the errors and how to correct them
   </p>
 
   <ul class="error-summary-list">
@@ -222,11 +223,11 @@ title: Errors
 
 </div>
 
-<h2 class="heading-large">
+<h1 class="heading-large">
   Your personal details
-</h2>
+</h1>
 
-<div class="form-group error">
+<div class="form-group form-group-error">
 
   <label for="example-full-name" id="error-full-name">
 
@@ -236,18 +237,18 @@ title: Errors
 
   </label>
 
-  <input class="form-control" id="example-full-name" type="text" name="fullName" value="" aria-describedby="error-message-full-name">
+  <input class="form-control form-control-error" id="example-full-name" type="text" name="fullName" value="" aria-describedby="error-message-full-name">
 </div>
 
-<div class="form-group error">
+<div class="form-group form-group-error">
 
   <label for="example-ni-number" id="error-ni-number">
 
     <span class="form-label-bold">National Insurance number</span>
     <span class="form-hint">
-      It's on your National Insurance card, benefit letter, payslip or P60.
+      It’s on your National Insurance card, benefit letter, payslip or P60.
       <br>
-      For example, 'VO 12 34 56 D'.
+      For example, ‘QQ 12 34 56 C’.
     </span>
     <span class="error-message" id="error-message-ni-number">
       Error message about National Insurance number goes here
@@ -255,91 +256,71 @@ title: Errors
 
   </label>
 
-  <input class="form-control" id="example-ni-number" type="text" name="niNo" value="" aria-describedby="error-message-ni-number">
+  <input class="form-control form-control-error" id="example-ni-number" type="text" name="niNo" value="" aria-describedby="error-message-ni-number">
 
 </div>
 
 <input class="button" type="submit" value="Continue">
+
 </div>
 
 <pre>
 <code class="language-markup">
-{{#htmlencode}}
-<div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-2" tabindex="-1">
+  &lt;div class=&quot;error-summary&quot; role=&quot;group&quot; aria-labelledby=&quot;error-summary-heading-example-2&quot; tabindex=&quot;-1&quot;&gt;
 
-  <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-2">
+  &lt;h1 class=&quot;heading-medium error-summary-heading&quot; id=&quot;error-summary-heading-example-2&quot;&gt;
     Message to alert the user to a problem goes here
-  </h2>
+  &lt;/h1&gt;
 
-  <p>
-    Optional description of the error(s) and how to correct them
-  </p>
+  &lt;p&gt;
+    Optional description of the errors and how to correct them
+  &lt;/p&gt;
 
-  <ul class="error-summary-list">
-    <li><a href="#example-full-name">Descriptive link to the question with an error</a></li>
-    <li><a href="#example-ni-number">Descriptive link to the question with an error</a></li>
-  </ul>
+  &lt;ul class=&quot;error-summary-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#example-full-name&quot;&gt;Descriptive link to the question with an error&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#example-ni-number&quot;&gt;Descriptive link to the question with an error&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
 
-</div>
+&lt;/div&gt;
 
-<h2 class="heading-large">
+&lt;h1 class=&quot;heading-large&quot;&gt;
   Your personal details
-</h2>
+&lt;/h1&gt;
 
-<div class="form-group error">
+&lt;div class=&quot;form-group form-group-error&quot;&gt;
 
-  <label for="example-full-name" id="error-full-name">
+  &lt;label for=&quot;example-full-name&quot; id=&quot;error-full-name&quot;&gt;
 
-    <span class="form-label-bold">Full name</span>
-    <span class="form-hint">As shown on your birth certificate or passport</span>
-    <span class="error-message" id="error-message-full-name">Error message about full name goes here</span>
+    &lt;span class=&quot;form-label-bold&quot;&gt;Full name&lt;/span&gt;
+    &lt;span class=&quot;form-hint&quot;&gt;As shown on your birth certificate or passport&lt;/span&gt;
+    &lt;span class=&quot;error-message&quot; id=&quot;error-message-full-name&quot;&gt;Error message about full name goes here&lt;/span&gt;
 
-  </label>
+  &lt;/label&gt;
 
-  <input class="form-control" id="example-full-name" type="text" name="fullName" value="" aria-describedby="error-message-full-name">
-</div>
+  &lt;input class=&quot;form-control form-control-error&quot; id=&quot;example-full-name&quot; type=&quot;text&quot; name=&quot;fullName&quot; value=&quot;&quot; aria-describedby=&quot;error-message-full-name&quot;&gt;
+&lt;/div&gt;
 
-<div class="form-group error">
+&lt;div class=&quot;form-group form-group-error&quot;&gt;
 
-  <label for="example-ni-number" id="error-ni-number">
+  &lt;label for=&quot;example-ni-number&quot; id=&quot;error-ni-number&quot;&gt;
 
-    <span class="form-label-bold">National Insurance number</span>
-    <span class="form-hint">
-      It's on your National Insurance card, benefit letter, payslip or P60.
-      <br>
-      For example, 'VO 12 34 56 D'.
-    </span>
-    <span class="error-message" id="error-message-ni-number">
+    &lt;span class=&quot;form-label-bold&quot;&gt;National Insurance number&lt;/span&gt;
+    &lt;span class=&quot;form-hint&quot;&gt;
+      It&rsquo;s on your National Insurance card, benefit letter, payslip or P60.
+      &lt;br&gt;
+      For example, &lsquo;QQ 12 34 56 C&rsquo;.
+    &lt;/span&gt;
+    &lt;span class=&quot;error-message&quot; id=&quot;error-message-ni-number&quot;&gt;
       Error message about National Insurance number goes here
-    </span>
+    &lt;/span&gt;
 
-  </label>
+  &lt;/label&gt;
 
-  <input class="form-control" id="example-ni-number" type="text" name="niNo" value="" aria-describedby="error-message-ni-number">
+  &lt;input class=&quot;form-control form-control-error&quot; id=&quot;example-ni-number&quot; type=&quot;text&quot; name=&quot;niNo&quot; value=&quot;&quot; aria-describedby=&quot;error-message-ni-number&quot;&gt;
 
-</div>
+&lt;/div&gt;
 
-<input class="button" type="submit" value="Continue">
-{{/htmlencode}}
+&lt;input class=&quot;button&quot; type=&quot;submit&quot; value=&quot;Continue&quot;&gt;
+
 </code>
 </pre>
-
-<h3 class="heading-medium" id="examples">Examples</h3>
-<ul class="list list-bullet">
-  <!-- <li>
-    <a href="/errors/example-form-validation-single-question-radio">
-      form validation - single question
-    </a>
-  </li>
-  <li>
-    <a href="/errors/example-form-validation-multiple-questions">
-      form validation - multiple questions
-    </a>
-  </li> -->
-</ul>
-
-<p>
-  <a href="https://designpatterns.hackpad.com/Error-messages-and-validation-IWrPNxjRthP">
-    Discuss error messages and validation on the design patterns Hackpad
-  </a>
-</p>

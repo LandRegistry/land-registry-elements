@@ -19,14 +19,14 @@ title: Full demo
 
     <div class="form-group">
       <label class="form-label" for="full-name">Full name</label>
+      <span class="form-hint">Some description about the field written here</span>
       <input class="form-control" type="text" id="full-name" name="full-name">
-      <p class="form-hint">Some description about the field written here</p>
     </div>
 
     <div class="form-group">
       <label class="form-label" for="another-field">Another field</label>
-      <input class="form-control" type="text" id="another-field" name="another-field">
       <span class="form-hint">(optional)</span>
+      <input class="form-control" type="text" id="another-field" name="another-field">
     </div>
 
     <div class="form-group">
@@ -40,26 +40,27 @@ title: Full demo
 
       <div class="form-group">
 
-        <label class="block-label selection-button-radio" for="radio-1">
-          <input id="radio-1" type="radio" name="radio-group" value="Yes">
-          Yes
-        </label>
-
-        <label class="block-label selection-button-radio" for="radio-2">
-          <input id="radio-2" type="radio" name="radio-group" value="No">
-          No
-        </label>
+        <div class="multiple-choice">
+          <input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes">
+          <label for="radio-inline-1">Yes</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="radio-inline-2" type="radio" name="radio-inline-group" value="No">
+          <label for="radio-inline-2">No</label>
+        </div>
 
       </div>
 
     </fieldset>
 
     <div class="form-group">
-      <label class="block-label selection-button-checkbox" for="terms">
+      <div class="multiple-choice">
         <input id="terms" name="terms" type="checkbox" value="agree">
-        I agree that you will provide the summary as soon as I've paid.<br>
-        I accept that I will lose my right to cancel the contract as soon as the summary is displayed.
-      </label>
+        <label for="terms">
+          I agree that you will provide the summary as soon as I've paid.<br>
+          I accept that I will lose my right to cancel the contract as soon as the summary is displayed.
+        </label>
+      </div>
     </div>
 
     <input type="submit" class="button" value="Submit">
