@@ -35,7 +35,8 @@ describe('The pattern library page at', function() {
             'line-end-style': false,
             'attr-req-value': false,
             'tag-bans': ['style'],
-            'title-max-len': false
+            'title-max-len': false,
+            'spec-char-escape': false
           })
             .then(function(issues) {
 
@@ -44,6 +45,8 @@ describe('The pattern library page at', function() {
               }
 
               var output = url;
+
+
 
               issues.forEach(function(issue) {
                 output += '\nLine: ' + issue.line + ' Col: ' + issue.column + ' => ' + (issue.msg || htmllint.messages.renderIssue(issue)) + '\n';
