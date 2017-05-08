@@ -12,4 +12,6 @@ var config = {
 
 config.assetsPath = path.join(config.applicationPath, config.assetsPath)
 
-landRegistryGulpTasks(gulp, config)
+for (task in landRegistryGulpTasks) {
+  landRegistryGulpTasks[task](gulp, config)
+}
