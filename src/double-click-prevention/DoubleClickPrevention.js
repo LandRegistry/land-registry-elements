@@ -1,7 +1,5 @@
 'use strict';
 
-var extend = require('extend');
-
 /**
  * Double click prevention
  */
@@ -12,7 +10,7 @@ function DoubleClickPrevention(element, config) {
     waitClass: 'button-waiting'
   };
 
-  extend(options, config);
+  $.extend(options, config);
 
   // Private variables
   var originalText;
@@ -28,7 +26,7 @@ function DoubleClickPrevention(element, config) {
       });
 
     } else {
-      element.form.addEventListener('submit', disableButton);
+      $(element.form).on('submit', disableButton);
     }
 
     if(element.value) {
@@ -43,7 +41,7 @@ function DoubleClickPrevention(element, config) {
    */
   function disableButton(){
     element.setAttribute('disabled', 'disabled');
-    element.classList.add(options.waitClass)
+    $(element).addClass(options.waitClass)
 
     if(element.value) {
       element.value = options.waitText;
@@ -56,8 +54,8 @@ function DoubleClickPrevention(element, config) {
    * Tear everything down again
    */
   function destroy() {
-    element.form.removeEventListener('submit', disableButton);
-    element.classList.remove(options.waitClass)
+    $(element.form).off('submit', disableButton);
+    $(element).removeClass(options.waitClass)
     element.removeAttribute('disabled');
 
     if(element.value) {
@@ -76,4 +74,4 @@ function DoubleClickPrevention(element, config) {
 
 }
 
-module.exports = DoubleClickPrevention;
+export { DoubleClickPrevention }

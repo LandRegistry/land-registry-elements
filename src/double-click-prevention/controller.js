@@ -1,14 +1,8 @@
 'use strict';
 
-var DoubleClickPrevention = require('./DoubleClickPrevention');
+import { DoubleClickPrevention } from './DoubleClickPrevention.js'
 
-var instance;
-var element;
-
-var buttons = document.querySelectorAll('[data-double-click-prevention]');
-for (var i = 0; i < buttons.length; i++) {
-  element = buttons[i];
-
-  instance = new DoubleClickPrevention(element);
-  instance.create();
-}
+$('[data-double-click-prevention]').each(function(index, item) {
+  var instance = new DoubleClickPrevention(item)
+  instance.create()
+})
