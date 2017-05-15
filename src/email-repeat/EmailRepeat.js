@@ -75,4 +75,4 @@ function EmailRepeat(element, config) {
 
 }
 
-module.exports = EmailRepeat;
+export { EmailRepeat }

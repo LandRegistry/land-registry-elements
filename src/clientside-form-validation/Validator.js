@@ -36,6 +36,7 @@ function Validator(element, config) {
   $.extend(options, config)
 
   // Private variables
+  var $element
   var errorSummary
   var serversideErrors = []
 
@@ -49,28 +50,31 @@ function Validator(element, config) {
       return
     }
 
+    $element = $(element)
+
     // Bind form submit handler
-    $(element).on('submit', submit)
+    $element.on('submit', submit)
 
     // Set up form field handlers
-    $(element).on('keyup', '.form-control', keyup)
-    $(element).on('change', 'select', change)
-    $(element).on('change', 'input[type="radio"]', change)
-    $(element).on('change', 'input[type="checkbox"]', change)
-    $(element).on('focusout', '.form-control', focusout)
+    $element.on('keyup', '.form-control', keyup)
+    $element.on('change', 'select', change)
+    $element.on('change', 'input[type="radio"]', change)
+    $element.on('change', 'input[type="checkbox"]', change)
+    $element.on('focusout', '.form-control', focusout)
 
     // Summary click handlers
-    $(element).on('.error-summary-list a', 'click', summaryClick)
+    $element.on('.error-summary-list a', 'click', summaryClick)
 
     // Grab any existing error messages and ensure they persist, regardless of clientside changes
-    var existingSummary = $(element).find('.error-summary')
-    if(existingSummary) {
-      $(existingSummary).find('.error-summary-list li').each(function(index, item) {
-        serversideErrors.push(item.innerHTML)
-      })
+    var $existingSummary = $element.find('.error-summary')
+    if($existingSummary) {
+      $existingSummary.find('.error-summary-list li')
+        .each(function(index, item) {
+          serversideErrors.push(item.innerHTML)
+        })
 
       options.showSummary = true
-      $(existingSummary).remove()
+      $existingSummary.remove()
       showSummary({})
     }
 
@@ -86,7 +90,7 @@ function Validator(element, config) {
 
     var errorData = []
 
-    // Pre-process the errors to be suitable for hogan
+    // Turn the errors into an array to make it easier to use elsewhere
     for(var key in errors) {
       if(errors.hasOwnProperty(key)) {
         errors[key].forEach(function(error) {
@@ -213,7 +217,7 @@ function Validator(element, config) {
         errorSummary.addClass('visuallyhidden')
       }
 
-      $(element).prepend(errorSummary)
+      $element.prepend(errorSummary)
     }
 
     if(data.errors.length > 0) {
@@ -228,14 +232,14 @@ function Validator(element, config) {
   function showIndividualFormErrors(errors, restrictTo) {
 
     // Remove any previous form element errors
-    $(element).find('.form-group').each(function(index, formGroup) {
+    $element.find('.form-group').each(function(index, formGroup) {
       var target = $(formGroup).find(options.controlSelector)
 
       if(restrictTo && $(target).attr('name') !== $(restrictTo).attr('name')) {
         return
       }
 
-      $(formGroup).removeClass('error')
+      $(formGroup).removeClass('form-group-error')
 
       if(target) {
         target.removeAttr('aria-describedby')
@@ -258,19 +262,21 @@ function Validator(element, config) {
           return
         }
 
-        var message = $('<span class="error-message" id="error-message-' + error.name + '">' + error.message + '</span>')
+        var message = $('<span role="alert" class="error-message" id="error-message-' + error.name + '">' + error.message + '</span>')
 
         var formGroup = $(target).closest('.form-group')
 
         // If the element is a direct child of the form group, insert the error after it
-        if($.contains(formGroup, target)) {
-          target.after(message)
+        if($(target).parent().is(formGroup)) {
+          target.before(message)
+        } else if($(target).closest('.form-group').find('legend.form-label, legend.form-label-bold').length) {
+          $(target).closest('.form-group').find('legend.form-label, legend.form-label-bold').first().append(message)
         } else {
-          // Otherwise insert it at the end of the form group
-          formGroup.append(message)
+          // Otherwise insert it at the start of the form group
+          formGroup.prepend(message)
         }
 
-        formGroup.addClass('error')
+        formGroup.addClass('form-group-error')
 
         // Link the form field to the error message with an aria attribute
         target.attr('aria-describedby', 'error-message-' + error.name)

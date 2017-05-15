@@ -16,6 +16,8 @@ function DoubleClickPrevention(element, config) {
 
   // Private variables
   var originalText;
+  var enableSubscriber;
+  var disableSubscriber;
 
   /**
    * Set everything up
@@ -36,6 +38,18 @@ function DoubleClickPrevention(element, config) {
     } else {
       originalText = element.textContent;
     }
+
+    enableSubscriber = window.PubSub.subscribe('double-click-prevention.enable', function(msg, data) {
+      if(data === element) {
+        enableButton()
+      }
+    });
+
+    disableSubscriber = window.PubSub.subscribe('double-click-prevention.disable', function(msg, data) {
+      if(data === element) {
+        disableButton()
+      }
+    });
   }
 
   /**
@@ -53,18 +67,27 @@ function DoubleClickPrevention(element, config) {
   }
 
   /**
+   * Enable the button again
+   */
+  function enableButton(){
+      element.classList.remove(options.waitClass)
+      element.removeAttribute('disabled');
+
+      if(element.value) {
+        element.value = originalText;
+      } else {
+        element.innerHTML = originalText;
+      }
+    }
+
+  /**
    * Tear everything down again
    */
   function destroy() {
-    $(element.form).off('submit', disableButton);
-    $(element).removeClass(options.waitClass)
-    element.removeAttribute('disabled');
-
-    if(element.value) {
-      element.value = originalText;
-    } else {
-      element.textContent = originalText;
-    }
+    element.form.removeEventListener('submit', disableButton);
+    enableButton();
+    window.PubSub.unsubscribe(enableSubscriber);
+    window.PubSub.unsubscribe(disableSubscriber);
   }
 
   var self = {
