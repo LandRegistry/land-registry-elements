@@ -1,5 +1,7 @@
 'use strict';
 
+import '../pub-sub/controller.js'
+
 /**
  * Double click prevention
  */

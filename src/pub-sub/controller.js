@@ -1,5 +1,5 @@
-var PubSub = require('pubsub-js');
+var PubSub = require('pubsub-js')
 
-window.PubSub = PubSub;
+window.PubSub = PubSub
 
-module.exports = PubSub;
+module.exports = PubSub
