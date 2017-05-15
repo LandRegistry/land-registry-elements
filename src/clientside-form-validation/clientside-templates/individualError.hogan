@@ -1,3 +1,0 @@
-<span class="error-message" id="error-message-{{name}}">
-  {{{message}}}
-</span>

@@ -1,31 +1,26 @@
-'use strict';
+'use strict'
 
-var Validator = require('./Validator');
+var Validator = require('./Validator')
 
-var forms = document.querySelectorAll('[data-clientside-validation]');
-var rules;
-var instance;
-var element;
-
-for (var i = 0; i < forms.length; i++) {
-  element = forms[i];
+$('[data-clientside-validation]').each(function(index, item) {
+  var rules
+  var instance
 
   // Slurp the form validator config from the associated script tag in the DOM
-  var configID = element.getAttribute('data-clientside-validation');
+  var configID = item.getAttribute('data-clientside-validation')
 
-  var configElement = document.getElementById(configID);
-
+  var configElement = document.getElementById(configID)
   // If we can't find any config, bail out
   if(!configElement) {
-    break;
+    return
   }
 
-  rules = JSON.parse(configElement.innerHTML);
+  rules = $.parseJSON(configElement.innerHTML)
 
-  instance = new Validator(element, {
+  instance = new Validator(item, {
     'rules': rules,
-    'showSummary': !element.hasAttribute('data-clientside-validation-no-summary')
-  });
+    'showSummary': !$(item).attr('data-clientside-validation-no-summary')
+  })
 
-  instance.create();
-}
+  instance.create()
+})

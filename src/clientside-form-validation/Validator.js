@@ -1,10 +1,7 @@
-'use strict';
+'use strict'
 
-var validate = global.validate = require('validate.js'); // Expose validate as a global so that people can add custom validation routines easily
-var extend = require('extend');
-var domify = require('domify');
-var closest = require('closest');
-var delegate = require('delegate');
+var validate = require('validate.js')
+require('../pub-sub/controller.js')
 
 /**
  * Form validation
@@ -32,19 +29,15 @@ function Validator(element, config) {
 
     controlSelector: '.form-control, input[type="checkbox"], input[type="radio"]',
 
-    // Note: Pre-compiled with hoganify browserify transform: @see https://www.npmjs.com/package/hoganify
-    summaryTemplate: require('./clientside-templates/summary.hogan'),
-    individualErrorTemplate: require('./clientside-templates/individualError.hogan'),
-
     // Form validation rules following the pattern
     rules: []
-  };
+  }
 
-  extend(options, config);
+  $.extend(options, config)
 
   // Private variables
-  var errorSummary;
-  var serversideErrors = [];
+  var errorSummary
+  var serversideErrors = []
 
   /**
    * Set everything up
@@ -53,33 +46,32 @@ function Validator(element, config) {
 
     // Bail out if we don't have the proper element to act upon
     if (!element) {
-      return;
+      return
     }
 
     // Bind form submit handler
-    element.addEventListener('submit', submit);
+    $(element).on('submit', submit)
 
     // Set up form field handlers
-    delegate(element, '.form-control', 'keyup', keyup);
-    delegate(element, 'select', 'change', change);
-    delegate(element, 'input[type="radio"]', 'change', change);
-    delegate(element, 'input[type="checkbox"]', 'change', change);
-    delegate(element, '.form-control', 'focusout', focusout);
+    $(element).on('keyup', '.form-control', keyup)
+    $(element).on('change', 'select', change)
+    $(element).on('change', 'input[type="radio"]', change)
+    $(element).on('change', 'input[type="checkbox"]', change)
+    $(element).on('focusout', '.form-control', focusout)
 
     // Summary click handlers
-    delegate(element, '.error-summary-list a', 'click', summaryClick);
+    $(element).on('.error-summary-list a', 'click', summaryClick)
 
     // Grab any existing error messages and ensure they persist, regardless of clientside changes
-    var existingSummary = element.querySelector('.error-summary');
+    var existingSummary = $(element).find('.error-summary')
     if(existingSummary) {
-      var existingErrors = existingSummary.querySelectorAll('.error-summary-list li');
-      for (var i = 0; i < existingErrors.length; i++) {
-        serversideErrors.push(existingErrors[i].innerHTML);
-      }
+      $(existingSummary).find('.error-summary-list li').each(function(index, item) {
+        serversideErrors.push(item.innerHTML)
+      })
 
-      options.showSummary = true;
-      existingSummary.parentNode.removeChild(existingSummary);
-      showSummary({});
+      options.showSummary = true
+      $(existingSummary).remove()
+      showSummary({})
     }
 
   }
@@ -90,9 +82,9 @@ function Validator(element, config) {
   function validateForm() {
     var errors = validate(element, options.rules, {
       fullMessages: false
-    });
+    })
 
-    var errorData = [];
+    var errorData = []
 
     // Pre-process the errors to be suitable for hogan
     for(var key in errors) {
@@ -101,12 +93,12 @@ function Validator(element, config) {
           errorData.push({
             'name': key,
             'message': error
-          });
-        });
+          })
+        })
       }
     }
 
-    return errorData;
+    return errorData
   }
 
   /**
@@ -114,19 +106,19 @@ function Validator(element, config) {
    */
   function submit(e) {
 
-    var errorData = validateForm();
+    var errorData = validateForm()
 
     if(errorData.length > 0) {
-      e.preventDefault();
-      window.PubSub.publish('clientside-form-validation.invalid', element);
+      e.preventDefault()
+      window.PubSub.publish('clientside-form-validation.invalid', element)
     } else {
-      window.PubSub.publish('clientside-form-validation.valid', element);
+      window.PubSub.publish('clientside-form-validation.valid', element)
     }
 
-    showSummary(errorData);
+    showSummary(errorData)
 
     if(options.showIndividualFormErrors) {
-      showIndividualFormErrors(errorData);
+      showIndividualFormErrors(errorData)
     }
 
   }
@@ -139,8 +131,8 @@ function Validator(element, config) {
     // at least attempted to enter a value into a field. This allows them to
     // tab around the form as much as they like to begin with and requried
     // fields will only be validated when they have entered something
-    if(e.delegateTarget.value.length > 0) {
-      e.delegateTarget.isDirty = true;
+    if(e.currentTarget.value.length > 0) {
+      e.currentTarget.isDirty = true
     }
   }
 
@@ -149,10 +141,10 @@ function Validator(element, config) {
    */
   function focusout(e) {
 
-    var errorData = validateForm();
+    var errorData = validateForm()
 
-    if(e.delegateTarget.isDirty && options.showIndividualFormErrors) {
-      showIndividualFormErrors(errorData, e.delegateTarget);
+    if(e.currentTarget.isDirty && options.showIndividualFormErrors) {
+      showIndividualFormErrors(errorData, e.currentTarget)
     }
 
   }
@@ -162,12 +154,39 @@ function Validator(element, config) {
    */
   function change(e) {
 
-    var errorData = validateForm();
+    var errorData = validateForm()
 
     if(options.showIndividualFormErrors) {
-      showIndividualFormErrors(errorData, e.delegateTarget);
+      showIndividualFormErrors(errorData, e.target)
     }
 
+  }
+
+  function renderSummary(data) {
+
+    var summary = $('<div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1"></div>')
+
+    if(data.headingMessage) {
+      summary.append('<h2 class="heading-medium error-summary-heading" id="error-summary-heading">' + data.headingMessage + '</h2>')
+    }
+
+    if(data.description) {
+      summary.append('<p>' + data.description + '</p>')
+    }
+
+    var errorList = $('<ul class="error-summary-list"></ul>')
+
+    $.each(data.errors, function(index, item) {
+      errorList.append('<li><a href="#" data-target="' + item.name + '">' + item.message + '</a></li>')
+    })
+
+    $.each(data.serversideErrors, function(index, item) {
+      errorList.append('<li>' + item + '</li>')
+    })
+
+    summary.append(errorList)
+
+    return summary
   }
 
   /**
@@ -180,28 +199,26 @@ function Validator(element, config) {
       'description': options.description,
       'errors': errors,
       'serversideErrors': serversideErrors
-    };
+    }
 
     // Remove any previous error summary
-    if(errorSummary && errorSummary.parentNode) {
-      errorSummary.parentNode.removeChild(errorSummary);
-    }
+    $(errorSummary).remove()
 
     if (data.errors.length > 0 || serversideErrors.length > 0) {
 
       // Create an error summary
-      errorSummary = domify(options.summaryTemplate.render(data));
+      errorSummary = renderSummary(data)
 
       if(!options.showSummary) {
-        errorSummary.classList.add('visuallyhidden');
+        errorSummary.addClass('visuallyhidden')
       }
 
-      element.insertBefore(errorSummary, element.firstChild);
+      $(element).prepend(errorSummary)
     }
 
     if(data.errors.length > 0) {
       // Place focus on the summary
-      errorSummary.focus();
+      errorSummary.focus()
     }
   }
 
@@ -211,59 +228,53 @@ function Validator(element, config) {
   function showIndividualFormErrors(errors, restrictTo) {
 
     // Remove any previous form element errors
-    [].forEach.call(element.querySelectorAll('.form-group'), function(formGroup) {
-      var target = formGroup.querySelector(options.controlSelector);
+    $(element).find('.form-group').each(function(index, formGroup) {
+      var target = $(formGroup).find(options.controlSelector)
 
-      if(restrictTo && target.getAttribute('name') !== restrictTo.getAttribute('name')) {
-        return;
+      if(restrictTo && $(target).attr('name') !== $(restrictTo).attr('name')) {
+        return
       }
 
-      formGroup.classList.remove('error');
+      $(formGroup).removeClass('error')
 
       if(target) {
-        target.removeAttribute('aria-describedby');
+        target.removeAttr('aria-describedby')
       }
 
-      var errorMessages = formGroup.querySelectorAll('.error-message');
-      [].forEach.call(errorMessages, function(errorMessage) {
-        if(errorMessage.parentNode) {
-          errorMessage.parentNode.removeChild(errorMessage);
-        }
-      });
-
-    });
+      $(formGroup).find('.error-message').remove()
+    })
 
     if (errors.length > 0) {
 
       // Flag each element that has an error
       errors.forEach(function(error) {
-        var target = document.querySelectorAll('[name="' + error.name + '"]')[0];
+        var target = $('[name="' + error.name + '"]')
 
         if(!target) {
-          return;
+          return
         }
 
-        if(restrictTo && target !== restrictTo) {
-          return;
+        if(restrictTo && !target.is(restrictTo)) {
+          return
         }
 
-        var message = domify(options.individualErrorTemplate.render(error));
+        var message = $('<span class="error-message" id="error-message-' + error.name + '">' + error.message + '</span>')
 
-        var formGroup = closest(target, '.form-group');
+        var formGroup = $(target).closest('.form-group')
 
         // If the element is a direct child of the form group, insert the error after it
-        if(target.parentNode === formGroup) {
-          formGroup.insertBefore(message, target.nextSibling);
+        if($.contains(formGroup, target)) {
+          target.after(message)
         } else {
           // Otherwise insert it at the end of the form group
-          formGroup.appendChild(message);
+          formGroup.append(message)
         }
 
-        formGroup.classList.add('error');
+        formGroup.addClass('error')
 
         // Link the form field to the error message with an aria attribute
-        target.setAttribute('aria-describedby', 'error-message-' + error.name);
-      });
+        target.attr('aria-describedby', 'error-message-' + error.name)
+      })
 
     }
   }
@@ -272,13 +283,13 @@ function Validator(element, config) {
    * Click handler for summary items
    */
   function summaryClick(e) {
-    var dataTarget = e.delegateTarget.getAttribute('data-target');
+    var dataTarget = $(e.currentTarget).attr('data-target')
 
     if(dataTarget) {
-      e.preventDefault();
+      e.preventDefault()
 
-      var target = document.querySelectorAll('[name="' + dataTarget + '"]')[0];
-      target.focus();
+      var target = $('[name="' + dataTarget + '"]')[0]
+      target.focus()
     }
   }
 
@@ -292,10 +303,10 @@ function Validator(element, config) {
   var self = {
     create: create,
     destroy: destroy
-  };
+  }
 
-  return self;
+  return self
 
 }
 
-module.exports = Validator;
+module.exports = Validator
