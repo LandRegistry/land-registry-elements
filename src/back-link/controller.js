@@ -1,12 +1,8 @@
-'use strict';
+'use strict'
 
-var BackLink = require('./BackLink');
+import { BackLink } from './BackLink.js'
 
-var links = document.querySelectorAll('[data-back-link]');
-var instance;
-
-for (var i = 0; i < links.length; i++) {
-  instance = new BackLink(links[i]);
-
-  instance.create();
-}
+$('[data-back-link]').each(function(index, item) {
+  var instance = new BackLink(item)
+  instance.create()
+})
