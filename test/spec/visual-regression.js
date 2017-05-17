@@ -62,7 +62,6 @@ describe('The pattern library page at', function() {
 
       var renderStream = webshot(componentUrl, options);
       var file = fs.createWriteStream('test/fixtures/visual-regression/test-renderings/' + fileName + '.png', {encoding: 'binary'});
-      var referenceRendering = fs.readFileSync('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png');
 
       renderStream.on('data', function(data) {
         file.write(data.toString('binary'), 'binary');
@@ -113,7 +112,6 @@ describe('The pattern library page at', function() {
 
       var renderStream = webshot(componentUrl, mobileOptions);
       var file = fs.createWriteStream('test/fixtures/visual-regression/test-renderings/' + fileName + '.png', {encoding: 'binary'});
-      var referenceRendering = fs.readFileSync('test/fixtures/visual-regression/reference-renderings/' + fileName + '.png');
 
       renderStream.on('data', function(data) {
         file.write(data.toString('binary'), 'binary');

@@ -12,3 +12,5 @@ dependencies:
   - elements/land-registry/clientside-form-validation
   - elements/land-registry/spacing
   - elements/land-registry/typography
+
+deprecated: true

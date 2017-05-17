@@ -1,20 +1,7 @@
 @import "node_modules/govuk_frontend_toolkit/stylesheets/design-patterns/alpha-beta";
 @import "node_modules/govuk-elements-sass/public/sass/elements/phase-banner";
 
-.phase-tag-alpha {
-  @include phase-tag($state: beta);
-}
 
-.phase-tag-beta {
-  @include phase-tag($state: beta);
-}
-
-// @see https://github.com/LandRegistry/land-registry-elements/issues/11
-.phase-banner-alpha,
-.phase-banner-beta {
-  p {
-    @include media(mobile) {
-      line-height: 1.5;
-    }
-  }
+.phase-tag {
+  @include phase-tag;
 }

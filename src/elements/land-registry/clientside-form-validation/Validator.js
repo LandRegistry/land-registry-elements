@@ -259,7 +259,7 @@ function Validator(element, config) {
           formGroup.appendChild(message);
         }
 
-        formGroup.classList.add('error');
+        formGroup.classList.add('form-group-error');
 
         // Link the form field to the error message with an aria attribute
         target.setAttribute('aria-describedby', 'error-message-' + error.name);
