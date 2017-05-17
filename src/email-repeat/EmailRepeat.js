@@ -1,22 +1,17 @@
-'use strict';
-
-var extend = require('extend');
-var domify = require('domify');
+'use strict'
 
 /**
  * Email repeat
  */
 function EmailRepeat(element, config) {
 
-  var options = {
-    hintTemplate: require('./clientside-templates/email-hint.hogan')
-  };
+  var options = {}
 
-  extend(options, config);
+  $.extend(options, config)
 
   // Private variables
-  var hintWrapper;
-  var hint;
+  var hintWrapper
+  var hint
 
   /**
    * Set everything up
@@ -25,53 +20,49 @@ function EmailRepeat(element, config) {
 
     // Bail out if we don't have the proper element to act upon
     if (!element) {
-      return;
+      return
     }
 
-    hintWrapper = domify(options.hintTemplate.render());
+    hintWrapper = $('<div class="panel panel-border-narrow email-hint spacing-top-single"><p>Please ensure your email address is displayed correctly below. We will need this if you need to reset your password in future.</p><p class="bold email-hint-value"></p></div>')
 
-    hint = hintWrapper.querySelector('.email-hint-value');
+    hint = $(hintWrapper).find('.email-hint-value')
 
-    element.addEventListener('change', updateHint);
-    element.addEventListener('keyup', updateHint);
+    $(element).on('change', updateHint)
+    $(element).on('keyup', updateHint)
   }
 
   /**
    *
    */
   function updateHint() {
-    if(!hintWrapper.parentElement) {
-      element.parentNode.insertBefore(hintWrapper, element.nextSibling);
-    }
+    $(element).after(hintWrapper)
 
     // If the input field gets emptied out again, remove the hint
-    if(element.value.length === 0 && hintWrapper.parentElement) {
-      hintWrapper.parentNode.removeChild(hintWrapper);
-      return;
+    if(element.value.length === 0) {
+      hintWrapper.remove()
+      return
     }
 
     // Update the hint to match the input value
-    hint.textContent = element.value;
+    hint.text(element.value)
   }
 
   /**
    * Tear everything down again
    */
   function destroy() {
-    if(hintWrapper.parentElement) {
-      hintWrapper.parentNode.removeChild(hintWrapper);
-    }
+    hintWrapper.remove()
 
-    element.addEventListener('change', updateHint);
-    element.addEventListener('keyup', updateHint);
+    $(element).off('change', updateHint)
+    $(element).off('keyup', updateHint)
   }
 
   var self = {
     create: create,
     destroy: destroy
-  };
+  }
 
-  return self;
+  return self
 
 }
 
