@@ -44,4 +44,4 @@ function FormSessionStorageSet(element, config) {
 
 }
 
-module.exports = FormSessionStorageSet
+export { FormSessionStorageSet }

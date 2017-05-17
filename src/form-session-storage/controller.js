@@ -1,7 +1,7 @@
 'use strict'
 
-var FormSessionStorageSet = require('./FormSessionStorageSet')
-var FormSessionStorageGet = require('./FormSessionStorageGet')
+import { FormSessionStorageSet } from './FormSessionStorageSet'
+import { FormSessionStorageGet } from './FormSessionStorageGet'
 
 // Set
 $('[data-session-storage-set]').each(function(index, item) {

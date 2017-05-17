@@ -1,15 +1,13 @@
-'use strict';
-
-var extend = require('extend');
+'use strict'
 
 /**
  * Print buttons
  */
 function Print(element, config) {
 
-  var options = {};
+  var options = {}
 
-  extend(options, config);
+  $.extend(options, config)
 
   /**
    * Set everything up
@@ -18,10 +16,10 @@ function Print(element, config) {
 
     // Bail out if we don't have the proper element to act upon
     if (!element) {
-      return;
+      return
     }
 
-    element.addEventListener('click', click)
+    $(element).on('click', click)
   }
 
   /**
@@ -29,25 +27,25 @@ function Print(element, config) {
    * @param  {Event} e
    */
   function click(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    window.print();
+    window.print()
   }
 
   /**
    * Tear everything down again
    */
   function destroy() {
-    element.removeEventListener('click', click)
+    $(element).off('click', click)
   }
 
   var self = {
     create: create,
     destroy: destroy
-  };
+  }
 
-  return self;
+  return self
 
 }
 
-module.exports = Print;
+export { Print }

@@ -39,4 +39,4 @@ function FormSessionStorageGet(element, config) {
 
 }
 
-module.exports = FormSessionStorageGet
+export { FormSessionStorageGet }
