@@ -1,7 +1,10 @@
 'use strict'
 
+require('../utils/polyfills/Array.prototype.forEach')
+require('../utils/polyfills/Array.prototype.filter')
+require('../utils/polyfills/Array.prototype.map')
+require('../pub-sub/controller')
 var validate = require('validate.js')
-require('../pub-sub/controller.js')
 
 /**
  * Form validation
