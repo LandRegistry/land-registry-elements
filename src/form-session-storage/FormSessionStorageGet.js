@@ -1,6 +1,4 @@
-'use strict';
-
-var extend = require('extend');
+'use strict'
 
 /**
  * Form Session Storage - Get
@@ -8,21 +6,21 @@ var extend = require('extend');
 function FormSessionStorageGet(element, config) {
 
   var options = {
-  };
+  }
 
-  extend(options, config);
+  $.extend(options, config)
 
   // Private variables
-  var storedValue;
+  var storedValue
 
   /**
    * Set everything up
    */
   function create() {
-    storedValue = sessionStorage.getItem(options.key);
+    storedValue = sessionStorage.getItem(options.key)
 
     if(storedValue && !element.value) {
-      element.value = storedValue;
+      element.value = storedValue
     }
   }
 
@@ -35,10 +33,10 @@ function FormSessionStorageGet(element, config) {
   var self = {
     create: create,
     destroy: destroy
-  };
+  }
 
-  return self;
+  return self
 
 }
 
-module.exports = FormSessionStorageGet;
+module.exports = FormSessionStorageGet

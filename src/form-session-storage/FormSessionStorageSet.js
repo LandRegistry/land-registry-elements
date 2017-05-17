@@ -1,6 +1,4 @@
-'use strict';
-
-var extend = require('extend');
+'use strict'
 
 /**
  * Form Session Storage - Set
@@ -8,42 +6,42 @@ var extend = require('extend');
 function FormSessionStorageSet(element, config) {
 
   var options = {
-  };
+  }
 
-  extend(options, config);
+  $.extend(options, config)
 
   /**
    * Set everything up
    */
   function create() {
     // Bind keyup and change events to cope with text inputs as well as select boxes
-    element.addEventListener('keyup', updateValue);
-    element.addEventListener('change', updateValue);
+    $(element).on('keyup', updateValue)
+    $(element).on('change', updateValue)
   }
 
   /**
    * Update the value in the session storage
    */
   function updateValue(e) {
-    sessionStorage.setItem(options.key, element.value);
+    sessionStorage.setItem(options.key, element.value)
   }
 
   /**
    * Tear everything down again
    */
   function destroy() {
-    element.removeEventListener('keyup', updateValue);
-    element.removeEventListener('change', updateValue);
-    sessionStorage.removeItem(options.key);
+    $(element).off('keyup', updateValue)
+    $(element).off('change', updateValue)
+    sessionStorage.removeItem(options.key)
   }
 
   var self = {
     create: create,
     destroy: destroy
-  };
+  }
 
-  return self;
+  return self
 
 }
 
-module.exports = FormSessionStorageSet;
+module.exports = FormSessionStorageSet
