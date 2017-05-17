@@ -1,21 +1,7 @@
 language: node_js
 node_js:
   - "6"
-before_install:
-  - npm install -g mocha
-
-after_success:
-  - npm run zipTestRenderings
-
-after_failure:
-  - npm run zipTestRenderings
 
 cache:
   directories:
     - node_modules
-
-addons:
-  artifacts:
-    s3_region: "eu-west-1"
-    paths:
-      - test/fixtures/visual-regression
