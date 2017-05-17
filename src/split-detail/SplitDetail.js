@@ -1,6 +1,4 @@
-'use strict';
-
-var extend = require('extend');
+'use strict'
 
 /**
  * Split detail
@@ -10,12 +8,12 @@ function SplitDetail(element, config) {
   var options = {
     contentsActiveClass: 'split-detail-contents-active',
     triggerActiveClass: 'split-detail-trigger-active'
-  };
+  }
 
-  extend(options, config);
+  $.extend(options, config)
 
   // Private variables
-  var target;
+  var target
 
   /**
    * Set everything up
@@ -24,14 +22,14 @@ function SplitDetail(element, config) {
 
     // Bail out if we don't have the proper element to act upon
     if (!element) {
-      return;
+      return
     }
 
     // Find the target of the link
-    target = document.querySelector(element.getAttribute('href'));
+    target = $($(element).attr('href'))
 
     // Bind click handler to the main trigger
-    element.addEventListener('click', triggerClick);
+    $(element).on('click', triggerClick)
   }
 
   /**
@@ -39,27 +37,27 @@ function SplitDetail(element, config) {
    * @param  {Event} e
    */
   function triggerClick(e) {
-    e.preventDefault();
-    element.classList.toggle(options.triggerActiveClass);
-    target.classList.toggle(options.contentsActiveClass);
+    e.preventDefault()
+    $(element).toggleClass(options.triggerActiveClass)
+    $(target).toggleClass(options.contentsActiveClass)
   }
 
   /**
    * Tear everything down again
    */
   function destroy() {
-    element.removeEventListener('click', triggerClick);
-    element.classList.remove(options.triggerActiveClass);
-    target.classList.remove(options.contentsActiveClass);
+    $(element).off('click', triggerClick)
+    $(element).removeClass(options.triggerActiveClass)
+    $(target).removeClass(options.contentsActiveClass)
   }
 
   var self = {
     create: create,
     destroy: destroy
-  };
+  }
 
-  return self;
+  return self
 
 }
 
-module.exports = SplitDetail;
+export { SplitDetail }

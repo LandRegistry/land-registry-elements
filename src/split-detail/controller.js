@@ -1,11 +1,8 @@
-'use strict';
+'use strict'
 
-var SplitDetail = require('./SplitDetail');
+import { SplitDetail } from './SplitDetail'
 
-var instance;
-var splitDetailTriggers = document.querySelectorAll('.split-detail-trigger');
-
-for (var i = 0; i < splitDetailTriggers.length; i++) {
-  instance = new SplitDetail(splitDetailTriggers[i]);
-  instance.create();
-}
+$('.split-detail-trigger').each(function(index, item) {
+  var instance = new SplitDetail(item)
+  instance.create()
+})
