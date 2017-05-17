@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import '../pub-sub/controller.js'
 
@@ -10,59 +10,59 @@ function DoubleClickPrevention(element, config) {
   var options = {
     waitText: 'Please wait…',
     waitClass: 'button-waiting'
-  };
+  }
 
-  $.extend(options, config);
+  $.extend(options, config)
 
   // Private variables
-  var originalText;
-  var enableSubscriber;
-  var disableSubscriber;
+  var originalText
+  var enableSubscriber
+  var disableSubscriber
 
   /**
    * Set everything up
    */
   function create() {
-    if(element.form.getAttribute('data-clientside-validation')) {
+    if($(element.form).attr('data-clientside-validation')) {
 
       window.PubSub.subscribe('clientside-form-validation.valid', function(msg, data) {
         disableButton()
-      });
+      })
 
     } else {
-      $(element.form).on('submit', disableButton);
+      $(element.form).on('submit', disableButton)
     }
 
     if(element.value) {
-      originalText = element.value;
+      originalText = element.value
     } else {
-      originalText = element.textContent;
+      originalText = element.textContent
     }
 
     enableSubscriber = window.PubSub.subscribe('double-click-prevention.enable', function(msg, data) {
-      if(data === element) {
+      if($(data).is(element)) {
         enableButton()
       }
-    });
+    })
 
     disableSubscriber = window.PubSub.subscribe('double-click-prevention.disable', function(msg, data) {
-      if(data === element) {
+      if($(data).is(element)) {
         disableButton()
       }
-    });
+    })
   }
 
   /**
    * Main click event handler
    */
   function disableButton(){
-    element.setAttribute('disabled', 'disabled');
+    $(element).attr('disabled', 'disabled')
     $(element).addClass(options.waitClass)
 
     if(element.value) {
-      element.value = options.waitText;
+      element.value = options.waitText
     } else {
-      element.innerHTML = options.waitText;
+      element.innerHTML = options.waitText
     }
   }
 
@@ -70,13 +70,13 @@ function DoubleClickPrevention(element, config) {
    * Enable the button again
    */
   function enableButton(){
-      element.classList.remove(options.waitClass)
-      element.removeAttribute('disabled');
+      $(element).removeClass(options.waitClass)
+      $(element).removeAttr('disabled')
 
       if(element.value) {
-        element.value = originalText;
+        element.value = originalText
       } else {
-        element.innerHTML = originalText;
+        element.innerHTML = originalText
       }
     }
 
@@ -84,18 +84,18 @@ function DoubleClickPrevention(element, config) {
    * Tear everything down again
    */
   function destroy() {
-    element.form.removeEventListener('submit', disableButton);
-    enableButton();
-    window.PubSub.unsubscribe(enableSubscriber);
-    window.PubSub.unsubscribe(disableSubscriber);
+    $(element.form).off('submit', disableButton)
+    enableButton()
+    window.PubSub.unsubscribe(enableSubscriber)
+    window.PubSub.unsubscribe(disableSubscriber)
   }
 
   var self = {
     create: create,
     destroy: destroy
-  };
+  }
 
-  return self;
+  return self
 
 }
 

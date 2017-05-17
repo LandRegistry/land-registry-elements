@@ -1,1 +1,2 @@
-import '../core/controller.js'
+require('browsernizr/test/css/flexbox');
+require('browsernizr');
