@@ -1,0 +1,6 @@
+import '../../../../src/back-link/controller.js'
+import '../../../../src/clientside-form-validation/controller.js'
+import '../../../../src/double-click-prevention/controller.js'
+import '../../../../src/email-repeat/controller.js'
+import '../../../../src/form-session-storage/controller.js'
+import '../../../../src/print-button/controller.js'

@@ -1,0 +1,145 @@
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+
+  <a class="back-link js-only" href="#" data-back-link>
+    <span class="back-link-destination">Back</span>
+  </a>
+
+
+  <nav class="pager-simple" role="navigation" aria-label="Pagination">
+    <ul>
+      <li class="previous-page">
+        <a href="#" rel="prev">
+          <span class="pagination-part-title">Previous page</span>
+          <span class="pagination-label">1 of 3</span>
+        </a>
+      </li>
+
+      <li class="next-page">
+        <a href="#" rel="next">
+          <span class="pagination-part-title">Next page</span>
+          <span class="pagination-label">3 of 3</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <button data-print class="button button-light bold"><span class="icon icon-print"></span>Print this page</button>
+
+  <form>
+    <button class="button" data-double-click-prevention>You can't double click me</button>
+  </form>
+
+  <div class="warning media">
+    <div class="media-item">
+      <i class="icon icon-important">
+        <span class="visuallyhidden">Warning</span>
+      </i>
+    </div>
+
+    <div class="media-body">
+      <h2 class="heading-small spacing-bottom-flush">You'll only be able to view the information once</h2>
+      <p class="spacing-top-flush">If you want to keep a copy you can print it out</p>
+    </div>
+  </div>
+
+
+  <form method="GET" id="example_form" data-clientside-validation="example_form_validation">
+
+    <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
+      <h2 class="heading-medium error-summary-heading" id="error-summary-heading">The following errors were found:</h2>
+
+      <ul class="error-summary-list">
+        <li>Example of a server side error message present in the page on load. It <a href="http://google.co.uk">contains a link</a> to something.</li>
+      </ul>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="full-name">Full name</label>
+      <span class="form-hint">Some description about the field written here</span>
+      <input class="form-control" type="text" id="full-name" name="full-name" data-session-storage-set="foo" data-session-storage-get="foo">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="email">Email repeat</label>
+      <input class="form-control" type="text" id="email" name="email" data-email-hint>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="another-field">Another field (Optional)</label>
+      <input class="form-control" type="text" id="another-field" name="another-field">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="another-required-field">Another required field</label>
+      <input class="form-control" type="text" id="another-required-field" name="another-required-field">
+    </div>
+
+    <div class="form-group">
+      <fieldset class="inline">
+
+        <legend class="form-label">Yes or no</legend>
+
+        <div class="multiple-choice">
+          <input id="radio-1" type="radio" name="radio-group" value="Yes">
+          <label for="radio-1">Yes</label>
+        </div>
+
+        <div class="multiple-choice">
+          <input id="radio-2" type="radio" name="radio-group" value="No">
+          <label for="radio-2">No</label>
+        </div>
+
+      </fieldset>
+    </div>
+
+    <div class="form-group">
+      <div class="multiple-choice">
+        <input id="terms" name="terms" type="checkbox" value="agree">
+        <label for="terms">I have read and agree to the terms of use</label>
+      </div>
+    </div>
+
+    <input type="submit" class="button" value="Submit">
+  </form>
+
+  <script type="application/json" id="example_form_validation">
+    {
+      "full-name": {
+        "presence": {
+          "message": "Please supply your full name"
+        },
+        "length": {
+          "minimum": 3,
+          "maximum": 70,
+          "message": "This field should be between 3 and 70 characters"
+        }
+      },
+      "another-required-field": {
+        "presence": {
+          "message": "Another required field must be filled in"
+        }
+      },
+      "radio-group": {
+        "presence": {
+          "message": "Please choose an option"
+        }
+      },
+      "terms": {
+        "presence": {
+          "message": "You must agree to our terms of use before continuing"
+        }
+      }
+    }
+  </script>
+
+  <br><br><br>
+  <p><strong class="bold-small">Caution against first registration</strong> <a class="split-detail-trigger" href="#whats-caution-against-first-registration">What's this?</a></p>
+
+  <div class="split-detail-contents" id="whats-caution-against-first-registration">
+    <div class="panel panel-border-narrow">
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+    </div>
+  </div>
+{% endblock %}

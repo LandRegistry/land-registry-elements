@@ -5,8 +5,8 @@ var path = require('path')
 
 var config = {
   'applicationPath': './demo',
-  'assetsPath': 'assets',
-  'sassPath': 'src/scss/*.scss',
+  'assetsPath': 'app/assets',
+  'sassPath': 'app/src/scss/*.scss',
   'localhost': 'localhost:9996'
 }
 
