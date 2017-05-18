@@ -1,6 +1,6 @@
-from app.extensions.cachebust_static_assets.main import CachebustStaticAssets
-from app.extensions.gzip_static_assets.main import GzipStaticAssets
-from app.extensions.security_headers.main import SecurityHeaders
+from demo.extensions.cachebust_static_assets.main import CachebustStaticAssets
+from demo.extensions.gzip_static_assets.main import GzipStaticAssets
+from demo.extensions.security_headers.main import SecurityHeaders
 
 
 # Create empty extension objects here

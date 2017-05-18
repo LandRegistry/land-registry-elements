@@ -1,5 +1,5 @@
 from flask_script import Manager
-from flask_skeleton_ui.main import app
+from demo.main import app
 import subprocess
 import os
 

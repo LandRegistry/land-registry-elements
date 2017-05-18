@@ -1,5 +1,5 @@
 # Import every blueprint file
-from app.views import example
+from demo.views import example
 
 
 def register_blueprints(app):

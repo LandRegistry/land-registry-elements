@@ -5,9 +5,9 @@ var path = require('path')
 
 var config = {
   'applicationPath': './demo',
-  'assetsPath': 'app/assets',
-  'sassPath': 'app/src/scss/*.scss',
-  'localhost': 'localhost:9996'
+  'assetsPath': 'demo/assets',
+  'sassPath': 'src/scss/*.scss',
+  'localhost': 'localhost:9000'
 }
 
 config.assetsPath = path.join(config.applicationPath, config.assetsPath)
