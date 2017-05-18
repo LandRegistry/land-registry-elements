@@ -1,2 +1,2 @@
-require('browsernizr/test/css/flexbox');
-require('browsernizr');
+require('browsernizr/test/css/flexbox')
+require('browsernizr')

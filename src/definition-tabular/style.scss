@@ -11,7 +11,7 @@
       box-sizing: border-box;
     }
 
-    &:after {
+    &::after {
       content: ':';
     }
   }
@@ -49,7 +49,7 @@
 
 .definition-tabular-sectioned {
   dt {
-    @include bold-24();
+    @include bold-24;
     margin-top: $gutter-half;
     padding-top: $gutter-half;
     margin-bottom: $gutter-half;

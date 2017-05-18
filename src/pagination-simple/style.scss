@@ -1,7 +1,7 @@
 .pager-simple {
+  @extend %contain-floats;
   margin-top: $gutter;
   margin-bottom: $gutter;
-  @extend %contain-floats;
 
   ul {
     margin: 0;
@@ -36,17 +36,17 @@
 
       .pagination-part-title {
         @include core-27($line-height: (33.75 / 27));
-        margin-bottom: 0.1em;
+        margin-bottom: 1em;
         display: block;
       }
     }
 
-    a:before {
+    a::before {
       margin-top: -4px;
       display: block;
       width: 30px;
       height: 38px;
-      content: " ";
+      content: ' ';
     }
   }
 
@@ -55,9 +55,9 @@
     text-align: right;
 
     a {
-      padding: 0.75em 3em 0.75em 0;
+      padding: 75em 3em 75em 0;
 
-      &:before {
+      &::before {
         background: transparent file-url('arrow-sprite.png') no-repeat -102px -11px;
         margin-right: -32px;
         float: right;
@@ -70,9 +70,9 @@
     text-align: left;
 
     a {
-      padding: 0.75em 0 0.75em 3em;
+      padding: 75em 0 75em 3em;
 
-      &:before {
+      &::before {
         background: transparent file-url('arrow-sprite.png') no-repeat -20px -11px;
         margin-left: -32px;
         float: left;

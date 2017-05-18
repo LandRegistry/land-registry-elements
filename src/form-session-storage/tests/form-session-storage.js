@@ -1,37 +1,34 @@
-// var should = require('should');
-var webdriverio = require('webdriverio');
-var selenium = require('selenium-standalone');
+/* global describe,before,it,after */
+var webdriverio = require('webdriverio')
+var selenium = require('selenium-standalone')
 
-describe('Form session storage', function() {
-
+describe('Form session storage', function () {
   var client = webdriverio.remote({
     logLevel: 'command',
     desiredCapabilities: {
       browserName: 'phantomjs'
     }
-  });
+  })
 
-  this.timeout(30000);
+  this.timeout(30000)
 
-  before(function(done){
+  before(function (done) {
     selenium.install(
       function (err) {
-        if (err) return done(err);
+        if (err) return done(err)
 
-        selenium.start(function() {
-          client.init().then(function() {
-            done();
-          });
-        });
+        selenium.start(function () {
+          client.init().then(function () {
+            done()
+          })
+        })
       }
-    );
+    )
+  })
 
-  });
-
-  it('should allow values to be transmitted from the set page to the get page', function(done) {
-
-    var value = Math.random().toString();
-    var value2 = Math.random().toString();
+  it('should allow values to be transmitted from the set page to the get page', function (done) {
+    var value = Math.random().toString()
+    var value2 = Math.random().toString()
 
     client
       .url('http://localhost:3000/components/elements/land-registry/form-session-storage/set/')
@@ -39,15 +36,15 @@ describe('Form session storage', function() {
       .setValue('#foo', value)
       .url('http://localhost:3000/components/elements/land-registry/form-session-storage/get/')
       .getValue('#foo')
-      .then(function(text) {
+      .then(function (text) {
         text.should.be.equal(value)
       })
       .getValue('#foo2')
-      .then(function(text) {
+      .then(function (text) {
         text.should.be.equal("This is a prefilled value, it won't get blown away by the value in sessionStorage")
       })
       .getValue('#foo3')
-      .then(function(text) {
+      .then(function (text) {
         text.should.be.equal(value)
       })
 
@@ -56,18 +53,17 @@ describe('Form session storage', function() {
       .setValue('#foo3', value2)
       .url('http://localhost:3000/components/elements/land-registry/form-session-storage/get/')
       .getValue('#foo')
-      .then(function(text) {
+      .then(function (text) {
         text.should.be.equal(value2)
       })
       .getValue('#foo3')
-      .then(function(text) {
+      .then(function (text) {
         text.should.be.equal(value2)
       })
-      .call(done);
-  });
+      .call(done)
+  })
 
-  after(function(done) {
-    done();
-  });
-
-});
+  after(function (done) {
+    done()
+  })
+})

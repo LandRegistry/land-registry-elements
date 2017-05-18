@@ -1,10 +1,10 @@
+/* global $ */
 'use strict'
 
 /**
  * Split detail
  */
-function SplitDetail(element, config) {
-
+function SplitDetail (element, config) {
   var options = {
     contentsActiveClass: 'split-detail-contents-active',
     triggerActiveClass: 'split-detail-trigger-active'
@@ -18,8 +18,7 @@ function SplitDetail(element, config) {
   /**
    * Set everything up
    */
-  function create() {
-
+  function create () {
     // Bail out if we don't have the proper element to act upon
     if (!element) {
       return
@@ -36,7 +35,7 @@ function SplitDetail(element, config) {
    * Main event handler for the trigger click
    * @param  {Event} e
    */
-  function triggerClick(e) {
+  function triggerClick (e) {
     e.preventDefault()
     $(element).toggleClass(options.triggerActiveClass)
     $(target).toggleClass(options.contentsActiveClass)
@@ -45,7 +44,7 @@ function SplitDetail(element, config) {
   /**
    * Tear everything down again
    */
-  function destroy() {
+  function destroy () {
     $(element).off('click', triggerClick)
     $(element).removeClass(options.triggerActiveClass)
     $(target).removeClass(options.contentsActiveClass)
@@ -57,7 +56,6 @@ function SplitDetail(element, config) {
   }
 
   return self
-
 }
 
 export { SplitDetail }

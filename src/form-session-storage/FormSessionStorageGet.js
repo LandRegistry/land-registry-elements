@@ -1,10 +1,10 @@
+/* global $ */
 'use strict'
 
 /**
  * Form Session Storage - Get
  */
-function FormSessionStorageGet(element, config) {
-
+function FormSessionStorageGet (element, config) {
   var options = {
   }
 
@@ -16,10 +16,10 @@ function FormSessionStorageGet(element, config) {
   /**
    * Set everything up
    */
-  function create() {
-    storedValue = sessionStorage.getItem(options.key)
+  function create () {
+    storedValue = window.sessionStorage.getItem(options.key)
 
-    if(storedValue && !element.value) {
+    if (storedValue && !element.value) {
       element.value = storedValue
     }
   }
@@ -27,7 +27,7 @@ function FormSessionStorageGet(element, config) {
   /**
    * Tear everything down again
    */
-  function destroy() {
+  function destroy () {
   }
 
   var self = {
@@ -36,7 +36,6 @@ function FormSessionStorageGet(element, config) {
   }
 
   return self
-
 }
 
 export { FormSessionStorageGet }

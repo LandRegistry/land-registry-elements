@@ -1,35 +1,30 @@
-// var should = require('should');
-var webdriverio = require('webdriverio');
-var selenium = require('selenium-standalone');
+/* global describe,before,it,after */
+var webdriverio = require('webdriverio')
+var selenium = require('selenium-standalone')
 
-
-describe('Clientside validation', function() {
-
+describe('Clientside validation', function () {
   var client = webdriverio.remote({
     logLevel: 'command',
     desiredCapabilities: {
       browserName: 'phantomjs'
     }
-  });
+  })
 
-  this.timeout(30000);
+  this.timeout(30000)
 
-  before(function(done){
+  before(function (done) {
     selenium.install(
       function (err) {
-        if (err) return done(err);
+        if (err) return done(err)
 
-        selenium.start(function() {
-          done();
-        });
+        selenium.start(function () {
+          done()
+        })
       }
-    );
+    )
+  })
 
-  });
-
-
-  it('should display a summary of errors when submitting an incomplete form', function(done) {
-
+  it('should display a summary of errors when submitting an incomplete form', function (done) {
     client
       .init()
       .url('http://localhost:3000/components/elements/land-registry/clientside-form-validation/demo/')
@@ -37,11 +32,10 @@ describe('Clientside validation', function() {
       .setValue('#full-name', 'WebdriverIO')
       .submitForm('#example_form')
       .element('.error-summary')
-      .call(done);
-  });
+      .call(done)
+  })
 
-  after(function(done) {
-    done();
-  });
-
-});
+  after(function (done) {
+    done()
+  })
+})

@@ -1,10 +1,10 @@
+/* global $ */
 'use strict'
 
 /**
  * Email repeat
  */
-function EmailRepeat(element, config) {
-
+function EmailRepeat (element, config) {
   var options = {}
 
   $.extend(options, config)
@@ -16,8 +16,7 @@ function EmailRepeat(element, config) {
   /**
    * Set everything up
    */
-  function create() {
-
+  function create () {
     // Bail out if we don't have the proper element to act upon
     if (!element) {
       return
@@ -34,11 +33,11 @@ function EmailRepeat(element, config) {
   /**
    *
    */
-  function updateHint() {
+  function updateHint () {
     $(element).after(hintWrapper)
 
     // If the input field gets emptied out again, remove the hint
-    if(element.value.length === 0) {
+    if (element.value.length === 0) {
       hintWrapper.remove()
       return
     }
@@ -50,7 +49,7 @@ function EmailRepeat(element, config) {
   /**
    * Tear everything down again
    */
-  function destroy() {
+  function destroy () {
     hintWrapper.remove()
 
     $(element).off('change', updateHint)
@@ -63,7 +62,6 @@ function EmailRepeat(element, config) {
   }
 
   return self
-
 }
 
 export { EmailRepeat }

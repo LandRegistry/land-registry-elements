@@ -19,11 +19,7 @@
   padding: 0 5px 0 0;
   margin: 0 5px 0 0;
 
-  .language-switcher-invert & {
-    order: 1; // Use flexbox to switch the order of the links round in browsers that can
-  }
-
-  &:after {
+  &::after {
     height: 66%;
     width: 1px;
     background-color: $black;
@@ -37,10 +33,11 @@
   // On browsers that support flexbox, the order of the links is switched around
   // Therefore we need to flip the pipe to the other end of the link
   .language-switcher-invert & {
+    order: 1; // Use flexbox to switch the order of the links round in browsers that can
     padding: 0 0 0 5px;
     margin: 0 0 0 5px;
 
-    &:after {
+    &::after {
       right: auto;
       left: 0;
     }
@@ -50,7 +47,7 @@
       padding: 0 5px 0 0;
       margin: 0 5px 0 0;
 
-      &:after {
+      &::after {
         right: 0;
         left: auto;
       }
@@ -72,7 +69,7 @@
   margin: 0;
 
   &:active {
-    color: $link-active-colour
+    color: $link-active-colour;
   }
 
   &:hover,

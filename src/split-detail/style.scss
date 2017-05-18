@@ -11,13 +11,13 @@
     background-color: transparent;
   }
 
-  &:before {
-    content: '\25ba'
+  &::before {
+    content: '\25ba';
   }
 
   &-active {
-    &:before {
-      content: '\25bc'
+    &::before {
+      content: '\25bc';
     }
   }
 }
@@ -25,7 +25,7 @@
 .split-detail-contents {
   .js-enabled & {
     max-height: 0;
-    transition: max-height 0.3s ease-in-out;
+    transition: max-height .3s ease-in-out;
     overflow: hidden;
 
     &-active {

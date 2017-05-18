@@ -1,10 +1,10 @@
+/* global $ */
 'use strict'
 
 /**
  * Back links
  */
-function BackLink(element, config) {
-
+function BackLink (element, config) {
   var options = {}
 
   $.extend(options, config)
@@ -14,7 +14,7 @@ function BackLink(element, config) {
   /**
    * Set everything up
    */
-  function create() {
+  function create () {
     // Bail out if we don't have the proper element to act upon
     if (!element) {
       return
@@ -23,7 +23,7 @@ function BackLink(element, config) {
     $(element).on('click', goBack)
   }
 
-  function goBack(e) {
+  function goBack (e) {
     e.preventDefault()
     window.history.go(-1)
   }
@@ -31,7 +31,7 @@ function BackLink(element, config) {
   /**
    * Tear everything down again
    */
-  function destroy() {
+  function destroy () {
     $(element).off('click', goBack)
   }
 
@@ -41,7 +41,6 @@ function BackLink(element, config) {
   }
 
   return self
-
 }
 
 export { BackLink }

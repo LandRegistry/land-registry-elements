@@ -1,8 +1,9 @@
+/* global $ */
 'use strict'
 
 var Validator = require('./Validator')
 
-$('[data-clientside-validation]').each(function(index, item) {
+$('[data-clientside-validation]').each(function (index, item) {
   var rules
   var instance
 
@@ -11,7 +12,7 @@ $('[data-clientside-validation]').each(function(index, item) {
 
   var configElement = document.getElementById(configID)
   // If we can't find any config, bail out
-  if(!configElement) {
+  if (!configElement) {
     return
   }
 

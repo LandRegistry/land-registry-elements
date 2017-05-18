@@ -1,10 +1,10 @@
+/* global $ */
 'use strict'
 
 /**
  * Print buttons
  */
-function Print(element, config) {
-
+function Print (element, config) {
   var options = {}
 
   $.extend(options, config)
@@ -12,8 +12,7 @@ function Print(element, config) {
   /**
    * Set everything up
    */
-  function create() {
-
+  function create () {
     // Bail out if we don't have the proper element to act upon
     if (!element) {
       return
@@ -26,7 +25,7 @@ function Print(element, config) {
    * Main click event handler
    * @param  {Event} e
    */
-  function click(e) {
+  function click (e) {
     e.preventDefault()
 
     window.print()
@@ -35,7 +34,7 @@ function Print(element, config) {
   /**
    * Tear everything down again
    */
-  function destroy() {
+  function destroy () {
     $(element).off('click', click)
   }
 
@@ -45,7 +44,6 @@ function Print(element, config) {
   }
 
   return self
-
 }
 
 export { Print }

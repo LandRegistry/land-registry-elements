@@ -11,7 +11,7 @@
     color: $link-colour;
   }
 
-  &:before {
+  &::before {
     content: '\25C0 ';
     font-family: dingbats, arial unicode ms, sans-serif;
     display: block;

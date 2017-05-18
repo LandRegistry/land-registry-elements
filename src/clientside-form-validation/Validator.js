@@ -1,3 +1,4 @@
+/* global $ */
 'use strict'
 
 require('../utils/polyfills/Array.prototype.forEach')
@@ -22,8 +23,7 @@ var validate = require('validate.js')
  * associate each error message with the corresponding field
  * add an ID to each error message and associate this with the field using aria-describedby
  */
-function Validator(element, config) {
-
+function Validator (element, config) {
   var options = {
     showSummary: true,
     showIndividualFormErrors: true,
@@ -46,8 +46,7 @@ function Validator(element, config) {
   /**
    * Set everything up
    */
-  function create() {
-
+  function create () {
     // Bail out if we don't have the proper element to act upon
     if (!element) {
       return
@@ -70,9 +69,9 @@ function Validator(element, config) {
 
     // Grab any existing error messages and ensure they persist, regardless of clientside changes
     var $existingSummary = $element.find('.error-summary')
-    if($existingSummary) {
+    if ($existingSummary) {
       $existingSummary.find('.error-summary-list li')
-        .each(function(index, item) {
+        .each(function (index, item) {
           serversideErrors.push(item.innerHTML)
         })
 
@@ -80,13 +79,12 @@ function Validator(element, config) {
       $existingSummary.remove()
       showSummary({})
     }
-
   }
 
   /**
    * Main validation helper
    */
-  function validateForm() {
+  function validateForm () {
     var errors = validate(element, options.rules, {
       fullMessages: false
     })
@@ -94,9 +92,9 @@ function Validator(element, config) {
     var errorData = []
 
     // Turn the errors into an array to make it easier to use elsewhere
-    for(var key in errors) {
-      if(errors.hasOwnProperty(key)) {
-        errors[key].forEach(function(error) {
+    for (var key in errors) {
+      if (errors.hasOwnProperty(key)) {
+        errors[key].forEach(function (error) {
           errorData.push({
             'name': key,
             'message': error
@@ -111,11 +109,10 @@ function Validator(element, config) {
   /**
    * Form submit handler
    */
-  function submit(e) {
-
+  function submit (e) {
     var errorData = validateForm()
 
-    if(errorData.length > 0) {
+    if (errorData.length > 0) {
       e.preventDefault()
       window.PubSub.publish('clientside-form-validation.invalid', element)
     } else {
@@ -124,21 +121,20 @@ function Validator(element, config) {
 
     showSummary(errorData)
 
-    if(options.showIndividualFormErrors) {
+    if (options.showIndividualFormErrors) {
       showIndividualFormErrors(errorData)
     }
-
   }
 
   /**
    * Keyup handler
    */
-  function keyup(e) {
+  function keyup (e) {
     // We don't want to start flagging errors to the user until they have
     // at least attempted to enter a value into a field. This allows them to
     // tab around the form as much as they like to begin with and requried
     // fields will only be validated when they have entered something
-    if(e.currentTarget.value.length > 0) {
+    if (e.currentTarget.value.length > 0) {
       e.currentTarget.isDirty = true
     }
   }
@@ -146,48 +142,43 @@ function Validator(element, config) {
   /**
    * focusout handler
    */
-  function focusout(e) {
-
+  function focusout (e) {
     var errorData = validateForm()
 
-    if(e.currentTarget.isDirty && options.showIndividualFormErrors) {
+    if (e.currentTarget.isDirty && options.showIndividualFormErrors) {
       showIndividualFormErrors(errorData, e.currentTarget)
     }
-
   }
 
   /**
    * radio / checkbox change
    */
-  function change(e) {
-
+  function change (e) {
     var errorData = validateForm()
 
-    if(options.showIndividualFormErrors) {
+    if (options.showIndividualFormErrors) {
       showIndividualFormErrors(errorData, e.target)
     }
-
   }
 
-  function renderSummary(data) {
-
+  function renderSummary (data) {
     var summary = $('<div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1"></div>')
 
-    if(data.headingMessage) {
+    if (data.headingMessage) {
       summary.append('<h2 class="heading-medium error-summary-heading" id="error-summary-heading">' + data.headingMessage + '</h2>')
     }
 
-    if(data.description) {
+    if (data.description) {
       summary.append('<p>' + data.description + '</p>')
     }
 
     var errorList = $('<ul class="error-summary-list"></ul>')
 
-    $.each(data.errors, function(index, item) {
+    $.each(data.errors, function (index, item) {
       errorList.append('<li><a href="#" data-target="' + item.name + '">' + item.message + '</a></li>')
     })
 
-    $.each(data.serversideErrors, function(index, item) {
+    $.each(data.serversideErrors, function (index, item) {
       errorList.append('<li>' + item + '</li>')
     })
 
@@ -199,7 +190,7 @@ function Validator(element, config) {
   /**
    * Error summary
    */
-  function showSummary(errors) {
+  function showSummary (errors) {
     // Build up data to pass to the summary template
     var data = {
       'headingMessage': options.headingMessage,
@@ -212,18 +203,17 @@ function Validator(element, config) {
     $(errorSummary).remove()
 
     if (data.errors.length > 0 || serversideErrors.length > 0) {
-
       // Create an error summary
       errorSummary = renderSummary(data)
 
-      if(!options.showSummary) {
+      if (!options.showSummary) {
         errorSummary.addClass('visuallyhidden')
       }
 
       $element.prepend(errorSummary)
     }
 
-    if(data.errors.length > 0) {
+    if (data.errors.length > 0) {
       // Place focus on the summary
       errorSummary.focus()
     }
@@ -232,19 +222,18 @@ function Validator(element, config) {
   /**
    * Individual form errors
    */
-  function showIndividualFormErrors(errors, restrictTo) {
-
+  function showIndividualFormErrors (errors, restrictTo) {
     // Remove any previous form element errors
-    $element.find('.form-group').each(function(index, formGroup) {
+    $element.find('.form-group').each(function (index, formGroup) {
       var target = $(formGroup).find(options.controlSelector)
 
-      if(restrictTo && $(target).attr('name') !== $(restrictTo).attr('name')) {
+      if (restrictTo && $(target).attr('name') !== $(restrictTo).attr('name')) {
         return
       }
 
       $(formGroup).removeClass('form-group-error')
 
-      if(target) {
+      if (target) {
         target.removeAttr('aria-describedby')
       }
 
@@ -252,16 +241,15 @@ function Validator(element, config) {
     })
 
     if (errors.length > 0) {
-
       // Flag each element that has an error
-      errors.forEach(function(error) {
+      errors.forEach(function (error) {
         var target = $('[name="' + error.name + '"]')
 
-        if(!target) {
+        if (!target) {
           return
         }
 
-        if(restrictTo && !target.is(restrictTo)) {
+        if (restrictTo && !target.is(restrictTo)) {
           return
         }
 
@@ -270,9 +258,9 @@ function Validator(element, config) {
         var formGroup = $(target).closest('.form-group')
 
         // If the element is a direct child of the form group, insert the error after it
-        if($(target).parent().is(formGroup)) {
+        if ($(target).parent().is(formGroup)) {
           target.before(message)
-        } else if($(target).closest('.form-group').find('legend.form-label, legend.form-label-bold').length) {
+        } else if ($(target).closest('.form-group').find('legend.form-label, legend.form-label-bold').length) {
           $(target).closest('.form-group').find('legend.form-label, legend.form-label-bold').first().append(message)
         } else {
           // Otherwise insert it at the start of the form group
@@ -284,17 +272,16 @@ function Validator(element, config) {
         // Link the form field to the error message with an aria attribute
         target.attr('aria-describedby', 'error-message-' + error.name)
       })
-
     }
   }
 
   /**
    * Click handler for summary items
    */
-  function summaryClick(e) {
+  function summaryClick (e) {
     var dataTarget = $(e.currentTarget).attr('data-target')
 
-    if(dataTarget) {
+    if (dataTarget) {
       e.preventDefault()
 
       var target = $('[name="' + dataTarget + '"]')[0]
@@ -305,8 +292,7 @@ function Validator(element, config) {
   /**
    * Tear everything down again
    */
-  function destroy() {
-
+  function destroy () {
   }
 
   var self = {
@@ -315,7 +301,6 @@ function Validator(element, config) {
   }
 
   return self
-
 }
 
 module.exports = Validator

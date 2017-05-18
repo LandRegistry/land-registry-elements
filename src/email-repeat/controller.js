@@ -1,8 +1,9 @@
-'use strict';
+/* global $ */
+'use strict'
 
-import { EmailRepeat} from './EmailRepeat';
+import { EmailRepeat } from './EmailRepeat'
 
-$('[data-email-hint]').each(function(index, item) {
-  var instance = new EmailRepeat(item);
-  instance.create();
+$('[data-email-hint]').each(function (index, item) {
+  var instance = new EmailRepeat(item)
+  instance.create()
 })
