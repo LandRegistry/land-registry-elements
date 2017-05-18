@@ -1,5 +1,5 @@
 from flask_script import Manager
-from demo.main import app
+from demo.demo.main import app
 import subprocess
 import os
 

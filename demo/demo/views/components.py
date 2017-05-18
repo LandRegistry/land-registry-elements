@@ -3,9 +3,9 @@ from flask import render_template
 
 
 # This is the blueprint object that gets registered into the app in blueprints.py.
-example = Blueprint('example', __name__)
+components = Blueprint('example', __name__)
 
 
-@example.route("/")
+@components.route("/")
 def index():
-    return render_template('app/example.html', title='Example')
+    return render_template('app/index.html')

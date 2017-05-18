@@ -11,7 +11,7 @@ services:
       - "9900:8080"
     volumes:
       # Our convention is (for python) to always map the app files to /src within the container
-      - /vagrant/apps/land-registry-elements/demo:/src
+      - /vagrant/apps/land-registry-elements:/src
     # Redirect all the logs to a logstash server. Logstash is set up to parse RFC5424 format messages.
     logging:
       driver: syslog
