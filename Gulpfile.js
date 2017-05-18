@@ -4,10 +4,10 @@ var landRegistryGulpTasks = require('land-registry-gulp-tasks')
 var path = require('path')
 
 var config = {
-  'applicationPath': './demo',
-  'assetsPath': 'demo/assets',
+  'applicationPath': './demo/demo',
+  'assetsPath': 'assets',
   'sassPath': 'src/scss/*.scss',
-  'localhost': 'localhost:9000'
+  'localhost': 'localhost:9900'
 }
 
 config.assetsPath = path.join(config.applicationPath, config.assetsPath)

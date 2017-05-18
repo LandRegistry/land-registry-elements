@@ -35,11 +35,13 @@
   },
   "dependencies": {
     "browsernizr": "^2.1.0",
-    "govuk-elements-sass": "1.1.4",
-    "govuk_template_mustache": "0.17.1",
-    "govuk_frontend_toolkit": "4.13.0",
     "pubsub-js": "1.5.3",
-    "validate.js": "0.10.0",
-    "jquery": "1.12.4"
+    "validate.js": "0.10.0"
+  },
+  "peerDependencies": {
+    "govuk-elements-sass": "3.0.2",
+    "govuk_frontend_toolkit": "5.2.0",
+    "govuk_template_jinja": "0.19.2",
+    "jquery": "1.x"
   }
 }

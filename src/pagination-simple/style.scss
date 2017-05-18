@@ -55,7 +55,7 @@
     text-align: right;
 
     a {
-      padding: 75em 3em 75em 0;
+      padding: .75em 3em .75em 0;
 
       &::before {
         background: transparent file-url('arrow-sprite.png') no-repeat -102px -11px;
@@ -70,7 +70,7 @@
     text-align: left;
 
     a {
-      padding: 75em 0 75em 3em;
+      padding: .75em 0 .75em 3em;
 
       &::before {
         background: transparent file-url('arrow-sprite.png') no-repeat -20px -11px;
