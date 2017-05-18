@@ -1,5 +1,5 @@
 assets/dist
-assets/src/scss/vendor/govuk-elements
+demo/assets/src/scss/vendor/govuk-elements
 
 # Created by https://www.gitignore.io/api/osx,windows,linux,jetbrains,python,virtualenv,visualstudiocode,sublimetext,node
 #
