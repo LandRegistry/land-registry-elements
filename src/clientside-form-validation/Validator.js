@@ -29,6 +29,7 @@ function Validator (element, config) {
     showIndividualFormErrors: true,
     headingMessage: 'The following errors were found:',
     description: false,
+    asyncSubmit: false,
 
     controlSelector: '.form-control, input[type="checkbox"], input[type="radio"]',
 
@@ -55,7 +56,8 @@ function Validator (element, config) {
     $element = $(element)
 
     // Bind form submit handler
-    $element.on('submit', submit)
+    $element.on('submit', validateOnSubmit)
+    $element.on('submit', preventSubmit)
 
     // Set up form field handlers
     $element.on('keyup', '.form-control', keyup)
@@ -109,14 +111,20 @@ function Validator (element, config) {
   /**
    * Form submit handler
    */
-  function submit (e) {
+  function validateOnSubmit (e) {
     var errorData = validateForm()
 
     if (errorData.length > 0) {
-      e.preventDefault()
       window.PubSub.publish('clientside-form-validation.invalid', element)
     } else {
-      window.PubSub.publish('clientside-form-validation.valid', element)
+      window.PubSub.publish('clientside-form-validation.valid', {
+        'element': element,
+        'done': doSubmit
+      });
+
+      if (!options.asyncSubmit) {
+        doSubmit()
+      }
     }
 
     showSummary(errorData)
@@ -124,6 +132,15 @@ function Validator (element, config) {
     if (options.showIndividualFormErrors) {
       showIndividualFormErrors(errorData)
     }
+  }
+
+  function preventSubmit(e) {
+    e.preventDefault();
+  }
+
+  function doSubmit() {
+    $(element).off('submit', preventSubmit);
+    element.submit()
   }
 
   /**
