@@ -29,6 +29,7 @@ function Validator(element, config) {
     showIndividualFormErrors: true,
     headingMessage: 'The following errors were found:',
     description: false,
+    asyncSubmit: false,
 
     controlSelector: '.form-control, input[type="checkbox"], input[type="radio"]',
 
@@ -57,7 +58,8 @@ function Validator(element, config) {
     }
 
     // Bind form submit handler
-    element.addEventListener('submit', submit);
+    element.addEventListener('submit', validateOnSubmit);
+    element.addEventListener('submit', preventSubmit);
 
     // Set up form field handlers
     delegate(element, '.form-control', 'keyup', keyup);
@@ -112,15 +114,21 @@ function Validator(element, config) {
   /**
    * Form submit handler
    */
-  function submit(e) {
+  function validateOnSubmit(e) {
 
     var errorData = validateForm();
 
     if(errorData.length > 0) {
-      e.preventDefault();
       window.PubSub.publish('clientside-form-validation.invalid', element);
     } else {
-      window.PubSub.publish('clientside-form-validation.valid', element);
+      window.PubSub.publish('clientside-form-validation.valid', {
+        'element': element,
+        'done': doSubmit
+      });
+
+      if (!options.asyncSubmit) {
+        doSubmit()
+      }
     }
 
     showSummary(errorData);
@@ -129,6 +137,15 @@ function Validator(element, config) {
       showIndividualFormErrors(errorData);
     }
 
+  }
+
+  function preventSubmit(e) {
+    e.preventDefault();
+  }
+
+  function doSubmit() {
+    element.removeEventListener('submit', preventSubmit);
+    element.submit()
   }
 
   /**

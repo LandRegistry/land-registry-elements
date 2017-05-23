@@ -24,7 +24,8 @@ for (var i = 0; i < forms.length; i++) {
 
   instance = new Validator(element, {
     'rules': rules,
-    'showSummary': !element.hasAttribute('data-clientside-validation-no-summary')
+    'showSummary': !element.hasAttribute('data-clientside-validation-no-summary'),
+    'asyncSubmit': element.hasAttribute('data-clientside-validation-async-submit')
   });
 
   instance.create();
