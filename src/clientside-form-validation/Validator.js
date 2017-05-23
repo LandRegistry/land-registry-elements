@@ -120,7 +120,7 @@ function Validator (element, config) {
       window.PubSub.publish('clientside-form-validation.valid', {
         'element': element,
         'done': doSubmit
-      });
+      })
 
       if (!options.asyncSubmit) {
         doSubmit()
@@ -135,11 +135,11 @@ function Validator (element, config) {
   }
 
   function preventSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
   }
 
   function doSubmit() {
-    $(element).off('submit', preventSubmit);
+    $(element).off('submit', preventSubmit)
     element.submit()
   }
 
