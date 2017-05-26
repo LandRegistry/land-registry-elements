@@ -5,6 +5,7 @@ var extend = require('extend');
 var domify = require('domify');
 var closest = require('closest');
 var delegate = require('delegate');
+require('../polyfills/promise/controller')
 
 /**
  * Form validation
@@ -29,7 +30,6 @@ function Validator(element, config) {
     showIndividualFormErrors: true,
     headingMessage: 'The following errors were found:',
     description: false,
-    asyncSubmit: false,
 
     controlSelector: '.form-control, input[type="checkbox"], input[type="radio"]',
 
@@ -141,14 +141,18 @@ function Validator(element, config) {
         'errors': errorData
       });
     } else {
-      window.PubSub.publish('clientside-form-validation.valid', {
-        'element': element,
-        'done': doSubmit
+      var promises = []
+
+      window.PubSub.publishSync('clientside-form-validation.valid', {
+        element: element,
+        registerPromise: function(promise) {
+          promises.push(promise)
+        }
       });
 
-      if (!options.asyncSubmit) {
-        doSubmit()
-      }
+      Promise
+        .all(promises)
+        .then(doSubmit)
     }
 
     showSummary(errorData);
