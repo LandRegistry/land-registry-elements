@@ -5,6 +5,7 @@ var extend = require('extend');
 var domify = require('domify');
 var closest = require('closest');
 var delegate = require('delegate');
+require('../polyfills/promise/controller')
 
 /**
  * Form validation
@@ -29,7 +30,6 @@ function Validator(element, config) {
     showIndividualFormErrors: true,
     headingMessage: 'The following errors were found:',
     description: false,
-    asyncSubmit: false,
 
     controlSelector: '.form-control, input[type="checkbox"], input[type="radio"]',
 
@@ -77,6 +77,23 @@ function Validator(element, config) {
       var existingErrors = existingSummary.querySelectorAll('.error-summary-list li');
       for (var i = 0; i < existingErrors.length; i++) {
         serversideErrors.push(existingErrors[i].innerHTML);
+
+        // Close over the scope at this point so we capture the error text
+        // This is because once the clientside form validation proceeds, the
+        // server side errors will have been removed from the DOM
+        (function() {
+          var error = {
+            message: existingErrors[i].innerText,
+            name: 'serverside'
+          }
+
+          window.addEventListener('load', function() {
+            window.PubSub.publish('clientside-form-validation.error', {
+              'category': element.getAttribute('data-clientside-validation'),
+              'error': error
+            })
+          })
+        })()
       }
 
       options.showSummary = true;
@@ -119,16 +136,23 @@ function Validator(element, config) {
     var errorData = validateForm();
 
     if(errorData.length > 0) {
-      window.PubSub.publish('clientside-form-validation.invalid', element);
-    } else {
-      window.PubSub.publish('clientside-form-validation.valid', {
+      window.PubSub.publish('clientside-form-validation.invalid', {
         'element': element,
-        'done': doSubmit
+        'errors': errorData
+      });
+    } else {
+      var promises = []
+
+      window.PubSub.publishSync('clientside-form-validation.valid', {
+        element: element,
+        registerPromise: function(promise) {
+          promises.push(promise)
+        }
       });
 
-      if (!options.asyncSubmit) {
-        doSubmit()
-      }
+      window.Promise
+        .all(promises)
+        .then(doSubmit)
     }
 
     showSummary(errorData);
@@ -263,6 +287,11 @@ function Validator(element, config) {
         if(restrictTo && target !== restrictTo) {
           return;
         }
+
+        window.PubSub.publish('clientside-form-validation.error', {
+          'category': element.getAttribute('data-clientside-validation'),
+          'error': error
+        });
 
         var message = domify(options.individualErrorTemplate.render(error));
 
