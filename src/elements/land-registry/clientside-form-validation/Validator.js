@@ -150,7 +150,7 @@ function Validator(element, config) {
         }
       });
 
-      Promise
+      window.Promise
         .all(promises)
         .then(doSubmit)
     }
