@@ -5,6 +5,7 @@ require('../utils/polyfills/Array.prototype.forEach')
 require('../utils/polyfills/Array.prototype.filter')
 require('../utils/polyfills/Array.prototype.map')
 require('../pub-sub/controller')
+require('../utils/polyfills/Promise')
 var validate = require('validate.js')
 
 /**
@@ -29,7 +30,6 @@ function Validator (element, config) {
     showIndividualFormErrors: true,
     headingMessage: 'The following errors were found:',
     description: false,
-    asyncSubmit: false,
 
     controlSelector: '.form-control, input[type="checkbox"], input[type="radio"]',
 
@@ -75,7 +75,24 @@ function Validator (element, config) {
       $existingSummary.find('.error-summary-list li')
         .each(function (index, item) {
           serversideErrors.push(item.innerHTML)
-        })
+
+        // Close over the scope at this point so we capture the error text
+        // This is because once the clientside form validation proceeds, the
+        // server side errors will have been removed from the DOM
+        (function() {
+          var error = {
+            message: item.innerText,
+            name: 'serverside'
+          }
+
+          window.addEventListener('load', function() {
+            window.PubSub.publish('clientside-form-validation.error', {
+              'category': element.getAttribute('data-clientside-validation'),
+              'error': error
+            })
+          })
+        })()
+      })
 
       options.showSummary = true
       $existingSummary.remove()
@@ -115,16 +132,23 @@ function Validator (element, config) {
     var errorData = validateForm()
 
     if (errorData.length > 0) {
-      window.PubSub.publish('clientside-form-validation.invalid', element)
+      window.PubSub.publish('clientside-form-validation.invalid', {
+        element: element,
+        errors: errorData
+      })
     } else {
-      window.PubSub.publish('clientside-form-validation.valid', {
-        'element': element,
-        'done': doSubmit
+      var promises = []
+
+      window.PubSub.publishSync('clientside-form-validation.valid', {
+        element: element,
+        registerPromise: function(promise) {
+          promises.push(promise)
+        }
       })
 
-      if (!options.asyncSubmit) {
-        doSubmit()
-      }
+      window.Promise
+        .all(promises)
+        .then(doSubmit)
     }
 
     showSummary(errorData)
@@ -269,6 +293,11 @@ function Validator (element, config) {
         if (restrictTo && !target.is(restrictTo)) {
           return
         }
+
+        window.PubSub.publish('clientside-form-validation.error', {
+          'category': $(element).attr('data-clientside-validation'),
+          'error': error
+        })
 
         var message = $('<span role="alert" class="error-message" id="error-message-' + error.name + '">' + error.message + '</span>')
 
