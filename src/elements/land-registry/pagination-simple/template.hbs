@@ -18,9 +18,12 @@
     </li>
   {{/with}}
 
-  {{#with limit_message}}
-    <li class="limit-message">
-      {{{this}}}
+  {{#with reached_limit}}
+    <li class="last-page">
+      <div class="message">
+        <span class="pagination-part-title">Limit reached</span>
+        <span class="pagination-label">This services only displays 50 results</span>
+      </div>
     </li>
   {{/with}}
   </ul>
