@@ -2,7 +2,7 @@
   @extend %contain-floats;
 
   dt {
-    @include media(tablet) {
+    @mixin styles {
       float: left;
       clear: left;
       width: $one-quarter;
@@ -11,7 +11,15 @@
       box-sizing: border-box;
     }
 
-    &::after {
+    @media print, screen and (min-width: 640px) {
+      @include styles;
+    }
+
+    @include ie(8) {
+      @include styles;
+    }
+
+    &:after {
       content: ':';
     }
   }
@@ -19,43 +27,67 @@
   dd {
     margin-bottom: $gutter-one-third;
 
-    @include media(tablet) {
+    @mixin styles {
       float: left;
       width: $three-quarters;
       margin-left: $one-quarter;
     }
+
+    @media print, screen and (min-width: 640px) {
+      @include styles;
+    }
+
+    @include ie(8) {
+      @include styles;
+    }
   }
 
   dt + dd {
-    @include media(tablet) {
+    @mixin styles {
       margin-left: 0;
+    }
+
+    @media print, screen and (min-width: 640px) {
+      @include styles;
+    }
+
+    @include ie(8) {
+      @include styles;
     }
   }
 }
 
 .definition-tabular-1-2 {
-  dt {
-    @include media(tablet) {
+  @mixin styles {
+    dt {
       width: $one-third;
+    }
+
+    dd {
+      width: $two-thirds;
     }
   }
 
-  dd {
-    @include media(tablet) {
-      width: $two-thirds;
-    }
+  @media print, screen and (min-width: 640px) {
+    @include styles;
+  }
+
+  @include ie(8) {
+    @include styles;
   }
 }
 
 .definition-tabular-sectioned {
   dt {
-    @include bold-24;
-    margin-top: $gutter-half;
-    padding-top: $gutter-half;
-    margin-bottom: $gutter-half;
-    border-top: 1px solid $border-colour;
+    @media screen and (max-width: 639px) {
+      @include bold-24;
+      margin-top: $gutter-half;
+      padding-top: $gutter-half;
+      margin-bottom: $gutter-half;
+      border-top: 1px solid $border-colour;
+    }
 
-    @include media(tablet) {
+    @media print, screen and (min-width: 640px) {
       float: left;
       clear: left;
       width: $one-third;
@@ -75,12 +107,14 @@
   }
 
   dd {
-    @include media(tablet) {
+    @media print, screen and (min-width: 640px) {
       width: $two-thirds;
+      margin-left: $one-third;
     }
 
     @include media(desktop) {
       width: $three-quarters;
+      margin-left: $one-quarter;
     }
   }
 }
