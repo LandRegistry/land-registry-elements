@@ -23,4 +23,4 @@ install:
   - pip3 install -r demo/requirements.txt
 
 before_script:
-  - make  # Run the python demo server
+  - make & # Run the python demo server in the background
