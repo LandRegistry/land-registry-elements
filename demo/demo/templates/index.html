@@ -3,5 +3,9 @@
 {% block inner_content %}
   <h1 class="heading-medium">Land Registry Elements</h1>
 
-  {% include 'land-registry-elements/address/demos/demo.html' %}
+  <ul>
+    {% for demo in demos %}
+      <li><a href="/{{demo}}">{{demo}}</a></li>
+    {% endfor %}
+  </ul>
 {% endblock %}
