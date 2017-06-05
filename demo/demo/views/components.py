@@ -12,9 +12,9 @@ components = Blueprint('example', __name__)
 @components.route("/")
 def index():
     def parse_path(demo_path):
-        return path.relpath(demo_path, 'src').replace('/demos', '').replace('.html', '')
+        return path.relpath(demo_path, 'src/land-registry-elements').replace('/demos', '').replace('.html', '')
 
-    demos = glob('src/**/demos/*.html')
+    demos = glob('src/land-registry-elements/**/demos/*.html')
     parsed_demos = list(map(parse_path, demos))
 
     return render_template('app/index.html', demos=parsed_demos)
