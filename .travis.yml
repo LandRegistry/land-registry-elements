@@ -4,7 +4,7 @@ node_js:
   - "6"
 
 before_install:
-  - rvm install 2.4
+  - rvm install 2.4.1
 
 cache:
   directories:
