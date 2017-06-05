@@ -7,7 +7,7 @@ import os
 manager = Manager(app)
 
 @manager.command
-def runserver(port=9998):
+def runserver(port=9900):
     """Run the app using flask server"""
 
     os.environ["PYTHONUNBUFFERED"] = "yes"
