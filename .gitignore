@@ -47,3 +47,5 @@ test/fixtures/visual-regression/diff-renderings
 .vagrant
 
 __pycache__
+
+.cache

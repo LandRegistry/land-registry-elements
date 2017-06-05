@@ -1,7 +1,7 @@
 {% macro address_simple(streetAddress) -%}
   <div class="address">
     {%- for line in streetAddress %}
-      <span>{{line}}</span>
+      <span class="address__line">{{line}}</span>
     {%- endfor %}
   </div>
 {%- endmacro -%}
@@ -9,13 +9,13 @@
 {% macro address(streetAddress, addressLocality=False, addressRegion=False, postalCode=False) %}
   <div class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
     {% if streetAddress %}
-    <span itemprop="streetAddress">
+    <span class="address__line" itemprop="streetAddress">
       {% for line in streetAddress %}{{line}}{% if not loop.last %}<br>{% endif %}{% endfor %}
     </span>
     {% endif %}
-    {% if addressLocality %}<span itemprop="addressLocality">{{addressLocality}}</span>{% endif %}
-    {% if addressRegion %}<span itemprop="addressRegion">{{addressRegion}}</span>{% endif %}
-    {% if postalCode %}<span itemprop="postalCode">{{postalCode}}</span>{% endif %}
+    {% if addressLocality %}<span class="address__line" itemprop="addressLocality">{{addressLocality}}</span>{% endif %}
+    {% if addressRegion %}<span class="address__line" itemprop="addressRegion">{{addressRegion}}</span>{% endif %}
+    {% if postalCode %}<span class="address__line" itemprop="postalCode">{{postalCode}}</span>{% endif %}
   </div>
 {% endmacro %}
 
