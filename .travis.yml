@@ -3,8 +3,8 @@ language: node_js
 node_js:
   - "6"
 
-ruby:
-  - "2.4"
+before_install:
+  - rvm install 2.4
 
 cache:
   directories:
