@@ -76,23 +76,23 @@ function Validator (element, config) {
         .each(function (index, item) {
           serversideErrors.push(item.innerHTML)
 
-        // Close over the scope at this point so we capture the error text
-        // This is because once the clientside form validation proceeds, the
-        // server side errors will have been removed from the DOM
-        (function() {
-          var error = {
-            message: item.innerText,
-            name: 'serverside'
-          }
+          // Close over the scope at this point so we capture the error text
+          // This is because once the clientside form validation proceeds, the
+          // server side errors will have been removed from the DOM
+          ;(function () {
+            var error = {
+              message: item.innerText,
+              name: 'serverside'
+            }
 
-          window.addEventListener('load', function() {
-            window.PubSub.publish('clientside-form-validation.error', {
-              'category': element.getAttribute('data-clientside-validation'),
-              'error': error
+            window.addEventListener('load', function () {
+              window.PubSub.publish('clientside-form-validation.error', {
+                'category': element.getAttribute('data-clientside-validation'),
+                'error': error
+              })
             })
-          })
-        })()
-      })
+          })()
+        })
 
       options.showSummary = true
       $existingSummary.remove()
@@ -141,7 +141,7 @@ function Validator (element, config) {
 
       window.PubSub.publishSync('clientside-form-validation.valid', {
         element: element,
-        registerPromise: function(promise) {
+        registerPromise: function (promise) {
           promises.push(promise)
         }
       })
@@ -158,11 +158,11 @@ function Validator (element, config) {
     }
   }
 
-  function preventSubmit(e) {
+  function preventSubmit (e) {
     e.preventDefault()
   }
 
-  function doSubmit() {
+  function doSubmit () {
     $(element).off('submit', preventSubmit)
     element.submit()
   }

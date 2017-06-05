@@ -7,7 +7,7 @@
   "description": "Land registry frontend pattern library - building on top of http://govuk-elements.herokuapp.com",
   "main": "build/build.js",
   "scripts": {
-    "test": "gulp test && ./run_tests",
+    "test": "gulp test && ./run_tests.sh",
     "build": "gulp copy && gulp build",
     "dev": "npm run build && gulp watch"
   },

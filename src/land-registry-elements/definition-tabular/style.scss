@@ -19,7 +19,7 @@
       @include styles;
     }
 
-    &:after {
+    &::after {
       content: ':';
     }
   }

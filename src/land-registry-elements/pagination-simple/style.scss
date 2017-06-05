@@ -75,7 +75,7 @@
 
   .next-page {
     a {
-      &:before {
+      &::before {
         background: transparent file-url('icons/arrow-sprite.png') no-repeat -102px -11px;
         margin-right: -32px;
         float: right;
