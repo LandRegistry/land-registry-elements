@@ -1,0 +1,8 @@
+{% macro back_link(destination_title='Back', destination='#', prefix=False, history_based=False) %}
+  <a class="back-link{% if history_based %} js-only{% endif %}" href="{{destination}}" {% if history_based %} data-back-link{% endif %}>
+    {%- if prefix %}
+    <span class="back-link__prefix">{{prefix}}</span>
+    {%- endif %}
+    <span class="back-link__destination">{{destination_title}}</span>
+  </a>
+{%- endmacro %}

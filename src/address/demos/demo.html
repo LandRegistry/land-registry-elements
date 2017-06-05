@@ -2,6 +2,8 @@
 {% extends "app/layout.html" %}
 
 {% block inner_content %}
+  <h1 class="heading-large">Addresses</h1>
+
   <h2 class="heading-medium">Simple addresses</h2>
   {% set demo %}
     {{ address_simple(['48 Foo bar', 'Wibble', 'PL1 1LP']) }}
@@ -12,7 +14,7 @@
       {{demo}}
     </div>
     <div class="column-half">
-      <pre><code>{{demo|forceescape}}</code></pre>
+      <pre class="font-xsmall"><code>{{demo|forceescape}}</code></pre>
     </div>
   </div>
 
@@ -26,7 +28,7 @@
       {{demo}}
     </div>
     <div class="column-half">
-      <pre><code>{{demo|forceescape}}</code></pre>
+      <pre class="font-xsmall"><code>{{demo|forceescape}}</code></pre>
     </div>
   </div>
 
@@ -40,7 +42,7 @@
       {{demo}}
     </div>
     <div class="column-half">
-      <pre><code>{{demo|forceescape}}</code></pre>
+      <pre class="font-xsmall"><code>{{demo|forceescape}}</code></pre>
     </div>
   </div>
 
@@ -54,7 +56,7 @@
       {{demo}}
     </div>
     <div class="column-half">
-      <pre><code>{{demo|forceescape}}</code></pre>
+      <pre class="font-xsmall"><code>{{demo|forceescape}}</code></pre>
     </div>
   </div>
 {% endblock %}

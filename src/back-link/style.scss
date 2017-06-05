@@ -22,16 +22,16 @@
   }
 }
 
-.back-link-prefix {
+.back-link__prefix {
   @include media(mobile) {
     display: none;
   }
 }
 
-.back-link-destination {
+.back-link__destination {
   @include media(tablet) {
 
-    .back-link-prefix + & {
+    .back-link__prefix + & {
       text-transform: lowercase;
     }
   }
