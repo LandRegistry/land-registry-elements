@@ -1,6 +1,7 @@
 FROM hmlandregistry/dev_base_python_flask:3
 
 ENV APP_NAME=land-registry-elements
+ENV SECRET_KEY='secret'
 
 RUN yum install -y -q libffi-devel
 

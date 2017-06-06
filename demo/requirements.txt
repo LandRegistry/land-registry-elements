@@ -4,3 +4,5 @@ Flask-Script==2.0.5
 Flask==0.12.1
 requests==2.13
 misaka==2.1.0
+git+git://github.com/LandRegistry/govuk-elements-jinja-macros.git
+Flask-WTF==0.14.2

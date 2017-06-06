@@ -12,3 +12,5 @@ APP_NAME = os.environ['APP_NAME']
 FLASK_LOG_LEVEL = os.environ['LOG_LEVEL']
 
 DEBUG = FLASK_LOG_LEVEL == 'DEBUG'
+
+SECRET_KEY = os.environ['SECRET_KEY']

@@ -1,6 +1,61 @@
 {% extends "app/layout.html" %}
 
+{% set async_script_demo %}
+  <script>
+    (function() {
+      window.PubSub.subscribe('clientside-form-validation.valid', function(msg, data) {
+        var examplePromise = new Promise(function(resolve, reject) {
+          setInterval(function() {
+            $('#example_form').after('<p>Waiting for async thing</p>')
+          }, 1000)
+          setTimeout(resolve, 5000)
+        })
+        data.registerPromise(examplePromise)
+      })
+
+    })()
+  </script>
+{% endset %}
 
 {% block inner_content %}
-  # Clientside form validation with an asynchronous submit
+  <h1 class="heading-xlarge">Clientside form validation with an async submit</h1>
+
+  {% set form %}
+    <form method="GET" id="example_form" data-clientside-validation="example_form_validation">
+
+      <div class="form-group">
+        <label class="form-label" for="full-name">Full name</label>
+        <input class="form-control" type="text" id="full-name" name="full-name">
+      </div>
+
+      <input type="submit" class="button" value="Submit" data-double-click-prevention>
+    </form>
+
+    <script type="application/json" id="example_form_validation">
+      {
+        "full-name": {
+          "presence": {
+            "message": "Please supply your full name"
+          },
+          "length": {
+            "minimum": 3,
+            "maximum": 70,
+            "message": "This field should be between 3 and 70 characters"
+          }
+        }
+      }
+    </script>
+  {% endset %}
+
+  {{form}}
+
+  <pre class="font-xsmall"><code>{{async_script_demo|forceescape}}</code></pre>
+  <pre class="font-xsmall"><code>{{form|forceescape}}</code></pre>
+
+{% endblock %}
+
+{% block body_end %}
+  {{ super() }}
+
+  {{ async_script_demo }}
 {% endblock %}
