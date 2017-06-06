@@ -11,11 +11,44 @@ Given(/^I have not entered any information into the form$/) do
 end
 
 Then(/^I am shown a list of form errors$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  find('.error-summary li [data-target=full_name]', :text => 'Full name is required')
+  find('.error-summary li [data-target=ni]', :text => 'National insurance number is required')
+  find('.error-summary li [data-target=select_field]', :text => 'Please select an option')
+  find('.error-summary li [data-target=checkbox]', :text => 'Please tick the box')
+  find('.error-summary li [data-target=checkboxes_field]', :text => 'Please select an option')
+  find('.error-summary li [data-target=radio_field]', :text => 'Please select an option')
+  find('.error-summary li [data-target=password]', :text => 'Password is required')
+  find('.error-summary li [data-target=password_retype]', :text => 'Please repeat your new password')
+end
+
+Given(/^I am subscribing to the clientside form validation pubsub messages$/) do
+  script = <<-SCRIPT
+            (function() {
+              window.listOfErrorsForCucumberTests = []
+              window.PubSub.subscribe("clientside-form-validation.invalid", function(msg, data) {
+                window.listOfErrorsForCucumberTests = data.errors
+              })
+            })()
+            SCRIPT
+
+  execute_script(script)
 end
 
 Then(/^a pubsub event fires with a list of the form errors$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  errors = evaluate_script('window.listOfErrorsForCucumberTests')
+
+  expected_errors = [
+    {"message"=>"Full name is required", "name"=>"full_name"},
+    {"message"=>"National insurance number is required", "name"=>"ni"},
+    {"message"=>"Please select an option", "name"=>"select_field"},
+    {"message"=>"Please tick the box", "name"=>"checkbox"},
+    {"message"=>"Please select an option", "name"=>"checkboxes_field"},
+    {"message"=>"Please select an option", "name"=>"radio_field"},
+    {"message"=>"Password is required", "name"=>"password"},
+    {"message"=>"Please repeat your new password", "name"=>"password_retype"}
+  ]
+
+  expect(errors).to eq(expected_errors)
 end
 
 Given(/^I am focused on the first form field$/) do
@@ -63,5 +96,25 @@ Then(/^I am informed that my passwords don't match$/) do
 end
 
 When(/^I enter the same password into the second box$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I have filled out the form$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I am shown a server side error$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I empty out the first name field$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I am shown a list of form errors including the server side error$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^the form submits$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end

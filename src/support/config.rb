@@ -1,5 +1,6 @@
 require 'capybara/cucumber'
 require 'capybara/poltergeist'
+require 'rspec/expectations'
 
 include Capybara::DSL
 
