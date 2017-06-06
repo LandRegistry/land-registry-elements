@@ -7,37 +7,7 @@ Given(/^I navigate to the clientside form validation demo page$/) do
 end
 
 Given(/^I have not entered any information into the form$/) do
-  # Nothing to do here...
-end
-
-Then(/^I am shown a list of form errors$/) do
-  find('.error-summary li [data-target=full_name]', :text => 'Full name is required')
-  find('.error-summary li [data-target=ni]', :text => 'National insurance number is required')
-  find('.error-summary li [data-target=select_field]', :text => 'Please select an option')
-  find('.error-summary li [data-target=checkbox]', :text => 'Please tick the box')
-  find('.error-summary li [data-target=checkboxes_field]', :text => 'Please select an option')
-  find('.error-summary li [data-target=radio_field]', :text => 'Please select an option')
-  find('.error-summary li [data-target=password]', :text => 'Password is required')
-  find('.error-summary li [data-target=password_retype]', :text => 'Please repeat your new password')
-end
-
-Given(/^I am subscribing to the clientside form validation pubsub messages$/) do
-  script = <<-SCRIPT
-            (function() {
-              window.listOfErrorsForCucumberTests = []
-              window.PubSub.subscribe("clientside-form-validation.invalid", function(msg, data) {
-                window.listOfErrorsForCucumberTests = data.errors
-              })
-            })()
-            SCRIPT
-
-  execute_script(script)
-end
-
-Then(/^a pubsub event fires with a list of the form errors$/) do
-  errors = evaluate_script('window.listOfErrorsForCucumberTests')
-
-  expected_errors = [
+  @expected_errors = [
     {"message"=>"Full name is required", "name"=>"full_name"},
     {"message"=>"National insurance number is required", "name"=>"ni"},
     {"message"=>"Please select an option", "name"=>"select_field"},
@@ -47,74 +17,158 @@ Then(/^a pubsub event fires with a list of the form errors$/) do
     {"message"=>"Password is required", "name"=>"password"},
     {"message"=>"Please repeat your new password", "name"=>"password_retype"}
   ]
+end
 
-  expect(errors).to eq(expected_errors)
+Then(/^I am shown a list of form errors$/) do
+  @expected_errors.each do |error|
+    find('.error-summary li', :text => error['message'], :minimum => 1)
+  end
+
+  errors = []
+
+  begin
+    Timeout.timeout(Capybara.default_max_wait_time) do
+      loop do
+        errors = evaluate_script('window.listOfErrorsForCucumberTests')
+        break if errors == @expected_errors
+      end
+    end
+  rescue Timeout::Error => e
+    fail "Clientside form validation Pubsub message not found. Expected #{errors} to equal #{@expected_errors}"
+  end
+end
+
+Then(/^I am shown a list of form errors linking to their respective fields$/) do
+  @expected_errors.each do |error|
+    find(".error-summary li [data-target='#{error['name']}']", :text => error['message'])
+  end
+
+  errors = []
+
+  begin
+    Timeout.timeout(Capybara.default_max_wait_time) do
+      loop do
+        errors = evaluate_script('window.listOfErrorsForCucumberTests')
+        break if errors == @expected_errors
+      end
+    end
+  rescue Timeout::Error => e
+    fail "Clientside form validation Pubsub message not found. Expected #{errors} to equal #{@expected_errors}"
+  end
 end
 
 Given(/^I am focused on the first form field$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  find_field('full_name').trigger('focus')
 end
 
 When(/^I focus away from the form$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  find('body').trigger('focus')
 end
 
-Then(/^I am not shown any inline form errors$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^I am not shown any form errors$/) do
+  assert_no_selector('.error-message')
+  assert_no_selector('.form-group-error')
 end
 
 Given(/^I enter text into the field, and delete it again$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in('full_name', :with => 'Hello')
+  fill_in('full_name', :with => '')
 end
 
 When(/^I tab into the second form field$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  find_field('ni').trigger('focus')
 end
 
 Then(/^I am shown a required field message inline$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
+  assert_text('Full name is required')
 
-Then(/^a pubsub event fires with the single form error$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  errors = []
+  expected_errors = [
+    {"message"=>"Full name is required", "name"=>"full_name"}
+  ]
+
+  begin
+    Timeout.timeout(Capybara.default_max_wait_time) do
+      loop do
+        errors = evaluate_script('window.listOfIndividualErrorsForCucumberTests')
+        break if errors == expected_errors
+      end
+    end
+  rescue Timeout::Error => e
+    fail 'Clientside form validation Pubsub message not found'
+  end
 end
 
 Given(/^I have entered a password$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^I the form submits$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in('password', :with => 'password12')
 end
 
 Given(/^I enter a different password into the second box$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in('password_retype', :with => 'password13')
 end
 
 Then(/^I am informed that my passwords don't match$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  assert_selector('.error-message', :text => 'Please ensure both password fields match')
 end
 
 When(/^I enter the same password into the second box$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in('password_retype', :with => 'password12')
 end
 
 Given(/^I have filled out the form$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in('Full name', :with => 'John Smith')
+  fill_in('National Insurance number', :with => 'National insurance number')
+  select('One', :from => 'select_field')
+  find('label[for="checkbox"]').click
+  find('label[for="checkboxes_field-0"]').click
+  find('label[for="radio_field-1"]').click
+  fill_in('Create a password', :with => 'password12')
+  fill_in('Re-type your password', :with => 'password12')
+end
+
+Given(/^I have entered my name incorrectly$/) do
+  fill_in('Full name', :with => 'Rawr')
 end
 
 Then(/^I am shown a server side error$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  assert_selector('.error-summary li', :text => 'Example serverside error - type "John Smith" into this field to suppress it')
+
+  expected_errors = [
+    {"message"=>"Example serverside error - type \"John Smith\" into this field to suppress it", "name"=>"serverside"}
+  ]
+
+  errors = []
+
+  begin
+    Timeout.timeout(Capybara.default_max_wait_time) do
+      loop do
+        errors = evaluate_script('window.listOfIndividualErrorsForCucumberTests')
+        break if errors == expected_errors
+      end
+    end
+  rescue Timeout::Error => e
+    fail "Clientside form validation Pubsub message not found. Expected #{errors} to equal #{expected_errors}"
+  end
 end
 
 When(/^I empty out the first name field$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
+  fill_in('full_name', :with => '')
 
-Then(/^I am shown a list of form errors including the server side error$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  @expected_errors = [
+    {"message"=>"Full name is required", "name"=>"full_name"},
+    {"message"=>"Password is required", "name"=>"password"},
+    {"message"=>"Please repeat your new password", "name"=>"password_retype"}
+  ]
 end
 
 Then(/^the form submits$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  assert_text('Success!')
+end
+
+When(/^I click on the full name error message$/) do
+  find('a[data-target="full_name"]').trigger('click')
+end
+
+Then(/^the full name field receives focus$/) do
+  expect(page.evaluate_script('document.activeElement.id')).to eq('full_name')
 end

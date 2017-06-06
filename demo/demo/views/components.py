@@ -1,5 +1,6 @@
 from demo.demo.markdown_utils import render_markdown
 from flask import Blueprint
+from flask import flash
 from flask import render_template
 from flask_wtf import FlaskForm
 from glob import glob
@@ -45,14 +46,17 @@ def component_demo(component_name, demo_name):
 @components.route('/clientside-form-validation/demo', methods=['GET', 'POST'])
 def clientside_form_validation_demo():
     form = ExampleForm()
-    form.validate_on_submit()
 
     readme = open('src/land-registry-elements/clientside-form-validation/README.md')
+
+    if form.validate_on_submit():
+      flash('Success!')
 
     return render_template('land-registry-elements/clientside-form-validation/demos/demo.html',
                            readme=render_markdown(readme.read()),
                            form=form
                            )
+
 
 class ExampleForm(FlaskForm):
     full_name = StringField('Full name',
