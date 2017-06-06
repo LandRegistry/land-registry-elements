@@ -22,6 +22,12 @@
   }
 }
 
+.back-link--history-based {
+  body:not(.js-enabled) & {
+    display: none;
+  }
+}
+
 .back-link__prefix {
   @include media(mobile) {
     display: none;
