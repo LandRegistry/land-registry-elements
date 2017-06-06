@@ -9,7 +9,8 @@ python:
   - "3.4"
 
 before_install:
-  - sudo apt-get install curl -y
+  - which curl
+  - which which
   - rvm install 2.4.1
   - sudo apt-get -y install python3-pip python-dev
 
