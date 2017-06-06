@@ -1,1 +1,2 @@
-web: npm run build && gunicorn app:app
+worker: npm run build
+web: gunicorn app:app
