@@ -2,6 +2,7 @@ from flask import Blueprint
 from flask import render_template
 from glob import glob
 from os import path
+from demo.demo.markdown_utils import render_markdown
 
 
 # This is the blueprint object that gets registered into the app in blueprints.py.
@@ -22,4 +23,9 @@ def index():
 
 @components.route('/<component_name>/<demo_name>')
 def component_demo(component_name, demo_name):
-    return render_template('land-registry-elements/{}/demos/{}.html'.format(component_name, demo_name))
+
+    readme = open('src/land-registry-elements/{}/README.md'.format(component_name))
+
+    return render_template('land-registry-elements/{}/demos/{}.html'.format(component_name, demo_name),
+                           readme=render_markdown(readme.read())
+                           )
