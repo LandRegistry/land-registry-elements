@@ -1,29 +1,13 @@
-Given(/^I navigate to the clientside form validation async submit demo page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Given(/^I have filled out the async submit form$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
 When(/^I submit the form$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^I am asked to wait while the form submits$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^the form eventually submits$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  click_button('Submit')
 end
 
 Given(/^I navigate to the clientside form validation demo page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  click_link('clientside-form-validation/demo')
 end
 
 Given(/^I have not entered any information into the form$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  # Nothing to do here...
 end
 
 Then(/^I am shown a list of form errors$/) do

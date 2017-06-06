@@ -1,4 +1,5 @@
 @clientside-form-validation
+@clientside-form-validation-async-submit
 Feature: Clientside form validation - async submit
 
 Background:

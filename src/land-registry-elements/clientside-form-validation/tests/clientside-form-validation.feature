@@ -9,6 +9,7 @@ Scenario: Submitting an empty form
   Given I have not entered any information into the form
   When I submit the form
   Then I am shown a list of form errors
+  And the list of form errors includes a server side error which was present on page load
   And a pubsub event fires with a list of the form errors
 
 Scenario: No inline form validation when blurring a clean field

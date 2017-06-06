@@ -1,1 +1,1 @@
-cucumber src -r src
+cucumber src -r src $@
