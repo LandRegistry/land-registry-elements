@@ -1,7 +1,3 @@
-Given(/^I am viewing the pattern library index page$/) do
-  visit('http://localhost:9900')
-end
-
 When(/^I navigate to the back link demo page$/) do
   click_link('back-link/demo')
 end
