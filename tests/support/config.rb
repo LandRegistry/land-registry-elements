@@ -20,7 +20,7 @@ Capybara.register_driver :poltergeist do |app|
         '--ssl-protocol=any'
       ],
       extensions: [
-        'src/support/poltergeist-extensions/clientside-form-validation-pubsub.js',
+        'tests/support/poltergeist-extensions/clientside-form-validation-pubsub.js',
       ]
     )
 end
