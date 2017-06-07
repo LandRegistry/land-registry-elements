@@ -5,7 +5,7 @@
   }
 }
 
-.button-light {
+.button--light {
   background-color: $highlight-colour;
   color: $text-colour;
 
@@ -21,7 +21,7 @@
   }
 }
 
-.button-waiting {
+.button--waiting {
   &,
   &[disabled='disabled'] {
     padding-left: 40px;
@@ -29,4 +29,11 @@
     background-repeat: no-repeat;
     background-position: 10px center;
   }
+}
+
+body::after {
+  // Preload the spinner
+  content: file-url('land-registry-elements/button/spinner.gif');
+  position: absolute;
+  left: -10000px;
 }

@@ -9,7 +9,7 @@ import '../../utils/pub-sub/controller.js'
 function DoubleClickPrevention (element, config) {
   var options = {
     waitText: 'Please wait…',
-    waitClass: 'button-waiting'
+    waitClass: 'button--waiting'
   }
 
   $.extend(options, config)
