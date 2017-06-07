@@ -27,7 +27,7 @@ function EmailRepeat (element, config) {
     hint = $(hintWrapper).find('.email-hint-value')
 
     $(element).on('change', updateHint)
-    $(element).on('keyup', updateHint)
+    $(element).on('input', updateHint)
   }
 
   /**
@@ -53,7 +53,7 @@ function EmailRepeat (element, config) {
     hintWrapper.remove()
 
     $(element).off('change', updateHint)
-    $(element).off('keyup', updateHint)
+    $(element).off('input', updateHint)
   }
 
   var self = {
