@@ -8,7 +8,7 @@
   "main": "build/build.js",
   "scripts": {
     "test": "gulp test && ./run_tests.sh",
-    "build": "gulp copy && gulp build",
+    "build": "gulp clean && gulp copy && gulp build",
     "dev": "npm run build && gulp watch"
   },
   "repository": {
