@@ -1,7 +1,7 @@
 /* global $ */
 'use strict'
 
-import '../pub-sub/controller.js'
+import '../../utils/pub-sub/controller.js'
 
 /**
  * Double click prevention
