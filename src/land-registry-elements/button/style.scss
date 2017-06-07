@@ -23,7 +23,7 @@
 
 .button-waiting {
   &,
-  &[disabled="disabled"] {
+  &[disabled='disabled'] {
     padding-left: 40px;
     background-image: file-url('land-registry-elements/button/spinner.gif');
     background-repeat: no-repeat;
