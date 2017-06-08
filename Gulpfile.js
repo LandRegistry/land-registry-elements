@@ -19,7 +19,7 @@ for (var task in landRegistryGulpTasks) {
 var existingWatch = gulp.tasks.watch.fn
 
 gulp.task('watch', function () {
-  gulp.watch(path.join('src/**/*.scss'), ['sass'])
-  gulp.watch(path.join('src/**/*.js'), ['js'])
+  gulp.watch(path.join('src/**/*.scss'), ['sass', 'sass-lint'])
+  gulp.watch(path.join('src/**/*.js'), ['js', 'standardjs'])
   existingWatch()
 })
