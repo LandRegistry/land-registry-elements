@@ -38,9 +38,11 @@
     "es6-promise": "^4.1.0",
     "pubsub-js": "1.5.3",
     "validate.js": "0.10.0",
-    "govuk-elements-sass": "3.0.2",
-    "govuk_frontend_toolkit": "5.2.0",
-    "govuk_template_jinja": "0.19.2",
     "jquery": "1.x"
+  },
+  "peerDependencies": {
+    "govuk-elements-sass": "x",
+    "govuk_frontend_toolkit": "x",
+    "govuk_template_jinja": "x"
   }
 }
