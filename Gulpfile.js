@@ -15,3 +15,11 @@ config.assetsPath = path.join(config.applicationPath, config.assetsPath)
 for (var task in landRegistryGulpTasks) {
   landRegistryGulpTasks[task](gulp, config)
 }
+
+var existingWatch = gulp.tasks.watch.fn
+
+gulp.task('watch', function () {
+  gulp.watch(path.join('src/**/*.scss'), ['sass'])
+  gulp.watch(path.join('src/**/*.js'), ['js'])
+  existingWatch()
+})
