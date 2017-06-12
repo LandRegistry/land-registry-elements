@@ -1,0 +1,43 @@
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+
+  {{ readme }}
+
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      <div class="supplementary-panel">
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting, remaining
+          essentially unchanged. It was popularised in the 1960s with the release
+          of Letraset sheets containing Lorem Ipsum passages, and more recently
+          with desktop publishing software like Aldus PageMaker including versions
+          of Lorem Ipsum
+        </p>
+      </div>
+    </div>
+
+    <div class="column-one-third">
+      <div class="supplementary-panel">
+        <h2 class="heading-medium">Help finding the right property</h2>
+        <strong class="phase-tag spacing-bottom-half">BETA</strong>
+        <p>
+          This is a new service. If you're not seeing the search results you
+          expect please <a rel="external" href="#">let us know</a>
+        </p>
+        <p>
+          If you're having trouble finding the property or land you're looking
+          for, try the <a rel="external" href="https://eservices.landregistry.gov.uk/wps/portal/Property_Search">
+          Land Registry 'Find a Property' service</a> instead
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}
