@@ -1,0 +1,12 @@
+{% from 'land-registry-elements/language-switcher/template.html' import language_switcher %}
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+  {{ language_switcher(lang='en') }}
+
+  {{ readme }}
+
+  <h2 class="heading-medium">Switched version</h2>
+  <hr>
+  {{ language_switcher(lang='cy') }}
+{% endblock %}
