@@ -15,21 +15,20 @@
     </div>
   </div>
 
-
   <p>Set the <code>data-session-storage-get</code> attribute on your input element to invoke the behaviour:</p>
 
   <div class="form-group">
-    <label class="form-label-bold" for="foo">Observe that the value you typed into the previous field has been prefilled into here</label>
-    <input class="form-control" type="text" data-session-storage-get="this-key-identifies-the-value" id="foo" name="form-session-storage">
+    <label class="form-label-bold" for="get">Observe that the value you typed into the previous field has been prefilled into here</label>
+    <input class="form-control" type="text" data-session-storage-get="this-key-identifies-the-value" id="get" name="form-session-storage">
   </div>
 
   <div class="form-group">
-    <label class="form-label-bold" for="foo3">This field is a get <em>and</em> a set! Typing into here and refreshing the page should update the value in first field above</label>
-    <input class="form-control" type="text" data-session-storage-get="this-key-identifies-the-value" data-session-storage-set="this-key-identifies-the-value" id="foo3" name="form-session-storage-3">
+    <label class="form-label-bold" for="get-set">This field is a get <em>and</em> a set! Typing into here and refreshing the page should update the value in first field above</label>
+    <input class="form-control" type="text" data-session-storage-get="this-key-identifies-the-value" data-session-storage-set="this-key-identifies-the-value" id="get-set" name="form-session-storage-3">
   </div>
 
   <div class="form-group">
-    <label class="form-label-bold" for="foo2">But not into here, because it already has a value</label>
-    <input class="form-control" type="text" data-session-storage-get="this-key-identifies-the-value" id="foo2" name="form-session-storage-2" value="This is a prefilled value, it won't get blown away by the value in sessionStorage">
+    <label class="form-label-bold" for="not-a-getter">But not into here, because it already has a value</label>
+    <input class="form-control" type="text" data-session-storage-get="this-key-identifies-the-value" id="not-a-getter" name="form-session-storage-2" value="This is a prefilled value, it won't get blown away by the value in sessionStorage">
   </div>
 {% endblock %}
