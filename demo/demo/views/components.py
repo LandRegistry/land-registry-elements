@@ -28,7 +28,7 @@ def index():
         return path.relpath(demo_path, 'src/land-registry-elements').replace('/demos', '').replace('.html', '')
 
     demos = glob('src/land-registry-elements/**/demos/*.html')
-    parsed_demos = list(map(parse_path, demos))
+    parsed_demos = sorted(list(map(parse_path, demos)))
 
     return render_template('app/index.html', demos=parsed_demos)
 

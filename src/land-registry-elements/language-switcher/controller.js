@@ -1,2 +1,1 @@
-require('browsernizr/test/css/flexbox')
-require('browsernizr')
+require('../../utils/modernizr')
