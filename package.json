@@ -26,7 +26,7 @@
   "homepage": "https://github.com/LandRegistry/land-registry-elements#readme",
   "engines": {
     "npm": "3.x",
-    "node": "5.x"
+    "node": "6.x"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
