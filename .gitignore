@@ -49,3 +49,5 @@ test/fixtures/visual-regression/diff-renderings
 __pycache__
 
 .cache
+
+node*.tar.xz
