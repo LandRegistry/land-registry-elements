@@ -1,0 +1,27 @@
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      {{ readme }}
+    </div>
+
+    <div class="column-one-third spacing-top-single">
+      <div class="supplementary-panel">
+        <h2 class="heading-medium">Something tangentially related to the main content</h2>
+        <p>Lorem ipsum dolor sit amet</p>
+
+        <ul class="list">
+          <li><a href="#">Related link</a></li>
+          <li><a href="#">Related link</a></li>
+          <li><a href="#">Related link</a></li>
+          <li><a href="#" class="bold-xsmall">More</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

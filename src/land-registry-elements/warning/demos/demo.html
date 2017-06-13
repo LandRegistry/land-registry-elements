@@ -1,0 +1,20 @@
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+
+  {{ readme }}
+
+  <div class="warning media column-two-thirds">
+    <div class="media__item">
+      <i class="icon icon-important">
+        <span class="visuallyhidden">Warning</span>
+      </i>
+    </div>
+
+    <div class="media__body">
+      <h2 class="heading-small spacing-bottom-flush">You'll only be able to view the information once</h2>
+      <p class="spacing-top-flush">If you want to keep a copy you can print it out</p>
+    </div>
+  </div>
+
+{% endblock %}

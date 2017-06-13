@@ -51,3 +51,4 @@ __pycache__
 .cache
 
 node*.tar.xz
+tests/screenshots
