@@ -39,3 +39,19 @@
   </script>
 
 {% endblock %}
+
+
+{% block body_end %}
+  {{ super() }}
+
+  <script>
+    (function() {
+      window.PubSub.subscribe('clientside-form-validation.valid', function(msg, data) {
+        var examplePromise = new Promise(function(resolve, reject) {
+          setTimeout(resolve, 5000)
+        })
+        data.registerPromise(examplePromise)
+      })
+    })()
+  </script>
+{% endblock %}
