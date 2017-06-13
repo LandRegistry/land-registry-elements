@@ -22,14 +22,17 @@
   }
 }
 
+.split-detail-trigger__inner {
+  text-decoration: underline;
+}
+
 .split-detail-contents {
   .js-enabled & {
-    max-height: 0;
-    transition: max-height .3s ease-in-out;
+    height: 0;
     overflow: hidden;
 
     &-active {
-      max-height: 1000px;
+      height: auto;
     }
   }
 }

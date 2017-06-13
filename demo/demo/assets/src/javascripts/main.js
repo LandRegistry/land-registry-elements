@@ -4,3 +4,4 @@ import '../../../../../src/land-registry-elements/double-click-prevention/contro
 import '../../../../../src/land-registry-elements/email-repeat/controller.js'
 import '../../../../../src/land-registry-elements/form-session-storage/controller.js'
 import '../../../../../src/land-registry-elements/print-button/controller.js'
+import '../../../../../src/land-registry-elements/split-detail/controller.js'
