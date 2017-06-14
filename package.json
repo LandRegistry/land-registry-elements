@@ -10,7 +10,8 @@
     "dev": "npm run build && gulp watch",
 
     "pretest": "npm run check-node-version --silent",
-    "prebuild": "npm run check-node-version --silent"
+    "prebuild": "npm run check-node-version --silent",
+    "postinstall": "npm install govuk-elements-sass && npm install govuk_frontend_toolkit && npm run build"
   },
   "repository": {
     "type": "git",
