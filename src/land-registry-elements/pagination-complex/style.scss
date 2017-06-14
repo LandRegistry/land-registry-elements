@@ -1,6 +1,7 @@
 .pager {
   margin-top: em(5, 16);
   margin-bottom: em(20, 16);
+  @extend %contain-floats;
 
   @include media(tablet) {
     margin-top: em(5);
@@ -8,7 +9,13 @@
   }
 }
 
-.pager-items {
+.pager__summary {
+  @include media(tablet) {
+    float: left;
+  }
+}
+
+.pager__items {
   display: none;
 
   @include media(tablet) {
@@ -29,28 +36,19 @@
   }
 }
 
-.pager-prev,
-.pager-next {
+.pager__prev,
+.pager__next {
   margin-right: 10px;
+}
 
+.pager__next {
   @include media(tablet) {
     margin-right: 0;
-  }
-}
-
-.pager-prev {
-  @include media(tablet) {
-    margin-right: 10px;
-  }
-}
-
-.pager-next {
-  @include media(tablet) {
     margin-left: 10px;
   }
 }
 
-.pager-controls {
+.pager__controls {
   @include media(tablet) {
     float: right;
   }
