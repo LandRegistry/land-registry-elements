@@ -1,0 +1,126 @@
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+
+  {{ readme }}
+
+  <h2 class="heading-large">Vertical top spacing</h2>
+
+    <div style="background-color: #333;color:#fff" class="spacing-top-flush">
+      <code>.spacing-top-flush</code>
+    </div>
+
+    <div style="background-color: #333;color:#fff" class="spacing-top-double">
+      <code>.spacing-top-double</code>
+    </div>
+
+    <div style="background-color: #333;color:#fff" class="spacing-top-single">
+      <code>.spacing-top-single</code>
+    </div>
+
+    <div style="background-color: #333;color:#fff" class="spacing-top-half">
+      <code>.spacing-top-half <em>or</em> .spacing-top-one-half</code>
+    </div>
+
+    <div style="background-color: #333;color:#fff" class="spacing-top-third">
+      <code>.spacing-top-third <em>or</em> .spacing-top-one-third</code>
+    </div>
+
+  <h2 class="heading-large">Vertical bottom spacing</h2>
+
+    <div style="background-color: #333;color:#fff" class="spacing-bottom-third">
+      <code>.spacing-bottom-third <em>or</em> .spacing-bottom-one-third</code>
+    </div>
+
+    <div style="background-color: #333;color:#fff" class="spacing-bottom-half">
+      <code>.spacing-bottom-half <em>or</em> .spacing-bottom-one-half</code>
+    </div>
+
+    <div style="background-color: #333;color:#fff" class="spacing-bottom-single">
+      <code>.spacing-bottom-single</code>
+    </div>
+
+    <div style="background-color: #333;color:#fff" class="spacing-bottom-double">
+      <code>.spacing-bottom-double</code>
+    </div>
+
+    <div style="background-color: #333;color:#fff" class="spacing-bottom-flush">
+      <code>.spacing-bottom-flush</code>
+    </div>
+
+  <h2 class="heading-large">Horizontal left spacing</h2>
+
+  <div class="grid-row">
+    <div style="border-right: 5px solid;" class="column-one-third">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur.
+      </p>
+    </div>
+
+    <div style="padding-left: 0px;" class="column-two-thirds">
+
+      <div style="background-color: #333;color:#fff" class="spacing-left-flush">
+        <code>.spacing-left-flush</code>
+      </div>
+
+      <br><div style="background-color: #333;color:#fff" class="spacing-left-single">
+        <code>.spacing-left-single</code>
+      </div>
+
+      <br><div style="background-color: #333;color:#fff" class="spacing-left-double">
+        <code>.spacing-left-double</code>
+      </div>
+
+      <br><div style="background-color: #333;color:#fff" class="spacing-left-half">
+        <code>.spacing-left-half <em>or</em> .spacing-left-one-half</code>
+      </div>
+
+      <br><div style="background-color: #333;color:#fff" class="spacing-left-third">
+        <code>.spacing-left-third <em>or</em> .spacing-left-one-third</code>
+      </div>
+
+    </div>
+  </div>
+
+  <h2 class="heading-large">Horizontal right spacing</h2>
+
+  <div class="grid-row">
+    <div style="padding-right: 0px;" class="column-two-thirds">
+
+      <div style="background-color: #333;color:#fff" class="spacing-right-flush">
+        <code>.spacing-right-flush</code>
+      </div>
+
+      <br><div style="background-color: #333;color:#fff" class="spacing-right-single">
+        <code>.spacing-right-single</code>
+      </div>
+
+      <br><div style="background-color: #333;color:#fff" class="spacing-right-double">
+        <code>.spacing-right-double</code>
+      </div>
+
+      <br><div style="background-color: #333;color:#fff" class="spacing-right-half">
+        <code>.spacing-right-half <em>or</em> .spacing-right-one-half</code>
+      </div>
+
+      <br><div style="background-color: #333;color:#fff" class="spacing-right-third">
+        <code>.spacing-right-third <em>or</em> .spacing-right-one-third</code>
+      </div>
+
+    </div>
+    <div style="border-left: 5px solid;" class="column-third">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur.
+      </p>
+    </div>
+  </div>
+
+{% endblock %}
