@@ -10,7 +10,7 @@ RUN ln -s /usr/local/bin/node /usr/local/bin/nodejs
 RUN yum install -y -q libffi-devel
 
 # Python install
-ADD demo/requirements.txt requirements.txt
+ADD requirements.txt requirements.txt
 RUN pip3 install -q -r requirements.txt
 
 RUN rm -rf node_modules
