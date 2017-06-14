@@ -8,10 +8,13 @@
   "main": "build/build.js",
   "scripts": {
     "check-node-version": "check-node-version --node $npm_package_engines_node && check-node-version --npm $npm_package_engines_npm",
-    "preinstall": "check-node-version",
     "test": "gulp test && ./run_tests.sh",
     "build": "gulp clean && gulp copy && gulp build",
-    "dev": "npm run build && gulp watch"
+    "dev": "npm run build && gulp watch",
+
+    "preinstall": "npm run check-node-version --silent",
+    "pretest": "npm run check-node-version --silent",
+    "prebuild": "npm run check-node-version --silent"
   },
   "repository": {
     "type": "git",
