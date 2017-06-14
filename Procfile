@@ -1,1 +1,1 @@
-web: gunicorn app:demo.app
+web: python3 manage.py run
