@@ -156,7 +156,7 @@ foo:
 ---
 
 {{#each foo}}
-  {{> elements/land-registry/my-component }}
+  {{> elements/land-registry/my-component}}
 {{#each}}
 ```
 
