@@ -2,54 +2,43 @@
   @extend %contain-floats;
   margin-top: $gutter;
   margin-bottom: $gutter;
+}
 
-  ul {
-    margin: 0;
-    padding: 0;
-  }
+.pager-simple__item {
+  @include core-16($line-height: (20 / 16));
+  float: right;
+  list-style: none;
+  text-align: right;
+  width: 49%;
+  margin: 0;
+  padding: 0;
+}
 
-  li {
-    @include core-16($line-height: (20 / 16));
-    float: left;
-    list-style: none;
-    text-align: right;
-    width: 49%;
-    margin: 0;
-    padding: 0;
-  }
+.pager-simple__item--prev {
+  float: left;
+  text-align: left;
+}
 
-  .previous-page,
-  .next-page,
-  .last-page {
-    a,
-    .message {
-      display: block;
+.pager-simple__title {
+  @include core-27($line-height: (33.75 / 27));
+  margin-bottom: 0.1em;
+  display: block;
+}
 
-      @include ie-lte(7) {
-        height: 4.5em;
-      }
+.pager-simple__control {
+  display: block;
 
-      .pagination-part-title {
-        @include core-27($line-height: (33.75 / 27));
-        margin-bottom: 1em;
-        display: block;
-      }
-    }
-  }
+  .pager-simple__item--prev &,
+  .pager-simple__item--next & {
+    color: $link-colour;
+    text-decoration: none;
 
-  .previous-page,
-  .next-page {
-    a {
-      color: $link-colour;
-      text-decoration: none;
-
-      &:hover,
-      &:active {
-        background-color: $canvas-colour;
-      }
+    &:hover,
+    &:active {
+      background-color: $canvas-colour;
     }
 
-    a::before {
+    &::before {
       margin-top: -4px;
       display: block;
       width: 30px;
@@ -58,43 +47,30 @@
     }
   }
 
-  .next-page,
-  .last-page {
-    float: right;
-    text-align: right;
+  .pager-simple__item--next &,
+  .pager-simple__item--last & {
+    padding: .75em 3em .75em 0;
+  }
 
-    a,
-    .message {
-      padding: .75em 3em .75em 0;
-    }
+  .pager-simple__item--last & {
+    padding-right: 0;
+  }
 
-    .message {
-      padding-right: 0;
+  .pager-simple__item--next & {
+    &::before {
+      background: transparent file-url('arrow-sprite.png') no-repeat -102px -11px;
+      margin-right: -32px;
+      float: right;
     }
   }
 
-  .next-page {
-    a {
-      &::before {
-        background: transparent file-url('icons/arrow-sprite.png') no-repeat -102px -11px;
-        margin-right: -32px;
-        float: right;
-      }
-    }
-  }
+  .pager-simple__item--prev & {
+    padding: .75em 0 .75em 3em;
 
-  .previous-page {
-    float: left;
-    text-align: left;
-
-    a {
-      padding: .75em 0 .75em 3em;
-
-      &::before {
-        background: transparent file-url('arrow-sprite.png') no-repeat -20px -11px;
-        margin-left: -32px;
-        float: left;
-      }
+    &::before {
+      background: transparent file-url('arrow-sprite.png') no-repeat -20px -11px;
+      margin-left: -32px;
+      float: left;
     }
   }
 }

@@ -1,1 +1,3 @@
-Markup pattern influenced by the [GovUK component guide](http://govuk-component-guide.herokuapp.com/components/previous_and_next_navigation)
+# Pagination simple
+
+This shows patterns for letting the user navigate through multiple pages of information
