@@ -1,15 +1,16 @@
 {
   "name": "land-registry-elements",
-  "config": {
-    "port": "3000"
-  },
   "version": "0.0.1",
   "description": "Land registry frontend pattern library - building on top of http://govuk-elements.herokuapp.com",
   "main": "build/build.js",
   "scripts": {
+    "check-node-version": "check-node-version --node $npm_package_engines_node --npm $npm_package_engines_npm",
     "test": "gulp test && ./run_tests.sh",
     "build": "gulp clean && gulp copy && gulp build",
-    "dev": "npm run build && gulp watch"
+    "dev": "npm run build && gulp watch",
+    "pretest": "npm run check-node-version --silent",
+    "prebuild": "npm run check-node-version --silent",
+    "postinstall": "npm install govuk-elements-sass govuk_frontend_toolkit govuk_template_jinja --no-save"
   },
   "repository": {
     "type": "git",
@@ -25,8 +26,8 @@
   },
   "homepage": "https://github.com/LandRegistry/land-registry-elements#readme",
   "engines": {
-    "npm": "3.x",
-    "node": "6.x"
+    "npm": "5.x",
+    "node": "8.x"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -35,10 +36,11 @@
   },
   "dependencies": {
     "browsernizr": "^2.1.0",
+    "check-node-version": "^2.1.0",
     "es6-promise": "^4.1.0",
+    "jquery": "1.x",
     "pubsub-js": "1.5.3",
-    "validate.js": "0.10.0",
-    "jquery": "1.x"
+    "validate.js": "0.10.0"
   },
   "peerDependencies": {
     "govuk-elements-sass": "x",

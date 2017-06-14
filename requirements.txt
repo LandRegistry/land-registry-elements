@@ -6,3 +6,4 @@ requests==2.13
 misaka==2.1.0
 git+https://github.com/LandRegistry/govuk-elements-jinja-macros.git
 Flask-WTF==0.14.2
+gunicorn==19.7.1

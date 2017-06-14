@@ -145,7 +145,7 @@ This title will be used on the index page as the title of the demo. Additional f
 
 ```
 ---
-title: Simple frontmatter demo
+title: Simple  frontmatter demo
 foo:
   -
     my-value: Foo
