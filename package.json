@@ -12,7 +12,6 @@
     "build": "gulp clean && gulp copy && gulp build",
     "dev": "npm run build && gulp watch",
 
-    "preinstall": "npm run check-node-version --silent",
     "pretest": "npm run check-node-version --silent",
     "prebuild": "npm run check-node-version --silent"
   },
@@ -30,8 +29,8 @@
   },
   "homepage": "https://github.com/LandRegistry/land-registry-elements#readme",
   "engines": {
-    "npm": "3.x",
-    "node": "6.x"
+    "npm": "5.x",
+    "node": "8.x"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
