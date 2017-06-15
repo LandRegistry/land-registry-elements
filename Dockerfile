@@ -16,7 +16,5 @@ RUN pip3 install -q -r requirements.txt
 RUN rm -rf node_modules
 ADD package.json package.json
 RUN npm install
-RUN npm install govuk-elements-sass
-RUN npm install govuk_template_jinja
 
 CMD ["./run.sh"]
