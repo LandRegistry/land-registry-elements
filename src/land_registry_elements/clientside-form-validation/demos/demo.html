@@ -4,6 +4,8 @@
 
 {% block inner_content %}
 
+  {{ error_summary(form) }}
+
   {% with messages = get_flashed_messages() %}
     {% if messages %}
 
@@ -35,8 +37,6 @@
 
   <form method="POST" action="" data-clientside-validation="example_form_validation">
     {{ form.csrf_token }}
-
-    {{ error_summary(form) }}
 
     {{ element(form, 'full_name')}}
 

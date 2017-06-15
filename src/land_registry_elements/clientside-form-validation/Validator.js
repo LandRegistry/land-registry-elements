@@ -70,7 +70,7 @@ function Validator (element, config) {
     $element.on('click', '.error-summary-list a', summaryClick)
 
     // Grab any existing error messages and ensure they persist, regardless of clientside changes
-    var $existingSummary = $element.find('.error-summary')
+    var $existingSummary = $('.error-summary')
     if ($existingSummary) {
       $existingSummary.find('.error-summary-list li')
         .each(function (index, item) {
@@ -251,7 +251,7 @@ function Validator (element, config) {
         errorSummary.addClass('visuallyhidden')
       }
 
-      $element.prepend(errorSummary)
+      $('h1').before(errorSummary)
     }
 
     if (data.errors.length > 0) {
