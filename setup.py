@@ -1,4 +1,3 @@
-import glob
 import setuptools
 from src.land_registry_elements.version import Version
 
@@ -8,5 +7,5 @@ setuptools.setup(name='land-registry-elements',
                  description='Land Registry Elements',
                  packages=['land_registry_elements'],
                  package_dir={'': 'src'},
-                 package_data={'land_registry_elements': glob.glob('src/land_registry_elements/**/template.html')}
+                 package_data={'land_registry_elements': ['src/land_registry_elements/**/template.html']}
                  )
