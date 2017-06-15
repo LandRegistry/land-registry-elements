@@ -1,4 +1,4 @@
-{% from 'land-registry-elements/pagination-simple/template.html' import pagination_simple %}
+{% from 'land_registry_elements/pagination-complex/template.html' import pagination_complex %}
 
 {% extends "app/layout.html" %}
 
@@ -9,12 +9,27 @@
   <h2 class="heading-large">First page</h2>
 
   {{
-    pagination_simple(
-      total_pages=3,
-      next={
+    pagination_complex(
+      start=1,
+      end=10,
+      total=100,
+      pages=[{
+        'number': 1,
+        'current': True
+      }, {
         'number': 2,
-        'url': '/pages/2'
-      })
+        'url': '/page/2'
+      }, {
+        'number': 3,
+        'url': '/page/3'
+      }, {
+        'number': 4,
+        'url': '/page/4'
+      }, {
+        'number': 5,
+        'url': '/page/5'
+      }],
+      next='/next')
   }}
 
   <p>
@@ -29,16 +44,28 @@
   <h2 class="heading-large">Middle page</h2>
 
   {{
-    pagination_simple(
-      total_pages=3,
-      prev={
+    pagination_complex(
+      start=21,
+      end=30,
+      total=100,
+      pages=[{
         'number': 1,
-        'url': '/pages/1'
-      },
-      next={
+        'url': '/page/1'
+      }, {
+        'number': 2,
+        'url': '/page/2'
+      }, {
         'number': 3,
-        'url': '/pages/3'
-      })
+        'current': True
+      }, {
+        'number': 4,
+        'url': '/page/4'
+      }, {
+        'number': 5,
+        'url': '/page/5'
+      }],
+      prev='/prev',
+      next='/next')
   }}
 
   <p>
@@ -53,13 +80,27 @@
   <h2 class="heading-large">Last page</h2>
 
   {{
-    pagination_simple(
-      total_pages=3,
-      prev={
-        'number': 2,
-        'url': '/pages/2'
-      },
-      reached_limit=True)
+    pagination_complex(
+      start=91,
+      end=100,
+      total=100,
+      pages=[{
+        'number': 6,
+        'url': '/page/6'
+      }, {
+        'number': 7,
+        'url': '/page/7'
+      }, {
+        'number': 8,
+        'url': '/page/8'
+      }, {
+        'number': 9,
+        'url': '/page/9'
+      }, {
+        'number': 10,
+        'current': True
+      }],
+      prev='/prev')
   }}
 
   <p>

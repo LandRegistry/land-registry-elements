@@ -25,9 +25,9 @@ components = Blueprint('example', __name__)
 @components.route("/")
 def index():
     def parse_path(demo_path):
-        return path.relpath(demo_path, 'src/land-registry-elements').replace('/demos', '').replace('.html', '')
+        return path.relpath(demo_path, 'src/land_registry_elements').replace('/demos', '').replace('.html', '')
 
-    demos = glob('src/land-registry-elements/**/demos/*.html')
+    demos = glob('src/land_registry_elements/**/demos/*.html')
     parsed_demos = sorted(list(map(parse_path, demos)))
 
     return render_template('app/index.html', demos=parsed_demos)
@@ -36,9 +36,9 @@ def index():
 @components.route('/<component_name>/<demo_name>')
 def component_demo(component_name, demo_name):
 
-    readme = open('src/land-registry-elements/{}/README.md'.format(component_name))
+    readme = open('src/land_registry_elements/{}/README.md'.format(component_name))
 
-    return render_template('land-registry-elements/{}/demos/{}.html'.format(component_name, demo_name),
+    return render_template('land_registry_elements/{}/demos/{}.html'.format(component_name, demo_name),
                            readme=render_markdown(readme.read())
                            )
 
@@ -47,12 +47,12 @@ def component_demo(component_name, demo_name):
 def clientside_form_validation_demo():
     form = ExampleForm()
 
-    readme = open('src/land-registry-elements/clientside-form-validation/README.md')
+    readme = open('src/land_registry_elements/clientside-form-validation/README.md')
 
     if form.validate_on_submit():
       flash('Success!')
 
-    return render_template('land-registry-elements/clientside-form-validation/demos/demo.html',
+    return render_template('land_registry_elements/clientside-form-validation/demos/demo.html',
                            readme=render_markdown(readme.read()),
                            form=form
                            )
