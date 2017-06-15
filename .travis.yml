@@ -3,7 +3,7 @@ dist: trusty
 language: node_js
 
 node_js:
-  - "6"
+  - "8"
 
 python:
   - "3.4"
@@ -23,8 +23,7 @@ cache:
 install:
   - bundle install
   - npm install
-  - pip3 install -r demo/requirements.txt
+  - pip3 install -r requirements.txt
 
 before_script:
-  - npm run build
-  - make & # Run the python demo server in the background
+  - make run & # Run the python demo server in the background
