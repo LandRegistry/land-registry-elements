@@ -1,6 +1,6 @@
 {
   "name": "land-registry-elements",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "Land registry frontend pattern library - building on top of http://govuk-elements.herokuapp.com",
   "scripts": {
     "check-node-version": "check-node-version --node $npm_package_engines_node --npm $npm_package_engines_npm",
