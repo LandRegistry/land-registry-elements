@@ -20,7 +20,7 @@
 
   <h2 class="heading-medium">Simple address (With schema.org metadata)</h2>
   {% set demo %}
-    {{ address(streetAddress=['Flat 1', '48 Foo bar'], addressLocality='Plymouth', addressRegion='Devon', postalCode='PL1 1LP') }}
+    {{ address(street_address=['Flat 1', '48 Foo bar'], address_locality='Plymouth', address_region='Devon', postal_code='PL1 1LP') }}
   {% endset %}
 
   <div class="grid-row">
@@ -34,7 +34,7 @@
 
   <h2 class="heading-medium">Addresses representing people</h2>
   {% set demo %}
-    {{ address_person(name='Andy Mantell', streetAddress=['Flat 1', '48 Foo bar'], addressLocality='Plymouth', addressRegion='Devon', postalCode='PL1 1LP') }}
+    {{ address_person(name='Andy Mantell', street_address=['Flat 1', '48 Foo bar'], address_locality='Plymouth', address_region='Devon', postal_code='PL1 1LP') }}
   {% endset %}
 
   <div class="grid-row">
@@ -48,7 +48,7 @@
 
   <h2 class="heading-medium">Addresses representing an organization</h2>
   {% set demo %}
-    {{ address_organization(name='Land Registry', streetAddress=['48 Foo bar'], addressLocality='Plymouth', addressRegion='Devon', postalCode='PL1 1LP') }}
+    {{ address_organization(name='Land Registry', street_address=['48 Foo bar'], address_locality='Plymouth', address_region='Devon', postal_code='PL1 1LP') }}
   {% endset %}
 
   <div class="grid-row">

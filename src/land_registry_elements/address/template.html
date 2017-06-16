@@ -1,36 +1,36 @@
-{% macro address_simple(streetAddress) -%}
+{% macro address_simple(street_address) -%}
   <div class="address">
-    {%- for line in streetAddress %}
+    {%- for line in street_address %}
       <span class="address__line">{{line}}</span>
     {%- endfor %}
   </div>
 {%- endmacro -%}
 
-{% macro address(streetAddress, addressLocality=False, addressRegion=False, postalCode=False) %}
+{% macro address(street_address, address_locality=False, address_region=False, postal_code=False) %}
   <div class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-    {% if streetAddress %}
+    {% if street_address %}
     <span class="address__line" itemprop="streetAddress">
-      {% for line in streetAddress %}{{line}}{% if not loop.last %}<br>{% endif %}{% endfor %}
+      {% for line in street_address %}{{line}}{% if not loop.last %}<br>{% endif %}{% endfor %}
     </span>
     {% endif %}
-    {% if addressLocality %}<span class="address__line" itemprop="addressLocality">{{addressLocality}}</span>{% endif %}
-    {% if addressRegion %}<span class="address__line" itemprop="addressRegion">{{addressRegion}}</span>{% endif %}
-    {% if postalCode %}<span class="address__line" itemprop="postalCode">{{postalCode}}</span>{% endif %}
+    {% if address_locality %}<span class="address__line" itemprop="addressLocality">{{address_locality}}</span>{% endif %}
+    {% if address_region %}<span class="address__line" itemprop="addressRegion">{{address_region}}</span>{% endif %}
+    {% if postal_code %}<span class="address__line" itemprop="postalCode">{{postal_code}}</span>{% endif %}
   </div>
 {% endmacro %}
 
-{% macro address_person(name, streetAddress, addressLocality=False, addressRegion=False, postalCode=False) %}
+{% macro address_person(name, street_address, address_locality=False, address_region=False, postal_code=False) %}
   <div itemscope itemtype="http://schema.org/Person">
     <span itemprop="name" class="bold">{{name}}</span>
 
-    {{ address(streetAddress, addressLocality, addressRegion, postalCode) }}
+    {{ address(street_address, address_locality, address_region, postal_code) }}
   </div>
 {% endmacro %}
 
-{% macro address_organization(name, streetAddress, addressLocality=False, addressRegion=False, postalCode=False) %}
+{% macro address_organization(name, street_address, address_locality=False, address_region=False, postal_code=False) %}
   <div itemscope itemtype="http://schema.org/Organization">
     <span itemprop="name" class="bold">{{name}}</span>
 
-    {{ address(streetAddress, addressLocality, addressRegion, postalCode) }}
+    {{ address(street_address, address_locality, address_region, postal_code) }}
   </div>
 {% endmacro %}

@@ -14,11 +14,18 @@
   <div class="header-proposition">
     <div class="content">
       <div id="proposition-menu">
-        <span id="proposition-name">{{ service_name }}</span>
+        <a id="proposition-name" href="/">{{ service_name }}</a>
+
+        <ul id="proposition-links">
+          <li><a href="{{ url_for('components.index') }}">Main list of components</a></li>
+          <li><a href="{{ url_for('incubation_area.index') }}">Incubation area</a></li>
+        </ul>
       </div>
     </div>
   </div>
 {% endblock %}
+
+{% block cookie_message %}<p>HM Land Registry uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>{% endblock %}
 
 {% block body_end %}
   <script type=text/javascript src="{{ url_for('static', filename='javascripts/jquery.min.js') }}"> </script>
