@@ -1,0 +1,115 @@
+{% from 'land_registry_elements/pagination-complex/template.html' import pagination_complex %}
+
+{% extends "app/layout.html" %}
+
+{% block inner_content%}
+
+  {{ readme }}
+
+  <h2 class="heading-large">First page</h2>
+
+  {{
+    pagination_complex(
+      start=1,
+      end=10,
+      total=100,
+      pages=[{
+        'number': 1,
+        'current': True
+      }, {
+        'number': 2,
+        'url': '/page/2'
+      }, {
+        'number': 3,
+        'url': '/page/3'
+      }, {
+        'number': 4,
+        'url': '/page/4'
+      }, {
+        'number': 5,
+        'url': '/page/5'
+      }],
+      next='/next')
+  }}
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p><hr>
+
+  <h2 class="heading-large">Middle page</h2>
+
+  {{
+    pagination_complex(
+      start=21,
+      end=30,
+      total=100,
+      pages=[{
+        'number': 1,
+        'url': '/page/1'
+      }, {
+        'number': 2,
+        'url': '/page/2'
+      }, {
+        'number': 3,
+        'current': True
+      }, {
+        'number': 4,
+        'url': '/page/4'
+      }, {
+        'number': 5,
+        'url': '/page/5'
+      }],
+      prev='/prev',
+      next='/next')
+  }}
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p><hr>
+
+  <h2 class="heading-large">Last page</h2>
+
+  {{
+    pagination_complex(
+      start=91,
+      end=100,
+      total=100,
+      pages=[{
+        'number': 6,
+        'url': '/page/6'
+      }, {
+        'number': 7,
+        'url': '/page/7'
+      }, {
+        'number': 8,
+        'url': '/page/8'
+      }, {
+        'number': 9,
+        'url': '/page/9'
+      }, {
+        'number': 10,
+        'current': True
+      }],
+      prev='/prev')
+  }}
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+
+{% endblock %}

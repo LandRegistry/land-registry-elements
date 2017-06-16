@@ -1,0 +1,88 @@
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+  {{ readme }}
+
+
+  <h2 class="heading-medium">As a definition list (Defaulting to 1/4 : 3/4 ratio)</h2>
+
+  <dl class="structured-data">
+    <dt class="structured-data__key">Lorem ipsum</dt>
+    <dd class="structured-data__value">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+    </dd>
+
+    <dt class="structured-data__key">Dolor sit amet</dt>
+    <dd class="structured-data__value">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </dd>
+    <dd class="structured-data__value">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </dd>
+  </dl>
+
+  <br><br><br><br>
+
+  <h2 class="heading-medium">As a definition list (Set to 1/3 : 2/3 ratio)</h2>
+
+  <dl class="structured-data structured-data--thirds">
+    <dt class="structured-data__key">Lorem ipsum</dt>
+    <dd class="structured-data__value">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+    </dd>
+
+    <dt class="structured-data__key">Dolor sit amet</dt>
+    <dd class="structured-data__value">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </dd>
+    <dd class="structured-data__value">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </dd>
+  </dl>
+
+  <br><br><br><br>
+
+  <h2 class="heading-medium">With sectioned lines on narrow viewports</h2>
+
+  <dl class="structured-data structured-data--sectioned-on-mobile">
+    <dt class="structured-data__key">Lorem ipsum</dt>
+    <dd class="structured-data__value">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+    </dd>
+
+    <dt class="structured-data__key">Dolor sit amet</dt>
+    <dd class="structured-data__value">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </dd>
+    <dd class="structured-data__value">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </dd>
+  </dl>
+
+  <br><br><br><br>
+
+  <h2 class="heading-medium">As a set of heading / paragraph pairs</h2>
+
+  <div class="structured-data">
+    <h2 class="structured-data__key">Lorem ipsum</h2>
+    <p class="structured-data__value">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+    </p>
+
+    <h2 class="structured-data__key">Dolor sit amet</h2>
+    <p class="structured-data__value">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+    <p class="structured-data__value">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+
+    <h2 class="structured-data__key">Consectetur adipiscing elit</h2>
+    <div class="structured-data__value">
+      <ul class="list list-bullet">
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

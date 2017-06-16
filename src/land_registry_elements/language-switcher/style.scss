@@ -1,0 +1,79 @@
+.language-switcher {
+  @include core-16;
+  text-align: right;
+  margin-top: $gutter-half;
+
+  form {
+    display: flex;
+    justify-content: flex-end;
+
+    .no-flexbox & {
+      display: block;
+    }
+  }
+}
+
+.language-switcher-current {
+  position: relative;
+  display: inline-block;
+  padding: 0 5px 0 0;
+  margin: 0 5px 0 0;
+
+  &::after {
+    height: 66%;
+    width: 1px;
+    background-color: $black;
+    display: block;
+    content: '';
+    position: absolute;
+    top: 16.66%;
+    right: 0;
+  }
+
+  // On browsers that support flexbox, the order of the links is switched around
+  // Therefore we need to flip the pipe to the other end of the link
+  .language-switcher-invert & {
+    order: 1; // Use flexbox to switch the order of the links round in browsers that can
+    padding: 0 0 0 5px;
+    margin: 0 0 0 5px;
+
+    &::after {
+      right: auto;
+      left: 0;
+    }
+
+    .no-flexbox &,
+    .lte-ie8 & {
+      padding: 0 5px 0 0;
+      margin: 0 5px 0 0;
+
+      &::after {
+        right: 0;
+        left: auto;
+      }
+    }
+  }
+}
+
+.language-switcher-button {
+  background: transparent none;
+  border: 0;
+  border-radius: 0;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  text-decoration: underline;
+  color: $link-colour;
+  cursor: pointer;
+  line-height: inherit;
+  margin: 0;
+
+  &:active {
+    color: $link-active-colour;
+  }
+
+  &:hover,
+  &:focus {
+    color: $link-hover-colour;
+  }
+}

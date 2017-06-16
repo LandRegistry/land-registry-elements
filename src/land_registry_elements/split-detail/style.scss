@@ -1,0 +1,38 @@
+.split-detail-trigger {
+  margin-left: 5px;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:visited {
+    color: $link-colour;
+  }
+
+  &:focus {
+    background-color: transparent;
+  }
+
+  &::before {
+    content: '\25ba';
+  }
+
+  &-active {
+    &::before {
+      content: '\25bc';
+    }
+  }
+}
+
+.split-detail-trigger__inner {
+  text-decoration: underline;
+}
+
+.split-detail-contents {
+  .js-enabled & {
+    height: 0;
+    overflow: hidden;
+
+    &-active {
+      height: auto;
+    }
+  }
+}

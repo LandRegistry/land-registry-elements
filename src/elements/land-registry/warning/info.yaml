@@ -1,8 +1,0 @@
-name: Warning panels
-categories:
-  primary: Land Registry
-  secondary: Core
-
-dependencies:
-  - elements/govuk/core
-  - elements/land-registry/media

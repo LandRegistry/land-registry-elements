@@ -1,6 +1,0 @@
-name: Promise polyfill
-categories:
-  primary: Land Registry
-  secondary: Utilities
-
-js-bundle: polyfills-promise

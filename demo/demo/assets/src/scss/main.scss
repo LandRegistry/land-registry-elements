@@ -1,0 +1,19 @@
+$path: '/static/images/';
+
+@import 'vendor/govuk-elements/govuk-elements';
+
+@import '../../../../../src/land_registry_elements/address/style';
+@import '../../../../../src/land_registry_elements/back-link/style';
+@import '../../../../../src/land_registry_elements/button/style';
+@import '../../../../../src/land_registry_elements/icons/style';
+@import '../../../../../src/land_registry_elements/language-switcher/style';
+@import '../../../../../src/land_registry_elements/media/style';
+@import '../../../../../src/land_registry_elements/pagination-complex/style';
+@import '../../../../../src/land_registry_elements/pagination-simple/style';
+@import '../../../../../src/land_registry_elements/print-button/style';
+@import '../../../../../src/land_registry_elements/spacing/style';
+@import '../../../../../src/land_registry_elements/split-detail/style';
+@import '../../../../../src/land_registry_elements/structured-data/style';
+@import '../../../../../src/land_registry_elements/supplementary-panel/style';
+@import '../../../../../src/land_registry_elements/typography/style';
+@import '../../../../../src/land_registry_elements/warning/style';

@@ -1,0 +1,76 @@
+.pager-simple {
+  @extend %contain-floats;
+  margin-top: $gutter;
+  margin-bottom: $gutter;
+}
+
+.pager-simple__item {
+  @include core-16($line-height: (20 / 16));
+  float: right;
+  list-style: none;
+  text-align: right;
+  width: 49%;
+  margin: 0;
+  padding: 0;
+}
+
+.pager-simple__item--prev {
+  float: left;
+  text-align: left;
+}
+
+.pager-simple__title {
+  @include core-27($line-height: (33.75 / 27));
+  margin-bottom: .1em;
+  display: block;
+}
+
+.pager-simple__control {
+  display: block;
+
+  .pager-simple__item--prev &,
+  .pager-simple__item--next & {
+    color: $link-colour;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      background-color: $canvas-colour;
+    }
+
+    &::before {
+      margin-top: -4px;
+      display: block;
+      width: 30px;
+      height: 38px;
+      content: ' ';
+    }
+  }
+
+  .pager-simple__item--next &,
+  .pager-simple__item--last & {
+    padding: .75em 3em .75em 0;
+  }
+
+  .pager-simple__item--last & {
+    padding-right: 0;
+  }
+
+  .pager-simple__item--next & {
+    &::before {
+      background: transparent file-url('arrow-sprite.png') no-repeat -102px -11px;
+      margin-right: -32px;
+      float: right;
+    }
+  }
+
+  .pager-simple__item--prev & {
+    padding: .75em 0 .75em 3em;
+
+    &::before {
+      background: transparent file-url('arrow-sprite.png') no-repeat -20px -11px;
+      margin-left: -32px;
+      float: left;
+    }
+  }
+}

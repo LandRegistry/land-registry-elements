@@ -1,7 +1,0 @@
-name: Core
-categories:
-  primary: Govuk
-  secondary: Core
-
-dependencies:
-  - elements/land-registry/pub-sub

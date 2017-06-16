@@ -1,0 +1,34 @@
+{% macro pagination_simple(total_pages, max_results=50, prev=False, next=False, reached_limit=False) %}
+
+<nav class="pager-simple" role="navigation" aria-label="Pagination">
+  <ul>
+  {% if prev %}
+    <li class="pager-simple__item pager-simple__item--prev">
+      <a class="pager-simple__control" href="{{ prev.url }}" rel="prev">
+        <span class="pager-simple__title">Previous page</span>
+        <span class="pager-simple__label">{{ prev.number }} of {{ total_pages }}</span>
+      </a>
+    </li>
+  {% endif %}
+
+  {% if next %}
+    <li class="pager-simple__item pager-simple__item--next">
+      <a class="pager-simple__control" href="{{ next.url }}" rel="next">
+        <span class="pager-simple__title">Next page</span>
+        <span class="pager-simple__label">{{ next.number }} of {{ total_pages }}</span>
+      </a>
+    </li>
+  {% endif %}
+
+  {% if reached_limit %}
+    <li class="pager-simple__item pager-simple__item--last">
+      <div class="pager-simple__control">
+        <span class="pager-simple__title">Limit reached</span>
+        <span class="pager-simple__label">This services only displays {{ max_results }} results</span>
+      </div>
+    </li>
+  {% endif %}
+  </ul>
+</nav>
+
+{% endmacro %}

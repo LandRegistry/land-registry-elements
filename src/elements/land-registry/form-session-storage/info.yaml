@@ -1,7 +1,0 @@
-name: Form session storage
-categories:
-  primary: Land Registry
-  secondary: Forms
-
-dependencies:
-  - elements/govuk/forms

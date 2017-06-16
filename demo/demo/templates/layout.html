@@ -1,0 +1,39 @@
+{% set page_title = 'Gadget GOV.UK UI' %}
+{% set asset_path = url_for('static', filename='') %}
+
+{% extends "app/vendor/govuk_template.html" %}
+
+{% block head %}
+  <!--[if gt IE 8]><!--><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main.css') }}" /><!--<![endif]-->
+  <!--[if IE 8]><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main-ie8.css') }}" /><![endif]-->
+{% endblock %}
+
+{% block header_class %}with-proposition{% endblock %}
+
+{% block proposition_header %}
+  <div class="header-proposition">
+    <div class="content">
+      <div id="proposition-menu">
+        <span id="proposition-name">{{ service_name }}</span>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block body_end %}
+  <script type=text/javascript src="{{ url_for('static', filename='javascripts/jquery.min.js') }}"> </script>
+  <script type=text/javascript src="{{ url_for('static', filename='javascripts/main.js') }}"> </script>
+{% endblock %}
+
+{% block content %}
+  <main role="main" id="content">
+    <div class="phase-banner">
+      <p>
+        <strong class="phase-tag">BETA</strong>
+        <span>This is a new service – your <a href="#" target="_blank">feedback</a> will help us to improve it.</span>
+      </p>
+    </div>
+
+    {% block inner_content %}{% endblock %}
+  </main>
+{% endblock %}

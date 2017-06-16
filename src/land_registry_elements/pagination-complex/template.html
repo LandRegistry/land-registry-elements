@@ -1,0 +1,31 @@
+{% macro pagination_complex(start, end, total, pages, prev=False, next=False) %}
+
+  <nav class="pager" role="navigation" aria-label="Pagination">
+
+    <div class="pager__summary">Showing {{ start }} &ndash; {{ end }} of {{ total }} items</div>
+
+    <div class="pager__controls">
+
+      {% if prev %}
+        <a class="pager__prev" href="{{ prev }}" rel="prev">Prev</a>
+      {% endif %}
+
+      <ul class="pager__items">
+        {% for page in pages %}
+          <li>
+            {% if not page.current %}<a href="{{ page.url }}">{% endif %}
+              {{ page.number }}
+            {% if not page.current %}</a>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+
+      {% if next %}
+        <a class="pager__next" href="{{ next }}" rel="next">Next</a>
+      {% endif %}
+
+    </div>
+
+  </nav>
+
+{% endmacro %}

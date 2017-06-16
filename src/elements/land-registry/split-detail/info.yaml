@@ -1,7 +1,0 @@
-name: Split detail
-categories:
-  primary: Land Registry
-  secondary: Utilities
-
-dependencies:
-  - elements/govuk/core

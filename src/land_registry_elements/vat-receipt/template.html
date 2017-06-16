@@ -1,0 +1,38 @@
+{% from 'land_registry_elements/address/template.html' import address_organization %}
+
+{% macro vat_receipt(date, invoice_number, items, net_value, vat, total, vat_registration_number, address) %}
+  <div class="vat-receipt page-break-before font-xsmall">
+    <h2 class="heading-medium">VAT receipt</h2>
+
+    <div class="grid-row">
+      <div class="column-two-thirds mobile-column-one-half">
+        <dl class="structured-data structured-data--thirds">
+
+          <dt class="bold structured-data__key">Date</dt>
+          <dd class="structured-data__value">{{date}}</dd>
+
+          <dt class="bold structured-data__key">Transaction ID</dt>
+          <dd class="structured-data__value">{{invoice_number}}</dd>
+
+          <dt class="bold structured-data__key">Description</dt>
+          <dd class="structured-data__value">{{items}}</dd>
+
+          <dt class="bold structured-data__key">Net amount</dt>
+          <dd class="structured-data__value">{{net_value}}</dd>
+
+          <dt class="bold structured-data__key">VAT @ 20%</dt>
+          <dd class="structured-data__value">{{vat}}</dd>
+
+          <dt class="bold structured-data__key">Total inc VAT</dt>
+          <dd class="structured-data__value">{{total}}</dd>
+        </dl>
+      </div>
+
+      <div class="column-one-third mobile-column-one-half">
+        {{ address_organization(**address) }}
+        <p class="spacing-top-single-third"><strong class="bold">VAT registration number:</strong><br> {{vat_registration_number}}</p>
+      </div>
+
+    </div>
+  </div>
+{% endmacro %}

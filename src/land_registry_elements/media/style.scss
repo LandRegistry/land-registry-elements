@@ -1,0 +1,10 @@
+//.media {}
+
+.media__item {
+  float: left;
+  margin-right: $gutter-two-thirds;
+}
+
+.media__body {
+  overflow: hidden;
+}

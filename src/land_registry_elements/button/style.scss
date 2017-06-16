@@ -1,0 +1,39 @@
+.button {
+  .icon {
+    vertical-align: middle;
+    margin-right: $gutter-one-third;
+  }
+}
+
+.button--light {
+  background-color: $highlight-colour;
+  color: $text-colour;
+
+  &:hover {
+    background-color: $grey-3;
+    color: $text-colour;
+  }
+
+  &:focus,
+  &:active {
+    background-color: $focus-colour;
+    color: $text-colour;
+  }
+}
+
+.button--waiting {
+  &,
+  &[disabled='disabled'] {
+    padding-left: 40px;
+    background-image: file-url('land_registry_elements/button/spinner.gif');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+  }
+}
+
+body::after {
+  // Preload the spinner
+  content: file-url('land_registry_elements/button/spinner.gif');
+  position: absolute;
+  left: -10000px;
+}

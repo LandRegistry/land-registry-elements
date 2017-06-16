@@ -1,0 +1,62 @@
+{% from 'land_registry_elements/address/template.html' import address, address_simple, address_person, address_organization %}
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+  {{ readme }}
+
+  <h2 class="heading-medium">Simple addresses</h2>
+  {% set demo %}
+    {{ address_simple(['48 Foo bar', 'Wibble', 'PL1 1LP']) }}
+  {% endset %}
+
+  <div class="grid-row">
+    <div class="column-half">
+      {{demo}}
+    </div>
+    <div class="column-half">
+      <pre class="font-xsmall"><code>{{demo|forceescape}}</code></pre>
+    </div>
+  </div>
+
+  <h2 class="heading-medium">Simple address (With schema.org metadata)</h2>
+  {% set demo %}
+    {{ address(streetAddress=['Flat 1', '48 Foo bar'], addressLocality='Plymouth', addressRegion='Devon', postalCode='PL1 1LP') }}
+  {% endset %}
+
+  <div class="grid-row">
+    <div class="column-half">
+      {{demo}}
+    </div>
+    <div class="column-half">
+      <pre class="font-xsmall"><code>{{demo|forceescape}}</code></pre>
+    </div>
+  </div>
+
+  <h2 class="heading-medium">Addresses representing people</h2>
+  {% set demo %}
+    {{ address_person(name='Andy Mantell', streetAddress=['Flat 1', '48 Foo bar'], addressLocality='Plymouth', addressRegion='Devon', postalCode='PL1 1LP') }}
+  {% endset %}
+
+  <div class="grid-row">
+    <div class="column-half">
+      {{demo}}
+    </div>
+    <div class="column-half">
+      <pre class="font-xsmall"><code>{{demo|forceescape}}</code></pre>
+    </div>
+  </div>
+
+  <h2 class="heading-medium">Addresses representing an organization</h2>
+  {% set demo %}
+    {{ address_organization(name='Land Registry', streetAddress=['48 Foo bar'], addressLocality='Plymouth', addressRegion='Devon', postalCode='PL1 1LP') }}
+  {% endset %}
+
+  <div class="grid-row">
+    <div class="column-half">
+      {{demo}}
+    </div>
+    <div class="column-half">
+      <pre class="font-xsmall"><code>{{demo|forceescape}}</code></pre>
+    </div>
+  </div>
+{% endblock %}

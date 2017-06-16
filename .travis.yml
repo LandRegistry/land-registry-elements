@@ -1,22 +1,30 @@
+sudo: required
+dist: trusty
 language: node_js
+
 node_js:
-  - "6"
+  - "8"
+
+python:
+  - "3.4"
+
 before_install:
-  - npm install -g mocha
-  - npm install -g eslint
-
-after_success:
-  - npm run zipTestRenderings
-
-after_failure:
-  - npm run zipTestRenderings
+  # Work around the presence of node-which causing rvm to fail
+  # See https://github.com/travis-ci/travis-ci/issues/5092#issuecomment-245937070
+  - if [ -f node_modules/.bin/which ]; then mv node_modules/.bin/which node_modules/.bin/which.backup; fi
+  - rvm install 2.4.1
+  - if [ -f node_modules/.bin/which.backup ]; then mv node_modules/.bin/which.backup node_modules/.bin/which; fi
+  - sudo apt-get -y install python3-pip python-dev
 
 cache:
   directories:
     - node_modules
 
-addons:
-  artifacts:
-    s3_region: "eu-west-1"
-    paths:
-      - test/fixtures/visual-regression
+install:
+  - bundle install
+  - npm install
+  - pip3 install -r requirements.txt
+
+before_script:
+  - npm run build # Run the python demo server in the background
+  - gunicorn manage:manager.app &

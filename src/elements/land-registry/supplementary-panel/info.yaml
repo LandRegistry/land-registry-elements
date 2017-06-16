@@ -1,7 +1,0 @@
-name: Supplementary panel
-categories:
-  primary: Land Registry
-  secondary: Utilities
-
-dependencies:
-  - elements/govuk/core

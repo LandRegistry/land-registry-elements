@@ -1,9 +1,0 @@
-name: Password reveal
-categories:
-  primary: Land Registry
-  secondary: Forms
-
-dependencies:
-  - elements/govuk/forms
-
-deprecated: true

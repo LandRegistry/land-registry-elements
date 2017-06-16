@@ -1,0 +1,121 @@
+.structured-data {
+  @extend %contain-floats;
+}
+
+.structured-data__key {
+  @mixin styles {
+    float: left;
+    clear: left;
+    width: $one-quarter;
+    margin-bottom: $gutter-one-third;
+    padding-right: $gutter-half;
+    box-sizing: border-box;
+  }
+
+  @media print, screen and (min-width: 640px) {
+    @include styles;
+  }
+
+  @include ie(8) {
+    @include styles;
+  }
+
+  &::after {
+    content: ':';
+  }
+}
+
+.structured-data__value {
+  margin: 0 0 $gutter-one-third 0;
+
+  @mixin styles {
+    float: left;
+    width: $three-quarters;
+    margin-left: $one-quarter;
+  }
+
+  @media print, screen and (min-width: 640px) {
+    @include styles;
+  }
+
+  @include ie(8) {
+    @include styles;
+  }
+}
+
+.structured-data--thirds {
+  @mixin styles {
+    .structured-data__key {
+      width: $one-third;
+    }
+
+    .structured-data__value {
+      width: $two-thirds;
+      margin-left: $one-third;
+    }
+  }
+
+  @media print, screen and (min-width: 640px) {
+    @include styles;
+  }
+
+  @include ie(8) {
+    @include styles;
+  }
+}
+
+.structured-data__key + .structured-data__value {
+  @mixin styles {
+    margin-left: 0;
+  }
+
+  @media print, screen and (min-width: 640px) {
+    @include styles;
+  }
+
+  @include ie(8) {
+    @include styles;
+  }
+}
+
+.structured-data--sectioned-on-mobile {
+  .structured-data__key {
+    @media screen and (max-width: 639px) {
+      @include bold-24;
+      margin-top: $gutter-half;
+      padding-top: $gutter-half;
+      margin-bottom: $gutter-half;
+      border-top: 1px solid $border-colour;
+    }
+
+    @media print, screen and (min-width: 640px) {
+      float: left;
+      clear: left;
+      width: $one-third;
+      margin-bottom: $gutter-one-third;
+      padding-right: $gutter-half;
+      box-sizing: border-box;
+      margin-top: 0;
+      padding-top: 0;
+      border: 0;
+      font-size: inherit;
+      font-weight: inherit;
+    }
+
+    @include media(desktop) {
+      width: $one-quarter;
+    }
+  }
+
+  .structured-data__value {
+    @media print, screen and (min-width: 640px) {
+      width: $two-thirds;
+      margin-left: $one-third;
+    }
+
+    @include media(desktop) {
+      width: $three-quarters;
+      margin-left: $one-quarter;
+    }
+  }
+}

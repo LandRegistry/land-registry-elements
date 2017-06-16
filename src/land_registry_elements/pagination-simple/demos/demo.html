@@ -1,0 +1,74 @@
+{% from 'land_registry_elements/pagination-simple/template.html' import pagination_simple %}
+
+{% extends "app/layout.html" %}
+
+{% block inner_content%}
+
+  {{ readme }}
+
+  <h2 class="heading-large">First page</h2>
+
+  {{
+    pagination_simple(
+      total_pages=3,
+      next={
+        'number': 2,
+        'url': '/pages/2'
+      })
+  }}
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p><hr>
+
+  <h2 class="heading-large">Middle page</h2>
+
+  {{
+    pagination_simple(
+      total_pages=3,
+      prev={
+        'number': 1,
+        'url': '/pages/1'
+      },
+      next={
+        'number': 3,
+        'url': '/pages/3'
+      })
+  }}
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p><hr>
+
+  <h2 class="heading-large">Last page</h2>
+
+  {{
+    pagination_simple(
+      total_pages=3,
+      prev={
+        'number': 2,
+        'url': '/pages/2'
+      },
+      reached_limit=True)
+  }}
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+
+{% endblock %}

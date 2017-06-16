@@ -1,8 +1,0 @@
-name: Breadcrumbs
-categories:
-  primary: Land Registry
-  secondary: Core
-
-dependencies:
-  - elements/govuk/core
-  - elements/govuk/icons

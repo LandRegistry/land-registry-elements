@@ -1,0 +1,14 @@
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+  {{ readme }}
+
+  <p>Set the <code>data-session-storage-set</code> attribute on your input element to invoke the behaviour:</p>
+
+  <div class="form-group">
+    <label class="form-label-bold" for="set">Type something into here</label>
+    <input class="form-control" type="text" data-session-storage-set="this-key-identifies-the-value" id="set" name="form-session-storage">
+  </div>
+
+  <p class="form-hint">Now visit the <a href="/form-session-storage/get">getting</a> demo to see the information you have typed appear over there!</p>
+{% endblock %}

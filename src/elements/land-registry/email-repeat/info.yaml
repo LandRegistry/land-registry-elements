@@ -1,7 +1,0 @@
-name: Email repeat
-categories:
-  primary: Land Registry
-  secondary: Forms
-
-dependencies:
-  - elements/govuk/forms

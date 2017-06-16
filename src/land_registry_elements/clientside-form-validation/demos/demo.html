@@ -1,0 +1,108 @@
+{% from 'govuk_elements_jinja_macros/form.html' import element, single_choice, multiple_choice, error_summary %}
+
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+
+  {{ error_summary(form) }}
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+      <div class="warning media">
+        <div class="media-item">
+          <i class="icon icon-important">
+            <span class="visuallyhidden">Information</span>
+          </i>
+        </div>
+
+        <div class="media-body">
+          {% if messages|length > 1 %}
+            <ul class="spacing-top-flush">
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            {{ messages|first }}
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  {{readme}}
+
+  <hr>
+
+  <form method="POST" action="" data-clientside-validation="example_form_validation">
+    {{ form.csrf_token }}
+
+    {{ element(form, 'full_name')}}
+
+    {{ element(form, 'ni', hint='It\'s on your National Insurance card, benefit letter, payslip or P60. <br>For example, ‘QQ 12 34 56 C’.'|safe)}}
+
+    {{ element(form, 'select_field')}}
+
+    {{ single_choice(form, 'checkbox')}}
+
+    {{ multiple_choice(form, 'checkboxes_field')}}
+
+    {{ multiple_choice(form, 'radio_field')}}
+
+    {{ element(form, 'password')}}
+
+    {{ element(form, 'password_retype')}}
+
+    <input class="button" type="submit" value="Submit">
+  </form>
+
+  <script type="application/json" id="example_form_validation">
+    {
+      "full_name": {
+        "presence": {
+          "message": "Full name is required"
+        }
+      },
+      "ni": {
+        "presence": {
+          "message": "National insurance number is required"
+        }
+      },
+      "select_field": {
+        "presence": {
+          "message": "Please select an option"
+        }
+      },
+      "checkbox": {
+        "presence": {
+          "message": "Please tick the box"
+        }
+      },
+      "checkboxes_field": {
+        "presence": {
+          "message": "Please select an option"
+        }
+      },
+      "radio_field": {
+        "presence": {
+          "message": "Please select an option"
+        }
+      },
+      "password": {
+        "presence": {
+          "message": "Password is required"
+        }
+      },
+      "password_retype": {
+        "presence": {
+          "message": "Please repeat your new password"
+        },
+        "equality": {
+          "attribute": "password",
+          "message": "Please ensure both password fields match"
+        }
+      }
+    }
+  </script>
+{% endblock %}

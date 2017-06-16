@@ -1,20 +1,15 @@
 {
   "name": "land-registry-elements",
-  "config": {
-    "port": "3000"
-  },
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "Land registry frontend pattern library - building on top of http://govuk-elements.herokuapp.com",
-  "main": "build/build.js",
   "scripts": {
-    "test": "npm run build && npm run generateTestURLs && mocha && npm run eslint",
-    "eslint": "eslint src/** --ignore-pattern build.js --ignore-pattern src/elements/land-registry/polyfills",
-    "generateTestURLs": "node build/tasks/testURLs.js",
-    "build": "node build/doBuild.js",
-    "build-prod": "node build/doBuildProd.js",
-    "start": "node build/devServer.js",
-    "dev": "supervisor -i test,dist,.tmp,node_modules -e js,scss,hogan,yaml build/devServer.js",
-    "zipTestRenderings": "node build/zipTestRenderings.js"
+    "check-node-version": "check-node-version --node $npm_package_engines_node --npm $npm_package_engines_npm",
+    "test": "gulp test && ./run_tests.sh",
+    "build": "gulp clean && gulp copy && gulp build",
+    "dev": "npm run build && gulp watch",
+    "pretest": "npm run check-node-version --silent",
+    "prebuild": "npm run check-node-version --silent",
+    "postinstall": "npm install govuk-elements-sass govuk_frontend_toolkit govuk_template_jinja --no-save"
   },
   "repository": {
     "type": "git",
@@ -30,67 +25,27 @@
   },
   "homepage": "https://github.com/LandRegistry/land-registry-elements#readme",
   "engines": {
-    "npm": "3.x",
-    "node": "5.x"
+    "npm": "5.x",
+    "node": "8.x"
   },
   "devDependencies": {
-    "htmllint": "^0.3.0",
-    "node-resemble-js": "0.0.5",
-    "pa11y": "^3.7.1",
-    "sanitize-filename": "^1.6.0",
-    "selenium-standalone": "^5.1.0",
-    "should": "^8.3.1",
-    "superagent": "^1.8.3",
-    "supertest": "^1.2.0",
-    "throat": "^2.0.2",
-    "trim-character": "^2.0.1",
-    "webdriverio": "^4.0.7",
-    "webshot": "^0.18.0",
-    "zip-dir": "^1.0.2"
+    "gulp": "^3.9.1",
+    "land-registry-gulp-tasks": "git+https://github.com/LandRegistry/land-registry-gulp-tasks.git#v1.0.0",
+    "check-node-version": "^2.1.0"
   },
   "dependencies": {
-    "autoprefixer": "^6.3.6",
-    "browserify": "^13.0.1",
-    "browserify-incremental": "^3.1.1",
     "browsernizr": "^2.1.0",
-    "clarify": "^1.0.5",
-    "closest": "0.0.1",
-    "compression": "^1.6.1",
-    "conduct.js": "1.0.0",
-    "copy": "^0.2.0",
-    "delegate": "3.0.1",
-    "dependency-graph": "^0.5.0",
-    "domify": "1.4.0",
-    "errorhandler": "^1.4.3",
-    "es6-promise": "^3.1.2",
-    "express": "^4.13.4",
-    "express-tgz": "0.0.3",
-    "extend": "^3.0.0",
-    "glob": "^7.0.3",
-    "govuk-elements-sass": "1.1.4",
-    "govuk_template_mustache": "0.17.1",
-    "govuk_frontend_toolkit": "4.13.0",
-    "handlebars": "^4.0.5",
-    "hogan.js": "3.0.2",
-    "hoganify": "0.2.0",
-    "js-htmlencode": "^0.1.0",
-    "js-yaml": "^3.6.0",
-    "leaflet": "^1.0.3",
-    "lodash": "^4.12.0",
-    "mkdirp": "^0.5.1",
-    "ncp": "^2.0.0",
-    "node-sass": "^3.7.0",
-    "pkg-up": "^1.0.0",
-    "postcss": "^5.0.21",
-    "proj4leaflet": "^1.0.1",
-    "promise-helpers": "^0.2.0",
+    "es6-promise": "^4.1.0",
+    "govuk-elements-sass": "^3.0.3",
+    "govuk_frontend_toolkit": "^6.0.3",
+    "govuk_template_jinja": "^0.22.1",
+    "jquery": "1.x",
     "pubsub-js": "1.5.3",
-    "remarkable": "^1.6.2",
-    "rimraf": "^2.5.2",
-    "trace": "^2.3.0",
-    "uglify-js": "^2.7.0",
-    "validate.js": "0.10.0",
-    "webfontloader": "1.6.24",
-    "yfm": "^0.2.0"
+    "validate.js": "0.10.0"
+  },
+  "peerDependencies": {
+    "govuk-elements-sass": "x",
+    "govuk_frontend_toolkit": "x",
+    "govuk_template_jinja": "x"
   }
 }

@@ -1,7 +1,0 @@
-name: Tables
-categories:
-  primary: Govuk
-  secondary: Core
-
-dependencies:
-  - elements/govuk/core

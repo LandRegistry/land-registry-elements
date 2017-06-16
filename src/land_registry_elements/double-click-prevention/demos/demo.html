@@ -1,0 +1,57 @@
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+  {{ readme }}
+
+  <h2 class="heading-medium">Form with clientside validation</h2>
+  <form method="GET" data-clientside-validation="demo_form_validation">
+    <div class="form-group">
+      <label class="form-label" for="foo">Use this field to test pressing Enter in the form</label>
+      <input class="form-control" type="text" name="foo" id="foo" />
+    </div>
+    <br><br>
+    <input type="submit" class="button" value="Continue" id="button-1" data-double-click-prevention>
+    <br><br>
+    <button class="button" id="button-2" data-double-click-prevention>Continue</button>
+  </form>
+
+  <h2 class="heading-medium">Form without clientside validation</h2>
+  <form method="GET">
+    <div class="form-group">
+      <label class="form-label" for="foo2">Use this field to test pressing Enter in the form</label>
+      <input class="form-control" type="text" name="foo2" id="foo2" />
+    </div>
+    <br><br>
+    <input type="submit" class="button" value="Continue" id="button-3" data-double-click-prevention>
+    <br><br>
+    <button class="button" id="button-4" data-double-click-prevention>Continue</button>
+  </form>
+
+
+  <script type="application/json" id="demo_form_validation">
+    {
+      "foo": {
+        "presence": {
+          "message": "Please fill this in"
+        }
+      }
+    }
+  </script>
+
+{% endblock %}
+
+
+{% block body_end %}
+  {{ super() }}
+
+  <script>
+    (function() {
+      window.PubSub.subscribe('clientside-form-validation.valid', function(msg, data) {
+        var examplePromise = new Promise(function(resolve, reject) {
+          setTimeout(resolve, 5000)
+        })
+        data.registerPromise(examplePromise)
+      })
+    })()
+  </script>
+{% endblock %}
