@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "land-registry-gulp-tasks": "git+https://github.com/LandRegistry/land-registry-gulp-tasks.git",
+    "land-registry-gulp-tasks": "git+https://github.com/LandRegistry/land-registry-gulp-tasks.git#v1.0.0",
     "check-node-version": "^2.1.0"
   },
   "dependencies": {
