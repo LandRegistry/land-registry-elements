@@ -1,0 +1,13 @@
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+  {{readme}}
+
+  <h2 class="heading-medium">Components</h2>
+
+  <ul class="list list-bullet">
+    {% for demo in demos %}
+      <li><a href="/{{demo}}">{{demo}}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

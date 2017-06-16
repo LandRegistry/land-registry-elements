@@ -18,7 +18,7 @@ from wtforms.validators import EqualTo
 from wtforms.validators import ValidationError
 
 # This is the blueprint object that gets registered into the app in blueprints.py.
-components = Blueprint('example', __name__)
+components = Blueprint('components', __name__)
 
 
 
