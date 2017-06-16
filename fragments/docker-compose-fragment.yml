@@ -9,6 +9,7 @@ services:
       # The base Flask Dockerfile tells gunicorn to use 8080 by default, we expose it here and map it to a unique
       # port for the app (which is subsequently used by the dev-env to forward it outside of vagrant too).
       - "9900:8080"
+      - "3900:3000" # Browsersync (When running npm run dev)
     volumes:
       # Our convention is (for python) to always map the app files to /src within the container
       - /vagrant/apps/land-registry-elements:/src
