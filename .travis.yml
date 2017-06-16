@@ -27,4 +27,4 @@ install:
 
 before_script:
   - npm run build # Run the python demo server in the background
-  - gunicorn manage:manager.app
+  - gunicorn manage:manager.app &
