@@ -67,7 +67,7 @@ function Validator (element, config) {
     $element.on('focusout', '.form-control', focusout)
 
     // Summary click handlers
-    $element.on('click', '.error-summary-list a', summaryClick)
+    $('body').on('click', '.error-summary-list a', summaryClick)
 
     // Grab any existing error messages and ensure they persist, regardless of clientside changes
     var $existingSummary = $('.error-summary')
