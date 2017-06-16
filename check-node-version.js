@@ -1,4 +1,4 @@
-var exec = require('child_process').execSync;
+var exec = require('child_process').execSync
 var semver = require('semver')
 var packageJson = require('./package.json')
 

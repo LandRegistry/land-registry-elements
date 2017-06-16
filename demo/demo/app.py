@@ -22,7 +22,8 @@ app = LandRegistryFlask(__name__,
 app.jinja_loader = PrefixLoader({
     'app': PackageLoader('demo.demo'),
     'land_registry_elements': FileSystemLoader('src/land_registry_elements'),
-    'govuk_elements_jinja_macros': PackageLoader('govuk_elements_jinja_macros')
+    'govuk_elements_jinja_macros': PackageLoader('govuk_elements_jinja_macros'),
+    'incubation_area': FileSystemLoader('src/incubation_area')
 })
 
 app.config.from_pyfile("config.py")

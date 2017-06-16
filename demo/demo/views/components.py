@@ -2,6 +2,7 @@ from demo.demo.markdown_utils import render_markdown
 from flask import Blueprint
 from flask import flash
 from flask import render_template
+from flask import url_for
 from flask_wtf import FlaskForm
 from glob import glob
 from os import path
@@ -25,7 +26,9 @@ components = Blueprint('components', __name__)
 @components.route("/")
 def index():
     def parse_path(demo_path):
-        return path.relpath(demo_path, 'src/land_registry_elements').replace('/demos', '').replace('.html', '')
+        demo_path = path.relpath(demo_path, 'src/land_registry_elements').replace('/demos', '').replace('.html', '')
+        path_parts = demo_path.split('/')
+        return url_for('components.component_demo', component_name=path_parts[0], demo_name=path_parts[1])
 
     demos = glob('src/land_registry_elements/**/demos/*.html')
     parsed_demos = sorted(list(map(parse_path, demos)))
