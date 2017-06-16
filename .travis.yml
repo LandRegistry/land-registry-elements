@@ -26,4 +26,5 @@ install:
   - pip3 install -r requirements.txt
 
 before_script:
-  - make run & # Run the python demo server in the background
+  - npm run build # Run the python demo server in the background
+  - gunicorn manage:manager.app
