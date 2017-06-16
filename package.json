@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Land registry frontend pattern library - building on top of http://govuk-elements.herokuapp.com",
   "scripts": {
-    "check-node-version": "check-node-version --node $npm_package_engines_node --npm $npm_package_engines_npm",
+    "check-node-version": "node check-node-version.js",
     "test": "gulp test && ./run_tests.sh",
     "build": "gulp clean && gulp copy && gulp build",
     "dev": "npm run build && gulp watch",
@@ -30,8 +30,7 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "land-registry-gulp-tasks": "git+https://github.com/LandRegistry/land-registry-gulp-tasks.git#v1.0.0",
-    "check-node-version": "^2.1.0"
+    "land-registry-gulp-tasks": "git+https://github.com/LandRegistry/land-registry-gulp-tasks.git#v1.0.0"
   },
   "dependencies": {
     "browsernizr": "^2.1.0",
