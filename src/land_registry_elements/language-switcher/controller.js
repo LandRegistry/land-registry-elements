@@ -1,1 +1,1 @@
-require('../../utils/modernizr')
+require('../../utils/modernizr/modernizr.js')
