@@ -13,8 +13,8 @@ RUN yum install -y -q libffi-devel
 ADD requirements.txt requirements.txt
 RUN pip3 install -q -r requirements.txt
 
-RUN rm -rf node_modules
 ADD package* ./
+RUN rm -rf node_modules
 RUN npm install
 
 CMD ["./run.sh"]
