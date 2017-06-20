@@ -64,20 +64,6 @@
   }
 }
 
-.structured-data__key + .structured-data__value {
-  @mixin styles {
-    margin-left: 0;
-  }
-
-  @media print, screen and (min-width: 640px) {
-    @include styles;
-  }
-
-  @include ie(8) {
-    @include styles;
-  }
-}
-
 .structured-data--sectioned-on-mobile {
   .structured-data__key {
     @media screen and (max-width: 639px) {
@@ -117,5 +103,19 @@
       width: $three-quarters;
       margin-left: $one-quarter;
     }
+  }
+}
+
+.structured-data__key + .structured-data__value {
+  @mixin styles {
+    margin-left: 0;
+  }
+
+  @media print, screen and (min-width: 640px) {
+    @include styles;
+  }
+
+  @include ie(8) {
+    @include styles;
   }
 }
