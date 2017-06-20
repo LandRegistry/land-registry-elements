@@ -1,7 +1,7 @@
 {% extends "app/layout.html" %}
 
 {% block inner_content %}
-  {{ readme }}
+  {{readme|markdown}}
 
 
   <h2 class="heading-medium">As a definition list (Defaulting to 1/4 : 3/4 ratio)</h2>

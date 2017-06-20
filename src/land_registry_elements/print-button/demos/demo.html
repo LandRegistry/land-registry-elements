@@ -1,7 +1,7 @@
 {% extends "app/layout.html" %}
 
 {% block inner_content %}
-  {{ readme }}
+  {{readme|markdown}}
 
   <h2 class="heading-medium">Default styling</h2>
   <button data-print class="button bold"><span class="icon icon-print"></span>Print this page</button>

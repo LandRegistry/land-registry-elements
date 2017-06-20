@@ -1,7 +1,7 @@
 {% extends "app/layout.html" %}
 
 {% block inner_content %}
-  {{ readme }}
+  {{readme|markdown}}
 
   <h2 class="heading-medium">Form with clientside validation</h2>
   <form method="GET" data-clientside-validation="demo_form_validation">

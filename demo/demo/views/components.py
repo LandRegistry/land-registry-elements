@@ -1,4 +1,3 @@
-from demo.demo.markdown_utils import render_markdown
 from flask import Blueprint
 from flask import flash
 from flask import render_template
@@ -42,7 +41,7 @@ def component_demo(component_name, demo_name):
     readme = open('src/land_registry_elements/{}/README.md'.format(component_name))
 
     return render_template('land_registry_elements/{}/demos/{}.html'.format(component_name, demo_name),
-                           readme=render_markdown(readme.read())
+                           readme=readme.read()
                            )
 
 
@@ -56,7 +55,7 @@ def clientside_form_validation_demo():
       flash('Success!')
 
     return render_template('land_registry_elements/clientside-form-validation/demos/demo.html',
-                           readme=render_markdown(readme.read()),
+                           readme=readme.read(),
                            form=form
                            )
 

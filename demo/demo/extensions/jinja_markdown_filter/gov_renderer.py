@@ -1,6 +1,4 @@
 import misaka
-from jinja2 import Markup
-
 
 class GovRenderer(misaka.HtmlRenderer):
 
@@ -31,8 +29,3 @@ class GovRenderer(misaka.HtmlRenderer):
 
     def double_emphasis(self, content):
         return '<strong class="bold">{}</strong>'.format(content)
-
-
-def render_markdown(content):
-    md = misaka.Markdown(GovRenderer(), extensions=('autolink',))
-    return Markup(md(content))
