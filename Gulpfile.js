@@ -7,7 +7,8 @@ var config = {
   'applicationPath': './demo/demo',
   'assetsPath': 'assets',
   'sassPath': 'src/scss/*.scss',
-  'localhost': 'localhost:8080'
+  'localhost': 'localhost:8080',
+  'browsersyncPort': 3900
 }
 
 config.assetsPath = path.join(config.applicationPath, config.assetsPath)
