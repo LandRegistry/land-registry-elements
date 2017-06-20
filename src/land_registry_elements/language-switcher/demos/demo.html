@@ -4,7 +4,7 @@
 {% block inner_content %}
   {{ language_switcher(lang='en') }}
 
-  {{ readme }}
+  {{readme|markdown}}
 
   <h2 class="heading-medium">Switched version</h2>
   <hr>

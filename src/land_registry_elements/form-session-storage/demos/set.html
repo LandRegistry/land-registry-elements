@@ -1,7 +1,7 @@
 {% extends "app/layout.html" %}
 
 {% block inner_content %}
-  {{ readme }}
+  {{readme|markdown}}
 
   <p>Set the <code>data-session-storage-set</code> attribute on your input element to invoke the behaviour:</p>
 

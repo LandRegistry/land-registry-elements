@@ -3,6 +3,24 @@
   "scripts": {
   },
   "env": {
+    "APP_NAME": {
+      "required": true
+    },
+    "LOG_LEVEL": {
+      "required": true
+    },
+    "NODE_ENV": {
+      "required": true
+    },
+    "NODE_MODULES_CACHE": {
+      "required": true
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "required": true
+    },
+    "SECRET_KEY": {
+      "required": true
+    }
   },
   "addons": [
 

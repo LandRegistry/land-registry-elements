@@ -1,7 +1,7 @@
 {% extends "app/layout.html" %}
 
 {% block inner_content %}
-  {{ readme }}
+  {{readme|markdown}}
 
   <div class="media">
     <div class="media__item">
