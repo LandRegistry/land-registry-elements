@@ -46,7 +46,7 @@ The pattern library is a Python/Flask app. In order to run the demos you will ne
 ### Running the test suite
 The test suite is written in Ruby and uses Cucumber + Capybara. It is run on every commit and every pull request by TravisCI. It is not possible to merge pull requests without a passing test suite.
 
-It can be run locally by executing `run_tests.sh`.
+It can be run locally by executing `run_tests.sh`
 
 --------------------------------------------------------------------------------
 
