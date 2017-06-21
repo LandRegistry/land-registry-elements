@@ -2,14 +2,10 @@ from demo.demo.landregistry_flask import LandRegistryFlask
 from jinja2 import FileSystemLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
-# from jinja2 import TemplateNotFound
-# # from os import file
-# from os.path import exists
-# from os.path import getmtime
 from os import getcwd
 from os.path import join
 import os
-# from os.path import abspath
+
 
 app = LandRegistryFlask(__name__,
                         template_folder='templates',
