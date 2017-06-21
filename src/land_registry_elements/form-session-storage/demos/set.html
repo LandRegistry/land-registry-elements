@@ -10,5 +10,5 @@
     <input class="form-control" type="text" data-session-storage-set="this-key-identifies-the-value" id="set" name="form-session-storage">
   </div>
 
-  <p class="form-hint">Now visit the <a href="/form-session-storage/get">getting</a> demo to see the information you have typed appear over there!</p>
+  <p class="form-hint">Now visit the <a href="{{ url_for('components.component_demo', component_name='form-session-storage', demo_name='get') }}">getting</a> demo to see the information you have typed appear over there!</p>
 {% endblock %}

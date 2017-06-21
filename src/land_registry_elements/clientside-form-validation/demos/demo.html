@@ -10,13 +10,13 @@
     {% if messages %}
 
       <div class="warning media">
-        <div class="media-item">
+        <div class="media__item">
           <i class="icon icon-important">
             <span class="visuallyhidden">Information</span>
           </i>
         </div>
 
-        <div class="media-body">
+        <div class="media__body">
           {% if messages|length > 1 %}
             <ul class="spacing-top-flush">
               {% for message in messages %}
