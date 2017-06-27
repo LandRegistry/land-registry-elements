@@ -1,0 +1,5 @@
+node_modules
+npm-debug.log
+demo/demo/assets/dist
+demo/demo/assets/src/scss/vendor
+demo/demo/templates/vendor
