@@ -154,7 +154,7 @@ function Validator (element, config) {
     showSummary(errorData)
 
     if (options.showIndividualFormErrors) {
-      showIndividualFormErrors(errorData)
+      showIndividualFormErrors(errorData, {announce: false})
     }
   }
 
@@ -187,7 +187,7 @@ function Validator (element, config) {
     var errorData = validateForm()
 
     if (e.currentTarget.isDirty && options.showIndividualFormErrors) {
-      showIndividualFormErrors(errorData, e.currentTarget)
+      showIndividualFormErrors(errorData, {restrictTo: e.currentTarget})
     }
   }
 
@@ -198,7 +198,7 @@ function Validator (element, config) {
     var errorData = validateForm()
 
     if (options.showIndividualFormErrors) {
-      showIndividualFormErrors(errorData, e.target)
+      showIndividualFormErrors(errorData, {restrictTo: e.target})
     }
   }
 
@@ -263,12 +263,19 @@ function Validator (element, config) {
   /**
    * Individual form errors
    */
-  function showIndividualFormErrors (errors, restrictTo) {
+  function showIndividualFormErrors (errors, fnConfig) {
+    var fnOptions = {
+      restrictTo: false,
+      announce: true
+    }
+
+    $.extend(fnOptions, fnConfig)
+
     // Remove any previous form element errors
     $element.find('.form-group').each(function (index, formGroup) {
       var target = $(formGroup).find(options.controlSelector)
 
-      if (restrictTo && $(target).attr('name') !== $(restrictTo).attr('name')) {
+      if (fnOptions.restrictTo && $(target).attr('name') !== $(fnOptions.restrictTo).attr('name')) {
         return
       }
 
@@ -290,7 +297,7 @@ function Validator (element, config) {
           return
         }
 
-        if (restrictTo && !target.is(restrictTo)) {
+        if (fnOptions.restrictTo && !target.is(fnOptions.restrictTo)) {
           return
         }
 
@@ -299,7 +306,11 @@ function Validator (element, config) {
           'error': error
         })
 
-        var message = $('<span role="alert" class="error-message" id="error-message-' + error.name + '">' + error.message + '</span>')
+        var message = $('<span class="error-message" id="error-message-' + error.name + '">' + error.message + '</span>')
+
+        if (fnOptions.announce) {
+          message.attr('role', 'alert')
+        }
 
         var formGroup = $(target).closest('.form-group')
 
