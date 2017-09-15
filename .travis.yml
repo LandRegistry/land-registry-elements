@@ -1,4 +1,5 @@
 sudo: required
+group: deprecated-2017Q3 # See https://blog.travis-ci.com/2017-08-29-trusty-image-updates
 dist: trusty
 language: node_js
 
