@@ -71,7 +71,7 @@ function Validator (element, config) {
 
     // Grab any existing error messages and ensure they persist, regardless of clientside changes
     var $existingSummary = $('.error-summary')
-    if ($existingSummary) {
+    if ($existingSummary.length > 0) {
       $existingSummary.find('.error-summary-list li')
         .each(function (index, item) {
           serversideErrors.push(item.innerHTML)

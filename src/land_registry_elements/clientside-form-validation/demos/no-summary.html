@@ -1,0 +1,28 @@
+{% from 'govuk_elements_jinja_macros/form.html' import element, single_choice, multiple_choice, error_summary %}
+
+{% extends "app/layout.html" %}
+
+{% block inner_content %}
+  <h1 class="heading-large">Form validation - without summary</h1>
+  <p>Short forms often don't warrant a summary of the validation errors - this can be suppressed by adding the <code>data-clientside-validation-no-summary</code> attribute to the form</p>
+
+  <form method="GET" id="example_form" data-clientside-validation="example_form_validation" data-clientside-validation-no-summary>
+
+    <div class="form-group">
+      <label class="form-label" for="full_name">Full name</label>
+      <input class="form-control" type="text" id="full-name" name="full_name">
+    </div>
+
+    <input type="submit" class="button" value="Submit" data-double-click-prevention>
+  </form>
+
+  <script type="application/json" id="example_form_validation">
+    {
+      "full_name": {
+        "presence": {
+          "message": "Full name is required"
+        }
+      }
+    }
+  </script>
+{% endblock %}
