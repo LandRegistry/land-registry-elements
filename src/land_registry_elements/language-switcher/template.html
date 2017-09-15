@@ -1,6 +1,12 @@
 {% macro language_switcher(lang) %}
   <div class="language-switcher {% if not lang=='en' %}language-switcher-invert{% endif %}">
     <form method="get">
+      {% for key in request.args %}
+        {% if key != 'language' %}
+          <input type="hidden" name="{{key}}" value="{{request.args[key]}}" />
+        {% endif %}
+      {% endfor %}
+      
       {% if lang=='en' %}
 
         <span class="language-switcher-current">
