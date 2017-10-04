@@ -206,21 +206,31 @@ function Validator (element, config) {
     var summary = $('<div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1"></div>')
 
     if (data.headingMessage) {
-      summary.append('<h2 class="heading-medium error-summary-heading" id="error-summary-heading">' + data.headingMessage + '</h2>')
+      var heading = $('<h2 class="heading-medium error-summary-heading" id="error-summary-heading"></h2>')
+      heading.text(data.headingMessage)
+      summary.append(heading)
     }
 
     if (data.description) {
-      summary.append('<p>' + data.description + '</p>')
+      var description = $('<p></p>')
+      description.text(data.description)
+      summary.append(description)
     }
 
     var errorList = $('<ul class="error-summary-list"></ul>')
 
     $.each(data.errors, function (index, item) {
-      errorList.append('<li><a href="#" data-target="' + item.name + '">' + item.message + '</a></li>')
+      var errorLi = $('<li></li>')
+      var errorLink = $('<a href="#" data-target="' + item.name + '"></a>')
+      errorLink.text(item.message)
+      errorLi.append(errorLink)
+      errorList.append(errorLi)
     })
 
     $.each(data.serversideErrors, function (index, item) {
-      errorList.append('<li>' + item + '</li>')
+      var errorLi = $('<li></li>')
+      errorLi.html(item)
+      errorList.append(errorLi)
     })
 
     summary.append(errorList)
@@ -306,19 +316,20 @@ function Validator (element, config) {
           'error': error
         })
 
-        var message = $('<span class="error-message" id="error-message-' + error.name + '">' + error.message + '</span>')
+        var message = $('<span class="error-message" id="error-message-' + error.name + '"></span>')
+        message.text(error.message)
 
         if (fnOptions.announce) {
           message.attr('role', 'alert')
         }
 
-        var formGroup = $(target).closest('.form-group')
+        var formGroup = target.closest('.form-group')
 
         // If the element is a direct child of the form group, insert the error after it
-        if ($(target).parent().is(formGroup)) {
+        if (target.parent().is(formGroup)) {
           target.before(message)
-        } else if ($(target).closest('.form-group').find('legend.form-label, legend.form-label-bold').length) {
-          $(target).closest('.form-group').find('legend.form-label, legend.form-label-bold').first().append(message)
+        } else if (target.closest('.form-group').find('legend.form-label, legend.form-label-bold').length) {
+          target.closest('.form-group').find('legend.form-label, legend.form-label-bold').first().append(message)
         } else {
           // Otherwise insert it at the start of the form group
           formGroup.prepend(message)
