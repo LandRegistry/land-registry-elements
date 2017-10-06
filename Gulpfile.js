@@ -5,13 +5,12 @@ var path = require('path')
 
 var config = {
   'applicationPath': './demo/demo',
-  'assetsPath': 'assets',
-  'sassPath': 'src/scss/*.scss',
+  'sourcePath': './demo/demo/assets/src',
+  'destinationPath': './demo/demo/assets/dist',
+  'sassPath': 'scss/*.scss',
   'localhost': 'localhost:8080',
   'browsersyncPort': 3900
 }
-
-config.assetsPath = path.join(config.applicationPath, config.assetsPath)
 
 for (var task in landRegistryGulpTasks) {
   landRegistryGulpTasks[task](gulp, config)

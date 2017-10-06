@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "land-registry-gulp-tasks": "github:LandRegistry/land-registry-gulp-tasks#v1.1.0",
+    "land-registry-gulp-tasks": "git+https://github.com/LandRegistry/land-registry-gulp-tasks.git#v2.0.0",
     "semver": "^5.3.0",
     "govuk-elements-sass": "x",
     "govuk_frontend_toolkit": "x",

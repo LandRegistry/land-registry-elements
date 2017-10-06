@@ -20,7 +20,7 @@ $('[data-clientside-validation]').each(function (index, item) {
 
   instance = new Validator(item, {
     'rules': rules,
-    'showSummary': !$(item).attr('data-clientside-validation-no-summary')
+    'showSummary': !$(item).is('[data-clientside-validation-no-summary]')
   })
 
   instance.create()
