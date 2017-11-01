@@ -23,7 +23,7 @@ def index():
 
     return render_template('app/incubation-area.html',
                            demos=parsed_demos,
-                           readme=render_markdown(readme.read())
+                           readme=readme.read()
                            )
 
 
@@ -33,5 +33,5 @@ def component_demo(component_name, demo_name):
     readme = open('src/incubation_area/{}/README.md'.format(component_name))
 
     return render_template('incubation_area/{}/demos/{}.html'.format(component_name, demo_name),
-                           readme=render_markdown(readme.read())
+                           readme=readme.read()
                            )
