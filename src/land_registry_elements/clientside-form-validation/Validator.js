@@ -259,9 +259,10 @@ function Validator (element, config) {
 
       if (!options.showSummary) {
         errorSummary.addClass('visuallyhidden')
+        $element.before(errorSummary)
+      } else {
+        $('h1').before(errorSummary)
       }
-
-      $('h1').before(errorSummary)
     }
 
     if (data.errors.length > 0) {
