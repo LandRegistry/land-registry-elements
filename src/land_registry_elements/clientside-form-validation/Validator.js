@@ -291,6 +291,7 @@ function Validator (element, config) {
       }
 
       $(formGroup).removeClass('form-group-error')
+      $(formGroup).find('.form-control').removeClass('form-control-error')
 
       if (target) {
         target.removeAttr('aria-describedby')
@@ -327,16 +328,16 @@ function Validator (element, config) {
         var formGroup = target.closest('.form-group')
 
         // If the element is a direct child of the form group, insert the error after it
-        if (target.parent().is(formGroup)) {
-          target.before(message)
-        } else if (target.closest('.form-group').find('legend.form-label, legend.form-label-bold').length) {
-          target.closest('.form-group').find('legend.form-label, legend.form-label-bold').first().append(message)
+        if (target.closest('.form-group').find('legend .form-label, legend .form-label-bold').length) {
+          target.closest('.form-group').find('legend .form-label, legend .form-label-bold').first().after(message)
         } else {
-          // Otherwise insert it at the start of the form group
-          formGroup.prepend(message)
+          formGroup.find('label').first().append(message)
         }
 
         formGroup.addClass('form-group-error')
+        if (target.is('.form-control')) {
+          target.addClass('form-control-error')
+        }
 
         // Link the form field to the error message with an aria attribute
         target.attr('aria-describedby', 'error-message-' + error.name)
