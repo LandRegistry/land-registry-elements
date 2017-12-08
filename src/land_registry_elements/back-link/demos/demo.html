@@ -25,7 +25,7 @@
   <h2 class="heading-medium">Simple backlink</h2>
 
   {% set demo -%}
-    {{ back_link('Destination title', '/search') }}
+    {{ back_link('Destination title', '/') }}
   {%- endset %}
 
   <div class="grid-row">
@@ -42,7 +42,7 @@
 
   <h2 class="heading-medium">Backlink with a "prefix" which is hidden on small viewports</h2>
   {% set demo -%}
-    {{ back_link('Destination title', '/search', 'Back to') }}
+    {{ back_link('Destination title', '/', 'Back to') }}
   {%- endset %}
 
   <div class="grid-row">
