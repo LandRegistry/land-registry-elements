@@ -4,21 +4,34 @@
   margin-top: $gutter-half;
   display: inline-block;
   position: relative;
-  padding-left: 20px;
+  padding-left: 15px;
 
   &,
   &:visited {
     color: $link-colour;
   }
 
+
   &::before {
-    content: '\25C0 ';
-    font-family: dingbats, arial unicode ms, sans-serif;
+    content: '';
     display: block;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 6px solid $link-colour;
+    border-bottom: 5px solid transparent;
     position: absolute;
-    top: 0;
     left: 0;
-    font-size: 90%;
+    top: 50%;
+    margin-top: -6px;
+  }
+
+  &:hover {
+    color: $link-hover-colour;
+
+    &::before {
+      border-right-color: $link-hover-colour;
+    }
   }
 }
 
