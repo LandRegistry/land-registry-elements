@@ -22,9 +22,10 @@ function EmailRepeat (element, config) {
       return
     }
 
-    hintWrapper = $('<div class="panel panel-border-narrow email-hint spacing-top-single"><p>Please ensure your email address is displayed correctly below. We will need this if you need to reset your password in future.</p><p class="bold email-hint-value"></p></div>')
+    hintWrapper = $('<div class="panel panel-border-narrow email-hint spacing-top-single"><p>Please ensure your email address is displayed correctly below. We will need this if you need to reset your password in future.</p></div>')
 
-    hint = $(hintWrapper).find('.email-hint-value')
+    hint = $('<p class="bold email-hint-value"></p>')
+    $(hintWrapper).append(hint)
 
     $(element).on('change', updateHint)
     $(element).on('input', updateHint)
