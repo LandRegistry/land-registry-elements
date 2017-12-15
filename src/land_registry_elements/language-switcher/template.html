@@ -6,7 +6,7 @@
           <input type="hidden" name="{{key}}" value="{{request.args[key]}}" />
         {% endif %}
       {% endfor %}
-      
+
       {% if lang=='en' %}
 
         <span class="language-switcher-current">
@@ -14,7 +14,7 @@
         </span>
 
         <button type="submit" class="language-switcher-button" name="language" value="cy">
-          <span class="visuallyhidden">Newid i’r</span> Gymraeg
+          Cymraeg
         </button>
 
       {% else %}
@@ -24,7 +24,7 @@
         </span>
 
         <button type="submit" class="language-switcher-button" name="language" value="en">
-          <span class="visuallyhidden">Switch to</span> English
+          English
         </button>
 
       {% endif %}
