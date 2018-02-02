@@ -36,10 +36,10 @@
     "govuk_template_jinja": "x"
   },
   "dependencies": {
-    "browsernizr": "^2.1.0",
-    "es6-promise": "^4.1.0",
-    "jquery": "1.x",
-    "pubsub-js": "1.5.3",
-    "validate.js": "0.10.0"
+    "browsernizr": "^2.2.0",
+    "es6-promise": "^4.2.4",
+    "jquery": "^1.12.4",
+    "pubsub-js": "^1.5.3",
+    "validate.js": "^0.10.0"
   }
 }
