@@ -8,7 +8,7 @@ A demo is available at: [http://land-registry-elements.herokuapp.com/](http://la
 
 It can be installed into your application in order to provide the necessary CSS and JS to build the components from the library. In addition, Python applications can use the Jinja2 templates to easily render the correct HTML for each component.
 
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 ## Usage
 
