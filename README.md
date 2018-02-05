@@ -84,4 +84,5 @@ The `/tests` folder contains global supporting files for Capybara and Cucumber. 
 --------------------------------------------------------------------------------
 
 ## Browser support
+
 Browser support based on https://www.gov.uk/service-manual/user-centred-design/browsers-and-devices.html
