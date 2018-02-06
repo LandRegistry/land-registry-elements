@@ -1,5 +1,5 @@
 #!/bin/bash
 
-\cp -r /tmp/land-registry-elements/* .    # Copy various pieces generated at build time back into the folder
-rm -rf /tmp/land-registry-elements/*     # And then nuke the temporary build files - we don't want them to overwrite any newly created files every time the app restarts
+cp /node_modules/skeleton-webseal-templates/package-lock.json .
+npm run build
 /usr/bin/gunicorn -k eventlet --pythonpath /src --access-logfile - manage:manager.app --reload

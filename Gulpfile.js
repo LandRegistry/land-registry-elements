@@ -9,7 +9,8 @@ var config = {
   'destinationPath': './demo/demo/assets/dist',
   'sassPath': 'scss/*.scss',
   'localhost': 'localhost:8080',
-  'browsersyncPort': 3900
+  'browsersyncPort': 3900,
+  'lintingPaths': false
 }
 
 for (var task in landRegistryGulpTasks) {

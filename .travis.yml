@@ -1,31 +1,13 @@
-sudo: required
-group: deprecated-2017Q3 # See https://blog.travis-ci.com/2017-08-29-trusty-image-updates
-dist: trusty
-language: node_js
-
-node_js:
-  - "8"
-
-python:
-  - "3.4"
-
-before_install:
-  # Work around the presence of node-which causing rvm to fail
-  # See https://github.com/travis-ci/travis-ci/issues/5092#issuecomment-245937070
-  - if [ -f node_modules/.bin/which ]; then mv node_modules/.bin/which node_modules/.bin/which.backup; fi
-  - rvm install 2.4.1
-  - if [ -f node_modules/.bin/which.backup ]; then mv node_modules/.bin/which.backup node_modules/.bin/which; fi
-  - sudo apt-get -y install python3-pip python-dev
-
-cache:
-  directories:
-    - node_modules
+language: minimal
+services:
+  - docker
 
 install:
-  - bundle install
-  - npm install
-  - pip3 install -r requirements.txt
+  - docker build -t land-registry-elements .
+  - docker run -itd --name land-registry-elements land-registry-elements bash
+  - docker cp . land-registry-elements:/src/.
+  - docker exec land-registry-elements npm run build
+  - docker exec -d land-registry-elements /usr/bin/gunicorn -k eventlet --pythonpath /src --access-logfile - manage:manager.app --reload
 
-before_script:
-  - npm run build # Run the python demo server in the background
-  - gunicorn manage:manager.app &
+script:
+  - docker exec land-registry-elements npm run test
