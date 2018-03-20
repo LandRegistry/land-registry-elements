@@ -18,7 +18,7 @@ For Land Registry developers, please see the `gadget-govuk-ui` reference applica
 
 ### Integrating the SCSS/JS into your application
 
-The [land-registry-elements-examples](https://github.com/LandRegistry/land-registry-elements-examples) repository contains a minimal example of how to build the assets. This uses [https://github.com/LandRegistry/land-registry-gulp-tasks](land-registry-gulp-tasks) to compile the CSS and JS.
+The [land-registry-elements-examples](https://github.com/LandRegistry/land-registry-elements-examples) repository contains a minimal example of how to build the assets. This uses [land-registry-gulp-tasks](https://github.com/LandRegistry/land-registry-gulp-tasks)) to compile the CSS and JS.
 
 ### Integrating the Jinja2 templates into your application
 
