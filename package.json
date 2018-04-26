@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "browsernizr": "^2.2.0",
+    "es6-promise": "^4.2.4",
     "jquery": "x",
     "pubsub-js": "^1.6.0",
     "validate.js": "^0.12.0",

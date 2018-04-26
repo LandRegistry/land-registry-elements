@@ -2,6 +2,7 @@
 'use strict'
 
 require('../../utils/pub-sub/controller')
+require('../../utils/polyfills/Promise')
 var validate = require('validate.js')
 
 /**
