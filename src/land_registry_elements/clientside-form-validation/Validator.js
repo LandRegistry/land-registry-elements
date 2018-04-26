@@ -1,11 +1,7 @@
 /* global $ */
 'use strict'
 
-require('../../utils/polyfills/Array.prototype.forEach')
-require('../../utils/polyfills/Array.prototype.filter')
-require('../../utils/polyfills/Array.prototype.map')
 require('../../utils/pub-sub/controller')
-require('../../utils/polyfills/Promise')
 var validate = require('validate.js')
 
 /**

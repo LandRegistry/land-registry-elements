@@ -28,8 +28,10 @@
 {% block cookie_message %}<p>HM Land Registry uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>{% endblock %}
 
 {% block body_end %}
-  <script type=text/javascript src="{{ url_for('static', filename='javascripts/jquery.min.js') }}"> </script>
-  <script type=text/javascript src="{{ url_for('static', filename='javascripts/main.js') }}"> </script>
+  <!--[if gt IE 8]><!-->
+    <script type=text/javascript src="{{ url_for('static', filename='javascripts/jquery.min.js') }}"> </script>
+    <script type=text/javascript src="{{ url_for('static', filename='javascripts/main.js') }}"> </script>
+  <!--<![endif]-->
 {% endblock %}
 
 {% block content %}
