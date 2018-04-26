@@ -1,8 +1,10 @@
 FROM hmlandregistry/dev_base_python_flask:3
 
-RUN curl -SLO "https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz" && \
+
+RUN mkdir /supporting-files && cd /supporting-files && curl -SLO "https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-x64.tar.xz" && \
 tar -xJf "node-v8.9.4-linux-x64.tar.xz" -C /usr/local --strip-components=1 && \
-ln -s /usr/local/bin/node /usr/local/bin/nodejs
+ln -s /usr/local/bin/node /usr/local/bin/nodejs && \
+rm "node-v8.9.4-linux-x64.tar.xz"
 
 # START RUBY INSTALL
 # Install rbenv/phantomjs system dependencies
@@ -100,12 +102,12 @@ RUN pip3 install -q -r requirements.txt
 # Install node modules
 # These are installed outside of the mounted volume and nodejs is instructed to look for them by setting NODE_PATH / PATH
 # This is to avoid the fact that the volume will wipe out anything that gets added when the container is being built
-ENV NODE_PATH='/node_modules/land-registry-elements/node_modules' \
-  PATH="/node_modules/land-registry-elements/node_modules/.bin:${PATH}" \
+ENV NODE_PATH='/supporting-files/node_modules' \
+  PATH="/supporting-files/node_modules/.bin:${PATH}" \
   NODE_ENV='production' \
   NPM_CONFIG_PRODUCTION='false'
-ADD package*.json /node_modules/land-registry-elements/
-RUN cd /node_modules/land-registry-elements \
+ADD package*.json /supporting-files/
+RUN cd /supporting-files \
   && npm install
 
 ENV APP_NAME=land-registry-elements \

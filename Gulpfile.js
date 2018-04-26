@@ -1,26 +1,12 @@
-var gulp = require('gulp')
-var landRegistryGulpTasks = require('land-registry-gulp-tasks')
+const gulp = require('gulp')
 
-var path = require('path')
+const config = require('./gulp/config.js')
 
-var config = {
-  'applicationPath': './demo/demo',
-  'sourcePath': './demo/demo/assets/src',
-  'destinationPath': './demo/demo/assets/dist',
-  'sassPath': 'scss/*.scss',
-  'localhost': 'localhost:8080',
-  'browsersyncPort': 3900,
-  'lintingPaths': false
-}
-
-for (var task in landRegistryGulpTasks) {
-  landRegistryGulpTasks[task](gulp, config)
-}
-
-var existingWatch = gulp.tasks.watch.fn
-
-gulp.task('watch', function () {
-  gulp.watch(path.join('src/**/*.scss'), ['sass', 'sass-lint'])
-  gulp.watch(path.join('src/**/*.js'), ['js', 'standardjs'])
-  existingWatch()
-})
+require('./gulp/tasks/clean.js')(gulp, config)
+require('./gulp/tasks/gov.js')(gulp, config)
+require('./gulp/tasks/images.js')(gulp, config)
+require('./gulp/tasks/javascript.js')(gulp, config)
+require('./gulp/tasks/linting.js')(gulp, config)
+require('./gulp/tasks/sass.js')(gulp, config)
+require('./gulp/tasks/default.js')(gulp, config)
+require('./gulp/tasks/watch.js')(gulp, config)
