@@ -1,41 +1,40 @@
-{% set page_title = 'Gadget GOV.UK UI' %}
-{% set asset_path = url_for('static', filename='') %}
+{% from "app/vendor/.govuk-frontend/components/skip-link/macro.html" import govukSkipLink %}
+{% from "app/vendor/.govuk-frontend/components/header/macro.html" import govukHeader %}
+{% from "app/vendor/.govuk-frontend/components/phase-banner/macro.html" import govukPhaseBanner %}
+{% from "app/vendor/.govuk-frontend/components/footer/macro.html" import govukFooter %}
 
-{% extends "app/vendor/govuk_template.html" %}
+{% extends "app/vendor/.govuk-frontend/template.html" %}
+
+{% set assetPath = url_for('static', filename='') %}
+{% set mainClasses = "app-prose-scope" %}
 
 {% block head %}
   <!--[if gt IE 8]><!--><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main.css') }}" /><!--<![endif]-->
   <!--[if IE 8]><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main-ie8.css') }}" /><![endif]-->
 {% endblock %}
 
-{% block header_class %}with-proposition{% endblock %}
+{% block pageTitle %}{% block title %}{% endblock %}{%if self.title() %} - {% endif %}{{ service_name }}{% endblock %}
 
-{% block proposition_header %}
-  <div class="header-proposition">
-    <div class="content">
-      <div id="proposition-menu">
-        <a id="proposition-name" href="/">{{ service_name }}</a>
-
-        <ul id="proposition-links">
-          <li><a href="{{ url_for('components.index') }}">Main list of components</a></li>
-          <li><a href="{{ url_for('incubation_area.index') }}">Incubation area</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-{% endblock %}
-
-{% block cookie_message %}<p>HM Land Registry uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about cookies</a></p>{% endblock %}
-
-{% block body_end %}
+{% block bodyEnd %}
   <!--[if gt IE 8]><!-->
     <script type=text/javascript src="{{ url_for('static', filename='javascripts/jquery.min.js') }}"> </script>
     <script type=text/javascript src="{{ url_for('static', filename='javascripts/main.js') }}"> </script>
   <!--<![endif]-->
 {% endblock %}
 
-{% block content %}
-  <main role="main" id="content">
-    {% block inner_content %}{% endblock %}
-  </main>
+{% block skipLink %}
+  {{ govukSkipLink({
+    'href': "#main-content",
+    'text': "Skip to main content"
+  }) }}
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+      'homepageUrl': "/",
+      'containerClasses': "govuk-width-container",
+      'serviceName': "Land Registry Elements",
+      'serviceUrl': "/",
+    })
+  }}
 {% endblock %}

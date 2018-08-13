@@ -1,8 +1,6 @@
-import '../../../../../src/land_registry_elements/back-link/controller.js'
 import '../../../../../src/land_registry_elements/clientside-form-validation/controller.js'
 import '../../../../../src/land_registry_elements/double-click-prevention/controller.js'
 import '../../../../../src/land_registry_elements/email-repeat/controller.js'
 import '../../../../../src/land_registry_elements/form-session-storage/controller.js'
-import '../../../../../src/land_registry_elements/print-button/controller.js'
 import '../../../../../src/land_registry_elements/split-detail/controller.js'
 import '../../../../../src/land_registry_elements/language-switcher/controller.js'

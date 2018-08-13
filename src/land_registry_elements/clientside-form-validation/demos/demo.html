@@ -2,7 +2,7 @@
 
 {% extends "app/layout.html" %}
 
-{% block inner_content %}
+{% block content %}
 
   {{ error_summary(form) }}
 
@@ -54,7 +54,7 @@
 
     {{ element(form, 'password_retype')}}
 
-    <input class="button" type="submit" value="Submit">
+    <input class="govuk-button" type="submit" value="Submit">
   </form>
 
   <script type="application/json" id="example_form_validation">

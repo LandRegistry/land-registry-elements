@@ -1,6 +1,6 @@
 {% extends "app/layout.html" %}
 
-{% block inner_content %}
+{% block content %}
   {{readme|markdown}}
 
   <h2 class="heading-medium">Form with clientside validation</h2>
@@ -10,9 +10,9 @@
       <input class="form-control" type="text" name="foo" id="foo" />
     </div>
     <br><br>
-    <input type="submit" class="button" value="Continue" id="button-1" data-double-click-prevention>
+    <input type="submit" class="govuk-button" value="Continue" id="button-1" data-double-click-prevention>
     <br><br>
-    <button class="button" id="button-2" data-double-click-prevention>Continue</button>
+    <button class="govuk-button" id="button-2" data-double-click-prevention>Continue</button>
   </form>
 
   <h2 class="heading-medium">Form without clientside validation</h2>
@@ -22,9 +22,9 @@
       <input class="form-control" type="text" name="foo2" id="foo2" />
     </div>
     <br><br>
-    <input type="submit" class="button" value="Continue" id="button-3" data-double-click-prevention>
+    <input type="submit" class="govuk-button" value="Continue" id="button-3" data-double-click-prevention>
     <br><br>
-    <button class="button" id="button-4" data-double-click-prevention>Continue</button>
+    <button class="govuk-button" id="button-4" data-double-click-prevention>Continue</button>
   </form>
 
 

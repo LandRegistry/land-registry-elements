@@ -1,21 +1,12 @@
 {% extends "app/layout.html" %}
 
-{% block inner_content %}
+{% block content %}
   {{ readme|markdown }}
 
   <h2 class="heading-medium">Waiting button</h2>
 
   <p>Generally triggered by <a href="/double-click-prevention/demo">double click prevention</a>, but could be triggered yourself</p>
-  <input disabled class="button button--waiting" type="submit" value="Please wait&hellip;">
-
-  <h2 class="heading-medium">Icon buttons</h2>
-  <button class="button"><span class="icon icon-print"></span> Print this page</button>
-
-  <h3 class="heading-small">Light variant (E.g. for use inside a highlight box)</h3>
-  <div class="govuk-box-highlight">
-    <button class="button button--light bold"><span class="icon icon-print"></span> Print this page</button>
-  </div>
-
+  <input disabled class="govuk-button lre-button--waiting" type="submit" value="Please wait&hellip;">
 {% endblock %}
 
 

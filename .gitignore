@@ -56,3 +56,6 @@ demo/demo/templates/vendor/govuk_template.html
 
 # Ignore the nodejs package lock - it is up to apps requiring the pattern library to lock dependencies
 package-lock.json
+
+# Mac rubbish
+.DS_Store

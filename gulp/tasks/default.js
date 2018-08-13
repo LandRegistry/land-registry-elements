@@ -5,13 +5,21 @@ module.exports = (gulp, config) => {
     'images'
   ]))
 
-  gulp.task('build', gulp.parallel([
+  gulp.task('compile', gulp.parallel([
     'sass',
     'js',
     'js-vendor'
   ]))
 
-  gulp.task('default', gulp.parallel([
+  gulp.task('build', gulp.series([
+    'clean',
+    gulp.parallel([
+      'copy',
+      'compile'
+    ])
+  ]))
+
+  gulp.task('default', gulp.series([
     'build'
   ]))
 }
