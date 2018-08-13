@@ -3,11 +3,13 @@ $path: '/static/images/';
 $govuk-images-path: '/static/.govuk-frontend/images/';
 $govuk-fonts-path: '/static/.govuk-frontend/fonts/';
 
+$landregistry-elements-images-path: '/static/images/land_registry_elements/';
+
 @import 'govuk-frontend/all';  // Feel free to be more selective than this
 @import 'partials/app-prose-scope';
 
 @import '../../../../../src/land_registry_elements/address/style';
-// @import '../../../../../src/land_registry_elements/button/style';
+@import '../../../../../src/land_registry_elements/button/style';
 // @import '../../../../../src/land_registry_elements/icons/style';
 // @import '../../../../../src/land_registry_elements/language-switcher/style';
 // @import '../../../../../src/land_registry_elements/media/style';

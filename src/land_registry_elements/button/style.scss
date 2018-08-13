@@ -1,31 +1,32 @@
 .button {
   .icon {
     vertical-align: middle;
-    margin-right: $gutter-one-third;
+    margin-right: govuk-spacing(2);
   }
 }
 
 .button--light {
-  background-color: $highlight-colour;
-  color: $text-colour;
+  background-color: govuk-colour("grey-4");
+  color: $govuk-text-colour;
 
   &:hover {
-    background-color: $grey-3;
-    color: $text-colour;
+    background-color: govuk-colour("grey-3");
+    color: $govuk-text-colour;
   }
 
   &:focus,
   &:active {
-    background-color: $focus-colour;
-    color: $text-colour;
+    background-color: $govuk-focus-colour;
+    color: $govuk-text-colour;
   }
 }
 
 .button--waiting {
   &,
-  &[disabled='disabled'] {
+  &[disabled='disabled'],
+  &[disabled] {
     padding-left: 40px;
-    background-image: file-url('land_registry_elements/button/spinner.gif');
+    background-image: url($landregistry-elements-images-path + 'button/spinner.gif');
     background-repeat: no-repeat;
     background-position: 10px center;
   }
@@ -33,7 +34,7 @@
 
 body::after {
   // Preload the spinner
-  content: file-url('land_registry_elements/button/spinner.gif');
+  content: url($landregistry-elements-images-path + 'button/spinner.gif');
   position: absolute;
   left: -10000px;
 }
