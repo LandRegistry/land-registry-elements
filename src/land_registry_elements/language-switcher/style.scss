@@ -63,7 +63,7 @@
   font-family: inherit;
   padding: 0;
   text-decoration: underline;
-  color: $link-colour;
+  color: $govuk-link-colour;
   cursor: pointer;
   line-height: inherit;
   margin: 0;
@@ -74,6 +74,6 @@
 
   &:hover,
   &:focus {
-    color: $link-hover-colour;
+    color: $govuk-link-hover-colour;
   }
 }
