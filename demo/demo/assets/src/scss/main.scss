@@ -4,7 +4,7 @@ $govuk-images-path: '/static/.govuk-frontend/images/';
 $govuk-fonts-path: '/static/.govuk-frontend/fonts/';
 
 @import 'govuk-frontend/all';  // Feel free to be more selective than this
-
+@import 'partials/app-prose-scope';
 
 @import '../../../../../src/land_registry_elements/address/style';
 // @import '../../../../../src/land_registry_elements/back-link/style';
@@ -20,3 +20,5 @@ $govuk-fonts-path: '/static/.govuk-frontend/fonts/';
 // @import '../../../../../src/land_registry_elements/warning/style';
 
 // @import '../../../../../src/incubation_area/pagination-complex/style';
+
+
