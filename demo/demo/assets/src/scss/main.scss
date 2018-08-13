@@ -1,19 +1,22 @@
 $path: '/static/images/';
 
-@import 'vendor/govuk-elements/govuk-elements';
+$govuk-images-path: '/static/.govuk-frontend/images/';
+$govuk-fonts-path: '/static/.govuk-frontend/fonts/';
+
+@import 'govuk-frontend/all';  // Feel free to be more selective than this
+
 
 @import '../../../../../src/land_registry_elements/address/style';
-@import '../../../../../src/land_registry_elements/back-link/style';
-@import '../../../../../src/land_registry_elements/button/style';
-@import '../../../../../src/land_registry_elements/icons/style';
-@import '../../../../../src/land_registry_elements/language-switcher/style';
-@import '../../../../../src/land_registry_elements/media/style';
-@import '../../../../../src/land_registry_elements/pagination-simple/style';
+// @import '../../../../../src/land_registry_elements/back-link/style';
+// @import '../../../../../src/land_registry_elements/button/style';
+// @import '../../../../../src/land_registry_elements/icons/style';
+// @import '../../../../../src/land_registry_elements/language-switcher/style';
+// @import '../../../../../src/land_registry_elements/media/style';
+// @import '../../../../../src/land_registry_elements/pagination-simple/style';
 @import '../../../../../src/land_registry_elements/print-button/style';
-@import '../../../../../src/land_registry_elements/spacing/style';
-@import '../../../../../src/land_registry_elements/split-detail/style';
-@import '../../../../../src/land_registry_elements/structured-data/style';
-@import '../../../../../src/land_registry_elements/supplementary-panel/style';
-@import '../../../../../src/land_registry_elements/warning/style';
+// @import '../../../../../src/land_registry_elements/split-detail/style';
+// @import '../../../../../src/land_registry_elements/structured-data/style';
+// @import '../../../../../src/land_registry_elements/supplementary-panel/style';
+// @import '../../../../../src/land_registry_elements/warning/style';
 
-@import '../../../../../src/incubation_area/pagination-complex/style';
+// @import '../../../../../src/incubation_area/pagination-complex/style';
